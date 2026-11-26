@@ -2,14 +2,14 @@
 
 Research code for a clinical-trial design project using e-values with Bayesian
 borrowing across baskets. The primary method is specified in
-[`framework.tex`](framework.tex); the single-arm design-optimal e-value
-comparators are based on Baas, ter Schure & van Rosmalen (2026),
+`framework.tex`; the single-arm design-optimal e-value comparators are based
+on Baas, ter Schure & van Rosmalen (2026),
 [arXiv:2605.28653](https://arxiv.org/abs/2605.28653).
 
 ## Method hierarchy
 
 1. **Primary:** framework e-value: at each analysis, freeze a prior supported
-   on `(p0, 1]), mix the likelihood ratio for the next block, multiply block
+   on `(p0, 1]`, mix the likelihood ratio for the next block, multiply block
    factors, and reject basket `c` when `E_c >= 1/alpha`.
 2. **Comparators within the e-value family:** design-optimal P-max, e-based
    and GROW policies, optionally with a borrowed point alternative.
@@ -19,7 +19,15 @@ comparators are based on Baas, ter Schure & van Rosmalen (2026),
 The type-I error guarantee is per basket. It is not automatically a
 family-wise error guarantee across the entire platform.
 
-## Project files
+## Repository status
+
+The repository currently contains the research README, `setup.tex` and
+`.gitignore`. The complete source-only project archive is supplied separately
+as `E-BBB-3-source-only.zip`; import its contents into this clone to add the
+R implementation and checks. The archive excludes generated `design_banks/`
+and `Result/` files because these are reproducible caches and outputs.
+
+## Project files in the source archive
 
 - `framework.tex`: research framework and validity argument.
 - `setup.tex` / `setup.pdf`: concise project and reproducibility set-up.
@@ -53,6 +61,3 @@ The project history says not to launch full simulations without the
 researcher's approval. Missing design-bank caches are rebuilt automatically;
 they can require substantial compute time. Record R/package versions, seed,
 commit SHA and compute resources with every run.
-
-Generated design banks, simulation outputs and temporary files are excluded
-from version control. See `.gitignore`.
