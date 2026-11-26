@@ -48,7 +48,7 @@ mcmc_run <- function(st, lay, pr, tb, set, seed) {
 ## A. 3 x 1 layout, full hyperpriors
 ow <- engine_oneway(grid, pbar, 30, hyper = oneway_equivalent_hyper(prior))
 for (nm in names(states31)) { st <- states31[[nm]]; cat("A:", nm, "\n")
-  r <- timed(twoway_exact(st$y, st$n, l31, tab, prior, grid, c_half = 8)); add("A", nm, "exact", summ_grid(r$x$logpost, r$x$pex, grid), r$s)
+  r <- timed(twoway_exact(st$y, st$n, l31, tab, prior, grid, tail_step = 1)); add("A", nm, "exact", summ_grid(r$x$logpost, r$x$pex, grid), r$s)
   r <- timed(ow$posterior(matrix(st$y, 1), matrix(st$n, 1))); add("A", nm, "one-way equivalent", grid_summ(r$x), r$s)
   for (sd in 1:5) { r <- timed(mcmc_run(st, l31, prior, tab, prod, sd)); add("A", nm, sprintf("mcmc seed %d", sd), grid_summ(r$x), r$s) }
   r <- timed(twoway_jags(st$y, st$n, l31, prior, grid, n_iter = 25000, n_burn = 5000)); add("A", nm, "jags", summ_draws(r$x$theta, r$x$d, grid), r$s)
@@ -56,7 +56,7 @@ for (nm in names(states31)) { st <- states31[[nm]]; cat("A:", nm, "\n")
 ## B. 3 x 3, fixed sigmas
 pf <- fix_sigmas(prior, 0.45, 0.45, 0.45); tf <- twoway_tables(grid, pf, 30)
 for (nm in names(states33)) { st <- states33[[nm]]; lay <- if (is.null(st$layout)) l33 else st$layout; cat("B:", nm, "\n")
-  r <- timed(twoway_exact(st$y, st$n, lay, tf, pf, grid, c_half = 3.5, a_max = 2.5))
+  r <- timed(twoway_exact(st$y, st$n, lay, tf, pf, grid, c_half = 3.5, a_max = 2.5, tail_step = 3))
   add("B", nm, "exact", summ_grid(r$x$logpost, r$x$pex, grid), r$s)
   for (sd in 1:5) { r <- timed(mcmc_run(st, lay, pf, tf, prod, sd)); add("B", nm, sprintf("mcmc seed %d", sd), grid_summ(r$x), r$s) }
   r <- timed(twoway_jags(st$y, st$n, lay, pf, grid, n_iter = 25000, n_burn = 5000)); add("B", nm, "jags", summ_draws(r$x$theta, r$x$d, grid), r$s)

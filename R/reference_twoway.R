@@ -20,16 +20,20 @@ logp_columns <- function(cmat, sb, prior) {
 }
 lse <- function(x) { m <- max(x); m + log(sum(exp(x - m))) }
 
-twoway_exact <- function(y, n, layout, tab, prior, grid, c_half = 4, a_max = 5) {
+## Column levels: every lattice point within c_half of the pooled logit, and every tail_step-th
+## lattice point over the rest of the lattice (the likelihood is flat there: all baskets NEX), with
+## trapezoid weights. A narrow window alone cuts the wide prior of mu and biases P(EX) upwards.
+twoway_exact <- function(y, n, layout, tab, prior, grid, c_half = 3.5, a_max = 5, tail_step = 3) {
   K <- length(y); J <- max(layout$row); L <- max(layout$col)
   if (L > 3) stop("twoway_exact: at most 3 columns (transpose the layout if needed)")
   rb <- seq(1, tab$Gm, by = round(tab$rb_step / tab$m_step))                 # RB lattice -> m lattice
   centre <- qlogis((sum(y) + 0.5) / (sum(n) + 1))
-  ic <- which(abs(tab$rb_m - centre) <= c_half + 1e-9); nc <- length(ic)     # column levels on the lattice
+  ic <- sort(unique(c(which(abs(tab$rb_m - centre) <= c_half + 1e-9), seq(1, tab$Grb, by = tail_step), tab$Grb)))
+  nc <- length(ic); wc1 <- log(diff(c(ic[1], ic)) + diff(c(ic, ic[nc]))) - log(2)   # trapezoid weights (lattice units)
   A <- round(a_max / tab$rb_step); off <- -A:A; av <- off * tab$rb_step; Na <- length(off)
   cg <- as.matrix(expand.grid(rep(list(seq_len(nc)), L))); ci <- matrix(ic[cg], ncol = L); cv <- matrix(tab$rb_m[ci], ncol = L)
   lpc <- apply(sapply(seq_along(prior$sig_b$value), function(i) logp_columns(cv, prior$sig_b$value[i], prior) + prior$sig_b$logprior[i]),
-               1, lse)
+               1, lse) + rowSums(matrix(wc1[cg], ncol = L))
   rho <- tab$row_of(y, n)
   ld <- function(k, ie, idx) tab$logD[cbind(rho[k], (ie - 1) * tab$Gm + rb[pmin(pmax(idx, 1), tab$Grb)])]
   rows <- lapply(seq_len(J), function(j) which(layout$row == j))
@@ -48,7 +52,8 @@ twoway_exact <- function(y, n, layout, tab, prior, grid, c_half = 4, a_max = 5) 
   }
   logW <- logW - lse(logW)
   ## pass 2: distribution of (m_c, sigma_e) on the Rao-Blackwell lattice
-  q <- matrix(0, K, tab$Gs * tab$Grb); edge_c <- sum(exp(logW)[rowSums(cg == 1 | cg == nc) > 0, ]); edge_a <- 0
+  q <- matrix(0, K, tab$Gs * tab$Grb); edge_a <- 0
+  edge_c <- sum(exp(logW)[rowSums(cg == 1 | cg == nc) > 0, ])          # mass at the ends of the lattice
   for (h in seq_len(nrow(comb))) {
     la <- la_of(comb$ia[h]); wc <- exp(logW[, h]); ie <- comb$ie[h]
     for (j in seq_len(J)) for (t in seq_len(Na)) {
