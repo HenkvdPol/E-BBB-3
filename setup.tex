@@ -1,0 +1,64 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1.65cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\setlist{nosep,leftmargin=1.4em}
+\title{\vspace{-1.2em}E-BBB-3: Research and software set-up}
+\author{Project set-up note}
+\date{26 November 2026}
+\begin{document}
+\maketitle
+\vspace{-1.4em}
+\section{Aim and methodological hierarchy}
+The project develops an anytime-valid testing framework for multi-basket and platform clinical trials with binary response outcomes. Each basket $c$ tests $H_{0,c}: \Pr(Y_i=1\mid\mathcal G_i)\leq p_0$ for patients assigned to that basket. The primary method is the framework in \texttt{framework.tex}: a separate e-process for each basket, with its own one-sided type-I error budget $\alpha$.
+\begin{enumerate}
+\item \textbf{Primary: framework e-value.} At each analysis, construct a prior $\pi_{c,k-1}$ on $(p_0,1]$ from the posterior under a borrowing model fitted to all platform data available at that analysis. Freeze this prior during the next block. The block likelihood-ratio mixture is
+\[
+e_{c,k}=\int_{(p_0,1]}(p/p_0)^{y_{c,k}}\{(1-p)/(1-p_0)\}^{n_{c,k}-y_{c,k}}\pi_{c,k-1}(dp),
+\qquad E_c\leftarrow E_c e_{c,k}.
+\]
+Reject basket $c$ at the first analysis with $E_c\geq 1/\alpha$.
+\item \textbf{Design-optimal e-value comparators.} P-max, e-based and GROW designs from Baas, ter Schure and van Rosmalen (2026), using finite-horizon dynamic programming for binary single-arm trials. The implementation also allows a borrowed point alternative.
+\item \textbf{External comparators.} Bayesian EXNEX posterior-probability rules, Simon two-stage designs and exact binomial tests. These are comparators, not substitutes for the primary error-control argument.
+\end{enumerate}
+\section{Validity principle and scope}
+The prior may depend on all data observed before the next block, including data from other baskets and earlier observations in the same basket. It must be measurable with respect to the platform history at the analysis and remain fixed while the next block is observed. Its support must be contained in $(p_0,1]$. For every fixed $p>p_0$, the block likelihood ratio has conditional expectation at most one under the stated conditional null. Mixing over a frozen prior preserves this property. Thus $E_c$ is a non-negative supermartingale and Ville's inequality gives
+\[
+\Pr_{H_{0,c}}\{\sup_k E_c(\tau_{c,k})\geq 1/\alpha\}\leq\alpha.
+\]
+This is a \emph{per-basket} guarantee. It does not imply family-wise error control across all baskets without an additional multiplicity procedure.
+The 2026 Baas et al. paper is a starting point for the design-optimal comparator family, not the primary framework. It optimizes finite-horizon betting policies for single-arm binary trials using dynamic programming and considers power maximization, expected-sample-size minimization and constrained futility stopping. The multi-basket borrowing framework is a distinct extension.
+\section{Current implementation}
+The supplied archive is a reproducible R project organised around \texttt{Setting.R}. Its main components are \texttt{additional\_functions.R} (EXNEX quadrature, borrowing weights, restricted-posterior moments, framework block factors, trial engines, summaries and plots), \texttt{design\_optimal\_evalues.R} (design-optimal library), \texttt{Setting.R} (hypotheses, scenarios, schedules, designs and simulation entry point), \texttt{checks/} (exact enumeration, validity, regression and unit checks), and \texttt{PROJECT\_HISTORY.md} (development decisions and open work).
+The current borrowing engine is a \emph{one-way EXNEX model} over cohorts, not yet the two-way tumour-type-by-biomarker model in the framework proposal. The current simulations represent baskets as a list of cohorts. A genuine two-way model requires row and column effects plus basket-specific interaction (or another justified dependence structure), and an inference engine such as validated quadrature, INLA or MCMC. This is the main methodological development still outstanding. The DRUP example and final literature references also remain to be added.
+The framework implementation moment-matches the restricted posterior by a scaled Beta distribution on $(p_0,1]$ and evaluates the block factor in closed form. This changes the alternative prior but, provided it is frozen and supported on $(p_0,1]$, does not by itself invalidate the supermartingale argument. It should nevertheless be assessed for operating characteristics and approximation error.
+\section{Repository and reproducibility}
+Repository: \url{https://github.com/HenkvdPol/E-BBB-3}. Keep source code, documentation and checks under version control. Treat \texttt{design\_banks/}, simulation output, temporary caches and generated figures as reproducible artifacts; exclude them from Git unless a small, explicitly versioned example is needed. Record the R version, package versions, random seed, commit SHA, simulation count and compute resources for every full run.
+From the project root, install the packages used by the selected run and execute:
+\begin{verbatim}
+Rscript checks/fw_engine.R
+Rscript checks/fw_validity.R
+Rscript checks/exact_checks.R
+Rscript checks/regression.R
+N_SIM=1 Rscript Setting.R       # smoke test
+N_SIM=1000 Rscript Setting.R    # full simulation, after review
+\end{verbatim}
+Run the full simulation only after the exact and regression checks pass. The project history explicitly asks that full simulations not be launched without the researcher's approval. The design-bank cache is rebuilt when missing; it can take substantial time and memory.
+\section{Priorities before claiming a validated design}
+\begin{enumerate}
+\item Make the source tree self-contained and pin/document dependencies; add a small smoke-test workflow and a clean-start test without cached design banks.
+\item Re-run the listed exact and regression checks on a recorded R environment. The archive's check README reports successful earlier runs, but these results are not a substitute for rerunning after changes.
+\item Extend the borrowing model and data structure to the two-way grid (tumour type $\times$ biomarker group); validate calibration and robustness under row, column and interaction heterogeneity.
+\item Verify the conditional-null assumptions against the intended recruitment and outcome-observation process, including delayed/pending outcomes and data-dependent basket allocation.
+\item Add the DRUP motivating example, complete references, and distinguish per-basket type-I error from platform-wide multiplicity.
+\end{enumerate}
+\section*{Reference}
+Baas, S., ter Schure, J. and van Rosmalen, J. (2026). \emph{Adaptive clinical trials based on design-optimal e-values with automatic curtailment: An application to single-arm clinical trials with binary data}. arXiv:2605.28653. \url{https://arxiv.org/abs/2605.28653}.
+\end{document}
