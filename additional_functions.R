@@ -411,6 +411,186 @@ engine_oneway <- function(grid, pbar, n_max, w_ex = 0.5, hyper = oneway_hyper(gr
 }
 
 ################################################################################
+# eBBB priors: log probability of every grid cell under Beta distributions
+################################################################################
+beta_cells <- function(grid, a, b){
+  # a, b = Beta parameters, one pair per row (vectors)
+  # Returns (rows x cells): log density at the cell midpoint + log cell width (in p),
+  # i.e. the Beta prior put on the cells of the grid; the Beta mass beyond the ends of
+  # the grid goes into the first and the last cell. Block factors then agree with the
+  # closed form of eBBB within 3e-4 (Additional_files/docs/ebbb-alignment.md).
+  G <- length(grid$p)
+  width <- plogis(grid$upper) - plogis(grid$lower)
+  out <- outer(a - 1, log(grid$p)) + outer(b - 1, log(1 - grid$p)) - lbeta(a, b) +
+    rep(log(width), each = length(a))
+  out[, 1] <- log(exp(out[, 1]) + pbeta(plogis(grid$lower[1]), a, b))
+  out[, G] <- log(exp(out[, G]) + pbeta(plogis(grid$upper[G]), a, b, lower.tail = FALSE))
+  return(out)
+}
+
+################################################################################
+# eBBB priors: grid with extra support points (for the oracle)
+################################################################################
+add_points <- function(grid, q){
+  # grid = theta grid; q = response rates to add as points (cells of width 0)
+  # The oracle puts its prior mass exactly on q, so its factors are exact.
+  q <- setdiff(unique(q), grid$p)
+  if(!length(q)){
+    return(grid)
+  }
+  th <- c(grid$theta, qlogis(q))
+  o <- order(th)
+  out <- grid
+  out$theta <- th[o]
+  out$lower <- c(grid$lower, qlogis(q))[o]
+  out$upper <- c(grid$upper, qlogis(q))[o]
+  out$p <- c(grid$p, q)[o]
+  out$above <- out$p > grid$p0
+  out$support <- out$p[out$above]
+  out$l1 <- log(out$support / grid$p0)
+  out$l0 <- log((1 - out$support) / (1 - grid$p0))
+  return(out)
+}
+
+################################################################################
+# eBBB priors: Jensen-Shannon divergence between Beta distributions
+################################################################################
+jsd_beta <- function(a1, b1, a2, b2, grid_size = 200){
+  # a1, b1, a2, b2 = Beta parameters (vectors of equal length)
+  # JSD with base 2, in [0, 1], by the midpoint rule on a grid over (0, 1), as in eBBB.
+  p <- (seq_len(grid_size) - 0.5) / grid_size
+  dens <- function(a, b){
+    # densities at the grid points, computed once per distinct (a, b)
+    key <- paste(a, b)
+    u <- which(!duplicated(key))
+    f <- matrix(vapply(u, function(i){dbeta(p, a[i], b[i])}, numeric(grid_size)), ncol = length(u))
+    return(t(f)[match(key, key[u]), , drop = FALSE])
+  }
+  f1 <- dens(a1, b1)
+  f2 <- dens(a2, b2)
+  m <- (f1 + f2) / 2
+  kl <- function(f){
+    return(rowSums(ifelse(f > 0, f * log2(f / m), 0)) / grid_size)
+  }
+  return(pmin(1, pmax(0, 0.5 * kl(f1) + 0.5 * kl(f2))))
+}
+
+################################################################################
+# Borrowing models of eBBB (LR_evalue_multiple): conjugate Beta priors and the oracle
+################################################################################
+engine_ebbb <- function(grid, layout, method, a0 = 1, b0 = 1, w_row = 0, w_col = 0, p_ex = 0.5,
+                        epsilon = 2, tau = 0.3, q = NULL){
+  # grid = theta grid; layout = grid_layout
+  # method = 'no borrowing': Beta(a0, b0) updated with the basket's own data;
+  #          'power':        plus the data of the same row (weight w_row) and of the
+  #                          same column (weight w_col): a power prior;
+  #          'EX/NEX':       mixture of EX (Beta(a0, b0) plus the borrowed data, weights
+  #                          w_row, w_col) and NEX (Beta(a0, b0)), prior probability p_ex,
+  #                          weights updated by the beta-binomial likelihood of the basket's
+  #                          own data, both components updated with that data;
+  #          'similarity':   plus the data of every other basket with data, weight
+  #                          s = (1 - JSD)^epsilon (0 when s < tau), where JSD compares the
+  #                          own-data posteriors Beta(a0 + y, b0 + n - y);
+  #          'oracle':       point mass at q$eff (one value per basket: the true rate of an
+  #                          active basket, p1 otherwise); an upper bound, not a design.
+  #                          For the futility e-value (open design) the oracle bets on
+  #                          q_f (the true rate if below p1, p0 otherwise). The points are
+  #                          added to the grid (add_points), so the oracle is exact, and
+  #                          its posterior summaries are the true rate.
+  # a0, b0 = initial Beta prior; w_row, w_col = weights of the same row and column;
+  # p_ex = prior probability of EX; epsilon, tau = similarity settings;
+  # q = (oracle only) list with the true rates (true), the efficacy points (eff) and
+  #     the futility points (fut), one value per basket.
+  # All are fitted to the cumulative counts of all baskets at the analysis and restricted
+  # to (p0, 1] by restrict(), like every other prior. On the grid the Beta is the density
+  # at the cell midpoints times the cell widths.
+  K <- nrow(layout)
+  if(method == "oracle"){
+    grid <- add_points(grid, q$eff)
+    grid <- add_points(grid, q$fut)
+  }
+  same_row <- outer(layout$row, layout$row, "==") & !diag(K)
+  same_col <- outer(layout$col, layout$col, "==") & !diag(K)
+
+  posterior <- function(Y, N, need = NULL, seed = NULL){
+    S <- nrow(Y)
+    G <- length(grid$theta)
+    if(is.null(need)){
+      need <- matrix(TRUE, S, K)
+    }
+    lp <- array(NA_real_, c(S, K, G))
+    pex <- matrix(NA_real_, S, K)
+
+    for(k in seq_len(K)){
+      i <- which(need[, k])
+      if(!length(i)){
+        next
+      }
+      y <- Y[i, k]
+      n <- N[i, k]
+
+      if(method == "oracle"){
+        # Mass on q_eff (the only point above p0) and on q_fut (the only point below p1);
+        # the true rate, one of the two, has almost all of the mass for the summaries.
+        out <- matrix(-Inf, length(i), G)
+        out[, match(q$fut[k], grid$p)] <- -1e6
+        out[, match(q$eff[k], grid$p)] <- -1e6
+        out[, match(q$true[k], grid$p)] <- 0
+        lp[i, k, ] <- out
+        next
+      }
+
+      # Weighted responses and non-responses of the neighbours (power prior and EX)
+      resp <- as.vector(w_row * (Y[i, , drop = FALSE] %*% same_row[k, ]) +
+                          w_col * (Y[i, , drop = FALSE] %*% same_col[k, ]))
+      tot <- as.vector(w_row * (N[i, , drop = FALSE] %*% same_row[k, ]) +
+                         w_col * (N[i, , drop = FALSE] %*% same_col[k, ]))
+
+      if(method == "no borrowing"){
+        lp[i, k, ] <- beta_cells(grid, a0 + y, b0 + n - y)
+      }
+
+      if(method == "power"){
+        lp[i, k, ] <- beta_cells(grid, a0 + y + resp, b0 + (n - y) + (tot - resp))
+      }
+
+      if(method == "EX/NEX"){
+        aE <- a0 + resp
+        bE <- b0 + tot - resp
+        # Posterior probability of EX: beta-binomial likelihood of the own data
+        lwE <- log(p_ex) + lbeta(aE + y, bE + n - y) - lbeta(aE, bE)
+        lwN <- log(1 - p_ex) + lbeta(a0 + y, b0 + n - y) - lbeta(a0, b0)
+        wE <- 1 / (1 + exp(lwN - lwE))
+        lE <- log(wE) + beta_cells(grid, aE + y, bE + n - y)
+        lN <- log(1 - wE) + beta_cells(grid, a0 + y, b0 + n - y)
+        mx <- pmax(lE, lN)
+        lp[i, k, ] <- mx + log(exp(lE - mx) + exp(lN - mx))
+        pex[i, k] <- wE
+      }
+
+      if(method == "similarity"){
+        a_c <- a0 + y
+        b_c <- b0 + n - y
+        a <- a_c
+        b <- b_c
+        for(j in setdiff(seq_len(K), k)){
+          yj <- Y[i, j]
+          nj <- N[i, j]
+          sim <- (1 - jsd_beta(a_c, b_c, a0 + yj, b0 + nj - yj))^epsilon
+          sim[nj == 0 | sim < tau] <- 0
+          a <- a + sim * yj
+          b <- b + sim * (nj - yj)
+        }
+        lp[i, k, ] <- beta_cells(grid, a, b)
+      }
+    }
+    return(list(logpost = lp, pex = pex))
+  }
+
+  return(list(name = method, grid = grid, posterior = posterior))
+}
+
+################################################################################
 # Two-way EXNEX: layout of the baskets in the J x L grid
 ################################################################################
 grid_layout <- function(J, L, missing = NULL){
@@ -419,7 +599,7 @@ grid_layout <- function(J, L, missing = NULL){
   lay <- expand.grid(row = seq_len(J), col = seq_len(L))
   lay <- lay[order(lay$row, lay$col), ]
   lay <- lay[!paste(lay$row, lay$col) %in% vapply(missing, paste, "", collapse = " "), ]
-  lay$basket <- sprintf("T%d.B%d", lay$row, lay$col)
+  lay$basket <- sprintf("T%d-B%d", lay$row, lay$col)   # tumour type - biomarker, as in eBBB
   rownames(lay) <- NULL
   return(lay)
 }
@@ -427,7 +607,8 @@ grid_layout <- function(J, L, missing = NULL){
 ################################################################################
 # Two-way EXNEX: half-normal prior of a standard deviation on a grid
 ################################################################################
-hn_grid <- function(scale, sigma = seq(0.05, 2.45, by = 0.1)){
+hn_grid <- function(scale, sigma = seq(0.05, max(2.45, ceiling(40 * scale) / 10 - 0.05), by = 0.1)){
+  # scale = scale of the half-normal prior; the grid reaches at least 4 x scale
   lp <- dnorm(sigma, 0, scale, log = TRUE)
   return(list(value = sigma, logprior = lp - log(sum(exp(lp)))))
 }
@@ -436,17 +617,21 @@ hn_grid <- function(scale, sigma = seq(0.05, 2.45, by = 0.1)){
 # Two-way EXNEX: the prior (framework.tex eq. 9)
 ################################################################################
 twoway_prior <- function(p0, pbar, w_ex = 0.5, mu_sd = 10, mu_range = c(-8, 4), scale = 1 / sqrt(3),
-                         sig_a = hn_grid(scale), sig_b = hn_grid(scale), sig_e = hn_grid(scale)){
+                         scale_a = scale, scale_b = scale, scale_e = scale,
+                         nex_mean = qlogis(pbar), nex_sd = sqrt(1 / pbar + 1 / (1 - pbar)),
+                         sig_a = hn_grid(scale_a), sig_b = hn_grid(scale_b), sig_e = hn_grid(scale_e)){
   # Basket c = (j, l), tumour type j and biomarker group l:
   #   delta_c ~ Bernoulli(w_ex), independent across baskets
   #   EX  (delta_c = 1): theta_c ~ N(mu + a_j + b_l, sigma_e^2)
-  #   NEX (delta_c = 0): theta_c ~ N(logit pbar, 1/pbar + 1/(1 - pbar))
+  #   NEX (delta_c = 0): theta_c ~ N(nex_mean, nex_sd^2)
   #   mu ~ N(logit p0, mu_sd^2) on mu_range; a_j ~ N(0, sigma_a^2); b_l ~ N(0, sigma_b^2)
-  #   sigma_a, sigma_b, sigma_e ~ HN(scale) on the grid 0.05, 0.15, ..., 2.45
-  # scale = 1/sqrt(3): E(sigma_a^2 + sigma_b^2 + sigma_e^2) = 1 = E(tau^2) of the
-  # one-way benchmark with tau ~ HN(1) (decision D2). No sum-to-zero constraint (D5).
+  #   sigma_a ~ HN(scale_a), sigma_b ~ HN(scale_b), sigma_e ~ HN(scale_e), on grids
+  # No sum-to-zero constraint. The study uses the hyperparameters of eBBB (exnex.stan),
+  # set in setting.R: mu_sd = 2, scales 1, 1 and 0.5, NEX N(logit p0, 2^2).
+  # The defaults here are the earlier choice matched to the one-way benchmark (D2):
+  # all scales 1/sqrt(3) and NEX N(logit pbar, 1/pbar + 1/(1 - pbar)).
   return(list(w_ex = w_ex, mu_mean = qlogis(p0), mu_sd = mu_sd, mu_range = mu_range,
-              scale = c(a = scale, b = scale, e = scale),
+              scale = c(a = scale_a, b = scale_b, e = scale_e), nex_mean = nex_mean, nex_sd = nex_sd,
               sig_a = sig_a, sig_b = sig_b, sig_e = sig_e, pbar = pbar))
 }
 
@@ -481,7 +666,7 @@ twoway_tables <- function(grid, prior, n_max, m_step = 0.05, rb_step = 0.1){
 
   # EX prior of theta for every (sigma_e, m): cells x (Gs * Gm)
   P <- do.call(cbind, lapply(se, function(s){norm_cells(grid, m, s)}))
-  V <- nex_prior(grid, prior$pbar)
+  V <- as.vector(norm_cells(grid, prior$nex_mean, prior$nex_sd))
 
   # Columns of P that belong to the Rao-Blackwell lattice, in the order (sigma_e, m)
   rbcol <- as.vector(outer(rb, (seq_len(Gs) - 1) * Gm, "+"))
@@ -1125,15 +1310,16 @@ simulate_trials <- function(p_true, design, engine, n_sim, seed = 1, fit_seed = 
 ################################################################################
 make_design <- function(recruitment, model, horizon){
   # recruitment = element of Recruitment (setting.R); model = one of Models
-  # horizon = 'fixed' (at most n_max per basket) or 'open' (no maximum, e-value futility)
+  # horizon = 'fixed' (efficacy or n_max) or 'open' (no maximum, e-value futility)
   # Uses the settings p0, p1, alpha, beta, J, L, n_max, n_cap and look_every.
   in_trial <- !is.na(recruitment$rate)
   all_cells <- grid_layout(J, L)
   missing <- lapply(which(!in_trial), function(i){c(all_cells$row[i], all_cells$col[i])})
 
+  # Fixed horizon: stop at efficacy (E >= 1/alpha) or at n_max, as in eBBB.
   design <- list(layout = grid_layout(J, L, missing = missing), n_max = n_max,
                  rate = recruitment$rate[in_trial], entry = recruitment$entry[in_trial],
-                 look_every = look_every, alpha = alpha)
+                 look_every = look_every, alpha = alpha, futility = "none")
   if(model == "one-way EXNEX, scaled Beta"){
     design$prior_form <- "beta"
   }
@@ -1150,10 +1336,46 @@ make_design <- function(recruitment, model, horizon){
 ################################################################################
 # Borrowing model of one simulation cell (from the settings)
 ################################################################################
-make_engine <- function(model, layout){
+make_engine <- function(model, layout, p_true){
   # model = one of Models (setting.R); layout = layout of the trial
+  # p_true = true response rates (only used by the oracle)
+  # Uses the settings p0, p1, a0, b0, w_equal, w_col, p_ex, epsilon, tau, twoway_hyper, mcmc.
   grid <- theta_grid(p0)
   pbar <- (p0 + p1) / 2
+
+  # Priors of eBBB (LR_evalue_multiple/lr_evalue.R)
+  if(model == "no borrowing"){
+    return(engine_ebbb(grid, layout, "no borrowing", a0, b0))
+  }
+  if(model == "power, equal"){
+    return(engine_ebbb(grid, layout, "power", a0, b0, w_row = w_equal[["row"]], w_col = w_equal[["col"]]))
+  }
+  if(model == "power, column"){
+    return(engine_ebbb(grid, layout, "power", a0, b0, w_row = w_col[["row"]], w_col = w_col[["col"]]))
+  }
+  if(model == "EX/NEX"){
+    return(engine_ebbb(grid, layout, "EX/NEX", a0, b0, w_row = w_col[["row"]], w_col = w_col[["col"]],
+                       p_ex = p_ex))
+  }
+  if(model == "similarity"){
+    return(engine_ebbb(grid, layout, "similarity", a0, b0, epsilon = epsilon, tau = tau))
+  }
+  if(model == "oracle"){
+    q <- list(true = p_true, eff = ifelse(p_true > p0, p_true, p1), fut = ifelse(p_true < p1, p_true, p0))
+    return(engine_ebbb(grid, layout, "oracle", q = q))
+  }
+
+  # Two-way EX/NEX with the hyperparameters of eBBB (exnex.stan); replaces its Stan fit
+  if(model == "two-way EX/NEX"){
+    prior <- twoway_prior(p0, pbar, w_ex = p_ex, mu_sd = twoway_hyper$mu_sd,
+                          mu_range = grid$range,   # N(logit p0, 2^2) on [-10, 6]: mass outside < 1e-4
+                          scale_a = twoway_hyper$scale_a, scale_b = twoway_hyper$scale_b,
+                          scale_e = twoway_hyper$scale_e,
+                          nex_mean = qlogis(p0), nex_sd = twoway_hyper$nex_sd)
+    return(engine_twoway(grid, layout, pbar, n_max = 30, prior = prior, mcmc = mcmc))
+  }
+
+  # Earlier models, still available (add them to Models in setting.R)
   if(model == "none"){
     return(engine_none(grid, pbar))
   }
@@ -1249,8 +1471,11 @@ summarise_platform <- function(d, by = c("recruitment", "scenario", "engine")){
 }
 
 # Colours of the borrowing models in the figures
-engine_colours <- c("none" = "#7a7a7a", "one-way EXNEX" = "#0072B2",
-                    "one-way EXNEX, scaled Beta" = "#56B4E9", "two-way EXNEX" = "#D55E00")
+engine_colours <- c("no borrowing" = "#000000", "power, equal" = "#E69F00", "power, column" = "#56B4E9",
+                    "EX/NEX" = "#009E73", "similarity" = "#CC79A7", "two-way EX/NEX" = "#D55E00",
+                    "oracle" = "#999999",
+                    "none" = "#7a7a7a", "one-way EXNEX" = "#0072B2",
+                    "one-way EXNEX, scaled Beta" = "#F0E442", "two-way EXNEX" = "#8B2500")
 
 ################################################################################
 # Figure: rejection rate per basket
@@ -1264,12 +1489,12 @@ plot_baskets <- function(b, recruitment, alpha){
   p <- ggplot(b, aes(basket, reject, colour = engine, shape = type)) +
     geom_hline(yintercept = alpha, linetype = "dashed", colour = "grey40") +
     geom_linerange(aes(ymin = pmax(reject - 2 * reject_se, 0), ymax = pmin(reject + 2 * reject_se, 1)),
-                   position = position_dodge(width = 0.6), linewidth = 0.4) +
-    geom_point(position = position_dodge(width = 0.6), size = 2) +
+                   position = position_dodge(width = 0.75), linewidth = 0.4) +
+    geom_point(position = position_dodge(width = 0.75), size = 1.6) +
     scale_shape_manual(values = c("null basket (type I error)" = 1, "active basket (power)" = 16)) +
     scale_colour_manual(values = engine_colours) +
     facet_wrap(~ scenario, ncol = 2) +
-    labs(x = "basket (tumour type . biomarker group)", y = "rejection rate", colour = "borrowing", shape = NULL,
+    labs(x = "basket (tumour type - biomarker group)", y = "rejection rate", colour = "borrowing", shape = NULL,
          title = sprintf("Rejection per basket (%s recruitment); dashed line: alpha per basket", recruitment)) +
     theme_bw(base_size = 10) +
     theme(legend.position = "bottom", legend.box = "vertical",

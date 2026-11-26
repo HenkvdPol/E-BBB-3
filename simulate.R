@@ -63,12 +63,12 @@ genSim <- function(R, recruitment, scenario, model, horizon, startSeed, id){
   cat('\n id =', id, ':', recruitment, '|', scenario, '|', model)
   start <- proc.time()
 
-  # The design and the borrowing model of this cell
-  design <- make_design(Recruitment[[recruitment]], model, horizon)
-  engine <- make_engine(model, design$layout)
-
   # True response rates of the baskets in the trial
   p_true <- Scenario[[scenario]][!is.na(Recruitment[[recruitment]]$rate)]
+
+  # The design and the borrowing model of this cell (the oracle needs the true rates)
+  design <- make_design(Recruitment[[recruitment]], model, horizon)
+  engine <- make_engine(model, design$layout, p_true)
 
   # Seeds. The patient outcomes only depend on the recruitment design and the scenario,
   # so all borrowing models see the same patients. The borrowing model (the two-way
