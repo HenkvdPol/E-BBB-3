@@ -157,16 +157,19 @@ twoway_exact <- function(y, n, layout, tab, prior, grid, c_half = 3.5, a_max = 5
 # The two-way EXNEX model in JAGS
 ################################################################################
 twoway_jags <- function(y, n, layout, prior, grid, n_iter = 20000, n_burn = 5000, n_chains = 4,
-                        seed = 1, sigma_max = 2.5){
+                        seed = 1, sigma_max = NULL){
   # Continuous theta (truncated to the grid range) and continuous sigmas (half-normal,
   # truncated at sigma_max), or fixed sigmas (prior$fixed, see fix_sigmas).
+  # sigma_max = NULL: the upper edge of each sigma grid of the prior (2.5 for the
+  # scale 1/sqrt(3), 4 for the scale 1 of eBBB), so JAGS and the grid share the prior.
   if(!requireNamespace("rjags", quietly = TRUE)){
     stop("rjags is not installed")
   }
   fx <- prior$fixed
   sig <- function(nm){
     if(is.null(fx)){
-      return(sprintf("s%s ~ dnorm(0, 1 / %g^2) T(0, %g)", nm, prior$scale[[nm]], sigma_max))
+      smax <- if(is.null(sigma_max)) max(prior[[paste0("sig_", nm)]]$value) + 0.05 else sigma_max
+      return(sprintf("s%s ~ dnorm(0, 1 / %g^2) T(0, %g)", nm, prior$scale[[nm]], smax))
     }
     return("")
   }
@@ -184,11 +187,10 @@ twoway_jags <- function(y, n, layout, prior, grid, n_iter = 20000, n_burn = 5000
     "    y[k] ~ dbin(ilogit(theta[k]), n[k])",
     "  }",
     "}", sep = "\n")
-  pb <- prior$pbar
   data <- list(y = y, n = n, row = layout$row, col = layout$col, K = length(y),
                J = max(layout$row), L = max(layout$col),
                m0 = prior$mu_mean, s0 = prior$mu_sd, lo = prior$mu_range[1], hi = prior$mu_range[2],
-               w = prior$w_ex, mN = qlogis(pb), vN = 1 / pb + 1 / (1 - pb),
+               w = prior$w_ex, mN = prior$nex_mean, vN = prior$nex_sd^2,
                tlo = grid$lower[1], thi = grid$upper[length(grid$upper)])
   if(!is.null(fx)){
     data <- c(data, list(sa = fx[["a"]], sb = fx[["b"]], se = fx[["e"]]))

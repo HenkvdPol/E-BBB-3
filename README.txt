@@ -11,8 +11,9 @@ also without a maximum sample size.
 
 Files
 -----
-setting.R               All settings: p0, p1, alpha, beta, n_max, the grid of baskets,
-                        recruitment designs, scenarios, borrowing models, R, seeds.
+setting.R               All settings: p0, p1, alpha, beta, n_max, the 4 x 3 grid of
+                        baskets, recruitment designs, scenarios, borrowing models (priors
+                        of eBBB and the two-way EX/NEX) and their parameters, R, seeds.
 simulate.R              Runs the simulation. Every simulation cell (recruitment design x
                         scenario x borrowing model) is one call of genSim(), saved as
                         Result/<horizon>/sim-<R>-<seed>-<id>.Rdata. When all cells are
@@ -20,16 +21,19 @@ simulate.R              Runs the simulation. Every simulation cell (recruitment 
                         figures and session.txt to Result/<horizon>/.
 additional_functions.R  All functions used by simulate.R:
                           Part 1  the e-value (priors on (p0, 1], block factor, futility);
-                          Part 2  borrowing models: none, one-way EXNEX, two-way EXNEX;
+                          Part 2  borrowing models: the priors of eBBB (no borrowing,
+                                  power, EX/NEX, similarity, oracle) and the two-way
+                                  EX/NEX; the earlier one-way EXNEX as an option;
                           Part 3  the simulation of a trial in calendar time;
                           Part 4  summaries and figures.
 setup.pdf               Three-page set-up of the study.
 Additional_files/       Everything else:
   framework.tex/.pdf      the method and its proofs (lead document);
   setup.tex               source of setup.pdf;
-  docs/                   design notes: open-ended design, two-way model and its
-                          validation, known limitations, validation plan, review,
-                          entry-time proposal, implementation plan;
+  docs/                   design notes: alignment with eBBB, open-ended design,
+                          two-way model and its validation, known limitations,
+                          validation plan, review, entry-time proposal,
+                          implementation plan;
   tests/                  tests of additional_functions.R (run_tests.R, parse_all.R);
   validation/             reference calculations (quadrature, JAGS) and the exact
                           open-ended feasibility analysis, with their results;
@@ -46,7 +50,8 @@ Rscript simulate.R                            test setting: 2 trials per cell (f
 Rscript simulate.R open 2 20261126 TRUE       test setting of the open-ended design
 Rscript simulate.R fixed 1000 20261126 TRUE   the study (arguments: horizon, R, seed, use_cluster)
 
-horizon 'fixed': at most n_max = 30 patients per basket.
+horizon 'fixed': a basket stops when it is rejected (E >= 1/alpha) or at n_max = 30
+                 patients, as in eBBB.
 horizon 'open' : no maximum sample size; a basket stops when it is rejected or when the
                  futility e-value (testing p >= p1) reaches 1/beta. n_cap = 150 only ends
                  the computation; baskets still recruiting there are reported as 'open'.
@@ -56,10 +61,11 @@ On the cluster: mkdir -p logs; sbatch Additional_files/slurm/sim.slurm
 The full study has not been run yet: approve the compute first.
 
 Tests and validation:
-Rscript Additional_files/tests/run_tests.R          all tests (about 1.5 min)
+Rscript Additional_files/tests/run_tests.R          all tests (about 2 min)
 Rscript Additional_files/tests/run_tests.R --slow   plus the slow reference comparisons
 Rscript Additional_files/validation/open_ended_feasibility.R   exact open-ended results (1 min)
 Rscript Additional_files/validation/twoway_validation.R        two-way engine vs references (30 min)
+Rscript Additional_files/validation/twoway_ebbb_hyper.R        two-way, eBBB hyperparameters, vs JAGS
 
 Packages: Matrix, foreach, doParallel, ggplot2; rjags (with JAGS) only for the JAGS reference.
 
@@ -67,6 +73,9 @@ Packages: Matrix, foreach, doParallel, ggplot2; rjags (with JAGS) only for the J
 Results so far (exact calculations and tests; no full simulation)
 ------------------------------------------------------------------
 - The type I error is at most alpha for every borrowing model (exact enumeration).
+- The priors of eBBB give the same block factors as eBBB's closed forms within 3e-4
+  (relative); the EX/NEX weights and the oracle are exact
+  (Additional_files/docs/ebbb-alignment.md).
 - The open-ended design with e-value futility stops every basket (by 125 patients in the
   exact analysis), with E[N] 20-26 under p0 and power 0.90-0.95 at p1, against power
   0.49-0.62 for the fixed design with n_max = 30 (Additional_files/docs/open-ended-design.md).

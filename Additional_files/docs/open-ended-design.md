@@ -129,7 +129,7 @@ The 90% quantile of N is at most 85 patients with blocks of 5, and at most 71 wi
 | `additional_functions.R` (Part 3) | `n_max = Inf` with a required simulation horizon `n_cap` (only to end the computation; baskets still recruiting there are reported as `open`, not as decided); `futility = "unreachable"` (default, as before), `"evalue"` (with `p1`, `beta`) or `"none"`; new output columns `open` and `logEf` |
 | `Additional_files/validation/open_ended_functions.R` | `exact_basket()`: the exact dynamic programme; `mixture_logE()` |
 | `additional_functions.R` (Part 4) | `open` per basket; `open_any` per platform. E[N] is truncated at `n_cap`. |
-| `simulate.R`, `setting.R` | `Rscript simulate.R open 1000 20261126 TRUE` runs the same 80 cells with `n_max = Inf`, e-value futility (β = 0.20) and `n_cap = 150`, written to `Result/open/`. The default run is unchanged. |
+| `simulate.R`, `setting.R` | `Rscript simulate.R open 1000 20261126 TRUE` runs the same cells as the fixed design (154 since the eBBB alignment of 2026-11-26) with `n_max = Inf`, e-value futility (β = 0.20) and `n_cap = 150`, written to `Result/open/`. The default run is unchanged. |
 | `Additional_files/tests/test_open_ended.R` | 21 tests: futility layer, growing tables, telescoping, the dynamic programme against path enumeration, the exact guarantees, simulator statuses |
 
 ## 5. Practical points and limitations

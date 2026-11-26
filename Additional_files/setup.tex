@@ -93,80 +93,85 @@ delays, allocation and analysis rules require their own specification under
 the conditional null; they are not evaluated in this first simulation.
 
 \newpage
-\section*{3. Borrowing model and numerical implementation}
-The two-way target model is binary EX/NEX, with $\theta_c=\logit(p_c)$.
-Independently across baskets, $\delta_c\sim\operatorname{Bernoulli}(w)$, with
-\[
- \begin{aligned}
-  \delta_{jl}=1:\quad \theta_{jl}
-       &=\mu+a_j+b_l+\varepsilon_{jl},\\
-  a_j&\sim N(0,\sigma_a^2),\quad
-  b_l\sim N(0,\sigma_b^2),\quad
-  \varepsilon_{jl}\sim N(0,\sigma_e^2),\\
-  \delta_c=0:\quad \theta_c&\sim N(m_N,v_N).
- \end{aligned}
-\]
-The defaults are $w=0.5$, $\mu\sim N(\logit p_0,10^2)$ restricted to
-$[-8,4]$, $m_N=\logit\bar p$ and
-$v_N=1/\bar p+1/(1-\bar p)$, where $\bar p=(p_0+p_1)/2=0.20$.
-Proper row and column random effects have no hard sum-to-zero constraint.
-Missing cells are excluded; included baskets with no outcomes remain eligible
-to receive borrowing.
+\section*{3. Borrowing models and numerical implementation}
+The priors follow the eBBB code of T.~Jacobs (\texttt{LR\_evalue\_multiple}),
+with our two-way EX/NEX in place of its Stan fit. Each is fitted to all
+platform counts $(y_k,n_k)$ at the analysis, then restricted and frozen as in
+Section~2. Beta-based priors start from $\operatorname{Beta}(a_0,b_0)$,
+$a_0=b_0=1$; $R_c$ and $C_c$ are the other baskets in the same row (tumour type)
+and column (biomarker group).
 
-Each two-way SD has an $\HN(1/\sqrt3)$ prior. This matches
-$\E(\sigma_a^2+\sigma_b^2+\sigma_e^2)=1=\E(\tau^2)$ for the one-way
-$\tau\sim\HN(1)$ \emph{before numerical truncation and discretization}.
-It does not match the complete prior distribution.
-
-\begin{tabularx}{\linewidth}{@{}p{3.8cm}X@{}}
+\begin{tabularx}{\linewidth}{@{}p{3.3cm}X@{}}
 \toprule
-Prior choice & Role in the first study\\
+Prior & Definition\\
 \midrule
-No borrowing & NEX distribution updated using the basket's own data.\\
-One-way EX/NEX & Exchangeable list of baskets: $\theta_c\mid EX\sim N(\mu,\tau^2)$.\\
-One-way, scaled Beta & Representation benchmark: moment-match the restricted posterior, then discretize the Beta on the same support.\\
-Two-way EX/NEX & Borrow through shared rows and columns; NEX allows basket-specific departures.\\
+No borrowing & $\operatorname{Beta}(a_0+y_c,\ b_0+n_c-y_c)$.\\
+Power, equal / column & Add $w_r\sum_{R_c}$ and $w_c\sum_{C_c}$ of the responses and non-responses; $(w_r,w_c)=(0.5,0.5)$ or $(0,1)$.\\
+EX/NEX & Mixture of EX $=\operatorname{Beta}(a_0,b_0)$ plus the column data and NEX $=\operatorname{Beta}(a_0,b_0)$, each updated with the own data; $\Prob(EX)=0.5$ updated by the beta-binomial likelihood of the own data.\\
+Similarity & Add every basket with data with weight $s=(1-\mathrm{JSD})^{2}$, set to 0 if $s<0.3$; JSD (base 2) between the own-data posteriors.\\
+Two-way EX/NEX & Model below, hyperparameters of eBBB (\texttt{exnex.stan}).\\
+Oracle & Point mass at $p_c$ if $p_c>p_0$, otherwise at $p_1$: an upper bound that uses the truth.\\
 \bottomrule
 \end{tabularx}
 
-\textbf{Computation.} The $\theta$ grid has width $0.05$ over the nominal
-range $[-10,6]$, with $\logit(p_0)$ at a cell boundary. The e-process sums
-normalized weights at support points $p_g>p_0$ directly. One-way fitting uses
-quadrature. Two-way fitting uses Metropolis-within-Gibbs and a
-Rao--Blackwellised grid distribution: two chains, 500 burn-in iterations and
-1,000 retained draws per chain. SDs use a finite grid; interpolation,
-clamping and a coarser reconstruction lattice add approximations.
-Thus the \emph{finite mixture sum} is evaluated directly; the posterior
-weights are approximate. Posterior accuracy affects borrowing and power,
-while support, normalization and predictability determine validity.
+\textbf{Two-way EX/NEX.} With $\theta_c=\logit(p_c)$ and, independently,
+$\delta_c\sim\operatorname{Bernoulli}(0.5)$:
+\[
+ \delta_{jl}=1:\ \theta_{jl}=\mu+a_j+b_l+\varepsilon_{jl},\quad
+ a_j\sim N(0,\sigma_a^2),\ b_l\sim N(0,\sigma_b^2),\ \varepsilon_{jl}\sim N(0,\sigma_e^2);
+ \qquad \delta_c=0:\ \theta_c\sim N(\logit p_0,2^2),
+\]
+with $\mu\sim N(\logit p_0,2^2)$ on $[-10,6]$, $\sigma_a,\sigma_b\sim\HN(1)$ and
+$\sigma_e\sim\HN(0.5)$; no sum-to-zero constraint. Missing cells are excluded;
+included baskets without outcomes still receive borrowing.
+
+\textbf{Computation.} The $\theta$ grid has width $0.05$ on $[-10,6]$, with
+$\logit(p_0)$ at a cell boundary; the e-process sums normalized weights at the
+support points $p_g>p_0$ directly. A Beta prior is put on the grid as its
+density at the cell midpoints times the cell widths (tails into the end cells);
+its block factors agree with the closed form of eBBB within $3\cdot10^{-4}$
+(relative). The oracle's points are added to the grid, so it is exact. Two-way
+fitting uses Metropolis-within-Gibbs with a Rao--Blackwellised grid
+distribution (two chains, 500 burn-in and 1,000 retained draws), SD grids,
+interpolation and a coarser reconstruction lattice; its accuracy affects
+borrowing and power, not validity. The earlier one-way EX/NEX models remain in
+the code as options.
 
 \section*{4. Simulation design already defined in the code}
-\begin{tabularx}{\linewidth}{@{}p{3.8cm}X@{}}
+\begin{tabularx}{\linewidth}{@{}p{3.3cm}X@{}}
 \toprule
 Setting & Current implementation\\
 \midrule
-Hypotheses and horizon & $p_0=0.10$, reference alternative $p_1=0.30$, $\alpha=0.05$ per basket; at most 30 patients per basket.\\
-Balanced recruitment & $3\times3$ cells, one patient per time unit per basket, all open at time zero.\\
-Unbalanced recruitment & Eight cells; $(3,3)$ absent; rates 0.5 or 1; basket $(2,3)$ opens at time 20.\\
-Analysis schedule & Global analyses every five time units; block sizes can differ across baskets. Late entry is aligned with this schedule.\\
-Stopping & Reject at $E\ge20$; stop for futility if even the universal bound $E\,p_0^{-r}<20$, with $r$ patients remaining, rules out rejection; otherwise finish at the cap.\\
+Hypotheses, horizon & $p_0=0.10$, reference alternative $p_1=0.30$, $\alpha=0.05$ per basket; at most 30 patients per basket.\\
+Grid & $J=4$ tumour types $\times$ $L=3$ biomarker groups, as in eBBB.\\
+Balanced recruitment & 12 cells, one patient per time unit per basket, all open at time zero.\\
+Unbalanced recruitment & 11 cells, $(3,3)$ absent; rates 1, 0.5 or 0.25, falling with tumour type and biomarker group; basket $(2,3)$ opens at time 20.\\
+Analyses & Global analyses every five time units; block sizes can differ across baskets.\\
+Stopping & Reject at $E\ge20$, otherwise continue to 30 patients (efficacy or $n_{\max}$, as in eBBB).\\
 \bottomrule
 \end{tabularx}
 
-Ten response patterns are defined: global null, global alternative, active
-row, active column, one active basket, active row-and-column union, additive
-logit row/column effects, diagonal interaction, mixed active/null cells, and
-strong heterogeneity. Combining these with two recruitment designs and four
-priors gives 80 study cells. Methods share potential patient outcomes within
-a run. At each analysis, new evidence is computed using the previous frozen
-prior; all observed platform counts, including stopped baskets, then inform
-the next prior. There is no separate refit at an arbitrary entry time.
+Eleven response patterns: the four of eBBB (global null, biomarker~1 active,
+interaction: biomarker~1 active except tumour type~4, all active) and tumour
+type~1 active, one active basket, tumour type~1 and biomarker~1 active,
+additive logit effects, diagonal interaction, mixed active/null cells and
+strong heterogeneity. With two recruitment designs and seven priors this gives
+154 study cells. Methods share potential patient outcomes within a run. At each
+analysis new evidence uses the previous frozen prior; all observed counts,
+including stopped baskets, then inform the next prior.
+
+\emph{Differences from eBBB that remain by design:} calendar-time recruitment
+with global analyses (eBBB: one accrual stream of 800 patients, an analysis
+every five outcomes of a basket), $p_0,p_1=0.10,0.30$ (eBBB $0.30,0.50$),
+$n_{\max}=30$ (eBBB 100), Beta priors on the grid rather than in closed form,
+and the two-way model by our grid sampler rather than Stan draws.
 
 \emph{Optional open-ended variant} (\texttt{simulate.R open}): no maximum per
 basket; stop at $E\ge20$ or for futility at $E^f\ge1/\beta=5$, where $E^f$
 tests $p\ge p_1$ with the posterior restricted to $[0,p_1)$ (framework.tex,
-Proposition~2); 150 patients only end the computation. Exact single-basket
-results: \texttt{Additional\_files/docs/open-ended-design.md}.
+Proposition~2; the oracle bets on $p_c$ if $p_c<p_1$, otherwise $p_0$); 150
+patients only end the computation. Details:
+\texttt{Additional\_files/docs/open-ended-design.md}.
 
 \newpage
 \section*{5. Outputs and interpretation}
