@@ -1,0 +1,2041 @@
+"id","Recruitment","Scenario","Model","horizon","S","n_max","seconds","call"
+112,"unbalanced","global null","two-way EX/NEX","fixed",1,0,0.0269999999999992,1
+112,"unbalanced","global null","two-way EX/NEX","fixed",19,5,1.898,2
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,10,1.833,3
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,15,2.008,4
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,20,1.861,5
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,25,1.737,6
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.95,7
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.821,8
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.746,9
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.845,10
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.998,11
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.802,12
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.856,13
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.959,14
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.749,15
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.73,16
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.831,17
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.82100000000001,18
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.764,19
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.692,20
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.727,21
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.628,22
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.58,23
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.794,24
+112,"unbalanced","global null","two-way EX/NEX","fixed",20,30,1.65,25
+118,"unbalanced","all active","two-way EX/NEX","fixed",1,0,0.0250000000000004,1
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,5,1.88,2
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,10,1.74,3
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,15,1.839,4
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,20,1.641,5
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,25,1.923,6
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,30,1.772,7
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,30,1.77,8
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,30,1.756,9
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,30,1.724,10
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,30,1.817,11
+118,"unbalanced","all active","two-way EX/NEX","fixed",20,30,1.988,12
+118,"unbalanced","all active","two-way EX/NEX","fixed",19,30,1.828,13
+118,"unbalanced","all active","two-way EX/NEX","fixed",16,30,1.654,14
+118,"unbalanced","all active","two-way EX/NEX","fixed",14,30,1.558,15
+118,"unbalanced","all active","two-way EX/NEX","fixed",14,30,1.437,16
+118,"unbalanced","all active","two-way EX/NEX","fixed",13,30,1.421,17
+118,"unbalanced","all active","two-way EX/NEX","fixed",11,30,1.393,18
+118,"unbalanced","all active","two-way EX/NEX","fixed",10,30,1.503,19
+118,"unbalanced","all active","two-way EX/NEX","fixed",9,30,1.271,20
+118,"unbalanced","all active","two-way EX/NEX","fixed",8,30,1.2,21
+118,"unbalanced","all active","two-way EX/NEX","fixed",6,30,1.148,22
+118,"unbalanced","all active","two-way EX/NEX","fixed",6,30,1.13,23
+118,"unbalanced","all active","two-way EX/NEX","fixed",6,30,1.252,24
+118,"unbalanced","all active","two-way EX/NEX","fixed",6,30,1.22,25
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",1,0,0.0240000000000009,1
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,5,2.096,2
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,10,1.952,3
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,15,1.902,4
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,20,2.328,5
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,25,1.813,6
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.77200000000001,7
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,2.01300000000001,8
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,2.101,9
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.96300000000001,10
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,2.19099999999999,11
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.794,12
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.79300000000001,13
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,2.018,14
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.76600000000001,15
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,2.059,16
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,2.23700000000001,17
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.93299999999999,18
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.878,19
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,2.018,20
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.84999999999999,21
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.81999999999999,22
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.69,23
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.673,24
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.67999999999999,25
+112,"unbalanced","global null","two-way EX/NEX","open",1,0,0.0229999999999961,1
+112,"unbalanced","global null","two-way EX/NEX","open",19,5,1.899,2
+112,"unbalanced","global null","two-way EX/NEX","open",20,10,1.91699999999999,3
+112,"unbalanced","global null","two-way EX/NEX","open",20,15,1.853,4
+112,"unbalanced","global null","two-way EX/NEX","open",20,20,1.93300000000001,5
+112,"unbalanced","global null","two-way EX/NEX","open",20,25,1.733,6
+112,"unbalanced","global null","two-way EX/NEX","open",20,30,1.837,7
+112,"unbalanced","global null","two-way EX/NEX","open",20,35,2.304,8
+112,"unbalanced","global null","two-way EX/NEX","open",20,40,2.212,9
+112,"unbalanced","global null","two-way EX/NEX","open",20,45,2.265,10
+112,"unbalanced","global null","two-way EX/NEX","open",20,50,2.164,11
+112,"unbalanced","global null","two-way EX/NEX","open",20,55,1.86999999999999,12
+112,"unbalanced","global null","two-way EX/NEX","open",20,60,1.95700000000001,13
+112,"unbalanced","global null","two-way EX/NEX","open",20,65,2.27800000000001,14
+112,"unbalanced","global null","two-way EX/NEX","open",19,70,2.068,15
+112,"unbalanced","global null","two-way EX/NEX","open",19,70,2.119,16
+112,"unbalanced","global null","two-way EX/NEX","open",18,70,1.959,17
+112,"unbalanced","global null","two-way EX/NEX","open",16,70,1.982,18
+112,"unbalanced","global null","two-way EX/NEX","open",14,65,1.658,19
+112,"unbalanced","global null","two-way EX/NEX","open",11,65,1.56,20
+112,"unbalanced","global null","two-way EX/NEX","open",11,65,1.768,21
+112,"unbalanced","global null","two-way EX/NEX","open",11,65,1.523,22
+112,"unbalanced","global null","two-way EX/NEX","open",8,55,1.411,23
+112,"unbalanced","global null","two-way EX/NEX","open",8,57,1.372,24
+112,"unbalanced","global null","two-way EX/NEX","open",6,60,1.842,25
+112,"unbalanced","global null","two-way EX/NEX","open",6,62,1.34899999999999,26
+112,"unbalanced","global null","two-way EX/NEX","open",5,65,1.37400000000001,27
+112,"unbalanced","global null","two-way EX/NEX","open",3,67,1.384,28
+112,"unbalanced","global null","two-way EX/NEX","open",3,70,1.239,29
+112,"unbalanced","global null","two-way EX/NEX","open",3,72,1.291,30
+112,"unbalanced","global null","two-way EX/NEX","open",2,75,1.32299999999999,31
+112,"unbalanced","global null","two-way EX/NEX","open",1,77,1.21300000000001,32
+112,"unbalanced","global null","two-way EX/NEX","open",1,80,1.16200000000001,33
+112,"unbalanced","global null","two-way EX/NEX","open",1,82,1.371,34
+112,"unbalanced","global null","two-way EX/NEX","open",1,85,1.181,35
+112,"unbalanced","global null","two-way EX/NEX","open",1,87,1.18600000000001,36
+112,"unbalanced","global null","two-way EX/NEX","open",1,90,1.28,37
+112,"unbalanced","global null","two-way EX/NEX","open",1,92,1.16799999999999,38
+118,"unbalanced","all active","two-way EX/NEX","open",1,0,0.0240000000000009,1
+118,"unbalanced","all active","two-way EX/NEX","open",20,5,2.099,2
+118,"unbalanced","all active","two-way EX/NEX","open",20,10,1.81400000000001,3
+118,"unbalanced","all active","two-way EX/NEX","open",20,15,1.875,4
+118,"unbalanced","all active","two-way EX/NEX","open",20,20,1.90300000000001,5
+118,"unbalanced","all active","two-way EX/NEX","open",20,25,1.723,6
+118,"unbalanced","all active","two-way EX/NEX","open",20,30,1.91199999999999,7
+118,"unbalanced","all active","two-way EX/NEX","open",20,35,2.13199999999999,8
+118,"unbalanced","all active","two-way EX/NEX","open",20,40,2.24199999999999,9
+118,"unbalanced","all active","two-way EX/NEX","open",20,45,2.047,10
+118,"unbalanced","all active","two-way EX/NEX","open",20,50,2.22500000000001,11
+118,"unbalanced","all active","two-way EX/NEX","open",19,55,1.995,12
+118,"unbalanced","all active","two-way EX/NEX","open",18,60,1.84299999999999,13
+118,"unbalanced","all active","two-way EX/NEX","open",18,65,2.03100000000001,14
+118,"unbalanced","all active","two-way EX/NEX","open",18,70,1.935,15
+118,"unbalanced","all active","two-way EX/NEX","open",18,75,1.85900000000001,16
+118,"unbalanced","all active","two-way EX/NEX","open",18,80,1.822,17
+118,"unbalanced","all active","two-way EX/NEX","open",17,85,1.80200000000002,18
+118,"unbalanced","all active","two-way EX/NEX","open",17,90,1.708,19
+118,"unbalanced","all active","two-way EX/NEX","open",16,95,1.971,20
+118,"unbalanced","all active","two-way EX/NEX","open",15,95,1.63300000000001,21
+118,"unbalanced","all active","two-way EX/NEX","open",13,95,1.71699999999998,22
+118,"unbalanced","all active","two-way EX/NEX","open",13,95,1.63,23
+118,"unbalanced","all active","two-way EX/NEX","open",11,95,1.59699999999998,24
+118,"unbalanced","all active","two-way EX/NEX","open",11,95,1.429,25
+118,"unbalanced","all active","two-way EX/NEX","open",9,95,1.589,26
+118,"unbalanced","all active","two-way EX/NEX","open",9,95,1.50300000000001,27
+118,"unbalanced","all active","two-way EX/NEX","open",8,95,1.447,28
+118,"unbalanced","all active","two-way EX/NEX","open",8,95,1.398,29
+118,"unbalanced","all active","two-way EX/NEX","open",5,95,1.392,30
+118,"unbalanced","all active","two-way EX/NEX","open",5,95,1.119,31
+118,"unbalanced","all active","two-way EX/NEX","open",5,95,1.636,32
+118,"unbalanced","all active","two-way EX/NEX","open",5,95,1.172,33
+118,"unbalanced","all active","two-way EX/NEX","open",4,95,1.43199999999999,34
+118,"unbalanced","all active","two-way EX/NEX","open",4,95,1.221,35
+118,"unbalanced","all active","two-way EX/NEX","open",4,95,1.55599999999998,36
+118,"unbalanced","all active","two-way EX/NEX","open",3,95,1.26499999999999,37
+118,"unbalanced","all active","two-way EX/NEX","open",3,95,1.149,38
+118,"unbalanced","all active","two-way EX/NEX","open",3,95,1.22399999999999,39
+118,"unbalanced","all active","two-way EX/NEX","open",3,95,1.26399999999998,40
+118,"unbalanced","all active","two-way EX/NEX","open",2,95,0.966000000000008,41
+118,"unbalanced","all active","two-way EX/NEX","open",1,51,1.072,42
+118,"unbalanced","all active","two-way EX/NEX","open",1,52,1.14500000000001,43
+118,"unbalanced","all active","two-way EX/NEX","open",1,53,1.45600000000002,44
+118,"unbalanced","all active","two-way EX/NEX","open",1,55,0.871999999999986,45
+118,"unbalanced","all active","two-way EX/NEX","open",1,56,1.13300000000001,46
+118,"unbalanced","all active","two-way EX/NEX","open",1,57,1.16900000000001,47
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,0,0.0260000000000105,1
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",20,5,2.01899999999999,2
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",20,10,2.18599999999998,3
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",20,15,2.21600000000001,4
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",20,20,1.81999999999999,5
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",20,25,1.869,6
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",20,30,1.703,7
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",20,35,1.96099999999998,8
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",18,40,1.99299999999999,9
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",18,45,2.02099999999999,10
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",18,50,1.934,11
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",18,55,1.95400000000001,12
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",18,60,1.928,13
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",14,65,1.77600000000001,14
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",12,70,1.71899999999999,15
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",11,75,1.649,16
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",11,80,1.65899999999999,17
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",10,85,1.78299999999999,18
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",9,90,1.52599999999998,19
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",9,95,1.58500000000001,20
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",8,100,1.49100000000001,21
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",7,105,1.369,22
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",6,55,1.35900000000001,23
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",6,57,1.48599999999999,24
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",6,60,1.44200000000001,25
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",5,60,1.34199999999998,26
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",5,60,1.518,27
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",4,55,1.327,28
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",4,55,1.61800000000002,29
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",4,55,1.34100000000001,30
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",3,55,1.28700000000001,31
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",2,55,1.29600000000002,32
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",2,55,1.12699999999998,33
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",2,55,1.12200000000001,34
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",2,55,1.28999999999999,35
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",2,55,1.19300000000001,36
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",2,55,1.05699999999999,37
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",2,55,1.07300000000001,38
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",2,55,1.04500000000002,39
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,48,1.31800000000001,40
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,50,1.029,41
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,51,1.11999999999998,42
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,52,1.053,43
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,53,1.22,44
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,55,0.984000000000009,45
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,56,1.09100000000001,46
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,57,1.15899999999999,47
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,58,1.09799999999998,48
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,60,1.274,49
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,61,1.03,50
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,62,1.12299999999999,51
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,63,1.28,52
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,65,1.12299999999999,53
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,66,1.10299999999998,54
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,67,1.07600000000002,55
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,68,1.155,56
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,70,1.25200000000001,57
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,71,1.12800000000001,58
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,72,1.14100000000002,59
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,73,1.19999999999999,60
+132,"unbalanced","strong heterogeneity","two-way EX/NEX","open",1,75,1.209,61
+111,"balanced","global null","two-way EX/NEX","fixed",1,0,0.0360000000000014,1
+111,"balanced","global null","two-way EX/NEX","fixed",20,5,1.91900000000001,2
+111,"balanced","global null","two-way EX/NEX","fixed",20,10,1.90699999999998,3
+111,"balanced","global null","two-way EX/NEX","fixed",20,15,1.745,4
+111,"balanced","global null","two-way EX/NEX","fixed",20,20,1.785,5
+111,"balanced","global null","two-way EX/NEX","fixed",20,25,1.78799999999998,6
+111,"balanced","global null","two-way EX/NEX","fixed",20,30,1.92299999999997,7
+117,"balanced","all active","two-way EX/NEX","fixed",1,0,0.0260000000000105,1
+117,"balanced","all active","two-way EX/NEX","fixed",20,5,2.05500000000001,2
+117,"balanced","all active","two-way EX/NEX","fixed",20,10,2.005,3
+117,"balanced","all active","two-way EX/NEX","fixed",20,15,1.94499999999999,4
+117,"balanced","all active","two-way EX/NEX","fixed",20,20,1.88200000000001,5
+117,"balanced","all active","two-way EX/NEX","fixed",20,25,1.77199999999999,6
+117,"balanced","all active","two-way EX/NEX","fixed",20,30,1.84900000000002,7
+131,"balanced","strong heterogeneity","two-way EX/NEX","fixed",1,0,0.0250000000000057,1
+131,"balanced","strong heterogeneity","two-way EX/NEX","fixed",20,5,2.11600000000001,2
+131,"balanced","strong heterogeneity","two-way EX/NEX","fixed",20,10,2.024,3
+131,"balanced","strong heterogeneity","two-way EX/NEX","fixed",20,15,1.75799999999998,4
+131,"balanced","strong heterogeneity","two-way EX/NEX","fixed",20,20,1.91200000000001,5
+131,"balanced","strong heterogeneity","two-way EX/NEX","fixed",20,25,1.95000000000002,6
+131,"balanced","strong heterogeneity","two-way EX/NEX","fixed",20,30,1.828,7
+111,"balanced","global null","two-way EX/NEX","open",1,0,0.0240000000000009,1
+111,"balanced","global null","two-way EX/NEX","open",20,5,1.75500000000002,2
+111,"balanced","global null","two-way EX/NEX","open",20,10,1.833,3
+111,"balanced","global null","two-way EX/NEX","open",20,15,1.66000000000003,4
+111,"balanced","global null","two-way EX/NEX","open",20,20,1.79999999999998,5
+111,"balanced","global null","two-way EX/NEX","open",20,25,1.738,6
+111,"balanced","global null","two-way EX/NEX","open",20,30,1.846,7
+111,"balanced","global null","two-way EX/NEX","open",20,35,2.01499999999999,8
+111,"balanced","global null","two-way EX/NEX","open",18,40,1.81899999999999,9
+111,"balanced","global null","two-way EX/NEX","open",17,45,1.798,10
+111,"balanced","global null","two-way EX/NEX","open",15,50,1.61199999999999,11
+111,"balanced","global null","two-way EX/NEX","open",14,55,1.88399999999999,12
+111,"balanced","global null","two-way EX/NEX","open",10,60,1.607,13
+111,"balanced","global null","two-way EX/NEX","open",6,65,1.56199999999998,14
+111,"balanced","global null","two-way EX/NEX","open",6,70,1.33599999999998,15
+111,"balanced","global null","two-way EX/NEX","open",5,75,1.41800000000001,16
+111,"balanced","global null","two-way EX/NEX","open",3,80,1.24600000000001,17
+111,"balanced","global null","two-way EX/NEX","open",3,85,1.261,18
+111,"balanced","global null","two-way EX/NEX","open",1,90,1.10499999999999,19
+117,"balanced","all active","two-way EX/NEX","open",1,0,0.035000000000025,1
+117,"balanced","all active","two-way EX/NEX","open",20,5,1.97900000000001,2
+117,"balanced","all active","two-way EX/NEX","open",20,10,1.78500000000003,3
+117,"balanced","all active","two-way EX/NEX","open",20,15,1.976,4
+117,"balanced","all active","two-way EX/NEX","open",20,20,1.73399999999998,5
+117,"balanced","all active","two-way EX/NEX","open",20,25,1.874,6
+117,"balanced","all active","two-way EX/NEX","open",20,30,1.874,7
+117,"balanced","all active","two-way EX/NEX","open",20,35,2.072,8
+117,"balanced","all active","two-way EX/NEX","open",20,40,2.03800000000001,9
+117,"balanced","all active","two-way EX/NEX","open",18,45,1.81300000000002,10
+117,"balanced","all active","two-way EX/NEX","open",17,50,1.88400000000001,11
+117,"balanced","all active","two-way EX/NEX","open",16,55,1.68200000000002,12
+117,"balanced","all active","two-way EX/NEX","open",12,60,1.63200000000001,13
+117,"balanced","all active","two-way EX/NEX","open",10,65,1.53399999999999,14
+117,"balanced","all active","two-way EX/NEX","open",4,70,1.27500000000003,15
+117,"balanced","all active","two-way EX/NEX","open",4,75,1.17700000000002,16
+117,"balanced","all active","two-way EX/NEX","open",3,80,1.11000000000001,17
+117,"balanced","all active","two-way EX/NEX","open",3,85,1.23999999999995,18
+117,"balanced","all active","two-way EX/NEX","open",1,90,0.98399999999998,19
+117,"balanced","all active","two-way EX/NEX","open",1,95,0.980999999999995,20
+117,"balanced","all active","two-way EX/NEX","open",1,100,1.06,21
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",1,0,0.0289999999999964,1
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",20,5,1.94400000000002,2
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",20,10,2.03399999999999,3
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",20,15,1.904,4
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",20,20,1.72499999999997,5
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",20,25,1.85999999999996,6
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",19,30,1.80699999999996,7
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",18,35,1.928,8
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",18,40,1.96099999999996,9
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",16,45,1.74099999999999,10
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",14,50,1.767,11
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",10,55,1.70699999999999,12
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",8,60,1.35300000000001,13
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",6,65,1.36400000000003,14
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",4,70,1.387,15
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",2,75,1.17099999999999,16
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",2,80,1.351,17
+131,"balanced","strong heterogeneity","two-way EX/NEX","open",2,85,1.19200000000001,18
+2,"unbalanced","global null","no borrowing","fixed",1,0,0.00200000000000955,1
+2,"unbalanced","global null","no borrowing","fixed",19,5,0.00799999999998136,2
+2,"unbalanced","global null","no borrowing","fixed",20,10,0.0029999999999859,3
+2,"unbalanced","global null","no borrowing","fixed",20,15,0.00399999999996226,4
+2,"unbalanced","global null","no borrowing","fixed",20,20,0.0040000000000191,5
+2,"unbalanced","global null","no borrowing","fixed",20,25,0.0029999999999859,6
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.0040000000000191,7
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.00200000000000955,8
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.00200000000000955,9
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.00200000000000955,10
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.00200000000000955,11
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.00200000000000955,12
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.00200000000000955,13
+2,"unbalanced","global null","no borrowing","fixed",20,30,0,14
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.000999999999976353,15
+2,"unbalanced","global null","no borrowing","fixed",20,30,0,16
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.000999999999976353,17
+2,"unbalanced","global null","no borrowing","fixed",20,30,0,18
+2,"unbalanced","global null","no borrowing","fixed",20,30,0,19
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.000999999999976353,20
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.000999999999976353,21
+2,"unbalanced","global null","no borrowing","fixed",20,30,0,22
+2,"unbalanced","global null","no borrowing","fixed",20,30,0.000999999999976353,23
+2,"unbalanced","global null","no borrowing","fixed",20,30,0,24
+2,"unbalanced","global null","no borrowing","fixed",20,30,0,25
+8,"unbalanced","all active","no borrowing","fixed",1,0,0.00199999999995271,1
+8,"unbalanced","all active","no borrowing","fixed",20,5,0.0080000000000382,2
+8,"unbalanced","all active","no borrowing","fixed",20,10,0.0040000000000191,3
+8,"unbalanced","all active","no borrowing","fixed",20,15,0.0029999999999859,4
+8,"unbalanced","all active","no borrowing","fixed",20,20,0.00300000000004275,5
+8,"unbalanced","all active","no borrowing","fixed",20,25,0.0029999999999859,6
+8,"unbalanced","all active","no borrowing","fixed",20,30,0.00200000000000955,7
+8,"unbalanced","all active","no borrowing","fixed",20,30,0.00199999999995271,8
+8,"unbalanced","all active","no borrowing","fixed",20,30,0.00200000000000955,9
+8,"unbalanced","all active","no borrowing","fixed",20,30,0.000999999999976353,10
+8,"unbalanced","all active","no borrowing","fixed",20,30,0.0029999999999859,11
+8,"unbalanced","all active","no borrowing","fixed",20,30,0.00199999999995271,12
+8,"unbalanced","all active","no borrowing","fixed",20,30,0.000999999999976353,13
+8,"unbalanced","all active","no borrowing","fixed",16,30,0,14
+8,"unbalanced","all active","no borrowing","fixed",14,30,0.000999999999976353,15
+8,"unbalanced","all active","no borrowing","fixed",14,30,0,16
+8,"unbalanced","all active","no borrowing","fixed",14,30,0.000999999999976353,17
+8,"unbalanced","all active","no borrowing","fixed",11,30,0,18
+8,"unbalanced","all active","no borrowing","fixed",11,30,0,19
+8,"unbalanced","all active","no borrowing","fixed",11,30,0,20
+8,"unbalanced","all active","no borrowing","fixed",11,30,0,21
+8,"unbalanced","all active","no borrowing","fixed",8,30,0,22
+8,"unbalanced","all active","no borrowing","fixed",8,30,0.000999999999976353,23
+8,"unbalanced","all active","no borrowing","fixed",8,30,0,24
+8,"unbalanced","all active","no borrowing","fixed",8,30,0.0010000000000332,25
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",1,0,0.000999999999976353,1
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,5,0.0029999999999859,2
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,10,0.0029999999999859,3
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,15,0.0029999999999859,4
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,20,0.0029999999999859,5
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,25,0.00300000000004275,6
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.00200000000000955,7
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.00199999999995271,8
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.00200000000000955,9
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.00200000000000955,10
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.0010000000000332,11
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.000999999999976353,12
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.000999999999976353,13
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.000999999999976353,14
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.000999999999976353,15
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.000999999999976353,16
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0.000999999999976353,17
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0,18
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0,19
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0,20
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0,21
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0,22
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0,23
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0,24
+22,"unbalanced","strong heterogeneity","no borrowing","fixed",20,30,0,25
+24,"unbalanced","global null","power, equal","fixed",1,0,0.00200000000000955,1
+24,"unbalanced","global null","power, equal","fixed",19,5,0.0040000000000191,2
+24,"unbalanced","global null","power, equal","fixed",20,10,0.00499999999999545,3
+24,"unbalanced","global null","power, equal","fixed",20,15,0.0029999999999859,4
+24,"unbalanced","global null","power, equal","fixed",20,20,0.0029999999999859,5
+24,"unbalanced","global null","power, equal","fixed",20,25,0.00300000000004275,6
+24,"unbalanced","global null","power, equal","fixed",20,30,0.0029999999999859,7
+24,"unbalanced","global null","power, equal","fixed",20,30,0.00200000000000955,8
+24,"unbalanced","global null","power, equal","fixed",20,30,0.00200000000000955,9
+24,"unbalanced","global null","power, equal","fixed",20,30,0.00199999999995271,10
+24,"unbalanced","global null","power, equal","fixed",20,30,0.00200000000000955,11
+24,"unbalanced","global null","power, equal","fixed",20,30,0.0010000000000332,12
+24,"unbalanced","global null","power, equal","fixed",20,30,0.00199999999995271,13
+24,"unbalanced","global null","power, equal","fixed",20,30,0.000999999999976353,14
+24,"unbalanced","global null","power, equal","fixed",20,30,0,15
+24,"unbalanced","global null","power, equal","fixed",20,30,0.0010000000000332,16
+24,"unbalanced","global null","power, equal","fixed",20,30,0.0010000000000332,17
+24,"unbalanced","global null","power, equal","fixed",20,30,0.000999999999976353,18
+24,"unbalanced","global null","power, equal","fixed",20,30,0,19
+24,"unbalanced","global null","power, equal","fixed",20,30,0.000999999999976353,20
+24,"unbalanced","global null","power, equal","fixed",20,30,0.000999999999976353,21
+24,"unbalanced","global null","power, equal","fixed",20,30,0,22
+24,"unbalanced","global null","power, equal","fixed",20,30,0,23
+24,"unbalanced","global null","power, equal","fixed",20,30,0,24
+24,"unbalanced","global null","power, equal","fixed",20,30,0,25
+30,"unbalanced","all active","power, equal","fixed",1,0,0.000999999999976353,1
+30,"unbalanced","all active","power, equal","fixed",20,5,0.00300000000004275,2
+30,"unbalanced","all active","power, equal","fixed",20,10,0.00300000000004275,3
+30,"unbalanced","all active","power, equal","fixed",20,15,0.00300000000004275,4
+30,"unbalanced","all active","power, equal","fixed",20,20,0.0029999999999859,5
+30,"unbalanced","all active","power, equal","fixed",20,25,0.0029999999999859,6
+30,"unbalanced","all active","power, equal","fixed",20,30,0.0029999999999859,7
+30,"unbalanced","all active","power, equal","fixed",20,30,0.00200000000000955,8
+30,"unbalanced","all active","power, equal","fixed",20,30,0.00200000000000955,9
+30,"unbalanced","all active","power, equal","fixed",20,30,0.000999999999976353,10
+30,"unbalanced","all active","power, equal","fixed",20,30,0.00200000000000955,11
+30,"unbalanced","all active","power, equal","fixed",20,30,0.000999999999976353,12
+30,"unbalanced","all active","power, equal","fixed",19,30,0.0010000000000332,13
+30,"unbalanced","all active","power, equal","fixed",16,30,0,14
+30,"unbalanced","all active","power, equal","fixed",13,30,0,15
+30,"unbalanced","all active","power, equal","fixed",13,30,0,16
+30,"unbalanced","all active","power, equal","fixed",12,30,0,17
+30,"unbalanced","all active","power, equal","fixed",8,30,0,18
+30,"unbalanced","all active","power, equal","fixed",7,30,0.000999999999976353,19
+30,"unbalanced","all active","power, equal","fixed",6,30,0,20
+30,"unbalanced","all active","power, equal","fixed",6,30,0,21
+30,"unbalanced","all active","power, equal","fixed",4,30,0,22
+30,"unbalanced","all active","power, equal","fixed",4,30,0,23
+30,"unbalanced","all active","power, equal","fixed",4,30,0,24
+30,"unbalanced","all active","power, equal","fixed",4,30,0,25
+44,"unbalanced","strong heterogeneity","power, equal","fixed",1,0,0.00200000000000955,1
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,5,0.00399999999996226,2
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,10,0.0029999999999859,3
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,15,0.0029999999999859,4
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,20,0.00399999999996226,5
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,25,0.0029999999999859,6
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.00300000000004275,7
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.00200000000000955,8
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.00200000000000955,9
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.00200000000000955,10
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.00200000000000955,11
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.00399999999996226,12
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.000999999999976353,13
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.000999999999976353,14
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.000999999999976353,15
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.0010000000000332,16
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.0010000000000332,17
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.000999999999976353,18
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.0010000000000332,19
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0,20
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.000999999999976353,21
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0,22
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0,23
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.0010000000000332,24
+44,"unbalanced","strong heterogeneity","power, equal","fixed",20,30,0.0010000000000332,25
+46,"unbalanced","global null","power, column","fixed",1,0,0.00200000000000955,1
+46,"unbalanced","global null","power, column","fixed",19,5,0.0040000000000191,2
+46,"unbalanced","global null","power, column","fixed",20,10,0.0040000000000191,3
+46,"unbalanced","global null","power, column","fixed",20,15,0.00399999999996226,4
+46,"unbalanced","global null","power, column","fixed",20,20,0.0040000000000191,5
+46,"unbalanced","global null","power, column","fixed",20,25,0.0029999999999859,6
+46,"unbalanced","global null","power, column","fixed",20,30,0.0040000000000191,7
+46,"unbalanced","global null","power, column","fixed",20,30,0.00200000000000955,8
+46,"unbalanced","global null","power, column","fixed",20,30,0.00200000000000955,9
+46,"unbalanced","global null","power, column","fixed",20,30,0.0029999999999859,10
+46,"unbalanced","global null","power, column","fixed",20,30,0.00200000000000955,11
+46,"unbalanced","global null","power, column","fixed",20,30,0.00200000000000955,12
+46,"unbalanced","global null","power, column","fixed",20,30,0.00200000000000955,13
+46,"unbalanced","global null","power, column","fixed",20,30,0.000999999999976353,14
+46,"unbalanced","global null","power, column","fixed",20,30,0.000999999999976353,15
+46,"unbalanced","global null","power, column","fixed",20,30,0,16
+46,"unbalanced","global null","power, column","fixed",20,30,0.000999999999976353,17
+46,"unbalanced","global null","power, column","fixed",20,30,0,18
+46,"unbalanced","global null","power, column","fixed",20,30,0.000999999999976353,19
+46,"unbalanced","global null","power, column","fixed",20,30,0,20
+46,"unbalanced","global null","power, column","fixed",20,30,0.0010000000000332,21
+46,"unbalanced","global null","power, column","fixed",20,30,0,22
+46,"unbalanced","global null","power, column","fixed",20,30,0,23
+46,"unbalanced","global null","power, column","fixed",20,30,0,24
+46,"unbalanced","global null","power, column","fixed",20,30,0,25
+52,"unbalanced","all active","power, column","fixed",1,0,0.000999999999976353,1
+52,"unbalanced","all active","power, column","fixed",20,5,0.0040000000000191,2
+52,"unbalanced","all active","power, column","fixed",20,10,0.0029999999999859,3
+52,"unbalanced","all active","power, column","fixed",20,15,0.0029999999999859,4
+52,"unbalanced","all active","power, column","fixed",20,20,0.0040000000000191,5
+52,"unbalanced","all active","power, column","fixed",20,25,0.00300000000004275,6
+52,"unbalanced","all active","power, column","fixed",20,30,0.0029999999999859,7
+52,"unbalanced","all active","power, column","fixed",20,30,0.00199999999995271,8
+52,"unbalanced","all active","power, column","fixed",20,30,0.00200000000000955,9
+52,"unbalanced","all active","power, column","fixed",20,30,0.000999999999976353,10
+52,"unbalanced","all active","power, column","fixed",20,30,0.00199999999995271,11
+52,"unbalanced","all active","power, column","fixed",20,30,0.00200000000000955,12
+52,"unbalanced","all active","power, column","fixed",19,30,0.00200000000000955,13
+52,"unbalanced","all active","power, column","fixed",15,30,0.000999999999976353,14
+52,"unbalanced","all active","power, column","fixed",13,30,0.0010000000000332,15
+52,"unbalanced","all active","power, column","fixed",12,30,0.0010000000000332,16
+52,"unbalanced","all active","power, column","fixed",12,30,0.000999999999976353,17
+52,"unbalanced","all active","power, column","fixed",10,30,0,18
+52,"unbalanced","all active","power, column","fixed",10,30,0,19
+52,"unbalanced","all active","power, column","fixed",9,30,0,20
+52,"unbalanced","all active","power, column","fixed",7,30,0.000999999999976353,21
+52,"unbalanced","all active","power, column","fixed",6,30,0,22
+52,"unbalanced","all active","power, column","fixed",6,30,0.0010000000000332,23
+52,"unbalanced","all active","power, column","fixed",6,30,0,24
+52,"unbalanced","all active","power, column","fixed",6,30,0,25
+66,"unbalanced","strong heterogeneity","power, column","fixed",1,0,0.00200000000000955,1
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,5,0.00399999999996226,2
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,10,0.0029999999999859,3
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,15,0.0029999999999859,4
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,20,0.0040000000000191,5
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,25,0.00300000000004275,6
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0.00200000000000955,7
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0.00200000000000955,8
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0.0010000000000332,9
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0.00200000000000955,10
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0.00200000000000955,11
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0.0040000000000191,12
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0.00200000000000955,13
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0.0010000000000332,14
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0,15
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0.0010000000000332,16
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0,17
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0,18
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0,19
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0,20
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0,21
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0,22
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0,23
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0,24
+66,"unbalanced","strong heterogeneity","power, column","fixed",20,30,0.000999999999976353,25
+68,"unbalanced","global null","EX/NEX","fixed",1,0,0.0029999999999859,1
+68,"unbalanced","global null","EX/NEX","fixed",19,5,0.00799999999998136,2
+68,"unbalanced","global null","EX/NEX","fixed",20,10,0.00799999999998136,3
+68,"unbalanced","global null","EX/NEX","fixed",20,15,0.0080000000000382,4
+68,"unbalanced","global null","EX/NEX","fixed",20,20,0.007000000000005,5
+68,"unbalanced","global null","EX/NEX","fixed",20,25,0.007000000000005,6
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.007000000000005,7
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.0040000000000191,8
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.0040000000000191,9
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.0040000000000191,10
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.00699999999994816,11
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.00999999999999091,12
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.00599999999997181,13
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.00200000000000955,14
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.00199999999995271,15
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.00199999999995271,16
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.00199999999995271,17
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.0010000000000332,18
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.00200000000000955,19
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.000999999999976353,20
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.000999999999976353,21
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.0010000000000332,22
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.000999999999976353,23
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.0010000000000332,24
+68,"unbalanced","global null","EX/NEX","fixed",20,30,0.0010000000000332,25
+74,"unbalanced","all active","EX/NEX","fixed",1,0,0.00200000000000955,1
+74,"unbalanced","all active","EX/NEX","fixed",20,5,0.0199999999999818,2
+74,"unbalanced","all active","EX/NEX","fixed",20,10,0.0110000000000241,3
+74,"unbalanced","all active","EX/NEX","fixed",20,15,0.00799999999998136,4
+74,"unbalanced","all active","EX/NEX","fixed",20,20,0.00799999999998136,5
+74,"unbalanced","all active","EX/NEX","fixed",20,25,0.00900000000001455,6
+74,"unbalanced","all active","EX/NEX","fixed",20,30,0.0080000000000382,7
+74,"unbalanced","all active","EX/NEX","fixed",20,30,0.0040000000000191,8
+74,"unbalanced","all active","EX/NEX","fixed",20,30,0.00600000000002865,9
+74,"unbalanced","all active","EX/NEX","fixed",20,30,0.0029999999999859,10
+74,"unbalanced","all active","EX/NEX","fixed",20,30,0.0029999999999859,11
+74,"unbalanced","all active","EX/NEX","fixed",20,30,0.00199999999995271,12
+74,"unbalanced","all active","EX/NEX","fixed",19,30,0.0029999999999859,13
+74,"unbalanced","all active","EX/NEX","fixed",16,30,0.000999999999976353,14
+74,"unbalanced","all active","EX/NEX","fixed",14,30,0.0010000000000332,15
+74,"unbalanced","all active","EX/NEX","fixed",14,30,0.000999999999976353,16
+74,"unbalanced","all active","EX/NEX","fixed",13,30,0.000999999999976353,17
+74,"unbalanced","all active","EX/NEX","fixed",11,30,0,18
+74,"unbalanced","all active","EX/NEX","fixed",11,30,0.000999999999976353,19
+74,"unbalanced","all active","EX/NEX","fixed",10,30,0.0010000000000332,20
+74,"unbalanced","all active","EX/NEX","fixed",10,30,0.000999999999976353,21
+74,"unbalanced","all active","EX/NEX","fixed",7,30,0,22
+74,"unbalanced","all active","EX/NEX","fixed",7,30,0.000999999999976353,23
+74,"unbalanced","all active","EX/NEX","fixed",7,30,0.000999999999976353,24
+74,"unbalanced","all active","EX/NEX","fixed",7,30,0.0010000000000332,25
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",1,0,0.0029999999999859,1
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,5,0.00799999999998136,2
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,10,0.00799999999998136,3
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,15,0.00799999999998136,4
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,20,0.007000000000005,5
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,25,0.007000000000005,6
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.00600000000002865,7
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.00600000000002865,8
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.0040000000000191,9
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.0029999999999859,10
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.00300000000004275,11
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.0029999999999859,12
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.0040000000000191,13
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.000999999999976353,14
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.0010000000000332,15
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.00399999999996226,16
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.00200000000000955,17
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.000999999999976353,18
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.0010000000000332,19
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.000999999999976353,20
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0,21
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.000999999999976353,22
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.000999999999976353,23
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.000999999999976353,24
+88,"unbalanced","strong heterogeneity","EX/NEX","fixed",20,30,0.000999999999976353,25
+90,"unbalanced","global null","similarity","fixed",1,0,0.0260000000000105,1
+90,"unbalanced","global null","similarity","fixed",19,5,0.115000000000009,2
+90,"unbalanced","global null","similarity","fixed",20,10,0.0710000000000264,3
+90,"unbalanced","global null","similarity","fixed",20,15,0.0740000000000123,4
+90,"unbalanced","global null","similarity","fixed",20,20,0.0790000000000077,5
+90,"unbalanced","global null","similarity","fixed",20,25,0.0789999999999509,6
+90,"unbalanced","global null","similarity","fixed",20,30,0.0799999999999841,7
+90,"unbalanced","global null","similarity","fixed",20,30,0.0660000000000309,8
+90,"unbalanced","global null","similarity","fixed",20,30,0.0510000000000446,9
+90,"unbalanced","global null","similarity","fixed",20,30,0.0519999999999641,10
+90,"unbalanced","global null","similarity","fixed",20,30,0.0529999999999973,11
+90,"unbalanced","global null","similarity","fixed",20,30,0.0509999999999877,12
+90,"unbalanced","global null","similarity","fixed",20,30,0.0529999999999973,13
+90,"unbalanced","global null","similarity","fixed",20,30,0.0159999999999627,14
+90,"unbalanced","global null","similarity","fixed",20,30,0.01400000000001,15
+90,"unbalanced","global null","similarity","fixed",20,30,0.0169999999999959,16
+90,"unbalanced","global null","similarity","fixed",20,30,0.0149999999999864,17
+90,"unbalanced","global null","similarity","fixed",20,30,0.0109999999999673,18
+90,"unbalanced","global null","similarity","fixed",20,30,0.007000000000005,19
+90,"unbalanced","global null","similarity","fixed",20,30,0.0080000000000382,20
+90,"unbalanced","global null","similarity","fixed",20,30,0.007000000000005,21
+90,"unbalanced","global null","similarity","fixed",20,30,0.007000000000005,22
+90,"unbalanced","global null","similarity","fixed",20,30,0.007000000000005,23
+90,"unbalanced","global null","similarity","fixed",20,30,0.007000000000005,24
+90,"unbalanced","global null","similarity","fixed",20,30,0.007000000000005,25
+96,"unbalanced","all active","similarity","fixed",1,0,0.0319999999999823,1
+96,"unbalanced","all active","similarity","fixed",20,5,0.138000000000034,2
+96,"unbalanced","all active","similarity","fixed",20,10,0.0780000000000314,3
+96,"unbalanced","all active","similarity","fixed",20,15,0.0820000000000505,4
+96,"unbalanced","all active","similarity","fixed",20,20,0.0779999999999745,5
+96,"unbalanced","all active","similarity","fixed",20,25,0.0889999999999986,6
+96,"unbalanced","all active","similarity","fixed",20,30,0.0790000000000077,7
+96,"unbalanced","all active","similarity","fixed",20,30,0.0480000000000018,8
+96,"unbalanced","all active","similarity","fixed",20,30,0.0450000000000159,9
+96,"unbalanced","all active","similarity","fixed",20,30,0.0439999999999827,10
+96,"unbalanced","all active","similarity","fixed",20,30,0.0559999999999832,11
+96,"unbalanced","all active","similarity","fixed",20,30,0.0339999999999918,12
+96,"unbalanced","all active","similarity","fixed",19,30,0.0349999999999682,13
+96,"unbalanced","all active","similarity","fixed",16,30,0.0120000000000005,14
+96,"unbalanced","all active","similarity","fixed",14,30,0.0109999999999673,15
+96,"unbalanced","all active","similarity","fixed",14,30,0.01400000000001,16
+96,"unbalanced","all active","similarity","fixed",13,30,0.00999999999999091,17
+96,"unbalanced","all active","similarity","fixed",8,30,0.00499999999999545,18
+96,"unbalanced","all active","similarity","fixed",7,30,0.0040000000000191,19
+96,"unbalanced","all active","similarity","fixed",7,30,0.00399999999996226,20
+96,"unbalanced","all active","similarity","fixed",7,30,0.00399999999996226,21
+96,"unbalanced","all active","similarity","fixed",5,30,0.0040000000000191,22
+96,"unbalanced","all active","similarity","fixed",5,30,0.0040000000000191,23
+96,"unbalanced","all active","similarity","fixed",5,30,0.0040000000000191,24
+96,"unbalanced","all active","similarity","fixed",5,30,0.00399999999996226,25
+110,"unbalanced","strong heterogeneity","similarity","fixed",1,0,0.0260000000000105,1
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,5,0.123999999999967,2
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,10,0.0720000000000027,3
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,15,0.0729999999999791,4
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,20,0.0720000000000027,5
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,25,0.0699999999999932,6
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0750000000000455,7
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0439999999999827,8
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0419999999999732,9
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0409999999999968,10
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0540000000000305,11
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0430000000000064,12
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0409999999999968,13
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0149999999999864,14
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0199999999999818,15
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0160000000000196,16
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0159999999999627,17
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.00799999999998136,18
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.007000000000005,19
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0109999999999673,20
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.00999999999999091,21
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.0109999999999673,22
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.00900000000001455,23
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.00799999999998136,24
+110,"unbalanced","strong heterogeneity","similarity","fixed",20,30,0.00900000000001455,25
+134,"unbalanced","global null","oracle","fixed",1,0,0.000999999999976353,1
+134,"unbalanced","global null","oracle","fixed",19,5,0.0010000000000332,2
+134,"unbalanced","global null","oracle","fixed",20,10,0.000999999999976353,3
+134,"unbalanced","global null","oracle","fixed",20,15,0.0010000000000332,4
+134,"unbalanced","global null","oracle","fixed",20,20,0.00199999999995271,5
+134,"unbalanced","global null","oracle","fixed",20,25,0.000999999999976353,6
+134,"unbalanced","global null","oracle","fixed",20,30,0.0010000000000332,7
+134,"unbalanced","global null","oracle","fixed",20,30,0.0010000000000332,8
+134,"unbalanced","global null","oracle","fixed",20,30,0,9
+134,"unbalanced","global null","oracle","fixed",20,30,0.000999999999976353,10
+134,"unbalanced","global null","oracle","fixed",20,30,0.0010000000000332,11
+134,"unbalanced","global null","oracle","fixed",20,30,0.0029999999999859,12
+134,"unbalanced","global null","oracle","fixed",20,30,0,13
+134,"unbalanced","global null","oracle","fixed",20,30,0,14
+134,"unbalanced","global null","oracle","fixed",20,30,0,15
+134,"unbalanced","global null","oracle","fixed",20,30,0,16
+134,"unbalanced","global null","oracle","fixed",20,30,0,17
+134,"unbalanced","global null","oracle","fixed",20,30,0,18
+134,"unbalanced","global null","oracle","fixed",20,30,0,19
+134,"unbalanced","global null","oracle","fixed",20,30,0,20
+134,"unbalanced","global null","oracle","fixed",20,30,0,21
+134,"unbalanced","global null","oracle","fixed",20,30,0,22
+134,"unbalanced","global null","oracle","fixed",20,30,0,23
+134,"unbalanced","global null","oracle","fixed",20,30,0,24
+134,"unbalanced","global null","oracle","fixed",20,30,0,25
+140,"unbalanced","all active","oracle","fixed",1,0,0.000999999999976353,1
+140,"unbalanced","all active","oracle","fixed",20,5,0.0010000000000332,2
+140,"unbalanced","all active","oracle","fixed",20,10,0.0010000000000332,3
+140,"unbalanced","all active","oracle","fixed",20,15,0.00200000000000955,4
+140,"unbalanced","all active","oracle","fixed",20,20,0.00200000000000955,5
+140,"unbalanced","all active","oracle","fixed",20,25,0.000999999999976353,6
+140,"unbalanced","all active","oracle","fixed",20,30,0.0010000000000332,7
+140,"unbalanced","all active","oracle","fixed",20,30,0,8
+140,"unbalanced","all active","oracle","fixed",20,30,0,9
+140,"unbalanced","all active","oracle","fixed",20,30,0.000999999999976353,10
+140,"unbalanced","all active","oracle","fixed",20,30,0,11
+140,"unbalanced","all active","oracle","fixed",20,30,0.000999999999976353,12
+140,"unbalanced","all active","oracle","fixed",19,30,0,13
+140,"unbalanced","all active","oracle","fixed",16,30,0.000999999999976353,14
+140,"unbalanced","all active","oracle","fixed",13,30,0,15
+140,"unbalanced","all active","oracle","fixed",12,30,0,16
+140,"unbalanced","all active","oracle","fixed",12,30,0.000999999999976353,17
+140,"unbalanced","all active","oracle","fixed",7,30,0,18
+140,"unbalanced","all active","oracle","fixed",7,30,0,19
+140,"unbalanced","all active","oracle","fixed",6,30,0,20
+140,"unbalanced","all active","oracle","fixed",4,30,0.0010000000000332,21
+140,"unbalanced","all active","oracle","fixed",3,30,0,22
+140,"unbalanced","all active","oracle","fixed",3,30,0,23
+140,"unbalanced","all active","oracle","fixed",3,30,0,24
+140,"unbalanced","all active","oracle","fixed",3,30,0.000999999999976353,25
+154,"unbalanced","strong heterogeneity","oracle","fixed",1,0,0,1
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,5,0.000999999999976353,2
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,10,0.00200000000000955,3
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,15,0.00200000000000955,4
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,20,0.0010000000000332,5
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,25,0.000999999999976353,6
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0.0010000000000332,7
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0.000999999999976353,8
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0.000999999999976353,9
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0,10
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0.0010000000000332,11
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0.000999999999976353,12
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0.000999999999976353,13
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0.000999999999976353,14
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0.0010000000000332,15
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0,16
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0,17
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0,18
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0,19
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0,20
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0,21
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0.0010000000000332,22
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0,23
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0,24
+154,"unbalanced","strong heterogeneity","oracle","fixed",20,30,0,25
+2,"unbalanced","global null","no borrowing","open",1,0,0.00200000000000955,1
+2,"unbalanced","global null","no borrowing","open",19,5,0.0029999999999859,2
+2,"unbalanced","global null","no borrowing","open",20,10,0.0029999999999859,3
+2,"unbalanced","global null","no borrowing","open",20,15,0.0029999999999859,4
+2,"unbalanced","global null","no borrowing","open",20,20,0.0029999999999859,5
+2,"unbalanced","global null","no borrowing","open",20,25,0.00300000000004275,6
+2,"unbalanced","global null","no borrowing","open",20,30,0.0029999999999859,7
+2,"unbalanced","global null","no borrowing","open",20,35,0.00200000000000955,8
+2,"unbalanced","global null","no borrowing","open",20,40,0.00200000000000955,9
+2,"unbalanced","global null","no borrowing","open",20,45,0.00199999999995271,10
+2,"unbalanced","global null","no borrowing","open",20,50,0.000999999999976353,11
+2,"unbalanced","global null","no borrowing","open",19,55,0.0010000000000332,12
+2,"unbalanced","global null","no borrowing","open",19,60,0.00199999999995271,13
+2,"unbalanced","global null","no borrowing","open",18,65,0.0010000000000332,14
+2,"unbalanced","global null","no borrowing","open",18,65,0.0010000000000332,15
+2,"unbalanced","global null","no borrowing","open",15,65,0.000999999999976353,16
+2,"unbalanced","global null","no borrowing","open",15,65,0.000999999999976353,17
+2,"unbalanced","global null","no borrowing","open",11,42,0.000999999999976353,18
+2,"unbalanced","global null","no borrowing","open",11,45,0,19
+2,"unbalanced","global null","no borrowing","open",10,47,0.0010000000000332,20
+2,"unbalanced","global null","no borrowing","open",10,50,0.0010000000000332,21
+2,"unbalanced","global null","no borrowing","open",7,52,0.000999999999976353,22
+2,"unbalanced","global null","no borrowing","open",7,55,0.000999999999976353,23
+2,"unbalanced","global null","no borrowing","open",5,57,0.0010000000000332,24
+2,"unbalanced","global null","no borrowing","open",5,60,0.000999999999976353,25
+2,"unbalanced","global null","no borrowing","open",4,62,0,26
+2,"unbalanced","global null","no borrowing","open",4,65,0,27
+2,"unbalanced","global null","no borrowing","open",4,67,0.000999999999976353,28
+2,"unbalanced","global null","no borrowing","open",2,70,0.000999999999976353,29
+2,"unbalanced","global null","no borrowing","open",2,72,0,30
+2,"unbalanced","global null","no borrowing","open",1,55,0,31
+2,"unbalanced","global null","no borrowing","open",1,55,0,32
+2,"unbalanced","global null","no borrowing","open",1,55,0.0010000000000332,33
+2,"unbalanced","global null","no borrowing","open",1,55,0.000999999999976353,34
+2,"unbalanced","global null","no borrowing","open",1,55,0,35
+2,"unbalanced","global null","no borrowing","open",1,55,0,36
+2,"unbalanced","global null","no borrowing","open",1,55,0,37
+2,"unbalanced","global null","no borrowing","open",1,55,0,38
+2,"unbalanced","global null","no borrowing","open",1,55,0.000999999999976353,39
+2,"unbalanced","global null","no borrowing","open",1,55,0,40
+2,"unbalanced","global null","no borrowing","open",1,55,0.0010000000000332,41
+8,"unbalanced","all active","no borrowing","open",1,0,0.00200000000000955,1
+8,"unbalanced","all active","no borrowing","open",20,5,0.0029999999999859,2
+8,"unbalanced","all active","no borrowing","open",20,10,0.0029999999999859,3
+8,"unbalanced","all active","no borrowing","open",20,15,0.0110000000000241,4
+8,"unbalanced","all active","no borrowing","open",20,20,0.0029999999999859,5
+8,"unbalanced","all active","no borrowing","open",20,25,0.0029999999999859,6
+8,"unbalanced","all active","no borrowing","open",20,30,0.0040000000000191,7
+8,"unbalanced","all active","no borrowing","open",20,35,0.0029999999999859,8
+8,"unbalanced","all active","no borrowing","open",20,40,0.0029999999999859,9
+8,"unbalanced","all active","no borrowing","open",20,45,0.00200000000000955,10
+8,"unbalanced","all active","no borrowing","open",20,50,0.000999999999976353,11
+8,"unbalanced","all active","no borrowing","open",19,55,0.000999999999976353,12
+8,"unbalanced","all active","no borrowing","open",19,60,0.0010000000000332,13
+8,"unbalanced","all active","no borrowing","open",18,65,0.0010000000000332,14
+8,"unbalanced","all active","no borrowing","open",18,70,0.00200000000000955,15
+8,"unbalanced","all active","no borrowing","open",18,75,0.000999999999976353,16
+8,"unbalanced","all active","no borrowing","open",18,80,0.00200000000000955,17
+8,"unbalanced","all active","no borrowing","open",18,85,0.00200000000000955,18
+8,"unbalanced","all active","no borrowing","open",18,90,0.00200000000000955,19
+8,"unbalanced","all active","no borrowing","open",18,95,0.000999999999976353,20
+8,"unbalanced","all active","no borrowing","open",18,100,0.0010000000000332,21
+8,"unbalanced","all active","no borrowing","open",15,100,0.0029999999999859,22
+8,"unbalanced","all active","no borrowing","open",15,100,0.0010000000000332,23
+8,"unbalanced","all active","no borrowing","open",14,100,0.0010000000000332,24
+8,"unbalanced","all active","no borrowing","open",13,100,0.0010000000000332,25
+8,"unbalanced","all active","no borrowing","open",12,100,0.0010000000000332,26
+8,"unbalanced","all active","no borrowing","open",12,100,0,27
+8,"unbalanced","all active","no borrowing","open",12,100,0,28
+8,"unbalanced","all active","no borrowing","open",11,100,0.0010000000000332,29
+8,"unbalanced","all active","no borrowing","open",8,100,0,30
+8,"unbalanced","all active","no borrowing","open",6,100,0,31
+8,"unbalanced","all active","no borrowing","open",6,100,0,32
+8,"unbalanced","all active","no borrowing","open",6,100,0,33
+8,"unbalanced","all active","no borrowing","open",5,100,0.000999999999976353,34
+8,"unbalanced","all active","no borrowing","open",5,100,0.000999999999976353,35
+8,"unbalanced","all active","no borrowing","open",5,100,0,36
+8,"unbalanced","all active","no borrowing","open",5,100,0,37
+8,"unbalanced","all active","no borrowing","open",5,100,0,38
+8,"unbalanced","all active","no borrowing","open",5,100,0,39
+8,"unbalanced","all active","no borrowing","open",5,100,0,40
+8,"unbalanced","all active","no borrowing","open",5,100,0,41
+8,"unbalanced","all active","no borrowing","open",3,51,0.000999999999976353,42
+8,"unbalanced","all active","no borrowing","open",3,52,0,43
+8,"unbalanced","all active","no borrowing","open",3,53,0.000999999999976353,44
+8,"unbalanced","all active","no borrowing","open",3,55,0,45
+8,"unbalanced","all active","no borrowing","open",2,56,0,46
+8,"unbalanced","all active","no borrowing","open",2,57,0,47
+8,"unbalanced","all active","no borrowing","open",1,58,0,48
+8,"unbalanced","all active","no borrowing","open",1,60,0,49
+8,"unbalanced","all active","no borrowing","open",1,61,0.000999999999976353,50
+8,"unbalanced","all active","no borrowing","open",1,62,0,51
+8,"unbalanced","all active","no borrowing","open",1,63,0,52
+8,"unbalanced","all active","no borrowing","open",1,65,0,53
+8,"unbalanced","all active","no borrowing","open",1,66,0,54
+8,"unbalanced","all active","no borrowing","open",1,67,0,55
+8,"unbalanced","all active","no borrowing","open",1,68,0,56
+8,"unbalanced","all active","no borrowing","open",1,70,0.0010000000000332,57
+8,"unbalanced","all active","no borrowing","open",1,71,0,58
+8,"unbalanced","all active","no borrowing","open",1,72,0,59
+8,"unbalanced","all active","no borrowing","open",1,73,0,60
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,0,0.00200000000000955,1
+22,"unbalanced","strong heterogeneity","no borrowing","open",20,5,0.00300000000004275,2
+22,"unbalanced","strong heterogeneity","no borrowing","open",20,10,0.0029999999999859,3
+22,"unbalanced","strong heterogeneity","no borrowing","open",20,15,0.0029999999999859,4
+22,"unbalanced","strong heterogeneity","no borrowing","open",20,20,0.0029999999999859,5
+22,"unbalanced","strong heterogeneity","no borrowing","open",20,25,0.00200000000000955,6
+22,"unbalanced","strong heterogeneity","no borrowing","open",20,30,0.0029999999999859,7
+22,"unbalanced","strong heterogeneity","no borrowing","open",20,35,0.00200000000000955,8
+22,"unbalanced","strong heterogeneity","no borrowing","open",20,40,0.00200000000000955,9
+22,"unbalanced","strong heterogeneity","no borrowing","open",20,45,0.0010000000000332,10
+22,"unbalanced","strong heterogeneity","no borrowing","open",20,50,0.000999999999976353,11
+22,"unbalanced","strong heterogeneity","no borrowing","open",18,55,0.00200000000000955,12
+22,"unbalanced","strong heterogeneity","no borrowing","open",18,60,0.0010000000000332,13
+22,"unbalanced","strong heterogeneity","no borrowing","open",13,65,0.000999999999976353,14
+22,"unbalanced","strong heterogeneity","no borrowing","open",13,70,0,15
+22,"unbalanced","strong heterogeneity","no borrowing","open",11,50,0.000999999999976353,16
+22,"unbalanced","strong heterogeneity","no borrowing","open",11,50,0,17
+22,"unbalanced","strong heterogeneity","no borrowing","open",9,50,0,18
+22,"unbalanced","strong heterogeneity","no borrowing","open",9,50,0,19
+22,"unbalanced","strong heterogeneity","no borrowing","open",7,50,0,20
+22,"unbalanced","strong heterogeneity","no borrowing","open",7,50,0,21
+22,"unbalanced","strong heterogeneity","no borrowing","open",6,52,0,22
+22,"unbalanced","strong heterogeneity","no borrowing","open",6,55,0.000999999999976353,23
+22,"unbalanced","strong heterogeneity","no borrowing","open",6,57,0.0010000000000332,24
+22,"unbalanced","strong heterogeneity","no borrowing","open",6,60,0.000999999999976353,25
+22,"unbalanced","strong heterogeneity","no borrowing","open",4,50,0,26
+22,"unbalanced","strong heterogeneity","no borrowing","open",4,50,0.0010000000000332,27
+22,"unbalanced","strong heterogeneity","no borrowing","open",4,50,0.0010000000000332,28
+22,"unbalanced","strong heterogeneity","no borrowing","open",4,50,0,29
+22,"unbalanced","strong heterogeneity","no borrowing","open",2,50,0,30
+22,"unbalanced","strong heterogeneity","no borrowing","open",2,50,0,31
+22,"unbalanced","strong heterogeneity","no borrowing","open",2,50,0,32
+22,"unbalanced","strong heterogeneity","no borrowing","open",2,50,0.000999999999976353,33
+22,"unbalanced","strong heterogeneity","no borrowing","open",2,50,0,34
+22,"unbalanced","strong heterogeneity","no borrowing","open",2,50,0,35
+22,"unbalanced","strong heterogeneity","no borrowing","open",2,50,0,36
+22,"unbalanced","strong heterogeneity","no borrowing","open",2,50,0.0010000000000332,37
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,46,0,38
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,47,0,39
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,48,0.000999999999976353,40
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,50,0,41
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,51,0,42
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,52,0.0010000000000332,43
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,53,0,44
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,55,0,45
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,56,0,46
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,57,0,47
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,58,0,48
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,60,0.000999999999976353,49
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,61,0,50
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,62,0,51
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,63,0,52
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,65,0,53
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,66,0,54
+22,"unbalanced","strong heterogeneity","no borrowing","open",1,67,0,55
+24,"unbalanced","global null","power, equal","open",1,0,0.000999999999976353,1
+24,"unbalanced","global null","power, equal","open",19,5,0.0040000000000191,2
+24,"unbalanced","global null","power, equal","open",20,10,0.0040000000000191,3
+24,"unbalanced","global null","power, equal","open",20,15,0.00300000000004275,4
+24,"unbalanced","global null","power, equal","open",20,20,0.0029999999999859,5
+24,"unbalanced","global null","power, equal","open",20,25,0.0029999999999859,6
+24,"unbalanced","global null","power, equal","open",20,30,0.0029999999999859,7
+24,"unbalanced","global null","power, equal","open",20,35,0.00199999999995271,8
+24,"unbalanced","global null","power, equal","open",19,40,0.00200000000000955,9
+24,"unbalanced","global null","power, equal","open",19,45,0.0029999999999859,10
+24,"unbalanced","global null","power, equal","open",19,50,0.000999999999976353,11
+24,"unbalanced","global null","power, equal","open",18,55,0.00200000000000955,12
+24,"unbalanced","global null","power, equal","open",18,60,0.000999999999976353,13
+24,"unbalanced","global null","power, equal","open",15,65,0.000999999999976353,14
+24,"unbalanced","global null","power, equal","open",15,65,0.000999999999976353,15
+24,"unbalanced","global null","power, equal","open",14,65,0.000999999999976353,16
+24,"unbalanced","global null","power, equal","open",14,65,0.0010000000000332,17
+24,"unbalanced","global null","power, equal","open",10,45,0.000999999999976353,18
+24,"unbalanced","global null","power, equal","open",9,45,0.00200000000000955,19
+24,"unbalanced","global null","power, equal","open",8,47,0.0010000000000332,20
+24,"unbalanced","global null","power, equal","open",8,50,0.0010000000000332,21
+24,"unbalanced","global null","power, equal","open",6,52,0.0010000000000332,22
+24,"unbalanced","global null","power, equal","open",5,55,0,23
+24,"unbalanced","global null","power, equal","open",4,57,0,24
+24,"unbalanced","global null","power, equal","open",4,60,0.0010000000000332,25
+24,"unbalanced","global null","power, equal","open",4,62,0,26
+24,"unbalanced","global null","power, equal","open",4,65,0.000999999999976353,27
+24,"unbalanced","global null","power, equal","open",3,67,0.000999999999976353,28
+24,"unbalanced","global null","power, equal","open",3,70,0.0010000000000332,29
+24,"unbalanced","global null","power, equal","open",2,72,0.000999999999976353,30
+24,"unbalanced","global null","power, equal","open",2,75,0,31
+24,"unbalanced","global null","power, equal","open",1,47,0,32
+24,"unbalanced","global null","power, equal","open",1,47,0.000999999999976353,33
+24,"unbalanced","global null","power, equal","open",1,47,0,34
+24,"unbalanced","global null","power, equal","open",1,47,0.000999999999976353,35
+24,"unbalanced","global null","power, equal","open",1,47,0,36
+24,"unbalanced","global null","power, equal","open",1,47,0.0010000000000332,37
+24,"unbalanced","global null","power, equal","open",1,47,0,38
+24,"unbalanced","global null","power, equal","open",1,47,0.000999999999976353,39
+30,"unbalanced","all active","power, equal","open",1,0,0.00200000000000955,1
+30,"unbalanced","all active","power, equal","open",20,5,0.0029999999999859,2
+30,"unbalanced","all active","power, equal","open",20,10,0.0040000000000191,3
+30,"unbalanced","all active","power, equal","open",20,15,0.0040000000000191,4
+30,"unbalanced","all active","power, equal","open",20,20,0.0029999999999859,5
+30,"unbalanced","all active","power, equal","open",20,25,0.00200000000000955,6
+30,"unbalanced","all active","power, equal","open",20,30,0.00200000000000955,7
+30,"unbalanced","all active","power, equal","open",20,35,0.00200000000000955,8
+30,"unbalanced","all active","power, equal","open",20,40,0.0029999999999859,9
+30,"unbalanced","all active","power, equal","open",20,45,0.00200000000000955,10
+30,"unbalanced","all active","power, equal","open",20,50,0.0010000000000332,11
+30,"unbalanced","all active","power, equal","open",20,55,0.00200000000000955,12
+30,"unbalanced","all active","power, equal","open",20,60,0.000999999999976353,13
+30,"unbalanced","all active","power, equal","open",20,65,0.00200000000000955,14
+30,"unbalanced","all active","power, equal","open",20,70,0.00200000000000955,15
+30,"unbalanced","all active","power, equal","open",20,75,0.00199999999995271,16
+30,"unbalanced","all active","power, equal","open",18,80,0.000999999999976353,17
+30,"unbalanced","all active","power, equal","open",17,85,0.00200000000000955,18
+30,"unbalanced","all active","power, equal","open",17,90,0.0010000000000332,19
+30,"unbalanced","all active","power, equal","open",16,95,0.000999999999976353,20
+30,"unbalanced","all active","power, equal","open",16,100,0.000999999999976353,21
+30,"unbalanced","all active","power, equal","open",15,100,0.000999999999976353,22
+30,"unbalanced","all active","power, equal","open",13,100,0.000999999999976353,23
+30,"unbalanced","all active","power, equal","open",13,100,0,24
+30,"unbalanced","all active","power, equal","open",12,100,0.0010000000000332,25
+30,"unbalanced","all active","power, equal","open",11,100,0,26
+30,"unbalanced","all active","power, equal","open",10,100,0.0010000000000332,27
+30,"unbalanced","all active","power, equal","open",9,100,0.000999999999976353,28
+30,"unbalanced","all active","power, equal","open",9,100,0.000999999999976353,29
+30,"unbalanced","all active","power, equal","open",5,100,0.000999999999976353,30
+30,"unbalanced","all active","power, equal","open",5,100,0,31
+30,"unbalanced","all active","power, equal","open",5,100,0.000999999999976353,32
+30,"unbalanced","all active","power, equal","open",4,100,0,33
+30,"unbalanced","all active","power, equal","open",3,100,0,34
+30,"unbalanced","all active","power, equal","open",2,65,0,35
+30,"unbalanced","all active","power, equal","open",2,65,0,36
+30,"unbalanced","all active","power, equal","open",2,65,0,37
+30,"unbalanced","all active","power, equal","open",2,65,0,38
+30,"unbalanced","all active","power, equal","open",2,65,0,39
+30,"unbalanced","all active","power, equal","open",2,65,0,40
+30,"unbalanced","all active","power, equal","open",1,50,0,41
+30,"unbalanced","all active","power, equal","open",1,51,0,42
+30,"unbalanced","all active","power, equal","open",1,52,0,43
+30,"unbalanced","all active","power, equal","open",1,53,0,44
+30,"unbalanced","all active","power, equal","open",1,55,0,45
+30,"unbalanced","all active","power, equal","open",1,56,0,46
+30,"unbalanced","all active","power, equal","open",1,57,0,47
+44,"unbalanced","strong heterogeneity","power, equal","open",1,0,0.0010000000000332,1
+44,"unbalanced","strong heterogeneity","power, equal","open",20,5,0.00399999999996226,2
+44,"unbalanced","strong heterogeneity","power, equal","open",20,10,0.0029999999999859,3
+44,"unbalanced","strong heterogeneity","power, equal","open",20,15,0.0029999999999859,4
+44,"unbalanced","strong heterogeneity","power, equal","open",20,20,0.00300000000004275,5
+44,"unbalanced","strong heterogeneity","power, equal","open",20,25,0.00200000000000955,6
+44,"unbalanced","strong heterogeneity","power, equal","open",20,30,0.00200000000000955,7
+44,"unbalanced","strong heterogeneity","power, equal","open",20,35,0.00200000000000955,8
+44,"unbalanced","strong heterogeneity","power, equal","open",20,40,0.00200000000000955,9
+44,"unbalanced","strong heterogeneity","power, equal","open",20,45,0.0010000000000332,10
+44,"unbalanced","strong heterogeneity","power, equal","open",20,50,0.000999999999976353,11
+44,"unbalanced","strong heterogeneity","power, equal","open",19,55,0.000999999999976353,12
+44,"unbalanced","strong heterogeneity","power, equal","open",19,60,0.0010000000000332,13
+44,"unbalanced","strong heterogeneity","power, equal","open",19,65,0.000999999999976353,14
+44,"unbalanced","strong heterogeneity","power, equal","open",18,70,0.0010000000000332,15
+44,"unbalanced","strong heterogeneity","power, equal","open",15,60,0.000999999999976353,16
+44,"unbalanced","strong heterogeneity","power, equal","open",14,60,0.000999999999976353,17
+44,"unbalanced","strong heterogeneity","power, equal","open",13,60,0.0010000000000332,18
+44,"unbalanced","strong heterogeneity","power, equal","open",11,60,0.0010000000000332,19
+44,"unbalanced","strong heterogeneity","power, equal","open",8,60,0.000999999999976353,20
+44,"unbalanced","strong heterogeneity","power, equal","open",8,60,0.000999999999976353,21
+44,"unbalanced","strong heterogeneity","power, equal","open",8,60,0.000999999999976353,22
+44,"unbalanced","strong heterogeneity","power, equal","open",8,60,0.000999999999976353,23
+44,"unbalanced","strong heterogeneity","power, equal","open",8,60,0.000999999999976353,24
+44,"unbalanced","strong heterogeneity","power, equal","open",8,60,0,25
+44,"unbalanced","strong heterogeneity","power, equal","open",7,60,0,26
+44,"unbalanced","strong heterogeneity","power, equal","open",6,60,0,27
+44,"unbalanced","strong heterogeneity","power, equal","open",6,60,0,28
+44,"unbalanced","strong heterogeneity","power, equal","open",6,60,0.000999999999976353,29
+44,"unbalanced","strong heterogeneity","power, equal","open",3,50,0.000999999999976353,30
+44,"unbalanced","strong heterogeneity","power, equal","open",3,50,0,31
+44,"unbalanced","strong heterogeneity","power, equal","open",3,50,0,32
+44,"unbalanced","strong heterogeneity","power, equal","open",2,50,0.000999999999976353,33
+44,"unbalanced","strong heterogeneity","power, equal","open",2,50,0,34
+44,"unbalanced","strong heterogeneity","power, equal","open",2,50,0,35
+44,"unbalanced","strong heterogeneity","power, equal","open",2,50,0,36
+44,"unbalanced","strong heterogeneity","power, equal","open",2,50,0,37
+44,"unbalanced","strong heterogeneity","power, equal","open",1,46,0,38
+44,"unbalanced","strong heterogeneity","power, equal","open",1,47,0.0010000000000332,39
+44,"unbalanced","strong heterogeneity","power, equal","open",1,48,0,40
+44,"unbalanced","strong heterogeneity","power, equal","open",1,50,0,41
+44,"unbalanced","strong heterogeneity","power, equal","open",1,51,0,42
+44,"unbalanced","strong heterogeneity","power, equal","open",1,52,0,43
+44,"unbalanced","strong heterogeneity","power, equal","open",1,53,0,44
+44,"unbalanced","strong heterogeneity","power, equal","open",1,55,0,45
+44,"unbalanced","strong heterogeneity","power, equal","open",1,56,0,46
+44,"unbalanced","strong heterogeneity","power, equal","open",1,57,0,47
+44,"unbalanced","strong heterogeneity","power, equal","open",1,58,0.000999999999976353,48
+44,"unbalanced","strong heterogeneity","power, equal","open",1,60,0,49
+46,"unbalanced","global null","power, column","open",1,0,0.00200000000000955,1
+46,"unbalanced","global null","power, column","open",19,5,0.00300000000004275,2
+46,"unbalanced","global null","power, column","open",20,10,0.0040000000000191,3
+46,"unbalanced","global null","power, column","open",20,15,0.0040000000000191,4
+46,"unbalanced","global null","power, column","open",20,20,0.0029999999999859,5
+46,"unbalanced","global null","power, column","open",20,25,0.0029999999999859,6
+46,"unbalanced","global null","power, column","open",20,30,0.00200000000000955,7
+46,"unbalanced","global null","power, column","open",20,35,0.00199999999995271,8
+46,"unbalanced","global null","power, column","open",19,40,0.00200000000000955,9
+46,"unbalanced","global null","power, column","open",19,45,0.00200000000000955,10
+46,"unbalanced","global null","power, column","open",19,50,0.00199999999995271,11
+46,"unbalanced","global null","power, column","open",18,55,0.00199999999995271,12
+46,"unbalanced","global null","power, column","open",18,60,0.000999999999976353,13
+46,"unbalanced","global null","power, column","open",16,65,0.000999999999976353,14
+46,"unbalanced","global null","power, column","open",16,65,0.000999999999976353,15
+46,"unbalanced","global null","power, column","open",15,65,0.000999999999976353,16
+46,"unbalanced","global null","power, column","open",14,65,0,17
+46,"unbalanced","global null","power, column","open",11,65,0,18
+46,"unbalanced","global null","power, column","open",10,65,0.000999999999976353,19
+46,"unbalanced","global null","power, column","open",9,47,0.0010000000000332,20
+46,"unbalanced","global null","power, column","open",8,50,0.000999999999976353,21
+46,"unbalanced","global null","power, column","open",8,52,0.0010000000000332,22
+46,"unbalanced","global null","power, column","open",5,55,0.0010000000000332,23
+46,"unbalanced","global null","power, column","open",5,57,0,24
+46,"unbalanced","global null","power, column","open",5,60,0,25
+46,"unbalanced","global null","power, column","open",5,62,0.0010000000000332,26
+46,"unbalanced","global null","power, column","open",4,65,0.0010000000000332,27
+46,"unbalanced","global null","power, column","open",3,67,0.000999999999976353,28
+46,"unbalanced","global null","power, column","open",3,70,0.000999999999976353,29
+46,"unbalanced","global null","power, column","open",3,72,0.000999999999976353,30
+46,"unbalanced","global null","power, column","open",2,75,0.000999999999976353,31
+46,"unbalanced","global null","power, column","open",2,77,0.0010000000000332,32
+46,"unbalanced","global null","power, column","open",2,80,0.000999999999976353,33
+46,"unbalanced","global null","power, column","open",2,82,0,34
+46,"unbalanced","global null","power, column","open",2,85,0,35
+46,"unbalanced","global null","power, column","open",2,87,0.0010000000000332,36
+46,"unbalanced","global null","power, column","open",1,90,0.000999999999976353,37
+46,"unbalanced","global null","power, column","open",1,92,0,38
+52,"unbalanced","all active","power, column","open",1,0,0.000999999999976353,1
+52,"unbalanced","all active","power, column","open",20,5,0.00300000000004275,2
+52,"unbalanced","all active","power, column","open",20,10,0.0029999999999859,3
+52,"unbalanced","all active","power, column","open",20,15,0.0029999999999859,4
+52,"unbalanced","all active","power, column","open",20,20,0.00300000000004275,5
+52,"unbalanced","all active","power, column","open",20,25,0.0040000000000191,6
+52,"unbalanced","all active","power, column","open",20,30,0.0029999999999859,7
+52,"unbalanced","all active","power, column","open",20,35,0.00200000000000955,8
+52,"unbalanced","all active","power, column","open",20,40,0.0029999999999859,9
+52,"unbalanced","all active","power, column","open",20,45,0.00200000000000955,10
+52,"unbalanced","all active","power, column","open",20,50,0.00200000000000955,11
+52,"unbalanced","all active","power, column","open",20,55,0.00200000000000955,12
+52,"unbalanced","all active","power, column","open",20,60,0.00200000000000955,13
+52,"unbalanced","all active","power, column","open",20,65,0.00199999999995271,14
+52,"unbalanced","all active","power, column","open",20,70,0.00200000000000955,15
+52,"unbalanced","all active","power, column","open",19,75,0.00199999999995271,16
+52,"unbalanced","all active","power, column","open",18,80,0.00199999999995271,17
+52,"unbalanced","all active","power, column","open",18,85,0.00200000000000955,18
+52,"unbalanced","all active","power, column","open",18,90,0.00499999999999545,19
+52,"unbalanced","all active","power, column","open",17,95,0.00200000000000955,20
+52,"unbalanced","all active","power, column","open",16,100,0.00200000000000955,21
+52,"unbalanced","all active","power, column","open",15,105,0.0010000000000332,22
+52,"unbalanced","all active","power, column","open",14,110,0.0010000000000332,23
+52,"unbalanced","all active","power, column","open",13,115,0.0010000000000332,24
+52,"unbalanced","all active","power, column","open",12,100,0.000999999999976353,25
+52,"unbalanced","all active","power, column","open",12,100,0.0010000000000332,26
+52,"unbalanced","all active","power, column","open",12,100,0.000999999999976353,27
+52,"unbalanced","all active","power, column","open",12,100,0.000999999999976353,28
+52,"unbalanced","all active","power, column","open",11,100,0,29
+52,"unbalanced","all active","power, column","open",7,100,0,30
+52,"unbalanced","all active","power, column","open",6,100,0,31
+52,"unbalanced","all active","power, column","open",6,100,0,32
+52,"unbalanced","all active","power, column","open",5,100,0.0010000000000332,33
+52,"unbalanced","all active","power, column","open",4,100,0,34
+52,"unbalanced","all active","power, column","open",3,70,0,35
+52,"unbalanced","all active","power, column","open",3,70,0,36
+52,"unbalanced","all active","power, column","open",3,70,0,37
+52,"unbalanced","all active","power, column","open",3,70,0.0010000000000332,38
+52,"unbalanced","all active","power, column","open",3,70,0.0010000000000332,39
+52,"unbalanced","all active","power, column","open",3,70,0,40
+52,"unbalanced","all active","power, column","open",2,70,0.000999999999976353,41
+52,"unbalanced","all active","power, column","open",2,70,0,42
+52,"unbalanced","all active","power, column","open",2,70,0,43
+52,"unbalanced","all active","power, column","open",2,70,0,44
+52,"unbalanced","all active","power, column","open",2,70,0.000999999999976353,45
+52,"unbalanced","all active","power, column","open",1,56,0.000999999999976353,46
+52,"unbalanced","all active","power, column","open",1,57,0,47
+52,"unbalanced","all active","power, column","open",1,58,0,48
+52,"unbalanced","all active","power, column","open",1,60,0.000999999999976353,49
+52,"unbalanced","all active","power, column","open",1,61,0,50
+52,"unbalanced","all active","power, column","open",1,62,0,51
+52,"unbalanced","all active","power, column","open",1,63,0.000999999999976353,52
+52,"unbalanced","all active","power, column","open",1,65,0,53
+52,"unbalanced","all active","power, column","open",1,66,0,54
+52,"unbalanced","all active","power, column","open",1,67,0.000999999999976353,55
+52,"unbalanced","all active","power, column","open",1,68,0,56
+52,"unbalanced","all active","power, column","open",1,70,0,57
+52,"unbalanced","all active","power, column","open",1,71,0,58
+52,"unbalanced","all active","power, column","open",1,72,0,59
+52,"unbalanced","all active","power, column","open",1,73,0.0010000000000332,60
+52,"unbalanced","all active","power, column","open",1,75,0,61
+66,"unbalanced","strong heterogeneity","power, column","open",1,0,0.000999999999976353,1
+66,"unbalanced","strong heterogeneity","power, column","open",20,5,0.00300000000004275,2
+66,"unbalanced","strong heterogeneity","power, column","open",20,10,0.0029999999999859,3
+66,"unbalanced","strong heterogeneity","power, column","open",20,15,0.0029999999999859,4
+66,"unbalanced","strong heterogeneity","power, column","open",20,20,0.00300000000004275,5
+66,"unbalanced","strong heterogeneity","power, column","open",20,25,0.00200000000000955,6
+66,"unbalanced","strong heterogeneity","power, column","open",20,30,0.00200000000000955,7
+66,"unbalanced","strong heterogeneity","power, column","open",20,35,0.00200000000000955,8
+66,"unbalanced","strong heterogeneity","power, column","open",20,40,0.00199999999995271,9
+66,"unbalanced","strong heterogeneity","power, column","open",20,45,0.000999999999976353,10
+66,"unbalanced","strong heterogeneity","power, column","open",20,50,0.0010000000000332,11
+66,"unbalanced","strong heterogeneity","power, column","open",20,55,0.0010000000000332,12
+66,"unbalanced","strong heterogeneity","power, column","open",20,60,0.000999999999976353,13
+66,"unbalanced","strong heterogeneity","power, column","open",20,65,0.000999999999976353,14
+66,"unbalanced","strong heterogeneity","power, column","open",19,70,0.0010000000000332,15
+66,"unbalanced","strong heterogeneity","power, column","open",17,75,0.000999999999976353,16
+66,"unbalanced","strong heterogeneity","power, column","open",17,80,0.000999999999976353,17
+66,"unbalanced","strong heterogeneity","power, column","open",14,85,0.0010000000000332,18
+66,"unbalanced","strong heterogeneity","power, column","open",11,60,0.0010000000000332,19
+66,"unbalanced","strong heterogeneity","power, column","open",10,60,0,20
+66,"unbalanced","strong heterogeneity","power, column","open",9,60,0,21
+66,"unbalanced","strong heterogeneity","power, column","open",7,60,0,22
+66,"unbalanced","strong heterogeneity","power, column","open",7,60,0.000999999999976353,23
+66,"unbalanced","strong heterogeneity","power, column","open",7,60,0,24
+66,"unbalanced","strong heterogeneity","power, column","open",7,60,0,25
+66,"unbalanced","strong heterogeneity","power, column","open",6,60,0,26
+66,"unbalanced","strong heterogeneity","power, column","open",6,60,0,27
+66,"unbalanced","strong heterogeneity","power, column","open",5,60,0,28
+66,"unbalanced","strong heterogeneity","power, column","open",4,60,0,29
+66,"unbalanced","strong heterogeneity","power, column","open",2,55,0.000999999999976353,30
+66,"unbalanced","strong heterogeneity","power, column","open",2,55,0,31
+66,"unbalanced","strong heterogeneity","power, column","open",2,55,0,32
+66,"unbalanced","strong heterogeneity","power, column","open",2,55,0.000999999999976353,33
+66,"unbalanced","strong heterogeneity","power, column","open",2,55,0,34
+66,"unbalanced","strong heterogeneity","power, column","open",2,55,0.0010000000000332,35
+66,"unbalanced","strong heterogeneity","power, column","open",2,55,0,36
+66,"unbalanced","strong heterogeneity","power, column","open",2,55,0.0010000000000332,37
+66,"unbalanced","strong heterogeneity","power, column","open",1,46,0,38
+66,"unbalanced","strong heterogeneity","power, column","open",1,47,0.000999999999976353,39
+66,"unbalanced","strong heterogeneity","power, column","open",1,48,0,40
+66,"unbalanced","strong heterogeneity","power, column","open",1,50,0,41
+66,"unbalanced","strong heterogeneity","power, column","open",1,51,0,42
+66,"unbalanced","strong heterogeneity","power, column","open",1,52,0,43
+66,"unbalanced","strong heterogeneity","power, column","open",1,53,0,44
+66,"unbalanced","strong heterogeneity","power, column","open",1,55,0.0010000000000332,45
+66,"unbalanced","strong heterogeneity","power, column","open",1,56,0,46
+66,"unbalanced","strong heterogeneity","power, column","open",1,57,0,47
+66,"unbalanced","strong heterogeneity","power, column","open",1,58,0,48
+66,"unbalanced","strong heterogeneity","power, column","open",1,60,0.000999999999976353,49
+68,"unbalanced","global null","EX/NEX","open",1,0,0.0029999999999859,1
+68,"unbalanced","global null","EX/NEX","open",19,5,0.00799999999998136,2
+68,"unbalanced","global null","EX/NEX","open",20,10,0.00900000000001455,3
+68,"unbalanced","global null","EX/NEX","open",20,15,0.007000000000005,4
+68,"unbalanced","global null","EX/NEX","open",20,20,0.00599999999997181,5
+68,"unbalanced","global null","EX/NEX","open",20,25,0.00499999999999545,6
+68,"unbalanced","global null","EX/NEX","open",20,30,0.00499999999999545,7
+68,"unbalanced","global null","EX/NEX","open",20,35,0.0040000000000191,8
+68,"unbalanced","global null","EX/NEX","open",19,40,0.0029999999999859,9
+68,"unbalanced","global null","EX/NEX","open",19,45,0.00300000000004275,10
+68,"unbalanced","global null","EX/NEX","open",19,50,0.00200000000000955,11
+68,"unbalanced","global null","EX/NEX","open",19,55,0.0029999999999859,12
+68,"unbalanced","global null","EX/NEX","open",19,60,0.0029999999999859,13
+68,"unbalanced","global null","EX/NEX","open",17,60,0.00200000000000955,14
+68,"unbalanced","global null","EX/NEX","open",17,60,0.0029999999999859,15
+68,"unbalanced","global null","EX/NEX","open",15,60,0.00199999999995271,16
+68,"unbalanced","global null","EX/NEX","open",15,60,0.00200000000000955,17
+68,"unbalanced","global null","EX/NEX","open",10,60,0.00200000000000955,18
+68,"unbalanced","global null","EX/NEX","open",10,60,0.00499999999999545,19
+68,"unbalanced","global null","EX/NEX","open",9,47,0.000999999999976353,20
+68,"unbalanced","global null","EX/NEX","open",9,50,0.000999999999976353,21
+68,"unbalanced","global null","EX/NEX","open",7,52,0.000999999999976353,22
+68,"unbalanced","global null","EX/NEX","open",6,55,0.000999999999976353,23
+68,"unbalanced","global null","EX/NEX","open",5,57,0,24
+68,"unbalanced","global null","EX/NEX","open",5,60,0,25
+68,"unbalanced","global null","EX/NEX","open",5,62,0,26
+68,"unbalanced","global null","EX/NEX","open",4,65,0,27
+68,"unbalanced","global null","EX/NEX","open",3,67,0,28
+68,"unbalanced","global null","EX/NEX","open",3,70,0.000999999999976353,29
+68,"unbalanced","global null","EX/NEX","open",2,72,0.000999999999976353,30
+68,"unbalanced","global null","EX/NEX","open",2,75,0,31
+68,"unbalanced","global null","EX/NEX","open",2,77,0,32
+68,"unbalanced","global null","EX/NEX","open",2,80,0,33
+68,"unbalanced","global null","EX/NEX","open",2,82,0,34
+68,"unbalanced","global null","EX/NEX","open",2,85,0.000999999999976353,35
+68,"unbalanced","global null","EX/NEX","open",1,55,0,36
+68,"unbalanced","global null","EX/NEX","open",1,55,0.0010000000000332,37
+74,"unbalanced","all active","EX/NEX","open",1,0,0.0029999999999859,1
+74,"unbalanced","all active","EX/NEX","open",20,5,0.00900000000001455,2
+74,"unbalanced","all active","EX/NEX","open",20,10,0.0080000000000382,3
+74,"unbalanced","all active","EX/NEX","open",20,15,0.0080000000000382,4
+74,"unbalanced","all active","EX/NEX","open",20,20,0.00600000000002865,5
+74,"unbalanced","all active","EX/NEX","open",20,25,0.007000000000005,6
+74,"unbalanced","all active","EX/NEX","open",20,30,0.00699999999994816,7
+74,"unbalanced","all active","EX/NEX","open",20,35,0.00399999999996226,8
+74,"unbalanced","all active","EX/NEX","open",20,40,0.00499999999999545,9
+74,"unbalanced","all active","EX/NEX","open",20,45,0.00399999999996226,10
+74,"unbalanced","all active","EX/NEX","open",20,50,0.0040000000000191,11
+74,"unbalanced","all active","EX/NEX","open",20,55,0.00399999999996226,12
+74,"unbalanced","all active","EX/NEX","open",20,60,0.00499999999999545,13
+74,"unbalanced","all active","EX/NEX","open",20,65,0.00399999999996226,14
+74,"unbalanced","all active","EX/NEX","open",20,70,0.00900000000001455,15
+74,"unbalanced","all active","EX/NEX","open",20,75,0.0040000000000191,16
+74,"unbalanced","all active","EX/NEX","open",18,80,0.0029999999999859,17
+74,"unbalanced","all active","EX/NEX","open",18,85,0.0029999999999859,18
+74,"unbalanced","all active","EX/NEX","open",18,90,0.0040000000000191,19
+74,"unbalanced","all active","EX/NEX","open",17,95,0.0029999999999859,20
+74,"unbalanced","all active","EX/NEX","open",17,100,0.0029999999999859,21
+74,"unbalanced","all active","EX/NEX","open",15,100,0.00200000000000955,22
+74,"unbalanced","all active","EX/NEX","open",14,100,0.00200000000000955,23
+74,"unbalanced","all active","EX/NEX","open",13,100,0.00200000000000955,24
+74,"unbalanced","all active","EX/NEX","open",12,100,0.00200000000000955,25
+74,"unbalanced","all active","EX/NEX","open",11,100,0.00499999999999545,26
+74,"unbalanced","all active","EX/NEX","open",11,100,0.00200000000000955,27
+74,"unbalanced","all active","EX/NEX","open",11,100,0.0010000000000332,28
+74,"unbalanced","all active","EX/NEX","open",10,100,0.00199999999995271,29
+74,"unbalanced","all active","EX/NEX","open",6,100,0.0010000000000332,30
+74,"unbalanced","all active","EX/NEX","open",5,100,0.000999999999976353,31
+74,"unbalanced","all active","EX/NEX","open",5,100,0,32
+74,"unbalanced","all active","EX/NEX","open",5,100,0,33
+74,"unbalanced","all active","EX/NEX","open",4,100,0,34
+74,"unbalanced","all active","EX/NEX","open",4,100,0.000999999999976353,35
+74,"unbalanced","all active","EX/NEX","open",4,100,0.000999999999976353,36
+74,"unbalanced","all active","EX/NEX","open",4,100,0,37
+74,"unbalanced","all active","EX/NEX","open",4,100,0,38
+74,"unbalanced","all active","EX/NEX","open",4,100,0.000999999999976353,39
+74,"unbalanced","all active","EX/NEX","open",4,100,0,40
+74,"unbalanced","all active","EX/NEX","open",3,100,0,41
+74,"unbalanced","all active","EX/NEX","open",2,51,0.000999999999976353,42
+74,"unbalanced","all active","EX/NEX","open",2,52,0,43
+74,"unbalanced","all active","EX/NEX","open",2,53,0.0010000000000332,44
+74,"unbalanced","all active","EX/NEX","open",2,55,0,45
+74,"unbalanced","all active","EX/NEX","open",1,56,0.0010000000000332,46
+74,"unbalanced","all active","EX/NEX","open",1,57,0,47
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,0,0.0029999999999859,1
+88,"unbalanced","strong heterogeneity","EX/NEX","open",20,5,0.00899999999995771,2
+88,"unbalanced","strong heterogeneity","EX/NEX","open",20,10,0.0080000000000382,3
+88,"unbalanced","strong heterogeneity","EX/NEX","open",20,15,0.007000000000005,4
+88,"unbalanced","strong heterogeneity","EX/NEX","open",20,20,0.00699999999994816,5
+88,"unbalanced","strong heterogeneity","EX/NEX","open",20,25,0.00600000000002865,6
+88,"unbalanced","strong heterogeneity","EX/NEX","open",20,30,0.00499999999999545,7
+88,"unbalanced","strong heterogeneity","EX/NEX","open",20,35,0.007000000000005,8
+88,"unbalanced","strong heterogeneity","EX/NEX","open",20,40,0.0029999999999859,9
+88,"unbalanced","strong heterogeneity","EX/NEX","open",20,45,0.0029999999999859,10
+88,"unbalanced","strong heterogeneity","EX/NEX","open",20,50,0.0040000000000191,11
+88,"unbalanced","strong heterogeneity","EX/NEX","open",18,55,0.0029999999999859,12
+88,"unbalanced","strong heterogeneity","EX/NEX","open",18,60,0.0029999999999859,13
+88,"unbalanced","strong heterogeneity","EX/NEX","open",16,65,0.00200000000000955,14
+88,"unbalanced","strong heterogeneity","EX/NEX","open",13,70,0.00200000000000955,15
+88,"unbalanced","strong heterogeneity","EX/NEX","open",12,55,0.0010000000000332,16
+88,"unbalanced","strong heterogeneity","EX/NEX","open",12,55,0.000999999999976353,17
+88,"unbalanced","strong heterogeneity","EX/NEX","open",12,55,0.000999999999976353,18
+88,"unbalanced","strong heterogeneity","EX/NEX","open",9,55,0.0010000000000332,19
+88,"unbalanced","strong heterogeneity","EX/NEX","open",8,55,0.000999999999976353,20
+88,"unbalanced","strong heterogeneity","EX/NEX","open",7,55,0.000999999999976353,21
+88,"unbalanced","strong heterogeneity","EX/NEX","open",6,55,0.0010000000000332,22
+88,"unbalanced","strong heterogeneity","EX/NEX","open",6,55,0.000999999999976353,23
+88,"unbalanced","strong heterogeneity","EX/NEX","open",6,57,0,24
+88,"unbalanced","strong heterogeneity","EX/NEX","open",6,60,0.000999999999976353,25
+88,"unbalanced","strong heterogeneity","EX/NEX","open",4,55,0,26
+88,"unbalanced","strong heterogeneity","EX/NEX","open",4,55,0,27
+88,"unbalanced","strong heterogeneity","EX/NEX","open",4,55,0.000999999999976353,28
+88,"unbalanced","strong heterogeneity","EX/NEX","open",4,55,0,29
+88,"unbalanced","strong heterogeneity","EX/NEX","open",2,55,0,30
+88,"unbalanced","strong heterogeneity","EX/NEX","open",2,55,0.000999999999976353,31
+88,"unbalanced","strong heterogeneity","EX/NEX","open",2,55,0.000999999999976353,32
+88,"unbalanced","strong heterogeneity","EX/NEX","open",2,55,0,33
+88,"unbalanced","strong heterogeneity","EX/NEX","open",2,55,0.000999999999976353,34
+88,"unbalanced","strong heterogeneity","EX/NEX","open",2,55,0,35
+88,"unbalanced","strong heterogeneity","EX/NEX","open",2,55,0.0010000000000332,36
+88,"unbalanced","strong heterogeneity","EX/NEX","open",2,55,0,37
+88,"unbalanced","strong heterogeneity","EX/NEX","open",2,55,0.0010000000000332,38
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,47,0,39
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,48,0.000999999999976353,40
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,50,0,41
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,51,0,42
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,52,0.0010000000000332,43
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,53,0,44
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,55,0,45
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,56,0,46
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,57,0,47
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,58,0.0010000000000332,48
+88,"unbalanced","strong heterogeneity","EX/NEX","open",1,60,0,49
+90,"unbalanced","global null","similarity","open",1,0,0.0299999999999727,1
+90,"unbalanced","global null","similarity","open",19,5,0.136000000000024,2
+90,"unbalanced","global null","similarity","open",20,10,0.0840000000000032,3
+90,"unbalanced","global null","similarity","open",20,15,0.0659999999999741,4
+90,"unbalanced","global null","similarity","open",20,20,0.0640000000000214,5
+90,"unbalanced","global null","similarity","open",20,25,0.0550000000000068,6
+90,"unbalanced","global null","similarity","open",20,30,0.0550000000000068,7
+90,"unbalanced","global null","similarity","open",20,35,0.0469999999999686,8
+90,"unbalanced","global null","similarity","open",20,40,0.0600000000000023,9
+90,"unbalanced","global null","similarity","open",20,45,0.0620000000000118,10
+90,"unbalanced","global null","similarity","open",20,50,0.0540000000000305,11
+90,"unbalanced","global null","similarity","open",19,55,0.0349999999999682,12
+90,"unbalanced","global null","similarity","open",19,60,0.0480000000000018,13
+90,"unbalanced","global null","similarity","open",18,65,0.0279999999999632,14
+90,"unbalanced","global null","similarity","open",18,70,0.0219999999999914,15
+90,"unbalanced","global null","similarity","open",17,75,0.0230000000000246,16
+90,"unbalanced","global null","similarity","open",14,75,0.0170000000000528,17
+90,"unbalanced","global null","similarity","open",12,75,0.0169999999999959,18
+90,"unbalanced","global null","similarity","open",11,75,0.0169999999999959,19
+90,"unbalanced","global null","similarity","open",8,75,0.0130000000000337,20
+90,"unbalanced","global null","similarity","open",8,75,0.0150000000000432,21
+90,"unbalanced","global null","similarity","open",8,75,0.0160000000000196,22
+90,"unbalanced","global null","similarity","open",8,75,0.0120000000000005,23
+90,"unbalanced","global null","similarity","open",7,75,0.00999999999999091,24
+90,"unbalanced","global null","similarity","open",7,75,0.00999999999999091,25
+90,"unbalanced","global null","similarity","open",7,75,0.00999999999999091,26
+90,"unbalanced","global null","similarity","open",6,65,0.00900000000001455,27
+90,"unbalanced","global null","similarity","open",6,67,0.00900000000001455,28
+90,"unbalanced","global null","similarity","open",6,70,0.0110000000000241,29
+90,"unbalanced","global null","similarity","open",5,72,0.00900000000001455,30
+90,"unbalanced","global null","similarity","open",4,75,0.00699999999994816,31
+90,"unbalanced","global null","similarity","open",2,77,0.0040000000000191,32
+90,"unbalanced","global null","similarity","open",2,80,0.00499999999999545,33
+90,"unbalanced","global null","similarity","open",2,82,0.0050000000000523,34
+90,"unbalanced","global null","similarity","open",2,85,0.00499999999999545,35
+90,"unbalanced","global null","similarity","open",2,87,0.00999999999999091,36
+90,"unbalanced","global null","similarity","open",2,90,0.0040000000000191,37
+90,"unbalanced","global null","similarity","open",2,92,0.0040000000000191,38
+90,"unbalanced","global null","similarity","open",1,55,0.00200000000000955,39
+90,"unbalanced","global null","similarity","open",1,55,0.00199999999995271,40
+90,"unbalanced","global null","similarity","open",1,55,0.0029999999999859,41
+96,"unbalanced","all active","similarity","open",1,0,0.0309999999999491,1
+96,"unbalanced","all active","similarity","open",20,5,0.144000000000005,2
+96,"unbalanced","all active","similarity","open",20,10,0.0930000000000177,3
+96,"unbalanced","all active","similarity","open",20,15,0.0850000000000364,4
+96,"unbalanced","all active","similarity","open",20,20,0.0809999999999604,5
+96,"unbalanced","all active","similarity","open",20,25,0.0799999999999841,6
+96,"unbalanced","all active","similarity","open",20,30,0.0680000000000405,7
+96,"unbalanced","all active","similarity","open",20,35,0.0679999999999836,8
+96,"unbalanced","all active","similarity","open",20,40,0.230000000000018,9
+96,"unbalanced","all active","similarity","open",20,45,0.0540000000000305,10
+96,"unbalanced","all active","similarity","open",20,50,0.0529999999999973,11
+96,"unbalanced","all active","similarity","open",20,55,0.0489999999999782,12
+96,"unbalanced","all active","similarity","open",20,60,0.0399999999999636,13
+96,"unbalanced","all active","similarity","open",20,65,0.0399999999999636,14
+96,"unbalanced","all active","similarity","open",20,70,0.0389999999999873,15
+96,"unbalanced","all active","similarity","open",20,75,0.0320000000000391,16
+96,"unbalanced","all active","similarity","open",17,80,0.0319999999999823,17
+96,"unbalanced","all active","similarity","open",16,85,0.02800000000002,18
+96,"unbalanced","all active","similarity","open",16,90,0.02800000000002,19
+96,"unbalanced","all active","similarity","open",15,95,0.0219999999999914,20
+96,"unbalanced","all active","similarity","open",15,95,0.0199999999999818,21
+96,"unbalanced","all active","similarity","open",14,95,0.0219999999999914,22
+96,"unbalanced","all active","similarity","open",14,95,0.0169999999999959,23
+96,"unbalanced","all active","similarity","open",12,95,0.0169999999999959,24
+96,"unbalanced","all active","similarity","open",11,95,0.01400000000001,25
+96,"unbalanced","all active","similarity","open",9,95,0.0110000000000241,26
+96,"unbalanced","all active","similarity","open",9,95,0.0129999999999768,27
+96,"unbalanced","all active","similarity","open",8,95,0.00900000000001455,28
+96,"unbalanced","all active","similarity","open",8,95,0.00899999999995771,29
+96,"unbalanced","all active","similarity","open",6,95,0.00600000000002865,30
+96,"unbalanced","all active","similarity","open",5,95,0.0050000000000523,31
+96,"unbalanced","all active","similarity","open",5,95,0.00499999999999545,32
+96,"unbalanced","all active","similarity","open",4,95,0.00499999999999545,33
+96,"unbalanced","all active","similarity","open",3,95,0.0040000000000191,34
+96,"unbalanced","all active","similarity","open",2,65,0.00200000000000955,35
+96,"unbalanced","all active","similarity","open",2,65,0.0029999999999859,36
+96,"unbalanced","all active","similarity","open",2,65,0.00200000000000955,37
+96,"unbalanced","all active","similarity","open",2,65,0.0029999999999859,38
+96,"unbalanced","all active","similarity","open",2,65,0.00200000000000955,39
+96,"unbalanced","all active","similarity","open",2,65,0.00300000000004275,40
+96,"unbalanced","all active","similarity","open",1,50,0.00200000000000955,41
+96,"unbalanced","all active","similarity","open",1,51,0.0010000000000332,42
+96,"unbalanced","all active","similarity","open",1,52,0.00199999999995271,43
+96,"unbalanced","all active","similarity","open",1,53,0.00200000000000955,44
+96,"unbalanced","all active","similarity","open",1,55,0.0010000000000332,45
+96,"unbalanced","all active","similarity","open",1,56,0.007000000000005,46
+96,"unbalanced","all active","similarity","open",1,57,0.0010000000000332,47
+110,"unbalanced","strong heterogeneity","similarity","open",1,0,0.0269999999999868,1
+110,"unbalanced","strong heterogeneity","similarity","open",20,5,0.124000000000024,2
+110,"unbalanced","strong heterogeneity","similarity","open",20,10,0.0750000000000455,3
+110,"unbalanced","strong heterogeneity","similarity","open",20,15,0.0679999999999836,4
+110,"unbalanced","strong heterogeneity","similarity","open",20,20,0.0749999999999886,5
+110,"unbalanced","strong heterogeneity","similarity","open",20,25,0.0600000000000023,6
+110,"unbalanced","strong heterogeneity","similarity","open",20,30,0.0620000000000118,7
+110,"unbalanced","strong heterogeneity","similarity","open",20,35,0.0509999999999877,8
+110,"unbalanced","strong heterogeneity","similarity","open",20,40,0.049000000000035,9
+110,"unbalanced","strong heterogeneity","similarity","open",20,45,0.0409999999999968,10
+110,"unbalanced","strong heterogeneity","similarity","open",20,50,0.0409999999999968,11
+110,"unbalanced","strong heterogeneity","similarity","open",19,55,0.0289999999999964,12
+110,"unbalanced","strong heterogeneity","similarity","open",19,60,0.0500000000000114,13
+110,"unbalanced","strong heterogeneity","similarity","open",15,65,0.0240000000000009,14
+110,"unbalanced","strong heterogeneity","similarity","open",14,70,0.0219999999999914,15
+110,"unbalanced","strong heterogeneity","similarity","open",12,75,0.0169999999999959,16
+110,"unbalanced","strong heterogeneity","similarity","open",12,80,0.0230000000000246,17
+110,"unbalanced","strong heterogeneity","similarity","open",11,85,0.0190000000000055,18
+110,"unbalanced","strong heterogeneity","similarity","open",9,90,0.0129999999999768,19
+110,"unbalanced","strong heterogeneity","similarity","open",8,95,0.0110000000000241,20
+110,"unbalanced","strong heterogeneity","similarity","open",8,100,0.0149999999999864,21
+110,"unbalanced","strong heterogeneity","similarity","open",7,100,0.00899999999995771,22
+110,"unbalanced","strong heterogeneity","similarity","open",7,100,0.007000000000005,23
+110,"unbalanced","strong heterogeneity","similarity","open",7,100,0.0120000000000005,24
+110,"unbalanced","strong heterogeneity","similarity","open",7,100,0.0080000000000382,25
+110,"unbalanced","strong heterogeneity","similarity","open",7,100,0.00599999999997181,26
+110,"unbalanced","strong heterogeneity","similarity","open",7,100,0.00599999999997181,27
+110,"unbalanced","strong heterogeneity","similarity","open",6,100,0.00499999999999545,28
+110,"unbalanced","strong heterogeneity","similarity","open",6,100,0.0040000000000191,29
+110,"unbalanced","strong heterogeneity","similarity","open",6,100,0.00399999999996226,30
+110,"unbalanced","strong heterogeneity","similarity","open",5,100,0.0040000000000191,31
+110,"unbalanced","strong heterogeneity","similarity","open",4,100,0.0029999999999859,32
+110,"unbalanced","strong heterogeneity","similarity","open",4,100,0.0029999999999859,33
+110,"unbalanced","strong heterogeneity","similarity","open",4,100,0.0040000000000191,34
+110,"unbalanced","strong heterogeneity","similarity","open",3,60,0.00300000000004275,35
+110,"unbalanced","strong heterogeneity","similarity","open",3,60,0.0029999999999859,36
+110,"unbalanced","strong heterogeneity","similarity","open",2,60,0.0029999999999859,37
+110,"unbalanced","strong heterogeneity","similarity","open",2,60,0.00200000000000955,38
+110,"unbalanced","strong heterogeneity","similarity","open",1,47,0.0029999999999859,39
+110,"unbalanced","strong heterogeneity","similarity","open",1,48,0.00200000000000955,40
+110,"unbalanced","strong heterogeneity","similarity","open",1,50,0.000999999999976353,41
+110,"unbalanced","strong heterogeneity","similarity","open",1,51,0.00200000000000955,42
+110,"unbalanced","strong heterogeneity","similarity","open",1,52,0.0010000000000332,43
+110,"unbalanced","strong heterogeneity","similarity","open",1,53,0.00200000000000955,44
+110,"unbalanced","strong heterogeneity","similarity","open",1,55,0.00199999999995271,45
+110,"unbalanced","strong heterogeneity","similarity","open",1,56,0.00200000000000955,46
+110,"unbalanced","strong heterogeneity","similarity","open",1,57,0.0029999999999859,47
+110,"unbalanced","strong heterogeneity","similarity","open",1,58,0.007000000000005,48
+110,"unbalanced","strong heterogeneity","similarity","open",1,60,0.00200000000000955,49
+110,"unbalanced","strong heterogeneity","similarity","open",1,61,0.00200000000000955,50
+110,"unbalanced","strong heterogeneity","similarity","open",1,62,0.00200000000000955,51
+110,"unbalanced","strong heterogeneity","similarity","open",1,63,0.00200000000000955,52
+110,"unbalanced","strong heterogeneity","similarity","open",1,65,0.00200000000000955,53
+110,"unbalanced","strong heterogeneity","similarity","open",1,66,0.00200000000000955,54
+110,"unbalanced","strong heterogeneity","similarity","open",1,67,0.0010000000000332,55
+110,"unbalanced","strong heterogeneity","similarity","open",1,68,0.00199999999995271,56
+110,"unbalanced","strong heterogeneity","similarity","open",1,70,0.00200000000000955,57
+110,"unbalanced","strong heterogeneity","similarity","open",1,71,0.00200000000000955,58
+110,"unbalanced","strong heterogeneity","similarity","open",1,72,0.00200000000000955,59
+110,"unbalanced","strong heterogeneity","similarity","open",1,73,0.00199999999995271,60
+110,"unbalanced","strong heterogeneity","similarity","open",1,75,0.0010000000000332,61
+134,"unbalanced","global null","oracle","open",1,0,0.000999999999976353,1
+134,"unbalanced","global null","oracle","open",19,5,0.000999999999976353,2
+134,"unbalanced","global null","oracle","open",20,10,0.00200000000000955,3
+134,"unbalanced","global null","oracle","open",20,15,0.000999999999976353,4
+134,"unbalanced","global null","oracle","open",20,20,0.00199999999995271,5
+134,"unbalanced","global null","oracle","open",20,25,0.00200000000000955,6
+134,"unbalanced","global null","oracle","open",20,30,0.000999999999976353,7
+134,"unbalanced","global null","oracle","open",20,35,0.000999999999976353,8
+134,"unbalanced","global null","oracle","open",19,40,0.000999999999976353,9
+134,"unbalanced","global null","oracle","open",19,45,0.000999999999976353,10
+134,"unbalanced","global null","oracle","open",19,50,0.0010000000000332,11
+134,"unbalanced","global null","oracle","open",17,55,0.000999999999976353,12
+134,"unbalanced","global null","oracle","open",17,60,0.0010000000000332,13
+134,"unbalanced","global null","oracle","open",14,65,0.000999999999976353,14
+134,"unbalanced","global null","oracle","open",14,70,0.0010000000000332,15
+134,"unbalanced","global null","oracle","open",12,70,0,16
+134,"unbalanced","global null","oracle","open",9,70,0.000999999999976353,17
+134,"unbalanced","global null","oracle","open",8,42,0,18
+134,"unbalanced","global null","oracle","open",8,45,0,19
+134,"unbalanced","global null","oracle","open",7,47,0,20
+134,"unbalanced","global null","oracle","open",5,50,0,21
+134,"unbalanced","global null","oracle","open",4,52,0.0010000000000332,22
+134,"unbalanced","global null","oracle","open",4,55,0,23
+134,"unbalanced","global null","oracle","open",2,57,0.0010000000000332,24
+134,"unbalanced","global null","oracle","open",1,35,0.0010000000000332,25
+134,"unbalanced","global null","oracle","open",1,35,0.000999999999976353,26
+134,"unbalanced","global null","oracle","open",1,35,0,27
+134,"unbalanced","global null","oracle","open",1,35,0,28
+134,"unbalanced","global null","oracle","open",1,35,0,29
+134,"unbalanced","global null","oracle","open",1,36,0,30
+134,"unbalanced","global null","oracle","open",1,37,0,31
+134,"unbalanced","global null","oracle","open",1,38,0.000999999999976353,32
+134,"unbalanced","global null","oracle","open",1,40,0,33
+134,"unbalanced","global null","oracle","open",1,41,0,34
+134,"unbalanced","global null","oracle","open",1,42,0,35
+134,"unbalanced","global null","oracle","open",1,43,0,36
+134,"unbalanced","global null","oracle","open",1,45,0.000999999999976353,37
+134,"unbalanced","global null","oracle","open",1,46,0,38
+134,"unbalanced","global null","oracle","open",1,47,0,39
+134,"unbalanced","global null","oracle","open",1,48,0,40
+134,"unbalanced","global null","oracle","open",1,50,0.0010000000000332,41
+140,"unbalanced","all active","oracle","open",1,0,0,1
+140,"unbalanced","all active","oracle","open",20,5,0.00199999999995271,2
+140,"unbalanced","all active","oracle","open",20,10,0.00199999999995271,3
+140,"unbalanced","all active","oracle","open",20,15,0.00200000000000955,4
+140,"unbalanced","all active","oracle","open",20,20,0.000999999999976353,5
+140,"unbalanced","all active","oracle","open",20,25,0.00200000000000955,6
+140,"unbalanced","all active","oracle","open",20,30,0.000999999999976353,7
+140,"unbalanced","all active","oracle","open",20,35,0.00200000000000955,8
+140,"unbalanced","all active","oracle","open",20,40,0.00200000000000955,9
+140,"unbalanced","all active","oracle","open",20,45,0.0010000000000332,10
+140,"unbalanced","all active","oracle","open",20,50,0.000999999999976353,11
+140,"unbalanced","all active","oracle","open",20,55,0.0010000000000332,12
+140,"unbalanced","all active","oracle","open",19,60,0,13
+140,"unbalanced","all active","oracle","open",19,65,0,14
+140,"unbalanced","all active","oracle","open",18,70,0,15
+140,"unbalanced","all active","oracle","open",17,75,0,16
+140,"unbalanced","all active","oracle","open",15,80,0,17
+140,"unbalanced","all active","oracle","open",14,85,0.000999999999976353,18
+140,"unbalanced","all active","oracle","open",14,90,0,19
+140,"unbalanced","all active","oracle","open",11,95,0,20
+140,"unbalanced","all active","oracle","open",9,95,0.0010000000000332,21
+140,"unbalanced","all active","oracle","open",8,85,0,22
+140,"unbalanced","all active","oracle","open",8,85,0.0010000000000332,23
+140,"unbalanced","all active","oracle","open",7,57,0,24
+140,"unbalanced","all active","oracle","open",7,60,0.000999999999976353,25
+140,"unbalanced","all active","oracle","open",6,62,0,26
+140,"unbalanced","all active","oracle","open",5,65,0,27
+140,"unbalanced","all active","oracle","open",5,67,0.000999999999976353,28
+140,"unbalanced","all active","oracle","open",5,70,0.000999999999976353,29
+140,"unbalanced","all active","oracle","open",4,72,0,30
+140,"unbalanced","all active","oracle","open",3,42,0,31
+140,"unbalanced","all active","oracle","open",3,42,0.000999999999976353,32
+140,"unbalanced","all active","oracle","open",2,42,0,33
+140,"unbalanced","all active","oracle","open",1,41,0,34
+140,"unbalanced","all active","oracle","open",1,42,0.000999999999976353,35
+140,"unbalanced","all active","oracle","open",1,43,0,36
+140,"unbalanced","all active","oracle","open",1,45,0,37
+140,"unbalanced","all active","oracle","open",1,46,0,38
+154,"unbalanced","strong heterogeneity","oracle","open",1,0,0.0010000000000332,1
+154,"unbalanced","strong heterogeneity","oracle","open",20,5,0.000999999999976353,2
+154,"unbalanced","strong heterogeneity","oracle","open",20,10,0.00200000000000955,3
+154,"unbalanced","strong heterogeneity","oracle","open",20,15,0.0010000000000332,4
+154,"unbalanced","strong heterogeneity","oracle","open",20,20,0.0010000000000332,5
+154,"unbalanced","strong heterogeneity","oracle","open",20,25,0.000999999999976353,6
+154,"unbalanced","strong heterogeneity","oracle","open",20,30,0.000999999999976353,7
+154,"unbalanced","strong heterogeneity","oracle","open",20,35,0.000999999999976353,8
+154,"unbalanced","strong heterogeneity","oracle","open",18,40,0,9
+154,"unbalanced","strong heterogeneity","oracle","open",17,45,0,10
+154,"unbalanced","strong heterogeneity","oracle","open",15,50,0.0010000000000332,11
+154,"unbalanced","strong heterogeneity","oracle","open",15,50,0,12
+154,"unbalanced","strong heterogeneity","oracle","open",14,50,0,13
+154,"unbalanced","strong heterogeneity","oracle","open",11,50,0,14
+154,"unbalanced","strong heterogeneity","oracle","open",11,50,0,15
+154,"unbalanced","strong heterogeneity","oracle","open",10,50,0.000999999999976353,16
+154,"unbalanced","strong heterogeneity","oracle","open",9,50,0,17
+154,"unbalanced","strong heterogeneity","oracle","open",9,50,0.000999999999976353,18
+154,"unbalanced","strong heterogeneity","oracle","open",9,50,0,19
+154,"unbalanced","strong heterogeneity","oracle","open",8,50,0,20
+154,"unbalanced","strong heterogeneity","oracle","open",6,50,0.00399999999996226,21
+154,"unbalanced","strong heterogeneity","oracle","open",5,52,0,22
+154,"unbalanced","strong heterogeneity","oracle","open",4,55,0,23
+154,"unbalanced","strong heterogeneity","oracle","open",4,57,0,24
+154,"unbalanced","strong heterogeneity","oracle","open",4,60,0,25
+154,"unbalanced","strong heterogeneity","oracle","open",4,62,0,26
+154,"unbalanced","strong heterogeneity","oracle","open",4,65,0.000999999999976353,27
+154,"unbalanced","strong heterogeneity","oracle","open",4,67,0,28
+154,"unbalanced","strong heterogeneity","oracle","open",4,70,0,29
+154,"unbalanced","strong heterogeneity","oracle","open",1,50,0.0010000000000332,30
+154,"unbalanced","strong heterogeneity","oracle","open",1,50,0,31
+154,"unbalanced","strong heterogeneity","oracle","open",1,50,0,32
+154,"unbalanced","strong heterogeneity","oracle","open",1,50,0,33
+154,"unbalanced","strong heterogeneity","oracle","open",1,50,0,34
+154,"unbalanced","strong heterogeneity","oracle","open",1,50,0,35
+154,"unbalanced","strong heterogeneity","oracle","open",1,50,0,36
+154,"unbalanced","strong heterogeneity","oracle","open",1,50,0,37
+1,"balanced","global null","no borrowing","fixed",1,0,0.0029999999999859,1
+1,"balanced","global null","no borrowing","fixed",20,5,0.0040000000000191,2
+1,"balanced","global null","no borrowing","fixed",20,10,0.00399999999996226,3
+1,"balanced","global null","no borrowing","fixed",20,15,0.00399999999996226,4
+1,"balanced","global null","no borrowing","fixed",20,20,0.00399999999996226,5
+1,"balanced","global null","no borrowing","fixed",20,25,0.0029999999999859,6
+1,"balanced","global null","no borrowing","fixed",20,30,0.0029999999999859,7
+7,"balanced","all active","no borrowing","fixed",1,0,0.000999999999976353,1
+7,"balanced","all active","no borrowing","fixed",20,5,0.00499999999999545,2
+7,"balanced","all active","no borrowing","fixed",20,10,0.0040000000000191,3
+7,"balanced","all active","no borrowing","fixed",20,15,0.0040000000000191,4
+7,"balanced","all active","no borrowing","fixed",20,20,0.0319999999999823,5
+7,"balanced","all active","no borrowing","fixed",20,25,0.00200000000000955,6
+7,"balanced","all active","no borrowing","fixed",20,30,0.00300000000004275,7
+21,"balanced","strong heterogeneity","no borrowing","fixed",1,0,0.00199999999995271,1
+21,"balanced","strong heterogeneity","no borrowing","fixed",20,5,0.00499999999999545,2
+21,"balanced","strong heterogeneity","no borrowing","fixed",20,10,0.0029999999999859,3
+21,"balanced","strong heterogeneity","no borrowing","fixed",20,15,0.0040000000000191,4
+21,"balanced","strong heterogeneity","no borrowing","fixed",20,20,0.0360000000000014,5
+21,"balanced","strong heterogeneity","no borrowing","fixed",20,25,0.0029999999999859,6
+21,"balanced","strong heterogeneity","no borrowing","fixed",20,30,0.00399999999996226,7
+23,"balanced","global null","power, equal","fixed",1,0,0.00199999999995271,1
+23,"balanced","global null","power, equal","fixed",20,5,0.00399999999996226,2
+23,"balanced","global null","power, equal","fixed",20,10,0.0040000000000191,3
+23,"balanced","global null","power, equal","fixed",20,15,0.0040000000000191,4
+23,"balanced","global null","power, equal","fixed",20,20,0.0029999999999859,5
+23,"balanced","global null","power, equal","fixed",20,25,0.00300000000004275,6
+23,"balanced","global null","power, equal","fixed",20,30,0.0040000000000191,7
+29,"balanced","all active","power, equal","fixed",1,0,0.0010000000000332,1
+29,"balanced","all active","power, equal","fixed",20,5,0.00399999999996226,2
+29,"balanced","all active","power, equal","fixed",20,10,0.00300000000004275,3
+29,"balanced","all active","power, equal","fixed",20,15,0.0040000000000191,4
+29,"balanced","all active","power, equal","fixed",20,20,0.0300000000000296,5
+29,"balanced","all active","power, equal","fixed",20,25,0.00200000000000955,6
+29,"balanced","all active","power, equal","fixed",20,30,0.00200000000000955,7
+43,"balanced","strong heterogeneity","power, equal","fixed",1,0,0.00200000000000955,1
+43,"balanced","strong heterogeneity","power, equal","fixed",20,5,0.0040000000000191,2
+43,"balanced","strong heterogeneity","power, equal","fixed",20,10,0.00399999999996226,3
+43,"balanced","strong heterogeneity","power, equal","fixed",20,15,0.00399999999996226,4
+43,"balanced","strong heterogeneity","power, equal","fixed",20,20,0.0310000000000059,5
+43,"balanced","strong heterogeneity","power, equal","fixed",20,25,0.0029999999999859,6
+43,"balanced","strong heterogeneity","power, equal","fixed",20,30,0.0029999999999859,7
+45,"balanced","global null","power, column","fixed",1,0,0.00200000000000955,1
+45,"balanced","global null","power, column","fixed",20,5,0.00399999999996226,2
+45,"balanced","global null","power, column","fixed",20,10,0.00499999999999545,3
+45,"balanced","global null","power, column","fixed",20,15,0.0040000000000191,4
+45,"balanced","global null","power, column","fixed",20,20,0.00399999999996226,5
+45,"balanced","global null","power, column","fixed",20,25,0.0029999999999859,6
+45,"balanced","global null","power, column","fixed",20,30,0.0029999999999859,7
+51,"balanced","all active","power, column","fixed",1,0,0.00200000000000955,1
+51,"balanced","all active","power, column","fixed",20,5,0.0029999999999859,2
+51,"balanced","all active","power, column","fixed",20,10,0.0040000000000191,3
+51,"balanced","all active","power, column","fixed",20,15,0.00300000000004275,4
+51,"balanced","all active","power, column","fixed",20,20,0.0300000000000296,5
+51,"balanced","all active","power, column","fixed",20,25,0.00200000000000955,6
+51,"balanced","all active","power, column","fixed",20,30,0.00300000000004275,7
+65,"balanced","strong heterogeneity","power, column","fixed",1,0,0.00200000000000955,1
+65,"balanced","strong heterogeneity","power, column","fixed",20,5,0.0040000000000191,2
+65,"balanced","strong heterogeneity","power, column","fixed",20,10,0.00399999999996226,3
+65,"balanced","strong heterogeneity","power, column","fixed",20,15,0.0040000000000191,4
+65,"balanced","strong heterogeneity","power, column","fixed",20,20,0.0310000000000059,5
+65,"balanced","strong heterogeneity","power, column","fixed",20,25,0.00300000000004275,6
+65,"balanced","strong heterogeneity","power, column","fixed",20,30,0.0040000000000191,7
+67,"balanced","global null","EX/NEX","fixed",1,0,0.0029999999999859,1
+67,"balanced","global null","EX/NEX","fixed",20,5,0.00899999999995771,2
+67,"balanced","global null","EX/NEX","fixed",20,10,0.00999999999999091,3
+67,"balanced","global null","EX/NEX","fixed",20,15,0.0370000000000346,4
+67,"balanced","global null","EX/NEX","fixed",20,20,0.00799999999998136,5
+67,"balanced","global null","EX/NEX","fixed",20,25,0.00999999999999091,6
+67,"balanced","global null","EX/NEX","fixed",20,30,0.00999999999999091,7
+73,"balanced","all active","EX/NEX","fixed",1,0,0.0029999999999859,1
+73,"balanced","all active","EX/NEX","fixed",20,5,0.00900000000001455,2
+73,"balanced","all active","EX/NEX","fixed",20,10,0.00799999999998136,3
+73,"balanced","all active","EX/NEX","fixed",20,15,0.035000000000025,4
+73,"balanced","all active","EX/NEX","fixed",20,20,0.007000000000005,5
+73,"balanced","all active","EX/NEX","fixed",20,25,0.007000000000005,6
+73,"balanced","all active","EX/NEX","fixed",20,30,0.00499999999999545,7
+87,"balanced","strong heterogeneity","EX/NEX","fixed",1,0,0.0029999999999859,1
+87,"balanced","strong heterogeneity","EX/NEX","fixed",20,5,0.00900000000001455,2
+87,"balanced","strong heterogeneity","EX/NEX","fixed",20,10,0.00900000000001455,3
+87,"balanced","strong heterogeneity","EX/NEX","fixed",20,15,0.0370000000000346,4
+87,"balanced","strong heterogeneity","EX/NEX","fixed",20,20,0.00699999999994816,5
+87,"balanced","strong heterogeneity","EX/NEX","fixed",20,25,0.007000000000005,6
+87,"balanced","strong heterogeneity","EX/NEX","fixed",20,30,0.00599999999997181,7
+89,"balanced","global null","similarity","fixed",1,0,0.0359999999999445,1
+89,"balanced","global null","similarity","fixed",20,5,0.142999999999972,2
+89,"balanced","global null","similarity","fixed",20,10,0.0869999999999891,3
+89,"balanced","global null","similarity","fixed",20,15,0.0900000000000318,4
+89,"balanced","global null","similarity","fixed",20,20,0.0939999999999941,5
+89,"balanced","global null","similarity","fixed",20,25,0.108000000000004,6
+89,"balanced","global null","similarity","fixed",20,30,0.113,7
+95,"balanced","all active","similarity","fixed",1,0,0.0429999999999495,1
+95,"balanced","all active","similarity","fixed",20,5,0.188000000000045,2
+95,"balanced","all active","similarity","fixed",20,10,0.089999999999975,3
+95,"balanced","all active","similarity","fixed",20,15,0.089999999999975,4
+95,"balanced","all active","similarity","fixed",20,20,0.0860000000000127,5
+95,"balanced","all active","similarity","fixed",20,25,0.0849999999999795,6
+95,"balanced","all active","similarity","fixed",20,30,0.0909999999999513,7
+109,"balanced","strong heterogeneity","similarity","fixed",1,0,0.0310000000000059,1
+109,"balanced","strong heterogeneity","similarity","fixed",20,5,0.144999999999982,2
+109,"balanced","strong heterogeneity","similarity","fixed",20,10,0.0880000000000223,3
+109,"balanced","strong heterogeneity","similarity","fixed",20,15,0.0860000000000127,4
+109,"balanced","strong heterogeneity","similarity","fixed",20,20,0.0830000000000268,5
+109,"balanced","strong heterogeneity","similarity","fixed",20,25,0.0840000000000032,6
+109,"balanced","strong heterogeneity","similarity","fixed",20,30,0.0840000000000032,7
+133,"balanced","global null","oracle","fixed",1,0,0,1
+133,"balanced","global null","oracle","fixed",20,5,0.00200000000000955,2
+133,"balanced","global null","oracle","fixed",20,10,0.0029999999999859,3
+133,"balanced","global null","oracle","fixed",20,15,0.00599999999997181,4
+133,"balanced","global null","oracle","fixed",20,20,0.00200000000000955,5
+133,"balanced","global null","oracle","fixed",20,25,0.0010000000000332,6
+133,"balanced","global null","oracle","fixed",20,30,0.0010000000000332,7
+139,"balanced","all active","oracle","fixed",1,0,0.00499999999999545,1
+139,"balanced","all active","oracle","fixed",20,5,0.00199999999995271,2
+139,"balanced","all active","oracle","fixed",20,10,0.00600000000002865,3
+139,"balanced","all active","oracle","fixed",20,15,0.00199999999995271,4
+139,"balanced","all active","oracle","fixed",20,20,0.00200000000000955,5
+139,"balanced","all active","oracle","fixed",20,25,0.000999999999976353,6
+139,"balanced","all active","oracle","fixed",20,30,0.0010000000000332,7
+153,"balanced","strong heterogeneity","oracle","fixed",1,0,0.000999999999976353,1
+153,"balanced","strong heterogeneity","oracle","fixed",20,5,0.00199999999995271,2
+153,"balanced","strong heterogeneity","oracle","fixed",20,10,0.000999999999976353,3
+153,"balanced","strong heterogeneity","oracle","fixed",20,15,0.000999999999976353,4
+153,"balanced","strong heterogeneity","oracle","fixed",20,20,0.000999999999976353,5
+153,"balanced","strong heterogeneity","oracle","fixed",20,25,0.000999999999976353,6
+153,"balanced","strong heterogeneity","oracle","fixed",20,30,0.0010000000000332,7
+1,"balanced","global null","no borrowing","open",1,0,0.0010000000000332,1
+1,"balanced","global null","no borrowing","open",20,5,0.0029999999999859,2
+1,"balanced","global null","no borrowing","open",20,10,0.0040000000000191,3
+1,"balanced","global null","no borrowing","open",20,15,0.0310000000000059,4
+1,"balanced","global null","no borrowing","open",20,20,0.00199999999995271,5
+1,"balanced","global null","no borrowing","open",20,25,0.00200000000000955,6
+1,"balanced","global null","no borrowing","open",20,30,0.00200000000000955,7
+1,"balanced","global null","no borrowing","open",17,35,0.00200000000000955,8
+1,"balanced","global null","no borrowing","open",15,40,0.000999999999976353,9
+1,"balanced","global null","no borrowing","open",11,45,0.000999999999976353,10
+1,"balanced","global null","no borrowing","open",7,50,0.000999999999976353,11
+1,"balanced","global null","no borrowing","open",7,55,0.000999999999976353,12
+1,"balanced","global null","no borrowing","open",5,60,0.0010000000000332,13
+1,"balanced","global null","no borrowing","open",3,65,0,14
+1,"balanced","global null","no borrowing","open",3,70,0,15
+1,"balanced","global null","no borrowing","open",2,75,0,16
+1,"balanced","global null","no borrowing","open",1,80,0.000999999999976353,17
+7,"balanced","all active","no borrowing","open",1,0,0.00200000000000955,1
+7,"balanced","all active","no borrowing","open",20,5,0.00399999999996226,2
+7,"balanced","all active","no borrowing","open",20,10,0.0029999999999859,3
+7,"balanced","all active","no borrowing","open",20,15,0.0029999999999859,4
+7,"balanced","all active","no borrowing","open",20,20,0.0040000000000191,5
+7,"balanced","all active","no borrowing","open",20,25,0.0029999999999859,6
+7,"balanced","all active","no borrowing","open",20,30,0.00200000000000955,7
+7,"balanced","all active","no borrowing","open",20,35,0.00200000000000955,8
+7,"balanced","all active","no borrowing","open",20,40,0.00200000000000955,9
+7,"balanced","all active","no borrowing","open",17,45,0.00200000000000955,10
+7,"balanced","all active","no borrowing","open",16,50,0.000999999999976353,11
+7,"balanced","all active","no borrowing","open",12,55,0.0040000000000191,12
+7,"balanced","all active","no borrowing","open",11,60,0.000999999999976353,13
+7,"balanced","all active","no borrowing","open",9,65,0.000999999999976353,14
+7,"balanced","all active","no borrowing","open",8,70,0.000999999999976353,15
+7,"balanced","all active","no borrowing","open",7,75,0.000999999999976353,16
+7,"balanced","all active","no borrowing","open",2,80,0,17
+7,"balanced","all active","no borrowing","open",2,85,0,18
+7,"balanced","all active","no borrowing","open",1,90,0,19
+21,"balanced","strong heterogeneity","no borrowing","open",1,0,0.00200000000000955,1
+21,"balanced","strong heterogeneity","no borrowing","open",20,5,0.0040000000000191,2
+21,"balanced","strong heterogeneity","no borrowing","open",20,10,0.0040000000000191,3
+21,"balanced","strong heterogeneity","no borrowing","open",20,15,0.0310000000000059,4
+21,"balanced","strong heterogeneity","no borrowing","open",20,20,0.00199999999995271,5
+21,"balanced","strong heterogeneity","no borrowing","open",20,25,0.00199999999995271,6
+21,"balanced","strong heterogeneity","no borrowing","open",18,30,0.00200000000000955,7
+21,"balanced","strong heterogeneity","no borrowing","open",16,35,0.0029999999999859,8
+21,"balanced","strong heterogeneity","no borrowing","open",15,40,0.000999999999976353,9
+21,"balanced","strong heterogeneity","no borrowing","open",12,45,0.0010000000000332,10
+21,"balanced","strong heterogeneity","no borrowing","open",10,50,0.0010000000000332,11
+21,"balanced","strong heterogeneity","no borrowing","open",6,55,0.000999999999976353,12
+21,"balanced","strong heterogeneity","no borrowing","open",4,60,0.000999999999976353,13
+21,"balanced","strong heterogeneity","no borrowing","open",3,65,0.000999999999976353,14
+21,"balanced","strong heterogeneity","no borrowing","open",3,70,0.000999999999976353,15
+21,"balanced","strong heterogeneity","no borrowing","open",2,75,0.000999999999976353,16
+21,"balanced","strong heterogeneity","no borrowing","open",1,80,0.000999999999976353,17
+21,"balanced","strong heterogeneity","no borrowing","open",1,85,0,18
+23,"balanced","global null","power, equal","open",1,0,0.00200000000000955,1
+23,"balanced","global null","power, equal","open",20,5,0.00499999999999545,2
+23,"balanced","global null","power, equal","open",20,10,0.00399999999996226,3
+23,"balanced","global null","power, equal","open",20,15,0.0319999999999823,4
+23,"balanced","global null","power, equal","open",20,20,0.0029999999999859,5
+23,"balanced","global null","power, equal","open",20,25,0.00200000000000955,6
+23,"balanced","global null","power, equal","open",20,30,0.00200000000000955,7
+23,"balanced","global null","power, equal","open",19,35,0.00199999999995271,8
+23,"balanced","global null","power, equal","open",15,40,0.000999999999976353,9
+23,"balanced","global null","power, equal","open",11,45,0.0010000000000332,10
+23,"balanced","global null","power, equal","open",7,50,0.000999999999976353,11
+23,"balanced","global null","power, equal","open",6,55,0.0010000000000332,12
+23,"balanced","global null","power, equal","open",3,60,0.0010000000000332,13
+23,"balanced","global null","power, equal","open",2,65,0,14
+23,"balanced","global null","power, equal","open",2,70,0,15
+23,"balanced","global null","power, equal","open",1,75,0,16
+23,"balanced","global null","power, equal","open",1,80,0.0010000000000332,17
+29,"balanced","all active","power, equal","open",1,0,0.00300000000004275,1
+29,"balanced","all active","power, equal","open",20,5,0.00499999999999545,2
+29,"balanced","all active","power, equal","open",20,10,0.00499999999999545,3
+29,"balanced","all active","power, equal","open",20,15,0.00499999999999545,4
+29,"balanced","all active","power, equal","open",20,20,0.007000000000005,5
+29,"balanced","all active","power, equal","open",20,25,0.0029999999999859,6
+29,"balanced","all active","power, equal","open",20,30,0.0029999999999859,7
+29,"balanced","all active","power, equal","open",20,35,0.0029999999999859,8
+29,"balanced","all active","power, equal","open",20,40,0.00200000000000955,9
+29,"balanced","all active","power, equal","open",19,45,0.0029999999999859,10
+29,"balanced","all active","power, equal","open",17,50,0.0010000000000332,11
+29,"balanced","all active","power, equal","open",14,55,0.000999999999976353,12
+29,"balanced","all active","power, equal","open",12,60,0.000999999999976353,13
+29,"balanced","all active","power, equal","open",9,65,0.0010000000000332,14
+29,"balanced","all active","power, equal","open",7,70,0,15
+29,"balanced","all active","power, equal","open",7,75,0.000999999999976353,16
+29,"balanced","all active","power, equal","open",3,80,0,17
+29,"balanced","all active","power, equal","open",3,85,0,18
+29,"balanced","all active","power, equal","open",1,90,0,19
+43,"balanced","strong heterogeneity","power, equal","open",1,0,0.0029999999999859,1
+43,"balanced","strong heterogeneity","power, equal","open",20,5,0.00499999999999545,2
+43,"balanced","strong heterogeneity","power, equal","open",20,10,0.00399999999996226,3
+43,"balanced","strong heterogeneity","power, equal","open",20,15,0.035000000000025,4
+43,"balanced","strong heterogeneity","power, equal","open",20,20,0.0029999999999859,5
+43,"balanced","strong heterogeneity","power, equal","open",20,25,0.00200000000000955,6
+43,"balanced","strong heterogeneity","power, equal","open",20,30,0.00200000000000955,7
+43,"balanced","strong heterogeneity","power, equal","open",20,35,0.0010000000000332,8
+43,"balanced","strong heterogeneity","power, equal","open",18,40,0.0010000000000332,9
+43,"balanced","strong heterogeneity","power, equal","open",15,45,0.0010000000000332,10
+43,"balanced","strong heterogeneity","power, equal","open",11,50,0.000999999999976353,11
+43,"balanced","strong heterogeneity","power, equal","open",7,55,0,12
+43,"balanced","strong heterogeneity","power, equal","open",4,60,0.000999999999976353,13
+43,"balanced","strong heterogeneity","power, equal","open",3,65,0.000999999999976353,14
+43,"balanced","strong heterogeneity","power, equal","open",3,70,0,15
+43,"balanced","strong heterogeneity","power, equal","open",2,75,0.0010000000000332,16
+45,"balanced","global null","power, column","open",1,0,0.0010000000000332,1
+45,"balanced","global null","power, column","open",20,5,0.0040000000000191,2
+45,"balanced","global null","power, column","open",20,10,0.0029999999999859,3
+45,"balanced","global null","power, column","open",20,15,0.0520000000000209,4
+45,"balanced","global null","power, column","open",20,20,0.0029999999999859,5
+45,"balanced","global null","power, column","open",20,25,0.0029999999999859,6
+45,"balanced","global null","power, column","open",20,30,0.00200000000000955,7
+45,"balanced","global null","power, column","open",19,35,0.0010000000000332,8
+45,"balanced","global null","power, column","open",15,40,0.0010000000000332,9
+45,"balanced","global null","power, column","open",11,45,0.0010000000000332,10
+45,"balanced","global null","power, column","open",9,50,0.0010000000000332,11
+45,"balanced","global null","power, column","open",8,55,0.000999999999976353,12
+45,"balanced","global null","power, column","open",5,60,0.000999999999976353,13
+45,"balanced","global null","power, column","open",4,65,0.0010000000000332,14
+45,"balanced","global null","power, column","open",4,70,0,15
+45,"balanced","global null","power, column","open",2,75,0,16
+45,"balanced","global null","power, column","open",2,80,0.000999999999976353,17
+45,"balanced","global null","power, column","open",1,85,0,18
+45,"balanced","global null","power, column","open",1,90,0,19
+51,"balanced","all active","power, column","open",1,0,0.00200000000000955,1
+51,"balanced","all active","power, column","open",20,5,0.0040000000000191,2
+51,"balanced","all active","power, column","open",20,10,0.00399999999996226,3
+51,"balanced","all active","power, column","open",20,15,0.00399999999996226,4
+51,"balanced","all active","power, column","open",20,20,0.0029999999999859,5
+51,"balanced","all active","power, column","open",20,25,0.0029999999999859,6
+51,"balanced","all active","power, column","open",20,30,0.00200000000000955,7
+51,"balanced","all active","power, column","open",20,35,0.00200000000000955,8
+51,"balanced","all active","power, column","open",20,40,0.0029999999999859,9
+51,"balanced","all active","power, column","open",18,45,0.00200000000000955,10
+51,"balanced","all active","power, column","open",17,50,0.000999999999976353,11
+51,"balanced","all active","power, column","open",15,55,0.000999999999976353,12
+51,"balanced","all active","power, column","open",13,60,0.000999999999976353,13
+51,"balanced","all active","power, column","open",10,65,0.0010000000000332,14
+51,"balanced","all active","power, column","open",8,70,0,15
+51,"balanced","all active","power, column","open",7,75,0.0010000000000332,16
+51,"balanced","all active","power, column","open",4,80,0.0010000000000332,17
+51,"balanced","all active","power, column","open",4,85,0,18
+51,"balanced","all active","power, column","open",3,90,0,19
+51,"balanced","all active","power, column","open",2,95,0,20
+51,"balanced","all active","power, column","open",2,100,0,21
+65,"balanced","strong heterogeneity","power, column","open",1,0,0.00200000000000955,1
+65,"balanced","strong heterogeneity","power, column","open",20,5,0.0040000000000191,2
+65,"balanced","strong heterogeneity","power, column","open",20,10,0.00399999999996226,3
+65,"balanced","strong heterogeneity","power, column","open",20,15,0.0300000000000296,4
+65,"balanced","strong heterogeneity","power, column","open",20,20,0.00300000000004275,5
+65,"balanced","strong heterogeneity","power, column","open",20,25,0.00200000000000955,6
+65,"balanced","strong heterogeneity","power, column","open",20,30,0.0029999999999859,7
+65,"balanced","strong heterogeneity","power, column","open",20,35,0.0010000000000332,8
+65,"balanced","strong heterogeneity","power, column","open",19,40,0.0010000000000332,9
+65,"balanced","strong heterogeneity","power, column","open",16,45,0.00200000000000955,10
+65,"balanced","strong heterogeneity","power, column","open",11,50,0.000999999999976353,11
+65,"balanced","strong heterogeneity","power, column","open",10,55,0.000999999999976353,12
+65,"balanced","strong heterogeneity","power, column","open",6,60,0.000999999999976353,13
+65,"balanced","strong heterogeneity","power, column","open",6,65,0.000999999999976353,14
+65,"balanced","strong heterogeneity","power, column","open",4,70,0.0010000000000332,15
+65,"balanced","strong heterogeneity","power, column","open",2,75,0,16
+65,"balanced","strong heterogeneity","power, column","open",1,80,0,17
+65,"balanced","strong heterogeneity","power, column","open",1,85,0,18
+67,"balanced","global null","EX/NEX","open",1,0,0.00300000000004275,1
+67,"balanced","global null","EX/NEX","open",20,5,0.00900000000001455,2
+67,"balanced","global null","EX/NEX","open",20,10,0.0160000000000196,3
+67,"balanced","global null","EX/NEX","open",20,15,0.0080000000000382,4
+67,"balanced","global null","EX/NEX","open",20,20,0.00599999999997181,5
+67,"balanced","global null","EX/NEX","open",20,25,0.00499999999999545,6
+67,"balanced","global null","EX/NEX","open",20,30,0.0040000000000191,7
+67,"balanced","global null","EX/NEX","open",19,35,0.00399999999996226,8
+67,"balanced","global null","EX/NEX","open",15,40,0.00200000000000955,9
+67,"balanced","global null","EX/NEX","open",11,45,0.00200000000000955,10
+67,"balanced","global null","EX/NEX","open",9,50,0.000999999999976353,11
+67,"balanced","global null","EX/NEX","open",9,55,0.00200000000000955,12
+67,"balanced","global null","EX/NEX","open",6,60,0.000999999999976353,13
+67,"balanced","global null","EX/NEX","open",4,65,0.00200000000000955,14
+67,"balanced","global null","EX/NEX","open",4,70,0.000999999999976353,15
+67,"balanced","global null","EX/NEX","open",2,75,0.0010000000000332,16
+67,"balanced","global null","EX/NEX","open",2,80,0.0010000000000332,17
+67,"balanced","global null","EX/NEX","open",1,85,0.0010000000000332,18
+67,"balanced","global null","EX/NEX","open",1,90,0.0010000000000332,19
+73,"balanced","all active","EX/NEX","open",1,0,0.0029999999999859,1
+73,"balanced","all active","EX/NEX","open",20,5,0.00900000000001455,2
+73,"balanced","all active","EX/NEX","open",20,10,0.00899999999995771,3
+73,"balanced","all active","EX/NEX","open",20,15,0.0080000000000382,4
+73,"balanced","all active","EX/NEX","open",20,20,0.007000000000005,5
+73,"balanced","all active","EX/NEX","open",20,25,0.00600000000002865,6
+73,"balanced","all active","EX/NEX","open",20,30,0.0050000000000523,7
+73,"balanced","all active","EX/NEX","open",20,35,0.0040000000000191,8
+73,"balanced","all active","EX/NEX","open",20,40,0.0029999999999859,9
+73,"balanced","all active","EX/NEX","open",17,45,0.00300000000004275,10
+73,"balanced","all active","EX/NEX","open",17,50,0.0029999999999859,11
+73,"balanced","all active","EX/NEX","open",15,55,0.0029999999999859,12
+73,"balanced","all active","EX/NEX","open",13,60,0.00300000000004275,13
+73,"balanced","all active","EX/NEX","open",10,65,0.00200000000000955,14
+73,"balanced","all active","EX/NEX","open",8,70,0.000999999999976353,15
+73,"balanced","all active","EX/NEX","open",6,75,0.000999999999976353,16
+73,"balanced","all active","EX/NEX","open",2,80,0.000999999999976353,17
+73,"balanced","all active","EX/NEX","open",2,85,0.000999999999976353,18
+87,"balanced","strong heterogeneity","EX/NEX","open",1,0,0.0029999999999859,1
+87,"balanced","strong heterogeneity","EX/NEX","open",20,5,0.0109999999999673,2
+87,"balanced","strong heterogeneity","EX/NEX","open",20,10,0.00900000000001455,3
+87,"balanced","strong heterogeneity","EX/NEX","open",20,15,0.00599999999997181,4
+87,"balanced","strong heterogeneity","EX/NEX","open",20,20,0.00499999999999545,5
+87,"balanced","strong heterogeneity","EX/NEX","open",20,25,0.00399999999996226,6
+87,"balanced","strong heterogeneity","EX/NEX","open",20,30,0.0040000000000191,7
+87,"balanced","strong heterogeneity","EX/NEX","open",19,35,0.0029999999999859,8
+87,"balanced","strong heterogeneity","EX/NEX","open",18,40,0.0029999999999859,9
+87,"balanced","strong heterogeneity","EX/NEX","open",14,45,0.00200000000000955,10
+87,"balanced","strong heterogeneity","EX/NEX","open",10,50,0.000999999999976353,11
+87,"balanced","strong heterogeneity","EX/NEX","open",6,55,0.000999999999976353,12
+87,"balanced","strong heterogeneity","EX/NEX","open",5,60,0.000999999999976353,13
+87,"balanced","strong heterogeneity","EX/NEX","open",3,65,0.000999999999976353,14
+87,"balanced","strong heterogeneity","EX/NEX","open",3,70,0,15
+87,"balanced","strong heterogeneity","EX/NEX","open",1,75,0,16
+87,"balanced","strong heterogeneity","EX/NEX","open",1,80,0,17
+87,"balanced","strong heterogeneity","EX/NEX","open",1,85,0.0010000000000332,18
+89,"balanced","global null","similarity","open",1,0,0.0320000000000391,1
+89,"balanced","global null","similarity","open",20,5,0.151999999999987,2
+89,"balanced","global null","similarity","open",20,10,0.109000000000037,3
+89,"balanced","global null","similarity","open",20,15,0.089999999999975,4
+89,"balanced","global null","similarity","open",20,20,0.0600000000000023,5
+89,"balanced","global null","similarity","open",20,25,0.0529999999999973,6
+89,"balanced","global null","similarity","open",20,30,0.0470000000000255,7
+89,"balanced","global null","similarity","open",19,35,0.0369999999999777,8
+89,"balanced","global null","similarity","open",18,40,0.035000000000025,9
+89,"balanced","global null","similarity","open",15,45,0.02800000000002,10
+89,"balanced","global null","similarity","open",11,50,0.0169999999999959,11
+89,"balanced","global null","similarity","open",11,55,0.0160000000000196,12
+89,"balanced","global null","similarity","open",7,60,0.0109999999999673,13
+89,"balanced","global null","similarity","open",5,65,0.0150000000000432,14
+89,"balanced","global null","similarity","open",4,70,0.00999999999999091,15
+89,"balanced","global null","similarity","open",1,75,0.00200000000000955,16
+89,"balanced","global null","similarity","open",1,80,0.00200000000000955,17
+95,"balanced","all active","similarity","open",1,0,0.0339999999999918,1
+95,"balanced","all active","similarity","open",20,5,0.168999999999983,2
+95,"balanced","all active","similarity","open",20,10,0.100000000000023,3
+95,"balanced","all active","similarity","open",20,15,0.102000000000032,4
+95,"balanced","all active","similarity","open",20,20,0.0889999999999986,5
+95,"balanced","all active","similarity","open",20,25,0.0720000000000027,6
+95,"balanced","all active","similarity","open",20,30,0.0810000000000173,7
+95,"balanced","all active","similarity","open",20,35,0.0599999999999454,8
+95,"balanced","all active","similarity","open",20,40,0.0509999999999877,9
+95,"balanced","all active","similarity","open",17,45,0.0399999999999636,10
+95,"balanced","all active","similarity","open",16,50,0.0550000000000068,11
+95,"balanced","all active","similarity","open",15,55,0.0319999999999823,12
+95,"balanced","all active","similarity","open",13,60,0.0299999999999727,13
+95,"balanced","all active","similarity","open",11,65,0.0219999999999914,14
+95,"balanced","all active","similarity","open",8,70,0.0130000000000337,15
+95,"balanced","all active","similarity","open",5,75,0.00699999999994816,16
+95,"balanced","all active","similarity","open",2,80,0.00200000000000955,17
+95,"balanced","all active","similarity","open",2,85,0.00499999999999545,18
+109,"balanced","strong heterogeneity","similarity","open",1,0,0.0369999999999777,1
+109,"balanced","strong heterogeneity","similarity","open",20,5,0.146999999999991,2
+109,"balanced","strong heterogeneity","similarity","open",20,10,0.0960000000000036,3
+109,"balanced","strong heterogeneity","similarity","open",20,15,0.104000000000042,4
+109,"balanced","strong heterogeneity","similarity","open",20,20,0.0600000000000023,5
+109,"balanced","strong heterogeneity","similarity","open",20,25,0.0660000000000309,6
+109,"balanced","strong heterogeneity","similarity","open",19,30,0.0430000000000064,7
+109,"balanced","strong heterogeneity","similarity","open",18,35,0.0319999999999823,8
+109,"balanced","strong heterogeneity","similarity","open",16,40,0.0529999999999973,9
+109,"balanced","strong heterogeneity","similarity","open",12,45,0.0260000000000105,10
+109,"balanced","strong heterogeneity","similarity","open",10,50,0.0219999999999914,11
+109,"balanced","strong heterogeneity","similarity","open",9,55,0.0219999999999914,12
+109,"balanced","strong heterogeneity","similarity","open",8,60,0.0160000000000196,13
+109,"balanced","strong heterogeneity","similarity","open",6,65,0.0110000000000241,14
+109,"balanced","strong heterogeneity","similarity","open",4,70,0.00799999999998136,15
+109,"balanced","strong heterogeneity","similarity","open",3,75,0.007000000000005,16
+109,"balanced","strong heterogeneity","similarity","open",2,80,0.00600000000002865,17
+109,"balanced","strong heterogeneity","similarity","open",2,85,0.00600000000002865,18
+109,"balanced","strong heterogeneity","similarity","open",1,90,0.00200000000000955,19
+133,"balanced","global null","oracle","open",1,0,0.0050000000000523,1
+133,"balanced","global null","oracle","open",20,5,0.000999999999976353,2
+133,"balanced","global null","oracle","open",20,10,0.00200000000000955,3
+133,"balanced","global null","oracle","open",20,15,0.0010000000000332,4
+133,"balanced","global null","oracle","open",20,20,0.0010000000000332,5
+133,"balanced","global null","oracle","open",20,25,0,6
+133,"balanced","global null","oracle","open",20,30,0.0010000000000332,7
+133,"balanced","global null","oracle","open",16,35,0,8
+133,"balanced","global null","oracle","open",14,40,0.000999999999976353,9
+133,"balanced","global null","oracle","open",10,45,0,10
+133,"balanced","global null","oracle","open",6,50,0.000999999999976353,11
+133,"balanced","global null","oracle","open",6,55,0,12
+133,"balanced","global null","oracle","open",4,60,0,13
+133,"balanced","global null","oracle","open",4,65,0,14
+133,"balanced","global null","oracle","open",4,70,0.0010000000000332,15
+133,"balanced","global null","oracle","open",4,75,0,16
+133,"balanced","global null","oracle","open",3,80,0.000999999999976353,17
+133,"balanced","global null","oracle","open",3,85,0,18
+133,"balanced","global null","oracle","open",2,90,0,19
+133,"balanced","global null","oracle","open",2,95,0,20
+133,"balanced","global null","oracle","open",1,100,0,21
+139,"balanced","all active","oracle","open",1,0,0.0010000000000332,1
+139,"balanced","all active","oracle","open",20,5,0.00200000000000955,2
+139,"balanced","all active","oracle","open",20,10,0.00200000000000955,3
+139,"balanced","all active","oracle","open",20,15,0.000999999999976353,4
+139,"balanced","all active","oracle","open",20,20,0.000999999999976353,5
+139,"balanced","all active","oracle","open",20,25,0.0010000000000332,6
+139,"balanced","all active","oracle","open",19,30,0,7
+139,"balanced","all active","oracle","open",19,35,0.000999999999976353,8
+139,"balanced","all active","oracle","open",16,40,0,9
+139,"balanced","all active","oracle","open",14,45,0,10
+139,"balanced","all active","oracle","open",10,50,0,11
+139,"balanced","all active","oracle","open",6,55,0,12
+139,"balanced","all active","oracle","open",3,60,0,13
+139,"balanced","all active","oracle","open",1,65,0.0010000000000332,14
+153,"balanced","strong heterogeneity","oracle","open",1,0,0.0010000000000332,1
+153,"balanced","strong heterogeneity","oracle","open",20,5,0.00200000000000955,2
+153,"balanced","strong heterogeneity","oracle","open",20,10,0.0010000000000332,3
+153,"balanced","strong heterogeneity","oracle","open",20,15,0.00200000000000955,4
+153,"balanced","strong heterogeneity","oracle","open",20,20,0,5
+153,"balanced","strong heterogeneity","oracle","open",19,25,0.000999999999976353,6
+153,"balanced","strong heterogeneity","oracle","open",16,30,0.000999999999976353,7
+153,"balanced","strong heterogeneity","oracle","open",14,35,0.0010000000000332,8
+153,"balanced","strong heterogeneity","oracle","open",12,40,0,9
+153,"balanced","strong heterogeneity","oracle","open",9,45,0,10
+153,"balanced","strong heterogeneity","oracle","open",7,50,0.000999999999976353,11
+153,"balanced","strong heterogeneity","oracle","open",4,55,0,12
+153,"balanced","strong heterogeneity","oracle","open",3,60,0,13
+153,"balanced","strong heterogeneity","oracle","open",3,65,0.000999999999976353,14
+153,"balanced","strong heterogeneity","oracle","open",2,70,0.0010000000000332,15
+153,"balanced","strong heterogeneity","oracle","open",1,75,0.0010000000000332,16
+153,"balanced","strong heterogeneity","oracle","open",1,80,0,17
+153,"balanced","strong heterogeneity","oracle","open",1,85,0,18
+153,"balanced","strong heterogeneity","oracle","open",1,90,0,19

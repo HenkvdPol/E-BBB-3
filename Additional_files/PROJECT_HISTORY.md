@@ -362,3 +362,16 @@ locally for comparison; it is not copied into this repository, and the eBBB repo
 
 **Docs.** Updated: `setup.tex`/`setup.pdf` (sections 3–4, still three pages), `README.txt`,
 `docs/known-limitations.md` (item 12: differences that remain), `docs/open-ended-design.md`.
+
+---
+
+## 2026-11-26 — Timing pilot (approved: 20 trials per cell)
+
+* **Run.** `validation/timing_pilot.R` covered 84 cells: all models, both recruitment designs, 3 scenarios and both
+  horizons, with R = 20. It also calibrated the two-way fit time.
+* **Two-way fit cost.** About 0.042 s per data state plus 0.5–1.2 s per fit.
+* **Prediction at R = 1000.** 4.4 CPU hours for the fixed design and 5.8 for the open design. The two-way cells take
+  almost all of this, and the slowest cell is about 0.3 h. On 8 cores (`sim.slurm`) this is about 0.6–0.7 h of wall
+  time per horizon; 2 x is a safe upper bound.
+* **Precision.** At R = 1000 the Monte Carlo SE is 0.0069 at r = 0.05 and at most 0.016.
+* **Not interpreted.** The pilot's rejection rates are not used. Details: `docs/timing-pilot.md`.
