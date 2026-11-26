@@ -16,6 +16,4 @@ design_banks/
 *.fdb_latexmk
 *.synctex.gz
 
-# Locally compiled research PDFs
-framework.pdf
-setup.pdf
+# Compiled research PDFs are tracked (framework.pdf, setup.pdf); rebuild them from the .tex files
