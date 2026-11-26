@@ -1,7 +1,7 @@
 # Known limitations and implementation decisions
 
 This document separates verified properties of the code from planned work. Update it when an item is resolved.
-Last update: 2026-11-26 (branch `feature/lean-framework-twoway-exnex`: new framework code in `additional_functions.R`, earlier code in
+Last update: 2026-11-26 (priors, stopping rule, hyperparameters and grid aligned with eBBB; earlier: branch `feature/lean-framework-twoway-exnex`: new framework code in `additional_functions.R`, earlier code in
 `Additional_files/legacy/`).
 
 ## Statistical scope
@@ -42,12 +42,14 @@ Last update: 2026-11-26 (branch `feature/lean-framework-twoway-exnex`: new frame
    * The no-borrowing and one-way engines are deterministic.
 9. **Grids.**
    * theta is restricted to `[-10, 6]` (p from 4.5e-5 to 0.9975) in cells of width 0.05.
-   * The standard deviations of the two-way model live on the grid 0.05, 0.15, …, 2.45.
+   * The standard deviations of the two-way model live on the grid 0.05, 0.15, …, up to at least 4 x the
+     half-normal scale (2.45 for scale 1/sqrt(3) or 0.5; 3.95 for scale 1, the eBBB value for sigma_a, sigma_b).
    * The mean `m` of the EX component is clamped to `[-10, 6]` in the tables.
    * The theta grid is shared. SD grids differ: the one-way benchmark uses 0.05, 0.15, ..., 3.95; the two-way grid
      above and EX-mean clamping apply to the two-way approximation. JAGS uses continuous theta and SDs.
-   * HN(1/sqrt(3)) for the three two-way SDs matches total expected EX variance to HN(1) before discretization,
-     not the full prior distribution. The finite-grid expected variances are only approximately equal.
+   * Since 2026-11-26 the study uses the eBBB hyperparameters (HN(1), HN(1), HN(0.5); NEX N(logit p0, 2^2)).
+     The earlier choice HN(1/sqrt(3)) for all three SDs (matching the total expected EX variance of the one-way
+     HN(1) before discretization) is still the default of `twoway_prior()`.
 10. **Common p0.** The new code assumes one `p0` for all baskets: the theta grid is aligned at `logit(p0)`.
     Basket-specific `p0` needs one grid per distinct `p0`.
 
@@ -59,6 +61,17 @@ Last update: 2026-11-26 (branch `feature/lean-framework-twoway-exnex`: new frame
     * The exact results cover one basket without borrowing, or borrowing from baskets whose data are complete.
       Borrowing from still-recruiting baskets needs simulation; only a smoke run was done.
     * The theta grid (width 0.05) becomes coarse for n in the thousands; validity is unaffected.
+
+12. **Differences from eBBB (added 2026-11-26).** The priors, the fixed-design stopping rule (efficacy or
+    `n_max`), the two-way hyperparameters, the 4 x 3 grid and eBBB's four scenarios were adopted from eBBB (T.
+    Jacobs). Some differences remain by design (`Additional_files/docs/ebbb-alignment.md`):
+    * calendar-time recruitment with global analyses, against one accrual stream with per-basket analyses;
+    * `p0, p1 = 0.10, 0.30` against `0.30, 0.50`;
+    * `n_max = 30` against 100;
+    * Beta priors on the theta grid: block factors within 3e-4 of the closed forms;
+    * the two-way model fitted by the grid sampler, not by Stan.
+
+    Results are therefore comparable with eBBB in their ranking of the priors, not number for number.
 
 ## Software limitations
 

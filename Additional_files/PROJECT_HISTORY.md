@@ -317,3 +317,48 @@ disjoint ranges. This resolves the RNG item of the review, and results no longer
 
 **Tests.** `Additional_files/tests/run_tests.R --slow`: all pass (see the commit message for counts). Smoke run of
 `simulate.R`, both horizons, with 2 trials per cell.
+
+---
+
+## 2026-11-26 — Aligned with eBBB (T. Jacobs): priors, stopping rule, hyperparameters, grid
+
+**Reference.** The eBBB code (`tijn-jacobs/eBBB`, `code/`), received as a zip file. It was read only and run
+locally for comparison; it is not copied into this repository, and the eBBB repository was not changed.
+
+**Researcher's decisions.**
+
+| Item | Decision |
+|---|---|
+| Priors | Adopt eBBB's set (no borrowing, power equal and column, conjugate EX/NEX, similarity, oracle); our two-way EX/NEX replaces its Stan fit |
+| Stopping rule, fixed design | Efficacy or `n_max`, as in eBBB; no futility stop |
+| Open-ended design | Kept as an option (e-value futility) |
+| Two-way hyperparameters | As in eBBB: `mu ~ N(logit p0, 2^2)`, `sigma_a, sigma_b ~ HN(1)`, `sigma_eps ~ HN(0.5)`, NEX `N(logit p0, 2^2)`, `p_ex = 0.5` |
+| Grid | 4 tumour types x 3 biomarker groups |
+| Kept from E-BBB-3 | Calendar-time recruitment, global analyses every 5 time units, `p0 = 0.10`, `p1 = 0.30`, `n_max = 30`, our scenarios (rebuilt for 4 x 3, with eBBB's four added) |
+
+**Code.**
+* `additional_functions.R`, new functions:
+  * `beta_cells()`: a Beta prior on the theta grid, with the tail mass in the end cells;
+  * `jsd_beta()`;
+  * `add_points()`: exact oracle points;
+  * `engine_ebbb()`: the five eBBB priors.
+* `additional_functions.R`, changed functions:
+  * `twoway_prior()`: separate SD scales and a general NEX prior. The defaults give bit-identical posteriors.
+  * `hn_grid()`: reaches 4 x the scale.
+  * `make_design()`: the fixed horizon has `futility = "none"`.
+  * `make_engine(model, layout, p_true)`: the seven study models; the earlier models remain available.
+  * Basket names are `T<j>-B<l>`.
+* `setting.R`: J = 4, L = 3, `Models`, the eBBB prior settings, `twoway_hyper`, recruitment designs and 11 scenarios
+  on 4 x 3. The study has 154 cells.
+* `simulate.R`: passes the true rates to `make_engine()` for the oracle.
+
+**Validation.**
+* **eBBB priors.** Block factors match eBBB's closed forms within 2.3e-4 (relative); the EX weights and the oracle
+  are exact (`validation/ebbb_compare.R`).
+* **Two-way with the eBBB hyperparameters.** On 4 x 3 it agrees with JAGS within the Monte Carlo error of the
+  production sampler (`validation/twoway_ebbb_hyper.R`).
+* Details: `docs/ebbb-alignment.md` and the addendum to `docs/two-way-validation.md`.
+* **New tests.** `tests/test_ebbb.R` has 40 tests, including the exact type I error of every eBBB prior.
+
+**Docs.** Updated: `setup.tex`/`setup.pdf` (sections 3–4, still three pages), `README.txt`,
+`docs/known-limitations.md` (item 12: differences that remain), `docs/open-ended-design.md`.

@@ -85,3 +85,20 @@ no maximum sample size, anytime-valid e-value futility, `docs/open-ended-design.
   old layout.
 * Follow the researcher's code design: banners per function, argument comments, plain settings in `setting.R`.
 * The RNG item is resolved: disjoint outcome and fitting seeds per cell.
+
+---
+
+**eBBB alignment 2026-11-26.**
+* The study now uses:
+  * the priors of eBBB (T. Jacobs) and our two-way EX/NEX with eBBB's hyperparameters;
+  * the 4 x 3 grid;
+  * stopping at efficacy or `n_max`;
+  * 11 scenarios, including eBBB's four;
+  * 154 cells.
+* See `docs/ebbb-alignment.md`.
+* Do not copy eBBB code into this repository. Compare with `validation/ebbb_compare.R <path to lr_evalue.R>`.
+* Still open:
+  * approval of the full run;
+  * a timing pilot. The unbalanced design has a basket at rate 0.25, so trials last up to 120 time units and the
+    two-way cells are the slowest;
+  * hyperprior sensitivity.

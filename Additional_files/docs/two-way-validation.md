@@ -146,3 +146,41 @@ grid-refinement checks should precede interpretation of a production power study
 * the hyperprior sensitivity variants;
 * states with n > 30 (the engine supports them up to its `n_max`).
 * systematic refinement of theta/m/Rao-Blackwell grids and draw counts for the planned study.
+
+---
+
+## Addendum 2026-11-26: the eBBB hyperparameters on the 4 x 3 grid
+
+**Script.** `Additional_files/validation/twoway_ebbb_hyper.R`, about 25 minutes on one core. Results in
+`results/twoway_ebbb_hyper.csv` and `_summary.csv`.
+
+**Prior.** The prior of the study (`make_engine("two-way EX/NEX")`), as in eBBB's `exnex.stan`:
+* `mu ~ N(logit p0, 2^2)` on `[-10, 6]`;
+* `sigma_a, sigma_b ~ HN(1)` on the grid 0.05, …, 3.95;
+* `sigma_e ~ HN(0.5)`;
+* NEX `N(logit p0, 2^2)`;
+* `P(EX) = 0.5`.
+
+**Design.** Six data states on the 4 x 3 layout:
+* global null, biomarker 1 active, interaction and all active, each with 20 patients per basket;
+* unbalanced, with cell (3,3) missing and an empty basket;
+* 5 patients per basket.
+
+The production sampler (`mcmc` of `setting.R`, 5 seeds) was compared with JAGS (4 x 25000 draws, SDs truncated at
+the grid ends) and with a long run of the sampler (4 x 20000).
+
+| Comparison | Restricted mean, \|diff\| | 5/5 block factor, relative \|diff\| | P(p > p0), \|diff\| |
+|---|---|---|---|
+| production vs JAGS | median 0.0012, 95% 0.0046, max 0.0077 | median 3.3%, 95% 9.6%, max 17% | median 0.004, max 0.032 |
+| long run vs JAGS | median 0.0006, max 0.0045 | median 1.5%, max 9.5% | max 0.014 |
+| production, sd over 5 seeds | median 0.0013 | median 3.6% | — |
+
+**Findings.**
+* **Monte Carlo error dominates.** The production sampler's differences from JAGS are of the size of its
+  seed-to-seed spread.
+* **No systematic bias.** The long run agrees with JAGS to the level reported above for the 3 x 3 layout with the
+  earlier hyperparameters. The mean signed difference in P(p > p0) is -0.002, and in P(EX) -0.0007.
+* **Largest differences.** They are in the 5-patient state and in baskets with little data, as before.
+* **Run time.** One data state took 6–8 s with the production settings, including engine set-up; JAGS took
+  13–17 s.
+* **Conclusion.** The validation conclusions above carry over to the eBBB hyperparameters on 4 x 3.
