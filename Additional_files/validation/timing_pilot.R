@@ -14,9 +14,9 @@
 ##     heterogeneity) x both horizons, R = 20, the seeds of simulate.R. Every fit of the borrowing
 ##     model is timed with its number of data states.
 ##  B. Calibration of the two-way fit: t(S) for S = 20, 150, 300 and 600 data states on both layouts.
-##  C. Prediction for R = 1000: per fit, the number of data states x 50 (an upper bound: identical
-##     states are fitted once); the two-way fits by t(S) of B, the other models linearly; the rest of
-##     the simulation linearly in R. Unmeasured scenarios: the largest measured value of the same
+##  C. Prediction for R = 1000: per fit, the observed number of data states x 50 (a pilot extrapolation,
+##     not an upper bound); the two-way fits by t(S) of B, the other models linearly; the rest of
+##     the simulation linearly in R. All 11 scenarios use the largest measured value of the same
 ##     model, recruitment and horizon.
 ## =============================================================================
 root <- local({ f <- sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE))
@@ -114,18 +114,18 @@ call_res$sec_study <- ifelse(call_res$Model == "two-way EX/NEX",
 eng_study <- aggregate(sec_study ~ id + horizon, call_res, sum)
 est <- merge(cell_res, eng_study, by = c("id", "horizon"))
 est$seconds_study <- est$setup + est$sec_study + est$other * scale
-## All 154 cells per horizon: unmeasured scenarios get the largest measured value of the same model,
+## All 154 cells per horizon: all scenarios get the largest measured value of the same model,
 ## recruitment and horizon
 worst <- aggregate(seconds_study ~ Model + Recruitment + horizon, est, max)
 full <- merge(rbind(cbind(sim, horizon = "fixed"), cbind(sim, horizon = "open")), worst, by = c("Model", "Recruitment", "horizon"))
 write.csv(est, file.path(out_dir, "timing_pilot_estimate.csv"), row.names = FALSE)
 
-cat("\nPredicted CPU hours at R = 1000, all 154 cells (upper estimate):\n")
+cat("\nPredicted CPU hours at R = 1000, all 154 cells (pilot extrapolation):\n")
 tab <- aggregate(seconds_study ~ Model + horizon, full, function(x) sum(x) / 3600)
 print(reshape(tab, idvar = "Model", timevar = "horizon", direction = "wide"), digits = 3, row.names = FALSE)
 tot <- aggregate(seconds_study ~ horizon, full, function(x) c(cpu_hours = sum(x) / 3600, longest_cell_hours = max(x) / 3600))
 print(tot, digits = 3)
-cat("\nWall time with 8 cores (as sim.slurm): about max(CPU hours / 8, longest cell)\n")
+cat("\nIdeal scheduling lower bound with 8 cores: max(CPU hours / 8, longest cell)\n")
 for (h in unique(full$horizon)) {
   x <- full$seconds_study[full$horizon == h] / 3600
   cat(sprintf("   %s: %.1f h (CPU %.1f h, longest cell %.1f h)\n", h, max(sum(x) / 8, max(x)), sum(x), max(x)))

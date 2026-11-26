@@ -492,7 +492,7 @@ engine_ebbb <- function(grid, layout, method, a0 = 1, b0 = 1, w_row = 0, w_col =
   #                          s = (1 - JSD)^epsilon (0 when s < tau), where JSD compares the
   #                          own-data posteriors Beta(a0 + y, b0 + n - y);
   #          'oracle':       point mass at q$eff (one value per basket: the true rate of an
-  #                          active basket, p1 otherwise); an upper bound, not a design.
+  #                          active basket, p1 otherwise); a truth-informed reference.
   #                          For the futility e-value (open design) the oracle bets on
   #                          q_f (the true rate if below p1, p0 otherwise). The points are
   #                          added to the grid (add_points), so the oracle is exact, and

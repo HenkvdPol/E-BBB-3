@@ -68,7 +68,7 @@ Last update: 2026-11-26 (priors, stopping rule, hyperparameters and grid aligned
     * calendar-time recruitment with global analyses, against one accrual stream with per-basket analyses;
     * `p0, p1 = 0.10, 0.30` against `0.30, 0.50`;
     * `n_max = 30` against 100;
-    * Beta priors on the theta grid: block factors within 3e-4 of the closed forms;
+    * Beta priors on the theta grid: block factors within 3e-4 of the closed forms in the tested states;
     * the two-way model fitted by the grid sampler, not by Stan.
 
     Results are therefore comparable with eBBB in their ranking of the priors, not number for number.
@@ -82,8 +82,8 @@ Last update: 2026-11-26 (priors, stopping rule, hyperparameters and grid aligned
 2. **ESS-min.** It was added to the legacy wrapper on 2026-11-26. The legacy checks that cover it (`exact_checks.R`)
    have not been rerun since.
 3. **No completed full simulation.** Neither the legacy study nor the new framework study (`simulate.R` (settings in `setting.R`))
-   has been run with `N_SIM = 1000`. Only smoke runs (`N_SIM = 2`) were executed. A full run needs the researcher's
-   approval.
+   has been run with `N_SIM = 1000`. Smoke runs (`N_SIM = 2`) and an approved timing pilot (20 trials per cell,
+   84 selected cells) were executed. A full run needs the researcher's approval.
 4. **Run time of the two-way engine.**
    * About 0.035 s per data state (2 cores, reference BLAS), against 0.007 s for one-way EXNEX.
    * Each call also has a fixed cost of about 1 s.
@@ -91,7 +91,7 @@ Last update: 2026-11-26 (priors, stopping rule, hyperparameters and grid aligned
      hyperparameters:
      * a two-way fit costs about 0.042 s per data state plus 0.5–1.2 s per fit;
      * the predicted study at R = 1000 takes about 4.4 (fixed) and 5.8 (open) CPU hours, which is 0.6–0.7 h on
-       8 cores; 2 x is a safe upper bound.
+       8 cores under ideal load balancing; 2 x is a provisional planning allowance, not an upper bound.
 5. **Quadrature reference limited to at most 3 columns.** Larger layouts can be checked against JAGS only (or after
    transposing).
 6. **Reproducibility.** Package versions are not pinned (no `renv.lock`). `simulate.R` (settings in `setting.R`) and

@@ -1,7 +1,8 @@
 # Open-ended baskets: no maximum sample size
 
-Status 2026-11-26. Optional design added on branch `feature/lean-framework-twoway-exnex`. The fixed 80-cell study
-(`simulate.R` (settings in `setting.R`) with defaults) is unchanged.
+Status 2026-11-26. The optional open-ended design was added on branch `feature/lean-framework-twoway-exnex`.
+After the eBBB alignment, `simulate.R` with `setting.R` defines 154 cells per horizon. The exact results below
+come from the earlier single-basket, fixed-starting-prior feasibility calculations, not the full 4 x 3 study.
 
 ## 1. Question and short answer
 

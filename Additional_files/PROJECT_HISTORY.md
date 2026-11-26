@@ -375,3 +375,41 @@ locally for comparison; it is not copied into this repository, and the eBBB repo
   time per horizon; 2 x is a safe upper bound.
 * **Precision.** At R = 1000 the Monte Carlo SE is 0.0069 at r = 0.05 and at most 0.016.
 * **Not interpreted.** The pilot's rejection rates are not used. Details: `docs/timing-pilot.md`.
+
+
+## 2026-11-26: sanity review after the three-file simplification
+
+Reviewed main `ec57509383cad1c8007bffde114e681aafbd3673`, including the eBBB alignment.
+The requested three-file structure and the familiar settings / genSim / per-cell output
+pattern are in place. The earlier initial-prior replication correction and separate
+outcome/fitting seed ranges remain intact.
+
+**Necessary correction.** The first additive-scenario basket is intended to be exactly
+`p0`. In R 4.4.2, its logit round trip is slightly above `p0`, so it was classified as
+active and the oracle selected the wrong bet. `setting.R` now explicitly anchors that
+one basket to `p0`; two regression checks preserve exact equality and one null basket
+in each recruitment design. No global comparison tolerance was added.
+
+**Executed validation.** Code commit `1f7dd9031db438f075d3042b1ed7d7596805ebd9` passed
+[GitHub Actions run 45855905668](https://github.com/HenkvdPol/E-BBB-3/actions/runs/45855905668):
+41 R files parsed; **132 PASS, 0 FAIL, 1 SKIP**. The log directly records
+`p0 = 0.10000000000000001` versus an unanchored round trip of
+`0.10000000000000002`. The legacy numerical checks also passed.
+The slow reference group was skipped; the top-level study driver was parsed, not
+executed, in this CI run. No new pilot or full simulation was launched.
+
+**Documentation.** Corrected the oracle description to a truth-informed reference
+(it is not a universal finite-horizon power upper bound), qualified grid precision as
+observed in tested states, and separated earlier fixed-prior open-ended feasibility
+results from the current 4 x 3 study. Updated the short setup's validation evidence
+and runtime interpretation. The rebuilt `setup.pdf` has three pages and was
+visually checked. The source remains in `Additional_files/setup.tex`.
+
+**Concurrent timing update.** PR #10 was merged as `663c2ac` during this review. Its
+pilot, results and documentation are retained. Independent recomputation gives
+4.441 fixed / 5.809 open CPU hours for the extrapolated full study. The largest
+recorded unbalanced fit/calibration ratio is 2.903, not 1.9. The timing documents
+now describe projections and the suggested 2x margin as planning assumptions;
+`max(total/8, longest_cell)` is an ideal scheduling lower bound. Timing-script
+edits clarify comments and printed labels only; its calculations and saved data
+are unchanged. The production R files in PR #10 were unchanged.

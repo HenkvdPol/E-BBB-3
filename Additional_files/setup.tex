@@ -110,7 +110,7 @@ Power, equal / column & Add $w_r\sum_{R_c}$ and $w_c\sum_{C_c}$ of the responses
 EX/NEX & Mixture of EX $=\operatorname{Beta}(a_0,b_0)$ plus the column data and NEX $=\operatorname{Beta}(a_0,b_0)$, each updated with the own data; $\Prob(EX)=0.5$ updated by the beta-binomial likelihood of the own data.\\
 Similarity & Add every basket with data with weight $s=(1-\mathrm{JSD})^{2}$, set to 0 if $s<0.3$; JSD (base 2) between the own-data posteriors.\\
 Two-way EX/NEX & Model below, hyperparameters of eBBB (\texttt{exnex.stan}).\\
-Oracle & Point mass at $p_c$ if $p_c>p_0$, otherwise at $p_1$: an upper bound that uses the truth.\\
+Oracle & Point mass at $p_c$ if $p_c>p_0$, otherwise at $p_1$: a truth-informed reference.\\
 \bottomrule
 \end{tabularx}
 
@@ -130,7 +130,7 @@ $\logit(p_0)$ at a cell boundary; the e-process sums normalized weights at the
 support points $p_g>p_0$ directly. A Beta prior is put on the grid as its
 density at the cell midpoints times the cell widths (tails into the end cells);
 its block factors agree with the closed form of eBBB within $3\cdot10^{-4}$
-(relative). The oracle's points are added to the grid, so it is exact. Two-way
+(relative) in the tested states. The oracle's points are added to the grid, so it is exact. Two-way
 fitting uses Metropolis-within-Gibbs with a Rao--Blackwellised grid
 distribution (two chains, 500 burn-in and 1,000 retained draws), SD grids,
 interpolation and a coarser reconstruction lattice; its accuracy affects
@@ -202,45 +202,45 @@ process, so results do not depend on the number of cores. Record seeds,
 code version and session details.
 
 \section*{6. Review and validation status}
-\textbf{A simulator defect was corrected on 26 November 2026.}
-The original initialization reshaped a basket-by-support prior matrix before
-replicating trials. With multiple trials per worker, this moved weights
-between support points and could break normalization. It now copies prior
-rows directly and checks the assembled weights. Three new regressions compare
-initial factors with direct mixture calculations, check the copied prior
-means, and compare batched trials with the same fixed-outcome trials run
-individually. Single-trial/single-worker chunking was also corrected.
+\textbf{Corrections and regression coverage.}
+The earlier initialization defect is corrected: prior rows are copied directly
+across trials and checked for normalization. Regressions compare initial
+factors with direct mixtures, check prior means and compare batched with
+individual trials. The additive scenario's zero-effect basket is now set
+explicitly to $p_0$: a logit round trip can round just above $p_0$ and
+incorrectly label it active. Two checks preserve this exact boundary and the
+single null basket in both recruitment designs.
 
 \textbf{Independently checked evidence.}
-GitHub Actions run \href{https://github.com/HenkvdPol/E-BBB-3/actions/runs/45805989231}{45805989231}
-for correction commit \texttt{d0b8d5b} parsed 39 R files and reported
-\textbf{69 passes, zero failures and one skipped slow-reference group}.
-The legacy executable files are byte-identical to the earlier base after
-relocation. No local R execution was available for this review; the R
-execution evidence comes from the recorded CI log.
+GitHub Actions run \href{https://github.com/HenkvdPol/E-BBB-3/actions/runs/45855905668}{45855905668}
+for correction commit \texttt{1f7dd90} parsed 41 R files and reported
+\textbf{132 passes, zero failures and one skipped slow-reference group}.
+The checks include all seven current models, fixed stopping and the earlier
+batching regressions. No local R execution was available for this review;
+the R execution evidence comes from the recorded CI log.
 
 The exact-path tests enumerate $6^6$ block-count paths for one null basket
-under selected other-basket histories. Their rejection probabilities are
-0.0059--0.0073 at $\alpha=0.05$. They call the borrowing engines and factor
-calculation directly, so they did not detect the simulator batching defect.
-These finite examples check implementation; the theorem provides the general
-validity argument.
+under selected other-basket histories. Rejection probabilities are
+0.0117--0.0220 for the eBBB priors and 0.0059--0.0073 for the earlier engine
+checks, at $\alpha=0.05$. These finite examples check implementation;
+the theorem provides the general validity argument.
 
-The checked-in posterior-validation data cover 22 fixed data states.
-Independent recomputation reproduced the saved comparison summaries.
-For baskets with at least 15 observations, reported typical production versus
-reference differences in restricted means are about 0.0004--0.0007; sparse
-states show differences up to about 0.009, with some block-factor differences
-around 12--15\%. This supports further evaluation, not a claim of unbiased
-MCMC or exact continuous-posterior computation. The author's earlier
-70/70 slow-suite and two-trial study smoke run are separate reported results;
-the full operating-characteristic study remains unrun.
+The earlier posterior validation covers 22 states. A new comparison covers
+six states on the current $4\times3$ layout with the eBBB hyperparameters.
+Independent recomputation reproduced its saved summaries: production versus
+JAGS restricted-mean differences have median 0.0012 and maximum 0.0077;
+relative differences in a 5/5 block factor have median 3.3\% and maximum 17\%.
+These comparisons support further evaluation, not unbiased MCMC or exact
+continuous-posterior computation. \href{https://github.com/HenkvdPol/E-BBB-3/pull/8}{PR\,8} separately reports 134 slow-suite
+passes and two-trial smoke runs of all 154 cells. The top-level driver was
+parsed, not executed, in the reviewed CI job. The full study remains unrun.
 
 \section*{7. Next step within the agreed scope}
 Keep this framework study fixed. A timing pilot (20 trials per cell,
-\texttt{docs/timing-pilot.md}) predicts about 4.4 (fixed) and 5.8 (open)
-CPU hours at 1,000 trials per cell, under one hour per horizon on 8 cores;
-twice this is a safe bound. \emph{After approval}, choose the replication
+\texttt{Additional\_files/docs/timing-pilot.md}) predicts about 4.4 (fixed) and 5.8 (open)
+CPU hours at 1,000 trials per cell. Under one hour per horizon on 8 cores is
+provisional; twice the prediction is a planning allowance, not a bound.
+\emph{After approval}, choose the replication
 count (Monte Carlo SE 0.0069 at a rate of 0.05 for 1,000 trials) and run the
 study on the cluster. Grid resolution and retained MCMC draws on sparse and
 heterogeneous states remain to be checked.

@@ -24,10 +24,11 @@ The run took 4.8 min for the pilot and 2 min for the calibration, on 2 cores.
   | unbalanced, 11 baskets | 0.5 s | 0.041 s |
 
 * **C. Prediction for R = 1000.**
-  * **Data states per fit:** the pilot count x 50. This is an upper bound, because identical states are fitted once.
+  * **Data states per fit:** the pilot count x 50, assuming the pilot's frequency of distinct states is representative.
+    Identical states are fitted once; scaling a finite pilot does not give an upper bound for another run.
   * **Fit time:** two-way fits by the line of B; the other models linearly.
   * **Rest of the simulation:** linear in R.
-  * **Unmeasured scenarios:** the largest measured value of the same model, recruitment design and horizon.
+  * **Scenarios:** all 11 use the largest measured value of the same model, recruitment design and horizon.
 
 ## Result
 
@@ -51,13 +52,15 @@ The run took 4.8 min for the pilot and 2 min for the calibration, on 2 cores.
 * The longest cell is about 0.3 h.
 
 **Wall time with `sim.slurm`** (8 cores per horizon, the two horizons as two array tasks running at the same time):
-about 0.6 h (fixed) and 0.7 h (open). The requested 2 days and 32 GB are ample.
+The calculation gives ideal scheduling lower bounds of about 0.6 h (fixed) and 0.7 h (open).
+Actual wall time includes worker imbalance and overhead; memory use was not profiled by this pilot.
 
 **Uncertainty.**
-* **Small pilot fits.** At R = 20, the unbalanced two-way fits took up to 1.9 x the line of B. The cause is the
+* **Small pilot fits.** At R = 20, the unbalanced two-way fits took up to 2.9 x the line of B. The cause is the
   overhead per fit with few states, and growing tables when n > 30 in the open design.
-* **At R = 1000** the cost per state dominates (about 1000 states per fit), so this overhead matters little. A
-  safe upper bound is 2 x the prediction: about 9 and 12 CPU hours, 1.5 h wall time.
+* **At R = 1000** the cost per state is expected to dominate. Twice the prediction (about 9 and 12 CPU hours)
+  is a provisional planning allowance, not an upper bound. More trials may need additional late fits;
+  the open design reaches n = 150, beyond the n <= 30 calibration, and only three scenarios were measured.
 * **Hardware.** The cluster's speed per core may differ from this machine's.
 
 ## Monte Carlo precision

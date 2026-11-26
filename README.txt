@@ -59,7 +59,7 @@ horizon 'open' : no maximum sample size; a basket stops when it is rejected or w
 On the cluster: mkdir -p logs; sbatch Additional_files/slurm/sim.slurm
 (two array tasks: the fixed and the open-ended design, 1000 trials per cell, 8 cores).
 The full study has not been run yet: approve the compute first. Timing pilot: about 4.4 (fixed)
-and 5.8 (open) CPU hours at R = 1000, i.e. under 1 h per horizon on 8 cores
+and 5.8 (open) CPU hours at R = 1000; under 1 h per horizon on 8 cores is provisional
 (Additional_files/docs/timing-pilot.md).
 
 Tests and validation:
@@ -75,13 +75,18 @@ Packages: Matrix, foreach, doParallel, ggplot2; rjags (with JAGS) only for the J
 
 Results so far (exact calculations and tests; no full simulation)
 ------------------------------------------------------------------
-- The type I error is at most alpha for every borrowing model (exact enumeration).
+- The per-basket type I error bound follows from the framework; exact enumeration
+  checks it in selected finite configurations for every borrowing model.
 - The priors of eBBB give the same block factors as eBBB's closed forms within 3e-4
-  (relative); the EX/NEX weights and the oracle are exact
+  (relative) in the tested data states; the EX/NEX weights and the oracle are exact
   (Additional_files/docs/ebbb-alignment.md).
-- The open-ended design with e-value futility stops every basket (by 125 patients in the
-  exact analysis), with E[N] 20-26 under p0 and power 0.90-0.95 at p1, against power
-  0.49-0.62 for the fixed design with n_max = 30 (Additional_files/docs/open-ended-design.md).
-- The two-way EXNEX posterior agrees with deterministic quadrature and JAGS within Monte
-  Carlo error (Additional_files/docs/two-way-validation.md).
+- In the earlier single-basket feasibility calculations with fixed starting priors,
+  e-value futility stops every basket by 125 patients, with E[N] 20-26 under p0 and
+  power 0.90-0.95 at p1, against 0.49-0.62 for n_max = 30. These are results for those
+  configurations; the current 4 x 3 platform study remains to be run
+  (Additional_files/docs/open-ended-design.md).
+- The two-way engine has been compared with quadrature and JAGS. For the current
+  hyperparameters in six tested states, production versus JAGS restricted-mean
+  differences reached 0.0077 and 5/5 block-factor relative differences reached 17%.
+  Numerical refinement remains part of validation (Additional_files/docs/two-way-validation.md).
 - Open points: Additional_files/docs/known-limitations.md.
