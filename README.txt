@@ -1,117 +1,75 @@
-# E-BBB-3: anytime-valid e-values with Bayesian borrowing for basket and platform trials
+E-BBB-3: anytime-valid e-values with Bayesian borrowing for basket trials
+=========================================================================
 
-Research code for basket and platform trials with a binary response. [`framework.tex`](framework.tex) is the lead
-document: it specifies the test and proves its validity. This repository implements that test and evaluates it by
-simulation.
+The method is described in Additional_files/framework.pdf (the lead document) and
+summarised in setup.pdf. Every basket is tested with an e-value: at each analysis a
+Bayesian borrowing model is fitted to all baskets, its posterior is restricted to
+(p0, 1] and frozen as the prior of the next block of patients. The type I error is at
+most alpha per basket, whether or not the borrowing model is right, at any time, and
+also without a maximum sample size.
 
-## The test (framework.tex)
 
-* For each basket c, test H0,c: p_c <= p0 with a one-sided alpha per basket.
-* **At each analysis:**
-  * fit a Bayesian borrowing model to all platform data;
-  * restrict its posterior of p_c to (p0, 1];
-  * freeze it as the prior of the next block of patients.
-* **Block factor:** the likelihood ratio of the new block, mixed over that prior.
-* **E-value:** the product of the block factors. Reject at the first analysis with E_c >= 1/alpha.
-* **Guarantee:** under the conditional null, P(reject basket c) <= alpha at every sample size. This holds under
-  optional stopping and continuation, whatever the other baskets show, and whether or not the borrowing model is
-  right.
-* **No maximum sample size needed:** the bound holds over an unbounded horizon, so a basket may run until it is
-  rejected. Optional anytime-valid futility (E^f >= 1/beta, testing p >= p1) then stops every basket eventually and
-  gives P(futility | p >= p1) <= beta; see [`docs/open-ended-design.md`](docs/open-ended-design.md).
-* **What it is not:** per basket, not a platform-wide FWER. Allocation, outcome order and delays matter
-  (framework.tex, 'Scope of the guarantee').
+Files
+-----
+setting.R               All settings: p0, p1, alpha, beta, n_max, the grid of baskets,
+                        recruitment designs, scenarios, borrowing models, R, seeds.
+simulate.R              Runs the simulation. Every simulation cell (recruitment design x
+                        scenario x borrowing model) is one call of genSim(), saved as
+                        Result/<horizon>/sim-<R>-<seed>-<id>.Rdata. When all cells are
+                        there, it writes baskets.csv, platform.csv, timing.csv, the
+                        figures and session.txt to Result/<horizon>/.
+additional_functions.R  All functions used by simulate.R:
+                          Part 1  the e-value (priors on (p0, 1], block factor, futility);
+                          Part 2  borrowing models: none, one-way EXNEX, two-way EXNEX;
+                          Part 3  the simulation of a trial in calendar time;
+                          Part 4  summaries and figures.
+setup.pdf               Three-page set-up of the study.
+Additional_files/       Everything else:
+  framework.tex/.pdf      the method and its proofs (lead document);
+  setup.tex               source of setup.pdf;
+  docs/                   design notes: open-ended design, two-way model and its
+                          validation, known limitations, validation plan, review,
+                          entry-time proposal, implementation plan;
+  tests/                  tests of additional_functions.R (run_tests.R, parse_all.R);
+  validation/             reference calculations (quadrature, JAGS) and the exact
+                          open-ended feasibility analysis, with their results;
+  slurm/                  sim.slurm and parameters.txt for the cluster;
+  legacy/                 the earlier code (design-optimal e-values, Simon, Bayesian
+                          comparators), unchanged;
+  PROJECT_HISTORY.md      decisions and results over time;
+  CLAUDE_NEXT_STEP.md     instructions for the next development step.
 
-## Repository layout
 
-| Path | Content |
-|---|---|
-| `framework.tex`, `setup.tex` | the statistical proposal, and the research and software set-up |
-| `R/eprocess.R` | **validity layer**: grid, restriction to (p0, 1], prior checks, block factor; knows nothing about borrowing |
-| `R/borrow_oneway.R` | borrowing engines: none, and one-way EXNEX (the earlier benchmark; regression-tested against `legacy/`) |
-| `R/borrow_twoway.R` | two-way EXNEX for a tumour type x biomarker grid (framework.tex eq. 9) |
-| `R/reference_twoway.R` | reference calculations for validation: deterministic quadrature, JAGS, equivalent one-way model |
-| `R/simulate.R` | the e-process in calendar time; priors fitted at an analysis and frozen for the next block; optional open-ended baskets (`n_max = Inf`) and e-value futility |
-| `R/open_ended.R` | exact operating characteristics of one basket over an unbounded horizon (dynamic programme) |
-| `R/summarise.R`, `R/plots.R` | operating characteristics (per-basket type I error and FWER kept apart) and figures |
-| `run_framework_study.R` | **the framework-only simulation study**: the single file to run (settings + run) |
-| `tests/` | `run_tests.R` and `test_*.R`: unit, regression and exact validity tests (base R) |
-| `validation/` | two-way engine against reference calculations; exact open-ended feasibility; results in `validation/results/` |
-| `legacy/` | the earlier full code base, unchanged: design-optimal e-values (GROW, P-max, ESS-min, e-based), flexible inclusion, Bayesian comparators, Simon, and its checks |
-| `docs/` | implementation plan, known limitations, validation plan, two-way specification and validation, entry-time proposal |
-| `PROJECT_HISTORY.md` | decisions and results over time |
+How to run (from this folder)
+-----------------------------
+Rscript simulate.R                            test setting: 2 trials per cell (fixed design)
+Rscript simulate.R open 2 20261126 TRUE       test setting of the open-ended design
+Rscript simulate.R fixed 1000 20261126 TRUE   the study (arguments: horizon, R, seed, use_cluster)
 
-Generated output (`Result/`, `design_banks/`, `*/output/`) is not version controlled.
+horizon 'fixed': at most n_max = 30 patients per basket.
+horizon 'open' : no maximum sample size; a basket stops when it is rejected or when the
+                 futility e-value (testing p >= p1) reaches 1/beta. n_cap = 150 only ends
+                 the computation; baskets still recruiting there are reported as 'open'.
 
-## Borrowing models in the study
+On the cluster: mkdir -p logs; sbatch Additional_files/slurm/sim.slurm
+(two array tasks: the fixed and the open-ended design, 1000 trials per cell, 8 cores).
+The full study has not been run yet: approve the compute first.
 
-Every model gives a valid test. They differ in power and borrowing, not in type I error control.
+Tests and validation:
+Rscript Additional_files/tests/run_tests.R          all tests (about 1.5 min)
+Rscript Additional_files/tests/run_tests.R --slow   plus the slow reference comparisons
+Rscript Additional_files/validation/open_ended_feasibility.R   exact open-ended results (1 min)
+Rscript Additional_files/validation/twoway_validation.R        two-way engine vs references (30 min)
 
-| Name | Model |
-|---|---|
-| none | NEX prior N(logit pbar, 1/pbar + 1/(1 - pbar)), pbar = (p0 + p1)/2; the basket's own data only |
-| one-way EXNEX | all baskets one exchangeable list (Neuenschwander et al. 2016). EX: N(mu, tau²), mu ~ N(logit p0, 10²) on [-8, 4], tau ~ HN(1); w = 0.5 |
-| one-way EXNEX, scaled Beta | as above, but use a moment-matched scaled Beta, discretized on the same grid (a benchmark for the earlier prototype's prior) |
-| two-way EXNEX | EX: theta_jl ~ N(mu + a_j + b_l, sigma_e²), with a_j, b_l row and column effects; sigma_a, sigma_b, sigma_e ~ HN(1/sqrt 3), matching total expected EX variance before discretization, not the complete prior distribution; w = 0.5 per basket; same NEX |
+Packages: Matrix, foreach, doParallel, ggplot2; rjags (with JAGS) only for the JAGS reference.
 
-The e-process evaluates the finite sum of supplied grid weights directly. Posterior weights remain approximate:
-quadrature for one-way fitting and numerical grids plus MCMC for two-way fitting. Normalization, support and
-predictability preserve the validity argument; numerical accuracy affects power and borrowing.
 
-Two-way details, decisions and validation: [`docs/two-way-exnex-spec.md`](docs/two-way-exnex-spec.md) and
-[`docs/two-way-validation.md`](docs/two-way-validation.md).
-
-## Running
-
-Needs R >= 4.3. Packages:
-* base R and `Matrix` (a recommended package) for the computations;
-* `ggplot2` for the figures;
-* `rjags` (with JAGS) only for the JAGS reference.
-
-```sh
-Rscript tests/run_tests.R                   # all fast tests (~1.5 min)
-Rscript tests/run_tests.R --slow            # plus slow reference comparisons
-Rscript validation/twoway_validation.R      # two-way engine vs references (~30 min, no trial simulation)
-N_SIM=2 Rscript run_framework_study.R       # smoke run of the study (~9 min on 2 cores)
-OPEN_ENDED=1 N_SIM=2 Rscript run_framework_study.R   # smoke run, open-ended variant (no maximum, e-value futility)
-Rscript validation/open_ended_feasibility.R # exact single-basket results without a maximum sample size (~1 min)
-N_SIM=1000 Rscript run_framework_study.R    # the study: only after the compute cost is approved
-```
-
-`run_framework_study.R` uses `SLURM_CPUS_PER_TASK` cores when set, otherwise all cores. It writes to
-`Result/framework_study/`:
-* `baskets.csv`: per basket — rejection rate, mean n and time, posterior bias, 90% coverage, P(EX), restricted
-  prior mean, log10 E;
-* `platform.csv`: per scenario — largest and mean per-basket type I error, FWER, power, all correct, expected N,
-  duration, and `mean_abs_error` (mean absolute posterior estimation error, distinct from signed bias);
-* figures, `timing.csv`, `results.rds` and `session.txt` (git SHA, seed, `sessionInfo()`).
-
-**Run-time estimate for `N_SIM=1000`.** 2 recruitment designs x 10 scenarios x 4 models.
-* Engine cost: about 0.035 s per data state for two-way EXNEX and 0.007 s for one-way EXNEX (measured on 2 cores,
-  reference BLAS); no borrowing is negligible.
-* Provisional throughput extrapolation, treating all data states as distinct: about 3 CPU-hours. This excludes
-  fixed fit costs, engine set-up, process and plotting overhead, so it is not an upper bound.
-* The previously quoted 25–35 min on 8 cores (or 1.5 h on 2 cores) is an estimate to check in an approved timing
-  pilot, not a measured full-study runtime.
-
-The legacy study is run as before: `Rscript legacy/Setting.R` (see `legacy/README.md`).
-
-## Status (2026-11-26)
-
-The independent review found and fixed initial-prior replication across simulated trials; the earlier two-trial
-smoke run did not exercise batches larger than one per worker. The corrected code at `d0b8d5b` passed
-[GitHub CI](https://github.com/HenkvdPol/E-BBB-3/actions/runs/45805989231): 39 R files parsed, 69 PASS, 0 FAIL,
-1 slow-reference group SKIP. The prior 70/70 slow-suite result is author-reported, a different run.
-See [`docs/review-2026-11-26.md`](docs/review-2026-11-26.md) and the updated three-page [`setup.pdf`](setup.pdf).
-
-Earlier R 4.3.3 results are recorded in the pull request and in `PROJECT_HISTORY.md`.
-No full simulation has been run. Before production, separate outcome and posterior-fitting RNG streams (the current
-additive seed scheme can reuse seeds across chunks and analyses) and check sparse-state grid/MCMC sensitivity.
-Open points: [`docs/known-limitations.md`](docs/known-limitations.md); in short:
-* operating characteristics of open-ended baskets that borrow from still-recruiting baskets (simulation; smoke
-  run only);
-* partial exchangeability (row-only or column-only borrowing);
-* hyperprior sensitivity runs;
-* entry-time events ([`docs/entry-time-redesign.md`](docs/entry-time-redesign.md));
-* outcome delays and drift scenarios;
-* re-adding the design-optimal comparators and flexible inclusion on the new code.
+Results so far (exact calculations and tests; no full simulation)
+------------------------------------------------------------------
+- The type I error is at most alpha for every borrowing model (exact enumeration).
+- The open-ended design with e-value futility stops every basket (by 125 patients in the
+  exact analysis), with E[N] 20-26 under p0 and power 0.90-0.95 at p1, against power
+  0.49-0.62 for the fixed design with n_max = 30 (Additional_files/docs/open-ended-design.md).
+- The two-way EXNEX posterior agrees with deterministic quadrature and JAGS within Monte
+  Carlo error (Additional_files/docs/two-way-validation.md).
+- Open points: Additional_files/docs/known-limitations.md.
