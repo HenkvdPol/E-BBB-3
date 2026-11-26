@@ -80,3 +80,38 @@ scaled_beta <- function(w, grid) {
   check_priors(out, grid)
   out
 }
+
+## =============================================================================
+##  Anytime-valid futility (optional; needed to stop null baskets in open-ended designs)
+##
+##  The mirror image of the test above. For p1 > p0, H1,c: P(Y_i = 1 | G_i) >= p1 is tested with
+##      e^f_k = int prod_{i in block} (q / p1)^Y_i ((1 - q) / (1 - p1))^(1 - Y_i) dpi^f_k(q),
+##  with priors pi^f on [0, p1), chosen from the past and frozen per block. Stop basket c for
+##  futility at the first analysis with E^f_c >= 1/beta. Under H1,c each factor has conditional mean
+##  <= 1 (for q < p1 the one-patient mean q_i q/p1 + (1 - q_i)(1 - q)/(1 - p1) decreases in q_i and
+##  is 1 at q_i = p1), so P(stop for futility) <= beta at any time (docs/open-ended-design.md).
+##  Futility stopping is optional stopping for the efficacy test: alpha is unaffected.
+##  The grid is aligned at logit(p0), so the support is the cell midpoints below p1.
+## =============================================================================
+futility_side <- function(grid, p1) {
+  if (p1 <= grid$p0) stop("futility needs p1 > p0")
+  keep <- grid$p < p1; q <- grid$p[keep]
+  list(p1 = p1, keep = keep, support = q, l1 = log(q / p1), l0 = log((1 - q) / (1 - p1)))
+}
+
+check_priors_below <- function(w, fut, tol = 1e-9) {
+  if (!all(fut$support >= 0 & fut$support < fut$p1)) stop("futility prior support must lie in [0, p1)")
+  if (!is.matrix(w) || ncol(w) != length(fut$support)) stop("futility prior weights must have one column per support point")
+  if (any(!is.finite(w)) || any(w < 0)) stop("futility prior weights must be finite and >= 0")
+  if (any(abs(rowSums(w) - 1) > tol)) stop("futility prior weights must sum to 1")
+  invisible(TRUE)
+}
+
+## The posterior restricted to [0, p1) and renormalised: the futility prior of the next block.
+restrict_below <- function(logpost, fut) {
+  lw <- logpost[, fut$keep, drop = FALSE]
+  w <- exp(lw - row_max(lw)); w <- w / rowSums(w)
+  check_priors_below(w, fut)
+  w
+}
+## The futility block factor is log_factor(w, y, n, fut): the same sum with the likelihood ratios against p1.

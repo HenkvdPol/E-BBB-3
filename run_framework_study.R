@@ -3,6 +3,8 @@
 ##
 ##  Run:    N_SIM=1000 Rscript run_framework_study.R      (e.g. the only line of a slurm job)
 ##  Smoke:  N_SIM=2 Rscript run_framework_study.R
+##  Open-ended variant (no maximum sample size, anytime-valid futility; docs/open-ended-design.md):
+##          OPEN_ENDED=1 N_SIM=2 Rscript run_framework_study.R   -> Result/framework_study_open/
 ##  Output: Result/framework_study/  baskets.csv, platform.csv, fig_*.pdf/png, settings.rds, session.txt
 ##
 ##  Each basket is tested with the framework e-process (R/eprocess.R). At every analysis the
@@ -29,7 +31,12 @@ settings <- list(
   n_sim = as.integer(Sys.getenv("N_SIM", 1000)), seed = 20261126,
   n_cores = if (.Platform$OS.type == "windows") 1L else as.integer(Sys.getenv("SLURM_CPUS_PER_TASK", parallel::detectCores())),
   mcmc = list(burn = 500, keep = 1000, chains = 2, chunk = 150),   # two-way sampler (validation/twoway_validation.R)
-  out_dir = file.path(this_dir, "Result", "framework_study"))
+  out_dir = file.path(this_dir, "Result", "framework_study"),
+  ## open-ended variant (OPEN_ENDED=1): no maximum sample size per basket; a basket stops when it is
+  ## rejected (E >= 1/alpha) or for futility (E^f >= 1/beta, testing p >= p1). n_cap only ends the
+  ## computation; baskets still open at n_cap are reported as open (column 'open').
+  open_ended = Sys.getenv("OPEN_ENDED") == "1", beta = 0.20, n_cap = 150)
+if (settings$open_ended) settings$out_dir <- file.path(this_dir, "Result", "framework_study_open")
 pbar <- (settings$p0 + settings$p1) / 2
 
 ## ---- 2. Recruitment: balanced, and unbalanced with a missing cell and a late basket -----------
@@ -60,6 +67,8 @@ make_designs <- function(rec) {
   grid <- theta_grid(settings$p0)
   base <- list(layout = rec$layout, n_max = settings$n_max, rate = rec$rate, entry = rec$entry,
                look_every = settings$look_every, alpha = settings$alpha)
+  if (settings$open_ended) base <- modifyList(base, list(n_max = Inf, n_cap = settings$n_cap, futility = "evalue",
+                                                          p1 = settings$p1, beta = settings$beta))
   ow <- engine_oneway(grid, pbar, settings$n_max)
   list("none"                       = list(engine = engine_none(grid, pbar), design = base),
        "one-way EXNEX"              = list(engine = ow, design = base),
@@ -72,7 +81,8 @@ make_designs <- function(rec) {
 ##  RUN
 ## =============================================================================
 dir.create(settings$out_dir, showWarnings = FALSE, recursive = TRUE)
-cat(sprintf("framework study: %d trials per cell, %d cores, output %s\n", settings$n_sim, settings$n_cores, settings$out_dir))
+cat(sprintf("framework study%s: %d trials per cell, %d cores, output %s\n", if (settings$open_ended) " (open-ended)" else "",
+            settings$n_sim, settings$n_cores, settings$out_dir))
 chunks <- parallel::splitIndices(settings$n_sim, min(settings$n_cores, settings$n_sim))
 all <- list(); timing <- list()
 for (ri in seq_along(recruitment)) {

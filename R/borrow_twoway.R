@@ -65,14 +65,15 @@ twoway_tables <- function(grid, prior, n_max, m_step = 0.05, rb_step = 0.1) {
   se <- prior$sig_e$value; Gs <- length(se)
   P <- do.call(cbind, lapply(se, function(s) norm_cells(grid, m, s)))       # cells x (Gs * Gm)
   V <- nex_prior(grid, prior$pbar)
-  nn <- rep(0:n_max, times = 1:(n_max + 1)); yy <- sequence(1:(n_max + 1)) - 1
-  Lik <- exp(loglik_grid(yy, nn, grid))
-  DEX <- Lik %*% P; DN <- as.vector(Lik %*% V)
   rbcol <- as.vector(outer(rb, (seq_len(Gs) - 1) * Gm, "+"))                 # (sigma_e, m_rb) -> column of P
-  list(m = m, m_step = m_step, Gm = Gm, rb_m = m[rb], rb_step = rb_step, Grb = Grb, Gs = Gs, n_max = n_max,
-       logD = log(prior$w_ex * DEX + (1 - prior$w_ex) * DN), DEXrb = DEX[, rbcol, drop = FALSE], DN = DN,
-       KexT = t(P[, rbcol, drop = FALSE]), V = V,
-       row_of = function(y, n) { if (any(n > n_max)) stop("n exceeds n_max of the engine"); n * (n + 1) / 2 + y + 1 })
+  ## rows per data state (n, y), built up to n_max at once and beyond it when needed (state_table)
+  tab <- state_table(function(y, n) {
+    Lik <- exp(loglik_grid(y, n, grid)); DEX <- Lik %*% P; DN <- as.vector(Lik %*% V)
+    list(logD = log(prior$w_ex * DEX + (1 - prior$w_ex) * DN), DEXrb = DEX[, rbcol, drop = FALSE], DN = DN) }, n_max)
+  fixed <- list(m = m, m_step = m_step, Gm = Gm, rb_m = m[rb], rb_step = rb_step, Grb = Grb, Gs = Gs, n_max = n_max,
+                KexT = t(P[, rbcol, drop = FALSE]), V = V)
+  for (nm in names(fixed)) tab[[nm]] <- fixed[[nm]]
+  tab
 }
 
 ## log D_c(m, sigma_e) by linear interpolation in m (m clamped to the lattice).
