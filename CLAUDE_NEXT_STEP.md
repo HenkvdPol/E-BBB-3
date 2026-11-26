@@ -1,103 +1,69 @@
-# Claude task: implement and validate the two-way EXNEX borrowing model
+# Claude next step: validate the corrected framework study
 
-You are working in the GitHub repository `HenkvdPol/E-BBB-3`. Read these files
-before changing code:
+Work in `HenkvdPol/E-BBB-3`, continuing PR #6 on
+`feature/lean-framework-twoway-exnex`. Read the current branch before making changes.
 
-1. `framework.tex`
-2. `PROJECT_HISTORY.md`
-3. `README.md`
-4. `docs/known-limitations.md`
-5. `docs/two-way-exnex-spec.md`
-6. `docs/validation-plan.md`
-7. `Setting.R`, `additional_functions.R`, `design_optimal_evalues.R`
-8. The relevant scripts under `checks/`
+## Read first
+
+1. `framework.tex` and the revised three-page `setup.tex`.
+2. `docs/review-2026-11-26.md`.
+3. `README.md`, `docs/known-limitations.md` and the latest appended `PROJECT_HISTORY.md` entry.
+4. `run_framework_study.R`, `R/simulate.R`, `R/eprocess.R`, `R/borrow_twoway.R`.
+5. `tests/test_simulate.R`, `docs/two-way-validation.md` and `docs/validation-plan.md`.
+
+The two-way engine is already implemented. The independent review corrected initial-prior row replication
+across simulated trials and single-worker chunking. Do not undo those fixes. At correction commit `d0b8d5b`,
+CI reported 69 passes, zero failures and one skipped slow-reference group.
 
 ## Objective
 
-Implement the next research step: a two-way EXNEX borrowing model for baskets
-indexed by tumour type `j` and biomarker group `l`, while leaving the existing
-one-way engine available as a benchmark. The primary e-process and its validity
-conditions must remain unchanged.
+Complete a focused validation pass before an approved operating-characteristic pilot.
+Keep the existing framework study fixed: the same e-process, three borrowing engines, scaled-Beta benchmark,
+10 response patterns and two recruitment designs. Improve only the remaining reproducibility and numerical
+validation needed to interpret that study.
 
-## Non-negotiable statistical constraints
+## Work
 
-- The tested null remains the conditional null in `framework.tex`.
-- For each basket, the alternative prior supplied to the e-process must be a
-  normalized probability measure supported on `(p0, 1]`.
-- The prior must be measurable from information available before the next block
-  and frozen throughout that block.
-- The borrowing model is allowed to be misspecified; it must not enter the
-  type-I error proof.
-- Do not claim platform-wide FWER control from per-basket alpha.
-- Do not claim the finite-horizon optimality result of Baas et al. for an
-  adaptively updated borrowed alternative without a separate proof.
-- Keep the one-way model and all its reference checks intact.
+1. **Separate simulation RNG streams.** The current data seed is base + chunk; posterior-fitting seeds add
+   the analysis index. This can reuse streams across worker chunks and analyses. Use a small, explicit
+   independent-stream scheme for outcomes and fitting. Preserve common potential patient outcomes across
+   methods. Document whether reproducibility is defined for a fixed core count or across core counts.
+   Add focused tests for the actual invariants; do not require independent MCMC runs to be numerically identical.
 
-## Model
+2. **Preserve the simulator safeguards.** Check normalized support weights after initial row replication.
+   Keep the new batch-versus-single-trial regression and the predictability tests. Include a one-worker
+   smoke configuration so more than one trial is processed within a worker.
 
-Start from the model specified in `framework.tex` and
-`docs/two-way-exnex-spec.md`:
+3. **Check numerical sensitivity on fixed states.** Reuse selected sparse, early, heterogeneous and
+   interaction states from `validation/twoway_validation.R`. Compare production defaults with more retained
+   MCMC draws and a finer theta/EX-mean reconstruction grid. Report restricted moments, log block-factor
+   differences and convergence diagnostics. Keep this a bounded fixed-state check, not a full trial study.
+   Do not equate finite-MCMC agreement with unbiasedness or exact continuous-posterior computation.
 
-`theta_jl = mu + a_j + b_l + epsilon_jl` in the EX component, with row,
-column and basket-specific effects; basket-specific EX/NEX indicators; and a
-proper NEX distribution. Make identifiability constraints and hyperprior scales
-explicit. Consider whether row-only and column-only partial borrowing are needed.
-Do not invent prior scales without documenting sensitivity analyses.
+4. **Prepare the pilot specification.** State which scenarios/engines, replication count, independent
+   RNG handling, target Monte Carlo precision and anticipated compute cost will be used. Treat the old
+   three-CPU-hour figure as a provisional throughput estimate that excludes fixed overhead.
+   Prepare the command/configuration so any approval concerns a concrete run.
 
-## Work sequence
+5. **Run allowed focused checks.** Syntax parsing and the fast test suite are allowed.
+   Only smoke simulations with N_SIM <= 2 are authorized by the existing D9 agreement; pilot and production
+   runs require the researcher's explicit approval. Never launch the default N_SIM=1000 study.
 
-1. First write a short implementation plan and list the model choices that need
-   confirmation. Do not start a full simulation.
-2. Implement a small 3 x 3 reference model with a transparent data structure
-   mapping each basket to `(j,l)`.
-3. Compare the new posterior with a trusted reference on small datasets. Include
-   empty cells, unbalanced recruitment and basket-specific interaction cases.
-4. Add a new module (for example `two_way_exnex.R`) without changing the
-   primary e-process functions. Its public interface should return posterior
-   summaries or normalized restricted priors for each basket.
-5. Add unit tests for posterior normalization, support, finite moments,
-   missing cells, row/column indexing and deterministic reproducibility.
-6. Add tests showing that the e-process validity layer is invariant to which
-   borrowing engine supplies the prior, provided predictability, normalization
-   and support hold.
-7. Add operating-characteristic scenarios covering row-only, column-only,
-   interaction-only and mixed active/null baskets.
-8. Document computational cost and diagnostics. Compare at least a small
-   deterministic reference calculation with the selected production method.
-9. Update README, known limitations and validation plan. Preserve the project
-   history; append dated decisions rather than rewriting historical entries.
+## Constraints
 
-## Separate issue: entry-time redesign
+- Priors used by the e-process must be normalized probability measures on (p0,1], selected from past
+  platform information and frozen throughout the next block.
+- Keep the conditional-null and per-basket error guarantee unchanged; no platform-wide FWER/FDR claim.
+- Keep `legacy/` unchanged. Do not add design-optimal, Simon or Bayesian decision comparators.
+- Do not add partial exchangeability, arbitrary-entry refits, drift, delayed outcomes or adaptive allocation.
+- Keep the legacy `redesign = "entry"` guard.
+- Keep `setup.tex` and `setup.pdf` synchronized and at most three pages.
+- Use clear names and small functions. Avoid making the code shorter by compressing multiple scientific
+  operations into hard-to-read array expressions.
 
-Do not re-enable `redesign = "entry"` as part of this task. The current simulator
-does not model cohort entry as a separate calendar-time event. Create a separate
-design proposal for an event-driven simulator that updates the borrowed
-alternative at the actual entry time before the first patient in that cohort is
-observed. The current explicit guard must remain until this is implemented and
-tested. Do not approximate entry-time updates by updating at the next global
-analysis after patients have already accrued.
+## Deliver
 
-## Validation and delivery
-
-- Run syntax parsing and the focused new unit tests.
-- Run `checks/fw_engine.R` and the existing regression checks to ensure the
-  one-way implementation is unchanged.
-- Run exact/validity checks only when computationally feasible and report
-  runtime and configuration.
-- Do not launch `N_SIM=1000` or any full production simulation without the
-  researcher's explicit approval.
-- Work on a feature branch, make small commits, and open a pull request.
-- In the PR description, distinguish completed implementation, tests actually
-  run, tests not run, unresolved modelling choices and computational limitations.
-- Never report a test as passing unless it was executed and passed.
-
-The primary deliverable is a validated two-way borrowing module that plugs into
-the existing restricted-prior interface without altering the e-process validity
-layer.
-
----
-
-**Status 2026-11-26.** Steps 1–6 and 8–9 are done on branch `feature/lean-framework-twoway-exnex`. Step 7, the
-operating characteristics, is defined in `run_framework_study.R` but only smoke-run. The entry redesign has a
-proposal in `docs/entry-time-redesign.md`. See the pull request and `PROJECT_HISTORY.md` (2026-11-26) for the tests
-that were executed.
+A small commit on the existing branch, actual test outputs and a concise validation note. Distinguish
+tests executed from checks only proposed, numerical approximation from validity, and measured runtime
+from extrapolation. Update the latest status without rewriting historical entries. Present the pilot
+specification for approval only after the authorized validation work is complete.

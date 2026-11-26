@@ -196,3 +196,41 @@ and what is still open.
 - Entry-time events (proposal: `docs/entry-time-redesign.md`; the guard stays).
 - Drift, delays and allocation scenarios.
 - Moving the design-optimal comparators and flexible inclusion onto the new code.
+
+---
+
+## 2026-11-26 — Independent review of the simplified framework study
+
+The entries above are preserved as the historical record. This entry qualifies the current implementation and
+evidence after reviewing PR #6 at `a8a915f`.
+
+- Confirmed that the active study is limited to the framework e-process with no borrowing, one-way EX/NEX,
+  two-way EX/NEX and the scaled-Beta representation benchmark. Earlier executable code is unchanged in `legacy/`.
+- Found and corrected a first-prior batching defect in `R/simulate.R`: reshaping before row replication moved
+  weights between support points and could break normalization when multiple trials were simulated per worker.
+  The corrected code repeats prior rows directly and checks the assembled matrix.
+- Added three meaningful regressions: direct initial-factor agreement, correct initial prior means, and
+  fixed-outcome agreement between batched and separate one-trial execution.
+- Fixed one-trial/one-worker study chunking with `parallel::splitIndices()`.
+- The correction commit `d0b8d5bb4a085bd7e84dfa7b727029ca1a604af6` passed GitHub Actions
+  [run 45805989231](https://github.com/HenkvdPol/E-BBB-3/actions/runs/45805989231):
+  39 R files parsed; 69 PASS, 0 FAIL, 1 skipped slow-reference group. The original reviewed-head CI had
+  66 PASS, 0 FAIL, 1 SKIP. The previously reported 70/70 slow-suite was a separate author-run result.
+- Renamed the platform `abs_bias` output to `mean_abs_error` to describe its calculation accurately;
+  per-basket signed `post_bias` is unchanged.
+- Rewrote `setup.tex` and `setup.pdf` as a maximum-three-page description of the current study. Synchronized
+  the computational remark in `framework.tex`, README files and numerical/validation descriptions.
+- Clarified that finite grid-factor summation is direct, while posterior fitting is approximate; the two-way
+  hyperpriors match expected EX variance before discretization, not the full one-way prior law.
+- Removed unsupported claims of unbiased finite MCMC and of a guaranteed three-CPU-hour upper bound.
+- Independently recomputed the saved validation summaries from 1,216 rows/22 data states. The reported
+  comparison maxima and Monte Carlo spreads were reproduced to rounding. These fixed-state checks are
+  distinct from an end-to-end simulation study.
+- R was unavailable in the local review environment. Executed R evidence was read from actual CI logs;
+  the batching reproduction and saved-summary calculations used Python.
+- Before production, separate outcome/fitting RNG streams and check sparse-state numerical sensitivity.
+  Keep the study scope fixed; no new comparator families or event-time extensions are needed for that step.
+- No pilot or full operating-characteristic simulation was run. Approval for larger runs remains required
+  under the existing D9 agreement.
+
+Full review: `docs/review-2026-11-26.md`. The next scoped task is in `CLAUDE_NEXT_STEP.md`.

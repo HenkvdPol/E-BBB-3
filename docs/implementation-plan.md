@@ -80,8 +80,8 @@ the previous analysis and stored, and the block factor uses only the new block's
 * NEX: θ_c ~ N(m, v);
 * a_j ~ N(0, σ_a²), b_l ~ N(0, σ_b²), ε_c ~ N(0, σ_ε²).
 
-**Proposed defaults, chosen to match the one-way benchmark so that differences come from the structure, not the
-priors** (decision D2):
+**Proposed defaults, matching the total expected EX variance of the one-way benchmark before numerical
+truncation and discretization (not its complete prior distribution)** (decision D2):
 
 | Component | Proposal | Justification |
 |---|---|---|
@@ -179,6 +179,13 @@ and computational limits.
 | D9 | Pilot runs (N_SIM ≤ 200) | Only after approval; until then smoke tests (N_SIM ≤ 2) and exact checks only |
 
 ## 8. As implemented (2026-11-26)
+
+The independent review and corrections are recorded in `docs/review-2026-11-26.md`. The original first-prior
+replication across trials was incorrect; it is corrected in `d0b8d5b`, with three simulator regressions and passing
+CI. The three-page `setup.tex`/`setup.pdf` now describe this scoped study. Proposal text above is retained as the
+record of decisions; rates actually used are 0.5 and 1, the dedicated false-borrowing statistic is not implemented,
+and the posterior grid weights are numerical approximations. The finite e-factor sum uses these weights directly.
+
 
 * **theta grid.** Cells of width 0.05 (legacy: 0.02), aligned at logit(p0), so the restriction to (p0, 1] is exact
   on cells.

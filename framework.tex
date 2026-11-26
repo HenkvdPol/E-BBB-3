@@ -179,16 +179,24 @@ meaningful for the sequence actually analysed.
 \end{remark}
 
 \begin{remark}[Computational approximation]
-Equation~\ref{eq:restricted} defines the target restricted posterior. A
-finite Monte Carlo sample retained above $p_0$ gives an empirical probability
-measure on $(p_0,1]$; if it is generated using only information available at
-the analysis and frozen before the next block, it is an admissible prior for
-the validity argument. The current R prototype instead matches the first two
-moments of the restricted posterior with a scaled Beta distribution on
-$(p_0,1]$ and evaluates the block factor analytically. This is a different
-alternative prior, not an exact evaluation of Equation~\ref{eq:mc}. Its
-support and predictability preserve the validity argument, but its effect on
-power and borrowing must be assessed.
+Equation~\ref{eq:restricted} defines the target restricted posterior.
+The current implementation in \texttt{R/} represents it by normalized weights
+$w_g$ on grid points $p_g>p_0$. The block factor is evaluated directly as the
+finite sum of the likelihood ratios at those points. One-way posterior
+weights use numerical quadrature; two-way weights use numerical grids and
+Rao--Blackwellised MCMC. Thus the finite mixture is evaluated directly, but
+the continuous posterior is approximated.
+
+A finite Monte Carlo sample retained above $p_0$ is another admissible
+empirical prior, provided at least one draw is retained and the resulting
+weights are normalized. The earlier implementation in \texttt{legacy/}
+uses a moment-matched scaled Beta distribution and an analytic factor.
+The new study retains a scaled-Beta benchmark represented on the same grid.
+Each approximation defines its own alternative prior: support, normalization
+and selection from past information preserve validity when the prior is
+frozen before the next block. Numerical approximation can still change
+power and borrowing. Any simulation randomness used to construct a prior
+must also be independent of future trial outcomes.
 \end{remark}
 
 % ===============================================================
@@ -215,11 +223,16 @@ The prior for block $k$ is this posterior restricted to $(p_0, 1]$:
 \begin{equation}\label{eq:restricted}
   \pi_{c,k-1}(A) = \frac{\tilde\pi_{c,k-1}\big(A \cap (p_0, 1]\big)}{\tilde\pi_{c,k-1}\big((p_0, 1]\big)}, \qquad A \subseteq [0,1] \text{ Borel}.
 \end{equation}
-We compute the block factor by Monte Carlo.
-Of the posterior draws $p_c^{(1)}, \dots, p_c^{(H)}$, the $H'$ draws exceeding $p_0$ are retained, and the block likelihood ratio is averaged over them:
+One possible computation uses posterior draws
+$p_c^{(1)}, \dots, p_c^{(H)}$. If $H'>0$ draws exceed $p_0$, the block
+likelihood ratio can be averaged over those retained draws:
 \begin{equation}\label{eq:mc}
   e_{c,k} \approx \frac{1}{H'} \sum_{h:\, p_c^{(h)} > p_0} \Big(\frac{p_c^{(h)}}{p_0}\Big)^{y_{c,k}} \Big(\frac{1-p_c^{(h)}}{1-p_0}\Big)^{n_{c,k} - y_{c,k}} .
 \end{equation}
+
+The implemented grid calculation instead uses all normalized restricted
+grid weights, including the Rao--Blackwellised weights returned by the
+two-way engine, as described in the computational remark above.
 
 
 

@@ -7,22 +7,28 @@
 ##    NEX (delta_c = 0): theta_c ~ N(logit pbar, 1/pbar + 1/(1 - pbar))
 ##    mu ~ N(logit p0, 10^2) on [-8, 4];  a_j ~ N(0, sigma_a^2);  b_l ~ N(0, sigma_b^2)
 ##    sigma_a, sigma_b, sigma_e ~ HalfNormal(1/sqrt(3)), on the grid 0.05, 0.15, ..., 2.45
-##  Defaults match the one-way benchmark (docs/two-way-exnex-spec.md, decision D2):
-##  E(sigma_a^2 + sigma_b^2 + sigma_e^2) = 1 = E(tau^2) for tau ~ HN(1); same mu, w and NEX.
+##  Scales match the one-way benchmark's total expected EX variance before truncation/gridding:
+##  E(sigma_a^2 + sigma_b^2 + sigma_e^2) = 1 = E(tau^2) for tau ~ HN(1). This does not match
+##  the full variance distribution; finite grids also perturb the expectation slightly (decision D2).
+##  The mu, w and NEX specifications follow the benchmark; its mu integration uses a grid.
 ##  Identifiability (D5): proper random effects, no sum-to-zero constraint; theta_c is identified.
 ##  theta lives on the cells of the e-process grid (eprocess.R); given the EX mean m and sigma_e
 ##  its prior is the renormalised cell probabilities of N(m, sigma_e^2).
 ##
 ##  Computation. Given m_c = mu + a_j + b_l and sigma_e, theta_c and delta_c depend only on the
-##  basket's own data, so both are integrated out exactly with one-dimensional tables
+##  basket's own data, so both are summed out on the theta grid at each table point:
 ##      D_c(m, sigma_e) = w * sum_theta L_c(theta) N(theta | m, sigma_e) + (1 - w) * sum_theta L_c(theta) V(theta).
 ##  What remains, (mu, a, b, sigmas), is integrated by
 ##    "mcmc"  (production): Metropolis-within-Gibbs, vectorised over states and chains, with exact
 ##            Gibbs moves along the three directions that leave every m_c unchanged;
-##    exact   for a state without any patients (prior predictive);
+##    quadrature for a state without any patients (prior predictive, no sampling);
 ##    reference_twoway.R: deterministic quadrature and JAGS, for validation only.
 ##  The posterior of theta_c is then Rao-Blackwellised over the draws of (m_c, sigma_e):
 ##      p(theta_c | y) = E[ L_c(theta) {w N(theta | m_c, sigma_e) + (1 - w) V(theta)} / D_c(m_c, sigma_e) ].
+##  The finite sums at table points are direct evaluations. Interpolation/clamping of m, finite MCMC,
+##  and deposition on the Rao-Blackwell lattice approximate the posterior weights. The e-process
+##  sums the supplied restricted weights directly; validity requires their support and normalisation,
+##  plus freezing before the next block, rather than exact posterior integration.
 ## =============================================================================
 
 ## Layout of the trial: one row per basket in the trial (missing cells are simply left out).
@@ -98,7 +104,8 @@ deposit <- function(pair, m, s, tab, n_pairs) {
 }
 triplets <- function(Q) { t <- methods::as(Q, "TsparseMatrix"); list(i = t@i + 1L, j = t@j + 1L, x = t@x) }
 
-## Exact distribution of (m, sigma_e) without data: m = mu + a + b, mu ~ TN, a + b ~ N(0, sa^2 + sb^2).
+## Deterministic prior-predictive quadrature without data: m = mu + a + b, mu ~ TN,
+## a + b ~ N(0, sa^2 + sb^2). Integrate mu on a 0.02 grid and put m-bin masses on the RB lattice.
 empty_q <- function(tab, prior) {
   mu <- seq(prior$mu_range[1], prior$mu_range[2], by = 0.02)
   wmu <- dnorm(mu, prior$mu_mean, prior$mu_sd); wmu <- wmu / sum(wmu)
@@ -205,7 +212,7 @@ engine_twoway <- function(grid, layout, pbar, n_max, prior = twoway_prior(grid$p
     if (is.null(need)) need <- matrix(TRUE, S, K)
     lp <- array(NA_real_, c(S, K, G)); pex <- matrix(NA_real_, S, K); rhat <- matrix(NA_real_, S, K)
     empty <- rowSums(N) == 0
-    for (i in which(empty & rowSums(need) > 0)) {                         # prior predictive, exact
+    for (i in which(empty & rowSums(need) > 0)) {                         # prior predictive, deterministic quadrature
       k <- which(need[i, ])
       Q <- Matrix::Matrix(matrix(q0, length(k), length(q0), byrow = TRUE), sparse = TRUE)
       th <- theta_from_q(Q, Y[i, k], N[i, k], tab, grid, prior$w_ex)

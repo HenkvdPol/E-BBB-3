@@ -1,14 +1,17 @@
 # Two-way EXNEX: validation of the posterior calculations
 
 Run on 2026-11-26 with `validation/twoway_validation.R` (R 4.3.3, JAGS 4, 2 cores; about 30 min).
-* The computations ran at commit `845fee1`. Since then the code in `R/` has changed only in `R/plots.R`.
+* The computations ran at commit `845fee1`. At the reviewed PR head `a8a915f`, intervening changes in `R/`
+  affected only `R/plots.R`. These are archived results from that engine version, not a rerun of the current branch.
 * The summary step first failed: the `aggregate()` call was missing `FUN =` and `data =`. After the fix, the
   summaries were recomputed from the saved results with `SUMMARY_ONLY=1`.
 * Raw results, per method, state and basket: `validation/results/twoway_validation.csv`.
 
 These are checks of **posterior calculations for fixed data states**, not trial simulations. Accuracy here matters
-for power and borrowing only. The type I error guarantee does not depend on it, because any frozen prior on
-(p0, 1] gives a valid test; `tests/test_validity.R` checks this exactly for every engine.
+for power and borrowing only. The type I error guarantee requires a predictable, frozen probability measure on
+(p0, 1], including normalized weights as actually used by the simulator. It does not require an exact posterior.
+`tests/test_validity.R` enumerates rejection probabilities for specified small examples with every engine;
+it does not test the simulator's handling of those weights.
 
 ## Design
 
@@ -19,10 +22,17 @@ p0 = 0.10, pbar = 0.20, theta cells of width 0.05, n up to 30 per basket.
 | | Method | Integration over (mu, a, b, sigmas) |
 |---|---|---|
 | **production** | the sampler of `R/borrow_twoway.R` with default settings: 2 chains x (500 burn-in + 1000 kept); 5 seeds | Monte Carlo (Metropolis-within-Gibbs) |
-| quadrature | `twoway_exact()`: deterministic, exact up to the 0.1 lattice | grid over the column levels (mu in closed form) and 1-D per row effect |
-| one-way equivalent | an L x 1 layout is one-way EXNEX with mu' = mu + b_1 and tau² = sigma_a² + sigma_e²; computed with the one-way grid engine | deterministic grid over (mu', tau) |
+| quadrature | `twoway_exact()`: deterministic numerical reference on the 0.1 lattice | grid over the column levels (mu in closed form) and 1-D per row effect |
+| one-way equivalent | L x 1 Gaussian reduction: mu' = mu + b_1 and tau² = sigma_a² + sigma_e²; a numerical cross-check after conditional theta truncation | deterministic grid over (mu', tau) |
 | JAGS | the model written out independently: continuous theta and sigmas, 4 x 25,000 draws | MCMC |
 | long run | the production sampler with 4 chains x 20,000 draws | Monte Carlo |
+
+The quadrature and production sampler share the likelihood tables, so their agreement checks integration over
+hyperparameters without establishing convergence of the underlying theta and m grids. The one-way Gaussian
+reduction is exact before conditional theta truncation; integrating already normalized truncated conditionals
+differs slightly from truncating the reduced Gaussian. JAGS uses continuous theta and sigmas and has its own
+Monte Carlo error. These comparisons therefore assess several numerical approximations, not exact agreement
+with a common continuous posterior oracle.
 
 **Sections.**
 
@@ -104,14 +114,16 @@ basket:
 
 ## Conclusions
 
-1. **The deterministic references agree with each other.** For the 3 x 1 layout, the quadrature over the two-way
-   parametrisation and the equivalent one-way model on its own grid engine agree to 2e-4 in every summary and to
-   0.2% in the block factors. They are independent codings of the same model.
+1. **The deterministic references agree closely in the tested states.** For the 3 x 1 layout, the largest
+   differences between the two-way quadrature and one-way cross-check are about 0.000223 in the restricted mean,
+   0.000372 in P(p > p0), and 0.000524 in P(EX). The largest absolute log factor ratio is 0.002196
+   (about 0.22%). Their different numerical representations and truncation order should be kept in mind.
 2. **JAGS agrees with the quadrature** to 0.002–0.004 in the restricted mean. The largest factor differences
    (about 10% for 5/5 responses) occur in baskets with little data, where the factor depends on the far tail of the
    prior.
-3. **The production sampler is unbiased within Monte Carlo error.** Its seeds scatter on both sides of the
-   reference (see the empty-basket example in `twoway_validation.csv`).
+3. **The production sampler generally agrees with the references within the observed variation.** Its seeds
+   scatter on both sides of the reference in the empty-basket example (`twoway_validation.csv`). Five seeds
+   do not establish unbiasedness or exclude finite-chain and discretization bias.
    * Baskets with n ≥ 15: typical errors are 0.0004–0.0007 in the restricted mean and about 1–2% in the 5/5
      factor.
    * The largest errors are for empty and 5-patient baskets: up to 0.009 in the restricted mean and 12–15% in the
@@ -123,11 +135,13 @@ basket:
    whole column is NEX, which the wide prior of mu (sd 10) supports. That biased P(EX) upwards by up to 0.045. The
    quadrature now covers the whole lattice, with a coarser grid in the tails.
 
-**Default settings.** The production defaults (2 x 1000 draws) are kept for the study. Doubling `keep` would halve
-the Monte Carlo variance at about twice the two-way run time. This is a researcher's choice; see
-`docs/known-limitations.md`.
+**Default settings.** The production defaults (2 x 1000 draws) are kept for the study. If convergence and the
+autocorrelation structure are stable, doubling `keep` would approximately halve Monte Carlo variance, while
+increasing the sampling cost. It would not remove discretization or finite-chain bias. Focused draw-count and
+grid-refinement checks should precede interpretation of a production power study; see `docs/known-limitations.md`.
 
 **Not yet validated:**
 * layouts larger than 3 x 3;
 * the hyperprior sensitivity variants;
 * states with n > 30 (the engine supports them up to its `n_max`).
+* systematic refinement of theta/m/Rao-Blackwell grids and draw counts for the planned study.

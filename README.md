@@ -47,8 +47,12 @@ Every model gives a valid test. They differ in power and borrowing, not in type 
 |---|---|
 | none | NEX prior N(logit pbar, 1/pbar + 1/(1 - pbar)), pbar = (p0 + p1)/2; the basket's own data only |
 | one-way EXNEX | all baskets one exchangeable list (Neuenschwander et al. 2016). EX: N(mu, tau²), mu ~ N(logit p0, 10²) on [-8, 4], tau ~ HN(1); w = 0.5 |
-| one-way EXNEX, scaled Beta | as above, but the restricted posterior is replaced by the scaled Beta with the same mean and variance (the earlier prototype's prior) |
-| two-way EXNEX | EX: theta_jl ~ N(mu + a_j + b_l, sigma_e²), with a_j, b_l row and column effects; sigma_a, sigma_b, sigma_e ~ HN(1/sqrt 3), so the total EX variance matches the one-way benchmark; w = 0.5 per basket; same NEX |
+| one-way EXNEX, scaled Beta | as above, but use a moment-matched scaled Beta, discretized on the same grid (a benchmark for the earlier prototype's prior) |
+| two-way EXNEX | EX: theta_jl ~ N(mu + a_j + b_l, sigma_e²), with a_j, b_l row and column effects; sigma_a, sigma_b, sigma_e ~ HN(1/sqrt 3), matching total expected EX variance before discretization, not the complete prior distribution; w = 0.5 per basket; same NEX |
+
+The e-process evaluates the finite sum of supplied grid weights directly. Posterior weights remain approximate:
+quadrature for one-way fitting and numerical grids plus MCMC for two-way fitting. Normalization, support and
+predictability preserve the validity argument; numerical accuracy affects power and borrowing.
 
 Two-way details, decisions and validation: [`docs/two-way-exnex-spec.md`](docs/two-way-exnex-spec.md) and
 [`docs/two-way-validation.md`](docs/two-way-validation.md).
@@ -73,22 +77,31 @@ N_SIM=1000 Rscript run_framework_study.R    # the study: only after the compute 
 * `baskets.csv`: per basket — rejection rate, mean n and time, posterior bias, 90% coverage, P(EX), restricted
   prior mean, log10 E;
 * `platform.csv`: per scenario — largest and mean per-basket type I error, FWER, power, all correct, expected N,
-  duration;
+  duration, and `mean_abs_error` (mean absolute posterior estimation error, distinct from signed bias);
 * figures, `timing.csv`, `results.rds` and `session.txt` (git SHA, seed, `sessionInfo()`).
 
 **Run-time estimate for `N_SIM=1000`.** 2 recruitment designs x 10 scenarios x 4 models.
 * Engine cost: about 0.035 s per data state for two-way EXNEX and 0.007 s for one-way EXNEX (measured on 2 cores,
   reference BLAS); no borrowing is negligible.
-* Upper bound, assuming all data states distinct: about 3 CPU-hours. Two-way takes about 2 h of it, mostly the
-  unbalanced design with its 16 analyses.
-* Wall time: about 25–35 min on 8 cores, or 1.5 h on 2 cores.
+* Provisional throughput extrapolation, treating all data states as distinct: about 3 CPU-hours. This excludes
+  fixed fit costs, engine set-up, process and plotting overhead, so it is not an upper bound.
+* The previously quoted 25–35 min on 8 cores (or 1.5 h on 2 cores) is an estimate to check in an approved timing
+  pilot, not a measured full-study runtime.
 
 The legacy study is run as before: `Rscript legacy/Setting.R` (see `legacy/README.md`).
 
 ## Status (2026-11-26)
 
-Tests run on this branch (R 4.3.3) and their results are listed in the pull request and in `PROJECT_HISTORY.md`.
-No full simulation has been run. Open points: [`docs/known-limitations.md`](docs/known-limitations.md); in short:
+The independent review found and fixed initial-prior replication across simulated trials; the earlier two-trial
+smoke run did not exercise batches larger than one per worker. The corrected code at `d0b8d5b` passed
+[GitHub CI](https://github.com/HenkvdPol/E-BBB-3/actions/runs/45805989231): 39 R files parsed, 69 PASS, 0 FAIL,
+1 slow-reference group SKIP. The prior 70/70 slow-suite result is author-reported, a different run.
+See [`docs/review-2026-11-26.md`](docs/review-2026-11-26.md) and the updated three-page [`setup.pdf`](setup.pdf).
+
+Earlier R 4.3.3 results are recorded in the pull request and in `PROJECT_HISTORY.md`.
+No full simulation has been run. Before production, separate outcome and posterior-fitting RNG streams (the current
+additive seed scheme can reuse seeds across chunks and analyses) and check sparse-state grid/MCMC sensitivity.
+Open points: [`docs/known-limitations.md`](docs/known-limitations.md); in short:
 * partial exchangeability (row-only or column-only borrowing);
 * hyperprior sensitivity runs;
 * entry-time events ([`docs/entry-time-redesign.md`](docs/entry-time-redesign.md));

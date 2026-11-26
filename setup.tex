@@ -2,174 +2,241 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage[margin=1.55cm]{geometry}
-\usepackage{amsmath,amssymb}
-\usepackage{enumitem}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,enumitem}
 \usepackage[hidelinks]{hyperref}
-\usepackage{microtype}
+\hypersetup{pdftitle={E-BBB-3: Simulation study of the framework}}
+\usepackage{microtype,fancyhdr}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{2.5pt}
+\setlength{\parskip}{4pt}
 \setlist{nosep,leftmargin=1.35em}
-\title{\vspace{-1.2em}E-BBB-3: Research and software set-up}
-\author{Project set-up note}
-\date{26 November 2026}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small E-BBB-3}
+\fancyhead[R]{\small Simulation study of the framework}
+\fancyfoot[C]{\small\thepage}
+\setlength{\headheight}{13pt}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\logit}{\operatorname{logit}}
+\newcommand{\HN}{\operatorname{HN}}
 \begin{document}
-\maketitle
-\vspace{-1.5em}
+\begin{center}
+{\Large\bfseries E-BBB-3: simulation study of the framework}\\[4pt]
+{\small Research and software set-up \enspace|\enspace 26 November 2026}
+\end{center}
+\vspace{-0.5em}
 
-\section{Research aim and method hierarchy}
-Develop anytime-valid, one-sided tests for binary response outcomes in multi-basket
-and platform trials. For basket $c$, the proposed null is
+\section*{1. Aim and scope}
+Evaluate whether Bayesian borrowing improves the power and efficiency of
+anytime-valid tests in a basket trial with binary responses. The lead
+document is \texttt{framework.tex}. This first study compares borrowing
+choices within \emph{one} e-process. Design-optimal e-values, Bayesian
+decision rules, Simon designs, flexible inclusion and new entry-time
+redesigns remain outside this study in \texttt{legacy/}.
+
+A basket is a cell $c=(j,l)$ of a tumour-type $\times$ biomarker grid.
+These labels are a working application, to be confirmed for a clinical
+protocol. The current simulation has independent Bernoulli outcomes with
+constant response probability $p_c$, deterministic recruitment and immediate
+outcome observation. It implements a useful special case of the broader
+conditional framework; no clinical data or external data $D_0$ are used.
+
+\section*{2. Test and guarantee}
+Let $\mathcal G_i$ contain all observed platform data before outcome $Y_i$
+and the current basket label $c_i$. For each basket separately, test
 \[
-H_{0,c}:\quad \Pr(Y_i=1\mid\mathcal G_i)\leq p_0
-\quad\text{whenever }c_i=c,
+ H_{0,c}:\quad \Prob(Y_i=1\mid\mathcal G_i)\le p_0
+ \quad\hbox{for every }i\hbox{ assigned to }c.
 \]
-where $\mathcal G_i$ contains the complete platform history before outcome $Y_i$
-and the current basket label. Each basket has its own type-I error budget $\alpha$.
+This is a conditional null, not merely a restriction on the average response
+rate. In the simulated independent, constant-rate setting it reduces to
+$p_c\le p_0$.
 
-\textbf{Primary method (framework.tex).} At analysis $k-1$, choose a probability
-measure $\pi_{c,k-1}$ on $(p_0,1]$, measurable with respect to the platform
-history then available. Freeze it over the next block. For that block,
+At analysis $\tau_{c,k-1}$, fit the borrowing model to all platform data
+available then, including the basket's own earlier outcomes. Restrict its
+posterior for $p_c$ to $(p_0,1]$ and normalize:
 \[
-e_{c,k}=\int_{(p_0,1]}
+ \pi_{c,k-1}(A)=
+ \frac{\widetilde\pi_{c,k-1}(A\cap(p_0,1])}
+      {\widetilde\pi_{c,k-1}((p_0,1])}.
+\]
+Freeze this probability measure before the next block. For the new block
+of $n_{c,k}$ outcomes and $y_{c,k}$ responses, use
+\[
+ e_{c,k}=\int
  \left(\frac p{p_0}\right)^{y_{c,k}}
  \left(\frac{1-p}{1-p_0}\right)^{n_{c,k}-y_{c,k}}
  \pi_{c,k-1}(dp),\qquad
-E_c\leftarrow E_c e_{c,k}.
+ E_{c,k}=\prod_{r=1}^k e_{c,r},\quad E_{c,0}=1.
 \]
-Reject $H_{0,c}$ when $E_c\geq1/\alpha$. The prior may use earlier outcomes
-from the same basket and all other baskets; it must not use outcomes in the
-current block.
+Reject at the first scheduled analysis with $E_{c,k}\ge 1/\alpha$.
 
-\textbf{Comparator families.}
-\begin{enumerate}
-\item Design-optimal e-processes from Baas, ter Schure and van Rosmalen (2026):
-P-max, ESS-min, and the constrained e-value-based design, with GROW/Kelly as
-the design-agnostic comparator. The library and simulation wrapper expose
-GROW, P-max, ESS-min and e-based.
-\item Bayesian EXNEX posterior-probability rules, Simon two-stage designs and
-exact binomial tests. These are comparators, not the primary error-control method.
-\end{enumerate}
-
-\section{Validity: assumptions and argument}
-For fixed $p>p_0$, the likelihood-ratio increment for one response is
+\textbf{Why it is valid.} For fixed $p>p_0$ and
+$q_i=\Prob(Y_i=1\mid\mathcal G_i)\le p_0$,
 \[
-L_i(p)=\left(\frac p{p_0}\right)^{Y_i}
-       \left(\frac{1-p}{1-p_0}\right)^{1-Y_i}.
+ \E\!\left[
+  (p/p_0)^{Y_i}\{(1-p)/(1-p_0)\}^{1-Y_i}
+  \mid\mathcal G_i\right]
+ =q_i\,p/p_0+(1-q_i)(1-p)/(1-p_0)\le1.
 \]
-Writing $q_i=\Pr(Y_i=1\mid\mathcal G_i)\leq p_0$, its conditional expectation is
+Products within a block, predictable probability mixtures and optional
+sampling preserve the non-negative supermartingale argument. Ville's
+inequality gives $\Prob_{H_{0,c}}(\sup_k E_{c,k}\ge1/\alpha)\le\alpha$.
+Borrowing-model correctness is unnecessary. The supplied prior must actually
+be normalized, supported above $p_0$ and frozen; numerical fitting randomness
+must not reveal future outcomes.
+
+The guarantee is \textbf{per basket}. There is no platform-wide family-wise
+error rate (FWER) or false discovery rate guarantee. Outcome-dependent
+delays, allocation and analysis rules require their own specification under
+the conditional null; they are not evaluated in this first simulation.
+
+\newpage
+\section*{3. Borrowing model and numerical implementation}
+The two-way target model is binary EX/NEX, with $\theta_c=\logit(p_c)$.
+Independently across baskets, $\delta_c\sim\operatorname{Bernoulli}(w)$, with
 \[
-\mathbb E[L_i(p)\mid\mathcal G_i]
-=q_i\frac p{p_0}+(1-q_i)\frac{1-p}{1-p_0}\leq1.
+ \begin{aligned}
+  \delta_{jl}=1:\quad \theta_{jl}
+       &=\mu+a_j+b_l+\varepsilon_{jl},\\
+  a_j&\sim N(0,\sigma_a^2),\quad
+  b_l\sim N(0,\sigma_b^2),\quad
+  \varepsilon_{jl}\sim N(0,\sigma_e^2),\\
+  \delta_c=0:\quad \theta_c&\sim N(m_N,v_N).
+ \end{aligned}
 \]
-Thus the product over observations in basket $c$ is a non-negative
-supermartingale. A mixture over a prior frozen before the block remains a
-supermartingale; optional sampling permits stopping at the block-end analysis
-time. Updating the prior between blocks preserves the argument. Ville's
-inequality gives
-\[
-\Pr_{H_{0,c}}\!\left(\sup_k E_c(\tau_{c,k})\geq1/\alpha\right)\leq\alpha.
-\]
+The defaults are $w=0.5$, $\mu\sim N(\logit p_0,10^2)$ restricted to
+$[-8,4]$, $m_N=\logit\bar p$ and
+$v_N=1/\bar p+1/(1-\bar p)$, where $\bar p=(p_0+p_1)/2=0.20$.
+Proper row and column random effects have no hard sum-to-zero constraint.
+Missing cells are excluded; included baskets with no outcomes remain eligible
+to receive borrowing.
 
-This is a \textbf{per-basket} guarantee, not family-wise error control across
-the platform. If the scientific claim is that at least one of $K$ baskets is
-active, a platform-wide multiplicity strategy is a separate design decision.
-The conditional null is stronger than merely requiring a marginal or average
-response rate no larger than $p_0$: it must hold after conditioning on the
-observed platform history. Basket allocation must be known before the outcome;
-outcome ordering and simultaneous ties must be prespecified. Informative
-outcome-observation delays require particular care because they can change
-the conditional distribution of the next observed outcome.
+Each two-way SD has an $\HN(1/\sqrt3)$ prior. This matches
+$\E(\sigma_a^2+\sigma_b^2+\sigma_e^2)=1=\E(\tau^2)$ for the one-way
+$\tau\sim\HN(1)$ \emph{before numerical truncation and discretization}.
+It does not match the complete prior distribution.
 
-\section{What the supplied R code implements}
-The archive is organised around \texttt{Setting.R}:
-\begin{itemize}
-\item \texttt{additional\_functions.R}: EXNEX quadrature, posterior calculations,
-borrowing weights, framework e-mixture, trial engines, flexible inclusion,
-summaries and figures.
-\item \texttt{design\_optimal\_evalues.R}: grid-based dynamic programming for
-GROW, P-max, ESS-min and e-based designs.
-\item \texttt{checks/}: exact enumeration, validity, regression and unit checks.
-\item \texttt{PROJECT\_HISTORY.md}: decisions, earlier results and open items.
-\end{itemize}
+\begin{tabularx}{\linewidth}{@{}p{3.8cm}X@{}}
+\toprule
+Prior choice & Role in the first study\\
+\midrule
+No borrowing & NEX distribution updated using the basket's own data.\\
+One-way EX/NEX & Exchangeable list of baskets: $\theta_c\mid EX\sim N(\mu,\tau^2)$.\\
+One-way, scaled Beta & Representation benchmark: moment-match the restricted posterior, then discretize the Beta on the same support.\\
+Two-way EX/NEX & Borrow through shared rows and columns; NEX allows basket-specific departures.\\
+\bottomrule
+\end{tabularx}
 
-The primary e-mixture uses a one-way EXNEX model over a list of cohorts:
-$\theta_c\mid EX\sim N(\mu,\tau^2)$, with normal prior on $\mu$ and
-half-normal prior on $\tau$; the NEX component is an independent normal prior.
-For the primary design, the EX mixture weight is fixed at $0.5$. The posterior
-uses all available cohort data, including the target cohort's own earlier data.
-The code computes the first two moments of the posterior restricted above
-$p_0$, then approximates that restricted distribution by a scaled Beta law on
-$(p_0,1]$. The block factor is evaluated in closed form.
+\textbf{Computation.} The $\theta$ grid has width $0.05$ over the nominal
+range $[-10,6]$, with $\logit(p_0)$ at a cell boundary. The e-process sums
+normalized weights at support points $p_g>p_0$ directly. One-way fitting uses
+quadrature. Two-way fitting uses Metropolis-within-Gibbs and a
+Rao--Blackwellised grid distribution: two chains, 500 burn-in iterations and
+1,000 retained draws per chain. SDs use a finite grid; interpolation,
+clamping and a coarser reconstruction lattice add approximations.
+Thus the \emph{finite mixture sum} is evaluated directly; the posterior
+weights are approximate. Posterior accuracy affects borrowing and power,
+while support, normalization and predictability determine validity.
 
-Consequently, the implementation is \textbf{not} the exact posterior mixture
-in equation (8) of \texttt{framework.tex}; it is a moment-matched alternative
-prior. This does not invalidate the e-process argument: any predictable,
-normalised prior supported on $(p_0,1]$ is admissible. It can, however, change
-power and borrowing behaviour and needs sensitivity analysis.
+\section*{4. Simulation design already defined in the code}
+\begin{tabularx}{\linewidth}{@{}p{3.8cm}X@{}}
+\toprule
+Setting & Current implementation\\
+\midrule
+Hypotheses and horizon & $p_0=0.10$, reference alternative $p_1=0.30$, $\alpha=0.05$ per basket; at most 30 patients per basket.\\
+Balanced recruitment & $3\times3$ cells, one patient per time unit per basket, all open at time zero.\\
+Unbalanced recruitment & Eight cells; $(3,3)$ absent; rates 0.5 or 1; basket $(2,3)$ opens at time 20.\\
+Analysis schedule & Global analyses every five time units; block sizes can differ across baskets. Late entry is aligned with this schedule.\\
+Stopping & Reject at $E\ge20$; stop for futility if even the universal bound $E\,p_0^{-r}<20$, with $r$ patients remaining, rules out rejection; otherwise finish at the cap.\\
+\bottomrule
+\end{tabularx}
 
-The proposed two-way model
-$\theta_{jl}=\mu+a_j+b_l+\varepsilon_{jl}$ with EX/NEX indicators, row effects,
-column effects and basket interactions is \textbf{not implemented}. The current
-one-way model is a useful prototype, not the final model. The design-optimal
-comparators borrow a point alternative from other cohorts; this can affect power
-optimality under misspecification, but predictable bets in $[0,1]$ retain
-type-I error control.
+Ten response patterns are defined: global null, global alternative, active
+row, active column, one active basket, active row-and-column union, additive
+logit row/column effects, diagonal interaction, mixed active/null cells, and
+strong heterogeneity. Combining these with two recruitment designs and four
+priors gives 80 study cells. Methods share potential patient outcomes within
+a run. At each analysis, new evidence is computed using the previous frozen
+prior; all observed platform counts, including stopped baskets, then inform
+the next prior. There is no separate refit at an arbitrary entry time.
 
-The \\texttt{redesign = "entry"} point-alternative option is disabled in active
-set-ups and guarded in the simulator. Correct entry-time updates require a
-separate calendar-time event model; updating at the next global analysis after
-a cohort has accrued patients is not equivalent to updating at cohort entry.
+\newpage
+\section*{5. Outputs and interpretation}
+\texttt{run\_framework\_study.R} is the study entry point.
+\texttt{R/eprocess.R} contains the validity layer; the borrowing engines,
+simulator, summaries and plots are separate modules. Reference quadrature
+and JAGS calculations are validation tools, not study comparators.
 
-\section{Paper and design-optimal implementation}
-Baas, ter Schure and van Rosmalen (2026), arXiv:2605.28653, study single-arm
-IID Bernoulli trials with a fixed horizon and point alternative $\theta_1$.
-Their dynamic program discretises the e-value state and bet sizes, rounds
-transitions down, and chooses bets by backward induction. They study P-max,
-ESS-min and a constrained e-based design; GROW/Kelly is the benchmark.
-Blocked designs still bet sequentially in the prespecified outcome order and
-make stopping decisions at block analyses.
+The study writes per-basket rejection rates and their Monte Carlo standard
+errors, expected sample size and decision time, signed posterior bias,
+empirical 90\% posterior-interval coverage, posterior EX probability and
+restricted-prior means. Platform summaries include FWER, average power among
+active baskets, probability of any active rejection, probability all decisions
+are correct, expected total sample size and duration. Mean absolute
+estimation error is labelled separately from bias.
+Posterior coverage and EX probabilities are diagnostics, not additional
+frequentist guarantees. A dedicated \emph{false borrowing} measure is not yet
+implemented.
 
-The supplied library follows this structure: its grid includes $0$, $1$ and
-$1/\alpha$; bets are selected by backward recursion; the simulation tracks
-both the unrounded e-process and a rounded-down shadow state. The shadow
-process selects bets, while the unrounded process determines rejection. This
-matches the paper's conservative discretisation logic. ESS-min is now exposed
-by the wrapper and included in the active simulation comparisons.
-The paper's optimality statements concern the specified IID point-alternative
-design; they do not transfer automatically to a changing, borrowed $\theta_1$.
+Report each null basket's type I error separately; FWER can exceed $\alpha$.
+The observed maximum over null baskets is a descriptive summary with its own
+Monte Carlo variability. For 1,000 independent replications, a rejection rate
+of 0.05 has standard error about $0.0069$; small differences cannot support
+strong comparative claims. Before production, separate outcome and fitting
+RNG streams: the current additive seed scheme can reuse seeds across worker
+chunks and analyses. Record cores, seeds, code version and session details.
 
-\section{Validation status and next steps}
-The archived check README reports earlier successful checks: agreement of the
-closed-form block factor with numerical integration; direct-grid checks of
-restricted moments; exact sequence enumeration for selected single-cohort
-designs; adversarial paths for a second cohort; regression comparisons and
-hand-made-data unit checks. These are useful implementation checks, but they
-are finite collections of configurations, not a proof over all null processes.
-The final full simulation is recorded as outstanding in the project history.
-R is not available in the review environment, so the checks have not been
-rerun here.
+\section*{6. Review and validation status}
+\textbf{A simulator defect was corrected on 26 November 2026.}
+The original initialization reshaped a basket-by-support prior matrix before
+replicating trials. With multiple trials per worker, this moved weights
+between support points and could break normalization. It now copies prior
+rows directly and checks the assembled weights. Three new regressions compare
+initial factors with direct mixture calculations, check the copied prior
+means, and compare batched trials with the same fixed-outcome trials run
+individually. Single-trial/single-worker chunking was also corrected.
 
-Priorities:
-\begin{enumerate}
-\item Rerun exact and regression checks in a recorded R environment; add a
-clean-start test without design-bank caches and pin package versions.
-\item Confirm the ESS-min comparator results in the full operating-characteristic study.
-\item Implement and validate the two-way tumour-type $\times$ biomarker model,
-including row, column and interaction heterogeneity and NEX protection.
-\item Stress-test conditional-null assumptions, outcome delays, ties, adaptive
-basket allocation, and dependence across patients.
-\item Compare exact posterior restriction with the scaled-Beta approximation
-for power, expected sample size and borrowing; retain the approximation only
-with documented error/sensitivity results.
-\item Add the DRUP motivating example and complete the references in
-\texttt{framework.tex}. Decide explicitly whether inference is per basket or
-platform-wide.
-\end{enumerate}
+\textbf{Independently checked evidence.}
+GitHub Actions run \href{https://github.com/HenkvdPol/E-BBB-3/actions/runs/45805989231}{45805989231}
+for correction commit \texttt{d0b8d5b} parsed 39 R files and reported
+\textbf{69 passes, zero failures and one skipped slow-reference group}.
+The legacy executable files are byte-identical to the earlier base after
+relocation. No local R execution was available for this review; the R
+execution evidence comes from the recorded CI log.
 
-\section*{Reference}
-Baas, S., ter Schure, J. and van Rosmalen, J. (2026). \emph{Adaptive clinical
-trials based on design-optimal e-values with automatic curtailment: An
-application to single-arm trials with binary data}. arXiv:2605.28653.
-\url{https://arxiv.org/abs/2605.28653}.
+The exact-path tests enumerate $6^6$ block-count paths for one null basket
+under selected other-basket histories. Their rejection probabilities are
+0.0059--0.0073 at $\alpha=0.05$. They call the borrowing engines and factor
+calculation directly, so they did not detect the simulator batching defect.
+These finite examples check implementation; the theorem provides the general
+validity argument.
+
+The checked-in posterior-validation data cover 22 fixed data states.
+Independent recomputation reproduced the saved comparison summaries.
+For baskets with at least 15 observations, reported typical production versus
+reference differences in restricted means are about 0.0004--0.0007; sparse
+states show differences up to about 0.009, with some block-factor differences
+around 12--15\%. This supports further evaluation, not a claim of unbiased
+MCMC or exact continuous-posterior computation. The author's earlier
+70/70 slow-suite and two-trial study smoke run are separate reported results;
+the full operating-characteristic study remains unrun.
+
+\section*{7. Next step within the agreed scope}
+Keep this framework study fixed. First check distinct RNG streams, grid
+resolution and retained MCMC draws on selected sparse and heterogeneous
+states; document convergence and acceptable factor discrepancies. Then,
+\emph{after approval}, run a small timing/operating-characteristic pilot and
+choose the production replication count from the required precision.
+The quoted three CPU-hours is a provisional throughput extrapolation,
+not an upper bound including setup and parallel overhead.
+
+Hyperprior sensitivity remains pending. Partial exchangeability, new entry
+events, delays, drift, adaptive allocation and the older comparator families
+belong to subsequent work. The background paper by Baas, ter Schure and
+van Rosmalen (2026), \href{https://arxiv.org/abs/2605.28653}{arXiv:2605.28653},
+motivates e-value trial design; its design-optimal comparators are deferred
+here. Implementation decisions, review evidence and limitations are recorded
+in \texttt{docs/} and \texttt{PROJECT\_HISTORY.md}.
 \end{document}

@@ -33,7 +33,7 @@ summarise_platform <- function(d, by = c("recruitment", "scenario", "engine")) {
       power_any = if (nrow(alt)) mean(vapply(tr, function(t) any(t$reject & !t$null), TRUE)) else NA,
       all_correct = mean(vapply(tr, function(t) all(t$reject == !t$null), TRUE)),
       N_mean = mean(vapply(tr, function(t) sum(t$n), 0)), duration = mean(vapply(tr, function(t) max(t$time), 0)),
-      cover90 = mean(x$cover), abs_bias = mean(abs(x$post_mean - x$p_true)))
+      cover90 = mean(x$cover), mean_abs_error = mean(abs(x$post_mean - x$p_true)))
   }))
   rownames(out) <- NULL
   out

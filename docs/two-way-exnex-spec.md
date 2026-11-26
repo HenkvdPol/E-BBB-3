@@ -125,16 +125,18 @@ Decisions D1–D4 were confirmed by the researcher; the others are documented de
    binary EX/NEX first).
 2. **Centering.** No hard sum-to-zero constraint (D5). Row and column effects are proper random effects around `mu`,
    so `theta_jl` is identified and is the only quantity the e-process needs. The sampler moves exactly along the
-   three non-identified directions (mu+k, a-k), (mu+k, b-k) and (a+k, b-k), so the posterior ridge does not slow
-   mixing.
-3. **Hyperpriors** (D2: match the one-way benchmark).
+   three non-identified directions (mu+k, a-k), (mu+k, b-k) and (a+k, b-k). These moves help exploration of the
+   posterior ridge; convergence and Monte Carlo precision still need checking.
+3. **Hyperpriors** (D2: match the one-way benchmark's total expected EX variance before discretization).
 
    | Parameter | Prior | Reason |
    |---|---|---|
-   | `mu` | N(logit p0, 10²) on [-8, 4] | as in the one-way benchmark |
-   | `sigma_a`, `sigma_b`, `sigma_e` | HN(1/sqrt 3) each, on the grid 0.05, 0.15, …, 2.45 | E(sigma_a² + sigma_b² + sigma_e²) = 1 = E(tau²) for the benchmark's tau ~ HN(1); the prior mass above 2.45 is 2e-5 |
+   | `mu` | N(logit p0, 10²) on [-8, 4] | same continuous specification as the one-way benchmark, which integrates mu on a grid |
+   | `sigma_a`, `sigma_b`, `sigma_e` | HN(1/sqrt 3) each, on the grid 0.05, 0.15, …, 2.45 | Before truncation/gridding, E(sigma_a² + sigma_b² + sigma_e²) = 1 = E(tau²) for tau ~ HN(1); each continuous two-way SD has about 2e-5 mass above 2.45 |
    | NEX | N(logit pbar, 1/pbar + 1/(1 - pbar)), pbar = (p0 + p1)/2 | as in the benchmark |
 
+   This matches a prior expectation, not the full distribution: the untruncated variance sums are
+   chi-squared(3)/3 and chi-squared(1), respectively. The finite grids also perturb the expectations slightly.
    Sensitivity ranges to run: each scale × 0.5 and × 2, and `w` in {0.25, 0.75}. These are not yet run.
 4. **Borrowing route.** Through both row and column, or not at all (NEX). Row-only and column-only components
    (partial exchangeability) are a planned sensitivity model. They need a decision on the four component weights
@@ -151,9 +153,10 @@ Decisions D1–D4 were confirmed by the researcher; the others are documented de
 
 ### Computation
 
-* **Exact integration of theta and delta.** Given `m_c = mu + a_j + b_l` and `sigma_e`, the posterior of
-  `theta_c` and `delta_c` depends only on the basket's own data. Both are integrated exactly with 1-D tables of
-  `D_c(m, sigma_e)` on the theta cells of the e-process grid (cell width 0.05, aligned at logit p0).
+* **Finite sums over theta and delta.** Given `m_c = mu + a_j + b_l` and `sigma_e`, the posterior of
+  `theta_c` and `delta_c` depends only on the basket's own data. The 1-D tables of `D_c(m, sigma_e)` sum these
+  variables out directly on the theta grid (cell width 0.05, aligned at logit p0). The sampler linearly
+  interpolates `log D` on an m lattice of step 0.05 and clamps m to the lattice limits.
 * **Production sampler** for `(mu, a, b, sigma_a, sigma_b, sigma_e)`: Metropolis-within-Gibbs, vectorised over
   data states and chains.
   * Moves: random walk for `mu`, `a` and `b`; exact Gibbs draws for `sigma_a` and `sigma_b` on their grids; a random
@@ -161,13 +164,19 @@ Decisions D1–D4 were confirmed by the researcher; the others are documented de
   * Steps are adapted during burn-in only.
   * Default: 2 chains × (500 burn-in + 1000 kept).
 * **Posterior of theta_c on the grid.** Rao-Blackwellised over the draws of `(m_c, sigma_e)`, deposited by
-  cloud-in-cell on a lattice of step 0.1.
-* **Platform without patients.** The prior predictive is computed exactly (no sampling).
+  cloud-in-cell on a lattice of step 0.1. Finite MCMC, interpolation, clamping and the finite grids all
+  approximate the posterior weights. The e-process evaluates the finite sum using the supplied restricted
+  weights directly; this is not an exact continuous posterior calculation.
+* **Platform without patients.** The prior predictive uses deterministic quadrature, with mu step 0.02 and
+  m-bin probabilities placed on the Rao-Blackwell lattice. It has no sampling error but retains quadrature error.
 * **Validity under sampling.** The sampler's randomness is independent of future outcomes, and its output is
-  fixed at the analysis. The prior is therefore predictable and frozen, and validity does not depend on Monte Carlo
-  accuracy.
+  fixed at the analysis. Provided its actual weights are normalized and supported on `(p0, 1]`, the prior is
+  predictable and frozen, and validity does not depend on Monte Carlo accuracy.
 * **References.**
   * Deterministic quadrature over the column levels `c_l = mu + b_l` (L ≤ 3), with `mu` integrated in closed form
-    and each row effect in 1-D.
-  * JAGS, with continuous theta and sigmas.
-  * For L × 1 layouts, the equivalent one-way EXNEX model on its own grid engine.
+    and each row effect in 1-D. It shares the production likelihood tables, so it checks hyperparameter
+    integration without independently establishing convergence of those tables' grids.
+  * JAGS, with continuous theta and sigmas: an independent implementation with its own Monte Carlo error
+    and a different numerical representation.
+  * For L × 1 layouts, the one-way reduction on its own grid engine. The Gaussian reduction is exact before
+    conditional theta truncation; the implemented finite grids make it a numerical cross-check.
