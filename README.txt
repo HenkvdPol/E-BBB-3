@@ -16,6 +16,9 @@ simulation.
 * **Guarantee:** under the conditional null, P(reject basket c) <= alpha at every sample size. This holds under
   optional stopping and continuation, whatever the other baskets show, and whether or not the borrowing model is
   right.
+* **No maximum sample size needed:** the bound holds over an unbounded horizon, so a basket may run until it is
+  rejected. Optional anytime-valid futility (E^f >= 1/beta, testing p >= p1) then stops every basket eventually and
+  gives P(futility | p >= p1) <= beta; see [`docs/open-ended-design.md`](docs/open-ended-design.md).
 * **What it is not:** per basket, not a platform-wide FWER. Allocation, outcome order and delays matter
   (framework.tex, 'Scope of the guarantee').
 
@@ -28,11 +31,12 @@ simulation.
 | `R/borrow_oneway.R` | borrowing engines: none, and one-way EXNEX (the earlier benchmark; regression-tested against `legacy/`) |
 | `R/borrow_twoway.R` | two-way EXNEX for a tumour type x biomarker grid (framework.tex eq. 9) |
 | `R/reference_twoway.R` | reference calculations for validation: deterministic quadrature, JAGS, equivalent one-way model |
-| `R/simulate.R` | the e-process in calendar time; priors fitted at an analysis and frozen for the next block |
+| `R/simulate.R` | the e-process in calendar time; priors fitted at an analysis and frozen for the next block; optional open-ended baskets (`n_max = Inf`) and e-value futility |
+| `R/open_ended.R` | exact operating characteristics of one basket over an unbounded horizon (dynamic programme) |
 | `R/summarise.R`, `R/plots.R` | operating characteristics (per-basket type I error and FWER kept apart) and figures |
 | `run_framework_study.R` | **the framework-only simulation study**: the single file to run (settings + run) |
 | `tests/` | `run_tests.R` and `test_*.R`: unit, regression and exact validity tests (base R) |
-| `validation/` | two-way engine against reference calculations; results in `validation/results/` |
+| `validation/` | two-way engine against reference calculations; exact open-ended feasibility; results in `validation/results/` |
 | `legacy/` | the earlier full code base, unchanged: design-optimal e-values (GROW, P-max, ESS-min, e-based), flexible inclusion, Bayesian comparators, Simon, and its checks |
 | `docs/` | implementation plan, known limitations, validation plan, two-way specification and validation, entry-time proposal |
 | `PROJECT_HISTORY.md` | decisions and results over time |
@@ -69,6 +73,8 @@ Rscript tests/run_tests.R                   # all fast tests (~1.5 min)
 Rscript tests/run_tests.R --slow            # plus slow reference comparisons
 Rscript validation/twoway_validation.R      # two-way engine vs references (~30 min, no trial simulation)
 N_SIM=2 Rscript run_framework_study.R       # smoke run of the study (~9 min on 2 cores)
+OPEN_ENDED=1 N_SIM=2 Rscript run_framework_study.R   # smoke run, open-ended variant (no maximum, e-value futility)
+Rscript validation/open_ended_feasibility.R # exact single-basket results without a maximum sample size (~1 min)
 N_SIM=1000 Rscript run_framework_study.R    # the study: only after the compute cost is approved
 ```
 
@@ -102,6 +108,8 @@ Earlier R 4.3.3 results are recorded in the pull request and in `PROJECT_HISTORY
 No full simulation has been run. Before production, separate outcome and posterior-fitting RNG streams (the current
 additive seed scheme can reuse seeds across chunks and analyses) and check sparse-state grid/MCMC sensitivity.
 Open points: [`docs/known-limitations.md`](docs/known-limitations.md); in short:
+* operating characteristics of open-ended baskets that borrow from still-recruiting baskets (simulation; smoke
+  run only);
 * partial exchangeability (row-only or column-only borrowing);
 * hyperprior sensitivity runs;
 * entry-time events ([`docs/entry-time-redesign.md`](docs/entry-time-redesign.md));

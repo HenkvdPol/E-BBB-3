@@ -162,6 +162,12 @@ a run. At each analysis, new evidence is computed using the previous frozen
 prior; all observed platform counts, including stopped baskets, then inform
 the next prior. There is no separate refit at an arbitrary entry time.
 
+\emph{Optional open-ended variant} (\texttt{OPEN\_ENDED=1}): no maximum per
+basket; stop at $E\ge20$ or for futility at $E^f\ge1/\beta=5$, where $E^f$
+tests $p\ge p_1$ with the posterior restricted to $[0,p_1)$ (framework.tex,
+Proposition~2); 150 patients only end the computation. Exact single-basket
+results: \texttt{docs/open-ended-design.md}.
+
 \newpage
 \section*{5. Outputs and interpretation}
 \texttt{run\_framework\_study.R} is the study entry point.

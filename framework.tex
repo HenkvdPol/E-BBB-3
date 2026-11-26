@@ -178,6 +178,43 @@ in observation, must be specified so that the conditional null remains
 meaningful for the sequence actually analysed.
 \end{remark}
 
+\begin{remark}[No maximum sample size]\label{rem:open}
+Proposition~\ref{prop:validity} bounds the probability that $E_c$ reaches $1/\alpha$ at \emph{any} analysis of an unbounded sequence of patients.
+A basket therefore needs no maximum sample size: it may continue until $H_{0,c}$ is rejected, or forever.
+A planned maximum, a budget or a calendar end of the platform is optional stopping and does not affect the guarantee.
+Without borrowing, or when borrowing from baskets whose data no longer change, the product of the block factors telescopes to the mixture likelihood ratio
+$\int (p/p_0)^{y}\{(1-p)/(1-p_0)\}^{n-y}\,\pi_{c,0}(\mathrm dp)$ after $n$ patients with $y$ responses, where $\pi_{c,0}$ is the first restricted prior.
+If $p_c>p_0$ is constant and $\pi_{c,0}$ has positive density near $p_c$, its logarithm grows like $n\,\mathrm{KL}(p_c\,\|\,p_0)$, so $H_{0,c}$ is rejected after finitely many patients with probability one: a test of power one.
+Under $H_{0,c}$, however, the basket continues forever with probability at least $1-\alpha$.
+An open-ended design therefore needs a futility rule.
+\end{remark}
+
+\begin{proposition}[Anytime-valid futility]\label{prop:futility}
+Fix $p_1>p_0$ and consider the reversed hypothesis
+\begin{equation}\label{eq:h1}
+  H_{1,c}\colon\; \P\big(Y_i = 1 \mid \G_i\big) \ge p_1 \quad \text{for all } i \text{ with } c_i = c .
+\end{equation}
+Define $e^{f}_{c,k}$ and $E^{f}_c$ as in Equations~\eqref{eq:factor} and~\eqref{eq:update} with $p_0$ replaced by $p_1$, and with priors $\pi^{f}_{c,k-1}$ on $[0,p_1)$ that are determined by $\F_{\tau_{c,k-1}}$ and frozen for block $k$; for example, the borrowing posterior $\tilde\pi_{c,k-1}$ of Section~\ref{sec:model} restricted to $[0,p_1)$.
+Stop basket $c$ for futility at the first analysis with $E^{f}_c(\tau_{c,k}) \ge 1/\beta$.
+Under $H_{1,c}$, the probability that basket $c$ is ever stopped for futility is at most $\beta$.
+\end{proposition}
+
+\begin{proof}
+As for Proposition~\ref{prop:validity}, with the inequality reversed.
+For fixed $q<p_1$ and $c_i=c$,
+$\E[(q/p_1)^{Y_i}\{(1-q)/(1-p_1)\}^{1-Y_i}\mid\G_i] = q_i\, q/p_1 + (1-q_i)(1-q)/(1-p_1)$
+is decreasing in $q_i$ and equals $1$ at $q_i=p_1$, so it is at most $1$ under $H_{1,c}$.
+\end{proof}
+
+\begin{remark}[Open-ended design]\label{rem:open-design}
+Stop basket $c$ at the first analysis with $E_c \ge 1/\alpha$ (reject $H_{0,c}$) or $E^{f}_c \ge 1/\beta$ (futility), without a maximum sample size.
+Each rule is optional stopping for the other process, so $P(\text{reject } H_{0,c}) \le \alpha$ under $H_{0,c}$ and $P(\text{futility}) \le \beta$ under $H_{1,c}$ hold for the combined design, whether or not the borrowing model is correct.
+Since $p_0<p_1$, every response rate lies above $p_0$ or below $p_1$.
+If $p_c$ is constant and the priors concentrate around it, at least one of the two processes therefore grows, and the basket stops after finitely many patients with probability one.
+In that case $P(\text{reject } H_{0,c}) \ge 1-\beta$ whenever $p_c \ge p_1$: a power guarantee without a maximum sample size.
+Response rates between $p_0$ and $p_1$ may end in either decision.
+\end{remark}
+
 \begin{remark}[Computational approximation]
 Equation~\ref{eq:restricted} defines the target restricted posterior.
 The current implementation in \texttt{R/} represents it by normalized weights

@@ -67,3 +67,11 @@ A small commit on the existing branch, actual test outputs and a concise validat
 tests executed from checks only proposed, numerical approximation from validity, and measured runtime
 from extrapolation. Update the latest status without rewriting historical entries. Present the pilot
 specification for approval only after the authorized validation work is complete.
+
+---
+
+**Status update 2026-11-26 (afternoon).** At the researcher's request, the optional **open-ended design** was added:
+no maximum sample size, anytime-valid e-value futility, `docs/open-ended-design.md`, framework.tex Proposition 2.
+* The fixed 80-cell study is unchanged.
+* The validation items above (RNG streams, numerical sensitivity, pilot specification) are still open. They now
+  apply to the open-ended variant (`OPEN_ENDED=1`) as well.

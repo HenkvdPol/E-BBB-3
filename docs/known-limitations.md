@@ -51,6 +51,15 @@ Last update: 2026-11-26 (branch `feature/lean-framework-twoway-exnex`: new frame
 10. **Common p0.** The new code assumes one `p0` for all baskets: the theta grid is aligned at `logit(p0)`.
     Basket-specific `p0` needs one grid per distinct `p0`.
 
+11. **Open-ended baskets (added 2026-11-26).** No maximum sample size is needed: Proposition 1 holds over an
+    unbounded horizon (`docs/open-ended-design.md`).
+    * Without a futility rule, a null basket runs forever with probability at least 1 - alpha.
+    * The optional e-value futility (framework.tex, Proposition 2) bounds P(futility | p >= p1) by beta and stops
+      every basket with a constant response rate eventually.
+    * The exact results cover one basket without borrowing, or borrowing from baskets whose data are complete.
+      Borrowing from still-recruiting baskets needs simulation; only a smoke run was done.
+    * The theta grid (width 0.05) becomes coarse for n in the thousands; validity is unaffected.
+
 ## Software limitations
 
 1. **Entry-time redesign disabled.** The legacy option `redesign = "entry"` still stops with an error. The new

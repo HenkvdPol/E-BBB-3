@@ -234,3 +234,54 @@ evidence after reviewing PR #6 at `a8a915f`.
   under the existing D9 agreement.
 
 Full review: `docs/review-2026-11-26.md`. The next scoped task is in `CLAUDE_NEXT_STEP.md`.
+
+---
+
+## 2026-11-26 (afternoon) — Open-ended baskets: no maximum sample size
+
+**Request.** Check whether a trial that potentially never stops (an infinite sample size) is still part of the
+design, and add it if not.
+
+**Finding.**
+* framework.tex already allows it: Proposition 1 bounds the probability of rejecting at *any* analysis over an
+  unbounded patient sequence.
+* The new code did not: the simulator stopped baskets at a finite `n_max`, and the engines' tables were built only
+  up to `n_max`.
+
+**Added** (the fixed 80-cell study is unchanged; ChatGPT's fixes `d0b8d5b` and `075b954` are kept):
+* `n_max = Inf` in the simulator, with a simulation horizon `n_cap` that only ends the computation. Baskets still
+  open there are reported as `open`.
+* Engine tables that grow on demand (`state_table()`).
+* Optional anytime-valid futility.
+  * E^f tests p >= p1 with the posterior restricted to [0, p1).
+  * Stop at E^f >= 1/beta; P(futility | p >= p1) <= beta (framework.tex, new Proposition 2).
+* The remarks 'No maximum sample size' and 'Open-ended design' in framework.tex. Proposition 1 and its proof are
+  unchanged.
+* `R/open_ended.R`: the exact dynamic programme, based on the telescoping of the factors for a fixed starting
+  prior.
+* `validation/open_ended_feasibility.R` and its results.
+* `OPEN_ENDED=1` option in `run_framework_study.R`.
+* `docs/open-ended-design.md`.
+* A paragraph in `setup.tex`, which stays at 3 pages.
+
+**Verified** (exact, p0 = 0.10, p1 = 0.30, alpha = 0.05, beta = 0.20, up to 3000 patients; 7 starting priors
+including one-way and two-way borrowing from completed baskets):
+* largest P(reject | p <= p0) = 0.023;
+* largest P(futility | p >= p1) = 0.160;
+* with e-value futility every basket stops, by n = 125 at the latest.
+
+**Compared with the fixed design (n_max = 30), open-ended with e-value futility:**
+
+| Measure | Fixed n_max = 30 | Open-ended, e-value futility |
+|---|---|---|
+| E[N] at p0 | 30 | 20–26 |
+| Power at p1 | 0.49–0.62 | 0.90–0.95 |
+| E[N] at p1 | about 23 | 27–30 |
+
+Without futility, null baskets never stop with probability about 0.98.
+
+**Tests.** `tests/run_tests.R --slow`: 94 PASS, 0 FAIL.
+
+**Open.** Open-ended operating characteristics with borrowing from still-recruiting baskets need a simulation
+pilot, which requires approval. ChatGPT's validation items from `CLAUDE_NEXT_STEP.md` also remain open (RNG
+streams, grid and MCMC sensitivity, pilot specification).

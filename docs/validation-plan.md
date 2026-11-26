@@ -23,6 +23,7 @@ Rscript tests/run_tests.R --slow       # plus the slow reference comparisons (3 
 Rscript legacy/checks/fw_engine.R      # legacy framework engine
 Rscript legacy/checks/fw_validity.R    # legacy exact validity, and further legacy checks in legacy/checks/
 Rscript validation/twoway_validation.R # two-way engine vs references (~30 min; writes validation/results/)
+Rscript validation/open_ended_feasibility.R  # exact open-ended single-basket results (~1 min)
 ```
 
 `tests/run_tests.R` reports PASS, FAIL or SKIP per test and stops with exit status 1 on any failure. Details are
@@ -34,6 +35,7 @@ written to `tests/output/test_results.csv`. Main tests:
 | `test_oneway.R` | regression: the port reproduces legacy `posterior_exnex()` to < 1e-15; no borrowing = EX weight 0; permutation symmetry; determinism |
 | `test_twoway.R` | tables against a direct sum; deterministic empty-platform quadrature against Monte Carlo; missing cell = empty cell; reproducibility; transposition; borrowing structure; agreement with the quadrature reference |
 | `test_validity.R` | exact type I error of a null basket (all 6^6 block paths enumerated) <= alpha for every engine, including scaled Beta, with adversarial other baskets |
+| `test_open_ended.R` | futility layer (E_p1[factor] = 1, <= 1 above p1); tables growing beyond n_max equal full tables; telescoping in the simulator; exact DP = path enumeration of the recursion; exact alpha and beta bounds over 1000 patients; open-ended simulator statuses |
 | `test_simulate.R` | decisions; reproducibility; predictability (outcomes that differ only inside a block leave that block's prior unchanged); summaries |
 
 * **Pull requests:** the GitHub workflow runs parsing, `tests/run_tests.R` and `legacy/checks/fw_engine.R`.
