@@ -78,7 +78,7 @@ run, 4 x 3 layout, six data states).
 
 ## Tests
 
-* **`Additional_files/tests/test_ebbb.R`** (40 checks). The closed forms are written out in the test, not copied from
+* **`Additional_files/tests/test_ebbb.R`** (42 checks). The closed forms are written out in the test, not copied from
   eBBB:
   * Beta on the grid against the closed-form factor;
   * the Beta parameters of no borrowing and the power priors;
@@ -88,6 +88,7 @@ run, 4 x 3 layout, six data states).
   * the oracle's factors and summaries;
   * the exact type I error of every eBBB prior (6^6 paths);
   * every model of `setting.R` on the unbalanced 4 x 3 layout;
+  * the additive scenario's exact null boundary and single null basket in both recruitment designs;
   * the fixed design stopping only at efficacy or `n_max`.
 * **Two-way engine, old defaults.** It gives bit-identical posteriors to `main` before this change (checked locally
   with the same seed).
