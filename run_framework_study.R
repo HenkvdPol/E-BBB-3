@@ -73,7 +73,7 @@ make_designs <- function(rec) {
 ## =============================================================================
 dir.create(settings$out_dir, showWarnings = FALSE, recursive = TRUE)
 cat(sprintf("framework study: %d trials per cell, %d cores, output %s\n", settings$n_sim, settings$n_cores, settings$out_dir))
-chunks <- split(seq_len(settings$n_sim), cut(seq_len(settings$n_sim), min(settings$n_cores, settings$n_sim), labels = FALSE))
+chunks <- parallel::splitIndices(settings$n_sim, min(settings$n_cores, settings$n_sim))
 all <- list(); timing <- list()
 for (ri in seq_along(recruitment)) {
   rec <- recruitment[[ri]]; designs <- make_designs(rec)

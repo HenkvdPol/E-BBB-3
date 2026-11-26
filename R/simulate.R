@@ -60,8 +60,9 @@ simulate_trials <- function(p_true, design, engine, n_sim, seed = 1, X = NULL, t
   make_prior <- function(lp) { w <- restrict(lp, grid); if (design$prior_form == "beta") scaled_beta(w, grid) else w }
   ## priors for the first block: fitted to the empty platform (one state for all trials)
   fit <- priors_and_summaries(engine, n, n, matrix(TRUE, S, K), seed)
-  W <- matrix(make_prior(pairs_logpost(fit, 1:K * S - S + 1, S)), S * K, length(grid$support))
-  W <- W[rep(seq_len(K), each = S), , drop = FALSE]           # row s + (k - 1) S
+  first_priors <- make_prior(pairs_logpost(fit, (seq_len(K) - 1L) * S + 1L, S))  # K x support points
+  W <- first_priors[rep(seq_len(K), each = S), , drop = FALSE]  # row s + (k - 1) S
+  check_priors(W, grid)
   tr <- list()
   for (a in seq_along(times)) {
     act <- status == 0

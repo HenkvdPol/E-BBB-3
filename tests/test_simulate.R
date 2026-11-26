@@ -34,3 +34,45 @@ b <- summarise_baskets(d); pl <- summarise_platform(d)
 check("summaries: one row per basket", nrow(b) == 4)
 check("summaries: FWER >= largest per-basket type I error", pl$FWER >= pl$typeI_basket_max)
 check("summaries: largest per-basket type I error = max over baskets", abs(pl$typeI_basket_max - max(b$reject)) < 1e-12)
+
+## Regression: expanding the initial K x G prior to S trials must copy rows, not recycle
+## the matrix's column-major storage. Distinct basket priors detect both row and support errors.
+initial_logpost <- t(log(norm_cells(grid, qlogis(c(0.18, 0.32, 0.55, 0.75)), c(0.3, 0.5, 0.7, 0.9))))
+distinct_engine <- list(name = "distinct deterministic priors", grid = grid,
+  posterior = function(Y, N, need = NULL, seed = NULL) {
+    lp <- array(NA_real_, c(nrow(Y), ncol(Y), length(grid$theta)))
+    for (k in seq_len(ncol(Y))) {
+      lp[, k, ] <- loglik_grid(Y[, k], N[, k], grid) + rep(initial_logpost[k, ], each = nrow(Y))
+    }
+    list(logpost = lp, pex = matrix(NA_real_, nrow(Y), ncol(Y)))
+  })
+batch_design <- modifyList(design, list(n_max = 10, entry = 0))
+batch_X <- array(FALSE, c(3, 4, 10))
+for (s in seq_len(3)) for (k in seq_len(4)) {
+  batch_X[s, k, ] <- (seq_len(10) + 2 * s + 3 * k) %% (k + 2) == 0
+}
+batch <- simulate_trials(p, batch_design, distinct_engine, 3, X = batch_X, trace = TRUE)
+first <- attr(batch, "trace")[[1]]
+initial_w <- restrict(initial_logpost, grid)
+expected_logE <- matrix(NA_real_, 3, 4)
+for (s in seq_len(3)) for (k in seq_len(4)) {
+  successes <- sum(batch_X[s, k, 1:5])
+  expected_logE[s, k] <- log(sum(initial_w[k, ] * (grid$support / p0)^successes *
+    ((1 - grid$support) / (1 - p0))^(5 - successes)))
+}
+check("initial priors: batched first-block factors equal direct normalized mixtures",
+      max(abs(first$logE - expected_logE)) < 1e-12)
+check("initial priors: every trial uses its basket's unchanged prior mean",
+      max(abs(first$prior_mean - matrix(as.vector(initial_w %*% grid$support), 3, 4, byrow = TRUE))) < 1e-12)
+
+## A deterministic engine with fixed outcomes must give the same decisions, factors and
+## posterior summaries when trials are simulated together or one at a time.
+same_trials <- vapply(seq_len(3), function(s) {
+  one <- simulate_trials(p, batch_design, distinct_engine, 1, X = batch_X[s, , , drop = FALSE])
+  together <- batch[batch$trial == s, names(one), drop = FALSE]
+  together$trial <- 1L
+  attr(together, "trace") <- NULL
+  rownames(together) <- rownames(one) <- NULL
+  isTRUE(all.equal(together, one, tolerance = 1e-12))
+}, TRUE)
+check("simulation batching: fixed outcomes match separate one-trial runs", all(same_trials))
