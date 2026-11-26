@@ -1,15 +1,11 @@
-# Generated simulation output
+# Generated simulation output and caches
 Result/
+design_banks/
+**/design_banks/
 checks/output/
 *.RData
 *.Rhistory
 .Rproj.user/
-.Rhistory
-.RData
-
-# Reproducible design-bank cache (large generated RDS files)
-design_banks/
-**/design_banks/
 
 # LaTeX build products
 *.aux
@@ -18,3 +14,7 @@ design_banks/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Locally compiled research PDFs
+framework.pdf
+setup.pdf
