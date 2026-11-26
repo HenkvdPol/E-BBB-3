@@ -94,3 +94,10 @@ analysis after patients have already accrued.
 The primary deliverable is a validated two-way borrowing module that plugs into
 the existing restricted-prior interface without altering the e-process validity
 layer.
+
+---
+
+**Status 2026-11-26.** Steps 1–6 and 8–9 are done on branch `feature/lean-framework-twoway-exnex`. Step 7, the
+operating characteristics, is defined in `run_framework_study.R` but only smoke-run. The entry redesign has a
+proposal in `docs/entry-time-redesign.md`. See the pull request and `PROJECT_HISTORY.md` (2026-11-26) for the tests
+that were executed.

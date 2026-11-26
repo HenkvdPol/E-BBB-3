@@ -20,3 +20,4 @@ All paths inside are relative to the file's own folder, so the move changed no r
 `Rscript legacy/checks/fw_engine.R` gives the same output before and after the move (verified 2026-11-26).
 
 The guard on `redesign = "entry"` in `run_trials_evalue()` stays (see `docs/entry-time-redesign.md`).
+* `README_legacy.txt`: the detailed README of this code base (the former top-level `README.txt`).

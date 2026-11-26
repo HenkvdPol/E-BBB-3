@@ -110,3 +110,64 @@ scales. Verify the e-process validity independently of the fitted model.
 - Exact or trusted-reference comparisons are documented.
 - The e-process validity layer is unchanged and independently tested.
 - No full production simulation is run until the researcher approves it.
+
+---
+
+## Implemented model and decisions (2026-11-26, branch `feature/lean-framework-twoway-exnex`)
+
+Code: `R/borrow_twoway.R` (engine), `R/reference_twoway.R` (references). Validation: `docs/two-way-validation.md`.
+Decisions D1–D4 were confirmed by the researcher; the others are documented defaults
+(`docs/implementation-plan.md`, section 7).
+
+### Answers to the required design decisions
+
+1. **delta_jl.** Independent across baskets, `w_jl = w = 0.5`, the value of the one-way framework design (D3:
+   binary EX/NEX first).
+2. **Centering.** No hard sum-to-zero constraint (D5). Row and column effects are proper random effects around `mu`,
+   so `theta_jl` is identified and is the only quantity the e-process needs. The sampler moves exactly along the
+   three non-identified directions (mu+k, a-k), (mu+k, b-k) and (a+k, b-k), so the posterior ridge does not slow
+   mixing.
+3. **Hyperpriors** (D2: match the one-way benchmark).
+
+   | Parameter | Prior | Reason |
+   |---|---|---|
+   | `mu` | N(logit p0, 10²) on [-8, 4] | as in the one-way benchmark |
+   | `sigma_a`, `sigma_b`, `sigma_e` | HN(1/sqrt 3) each, on the grid 0.05, 0.15, …, 2.45 | E(sigma_a² + sigma_b² + sigma_e²) = 1 = E(tau²) for the benchmark's tau ~ HN(1); the prior mass above 2.45 is 2e-5 |
+   | NEX | N(logit pbar, 1/pbar + 1/(1 - pbar)), pbar = (p0 + p1)/2 | as in the benchmark |
+
+   Sensitivity ranges to run: each scale × 0.5 and × 2, and `w` in {0.25, 0.75}. These are not yet run.
+4. **Borrowing route.** Through both row and column, or not at all (NEX). Row-only and column-only components
+   (partial exchangeability) are a planned sensitivity model. They need a decision on the four component weights
+   and are not implemented.
+5. **Empty rows, columns and cells.**
+   * A cell that is not in the trial is left out of the layout.
+   * An open basket without patients stays in the model and gets its prior predictive through its row and column.
+   * Both give identical posteriors for the other baskets; this is tested.
+   * Empty rows and columns contribute their prior only.
+6. **External data D0.** None (D8).
+7. **Posterior target.** The posterior given all platform data, including the basket's own data (framework.tex,
+   eq. 8). It is restricted to (p0, 1] and frozen for the next block.
+8. **Uncertainty computation and validation.** See below and `docs/two-way-validation.md`.
+
+### Computation
+
+* **Exact integration of theta and delta.** Given `m_c = mu + a_j + b_l` and `sigma_e`, the posterior of
+  `theta_c` and `delta_c` depends only on the basket's own data. Both are integrated exactly with 1-D tables of
+  `D_c(m, sigma_e)` on the theta cells of the e-process grid (cell width 0.05, aligned at logit p0).
+* **Production sampler** for `(mu, a, b, sigma_a, sigma_b, sigma_e)`: Metropolis-within-Gibbs, vectorised over
+  data states and chains.
+  * Moves: random walk for `mu`, `a` and `b`; exact Gibbs draws for `sigma_a` and `sigma_b` on their grids; a random
+    walk on the `sigma_e` grid; exact moves along the non-identified directions.
+  * Steps are adapted during burn-in only.
+  * Default: 2 chains × (500 burn-in + 1000 kept).
+* **Posterior of theta_c on the grid.** Rao-Blackwellised over the draws of `(m_c, sigma_e)`, deposited by
+  cloud-in-cell on a lattice of step 0.1.
+* **Platform without patients.** The prior predictive is computed exactly (no sampling).
+* **Validity under sampling.** The sampler's randomness is independent of future outcomes, and its output is
+  fixed at the analysis. The prior is therefore predictable and frozen, and validity does not depend on Monte Carlo
+  accuracy.
+* **References.**
+  * Deterministic quadrature over the column levels `c_l = mu + b_l` (L ≤ 3), with `mu` integrated in closed form
+    and each row effect in 1-D.
+  * JAGS, with continuous theta and sigmas.
+  * For L × 1 layouts, the equivalent one-way EXNEX model on its own grid engine.

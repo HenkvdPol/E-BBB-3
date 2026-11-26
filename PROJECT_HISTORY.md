@@ -132,3 +132,67 @@ and what is still open.
   manually dispatched full check suite. No R checks or full simulations were
   executed as part of this review because R is unavailable in the authoring
   environment.
+
+---
+
+## 2026-11-26 — Lean framework code, framework-only study and two-way EXNEX (branch `feature/lean-framework-twoway-exnex`)
+
+**Decisions** (confirmed by the researcher: D1–D4; documented defaults: D5–D9; see `docs/implementation-plan.md`):
+- **D1.** New, short framework code in `R/`. The earlier code base moved unchanged to `legacy/`: same output of
+  `legacy/checks/fw_engine.R` before and after the move.
+- **D2.** Two-way hyperpriors match the one-way benchmark: sigma_a, sigma_b, sigma_e ~ HN(1/sqrt 3), so the total EX
+  variance has the same expectation as tau² with tau ~ HN(1). Same mu prior, w = 0.5, same NEX.
+- **D3.** Binary EX/NEX per basket (framework.tex eq. 9). Row-only and column-only partial exchangeability later,
+  once the component weights are agreed.
+- **D4.** The e-process gets the restricted posterior itself on a theta grid aligned at logit(p0) (framework.tex
+  eq. 8 up to quadrature). The scaled Beta stays as a benchmark design.
+- **D5–D9.**
+  - Random effects without a sum-to-zero constraint.
+  - No external data D0.
+  - Two-way production computation by MCMC, validated against deterministic quadrature and JAGS.
+  - Only smoke runs until approval.
+
+**Code.**
+- `R/eprocess.R`: validity layer.
+- `R/borrow_oneway.R`: none and one-way EXNEX.
+- `R/borrow_twoway.R`: two-way EXNEX.
+- `R/reference_twoway.R`: references.
+- `R/simulate.R`, `R/summarise.R`, `R/plots.R`.
+- `run_framework_study.R`: single entry point; 3 x 3 grid, 10 scenarios, balanced and unbalanced recruitment, four
+  priors.
+- `tests/`: base-R runner.
+- `validation/twoway_validation.R`.
+
+**Verified** (executed on R 4.3.3):
+- One-way port = legacy `posterior_exnex()`: restricted mean, second moment and P(p > p0) to < 1e-15. New 0.05 grid
+  vs legacy: 3e-5.
+- Exact type I error of a null basket, with all 6^6 block paths and adversarial other baskets, at alpha = 0.05:
+
+  | Prior | Exact type I error |
+  |---|---|
+  | none | 0.0073 |
+  | one-way EXNEX | 0.0060 / 0.0067 |
+  | one-way EXNEX, scaled Beta | 0.0059 |
+  | two-way EXNEX | 0.0059 / 0.0067 |
+
+  All are ≤ alpha. The framework e-value remains conservative at n ≤ 30.
+- Predictability, checked directly: outcomes that differ only inside a block leave that block's prior unchanged.
+- Two-way posterior accuracy (`docs/two-way-validation.md`): the quadrature and the equivalent one-way model agree
+  to 2e-4.
+  - Production sampler vs references: typically 0.0004–0.0007 in the restricted mean and 1–2% in the 5/5 block
+    factor for baskets with n ≥ 15.
+  - Up to 0.009 and 12–15% for empty or 5-patient baskets (Monte Carlo error, no bias).
+- Smoke run of the study (`N_SIM=2`): all 80 cells run (9 min on 2 cores).
+
+**Findings.**
+- Borrowing from strongly responding baskets *lowers* the exact type I error of a null basket: the prior moves away
+  from p0. The hardest platform is one with response rates just above p0.
+- A quadrature window around the data underestimates the all-NEX configurations under the wide mu prior, and so
+  overstates P(EX). References must cover the whole prior range.
+
+**Open.**
+- Full study run (estimate: 3 CPU-hours upper bound, 25–35 min on 8 cores): **needs approval**.
+- Partial exchangeability; hyperprior sensitivity.
+- Entry-time events (proposal: `docs/entry-time-redesign.md`; the guard stays).
+- Drift, delays and allocation scenarios.
+- Moving the design-optimal comparators and flexible inclusion onto the new code.

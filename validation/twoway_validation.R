@@ -1,8 +1,9 @@
 ## =============================================================================
 ##  twoway_validation.R -- the production two-way engine against reference calculations
 ##  Run:    Rscript validation/twoway_validation.R        (about 20-30 min on one core)
-##  Output: validation/results/twoway_validation.csv      (every method, state and basket)
-##          validation/results/twoway_validation_summary.csv
+##  Output: validation/results/twoway_validation.csv      (every method, state and basket, with run time)
+##          validation/results/twoway_validation_summary.csv, _mcspread.csv, _session.txt
+##  SUMMARY_ONLY=1 Rscript validation/twoway_validation.R   recomputes the summaries from the saved csv.
 ##  No trial simulation: posterior calculations for fixed data states only.
 ##
 ##  A. 3 x 1 layout, full hyperpriors: deterministic quadrature (twoway_exact) and the equivalent
@@ -35,16 +36,17 @@ states33 <- list(                                     # baskets in the order (1,
 states31 <- list("heterogeneous" = list(y = v(3, 9, 14), n = rep(30, 3)), "homogeneous null" = list(y = rep(3, 3), n = rep(30, 3)),
                  "unbalanced" = list(y = v(0, 2, 5), n = v(5, 10, 30)), "empty basket" = list(y = v(1, 0, 2), n = v(5, 0, 5)))
 
-rows <- list(); timing <- list()
+rows <- list()
 add <- function(section, state, method, s, secs) {
-  s$section <- section; s$state <- state; s$method <- method; s$basket <- seq_len(nrow(s))
-  rows[[length(rows) + 1]] <<- s; timing[[length(timing) + 1]] <<- data.frame(section, state, method, seconds = secs)
+  s$section <- section; s$state <- state; s$method <- method; s$basket <- seq_len(nrow(s)); s$seconds <- secs
+  rows[[length(rows) + 1]] <<- s
 }
 timed <- function(expr) { t0 <- Sys.time(); x <- expr; list(x = x, s = as.numeric(difftime(Sys.time(), t0, units = "secs"))) }
 grid_summ <- function(po) summ_grid(matrix(po$logpost[1, , ], dim(po$logpost)[2]), po$pex[1, ], grid)
 mcmc_run <- function(st, lay, pr, tb, set, seed) {
   e <- engine_twoway(grid, lay, pbar, 30, prior = pr, mcmc = set, tab = tb); e$posterior(matrix(st$y, 1), matrix(st$n, 1), seed = seed) }
 
+if (Sys.getenv("SUMMARY_ONLY") != "1") {
 ## A. 3 x 1 layout, full hyperpriors
 ow <- engine_oneway(grid, pbar, 30, hyper = oneway_equivalent_hyper(prior))
 for (nm in names(states31)) { st <- states31[[nm]]; cat("A:", nm, "\n")
@@ -67,8 +69,10 @@ for (nm in names(states33)) { st <- states33[[nm]]; lay <- if (is.null(st$layout
   r <- timed(mcmc_run(st, lay, prior, tab, long, 99)); add("C", nm, "mcmc long", grid_summ(r$x), r$s)
   for (sd in 1:5) { r <- timed(mcmc_run(st, lay, prior, tab, prod, sd)); add("C", nm, sprintf("mcmc seed %d", sd), grid_summ(r$x), r$s) }
 }
-res <- do.call(rbind, rows); tim <- do.call(rbind, timing)
+res <- do.call(rbind, rows)
 write.csv(res, file.path(out_dir, "twoway_validation.csv"), row.names = FALSE)
+}
+res <- read.csv(file.path(out_dir, "twoway_validation.csv"))
 
 ## Largest differences against the reference of each section
 ref_of <- c(A = "exact", B = "exact", C = "jags")
@@ -79,13 +83,15 @@ cmp <- do.call(rbind, lapply(split(res, list(res$section, res$state), drop = TRU
                rmean = max(abs(x$rmean - ref$rmean)), rsd = max(abs(x$rsd - ref$rsd)), p_above = max(abs(x$p_above - ref$p_above)),
                pex = max(abs(x$pex - ref$pex)), logf0 = max(abs(log(x$f0 / ref$f0))), logf5 = max(abs(log(x$f5 / ref$f5)))) }))
 }))
-summ <- aggregate(cbind(rmean, rsd, p_above, pex, logf0, logf5) ~ section + method, cmp, max)
-tim$method <- sub(" seed [0-9]+", "", tim$method)
-summ <- merge(summ, aggregate(seconds ~ section + method, tim, mean), sort = FALSE)
+summ <- aggregate(cbind(rmean, rsd, p_above, pex, logf0, logf5) ~ section + method, data = cmp, FUN = max)
+if (!is.null(res$seconds)) {                         # mean run time per state of each method
+  tim <- unique(res[, c("section", "state", "method", "seconds")]); tim$method <- sub(" seed [0-9]+", "", tim$method)
+  summ <- merge(summ, aggregate(seconds ~ section + method, data = tim, FUN = mean), all.x = TRUE, sort = FALSE)
+}
 ## Monte Carlo spread of the production sampler over the 5 seeds (largest sd over states and baskets)
 mc <- res[grepl("^mcmc seed", res$method), ]; mc$logf5 <- log(mc$f5)
-spread <- aggregate(cbind(rmean, pex, logf5) ~ section + state + basket, mc, sd)
-spread <- aggregate(cbind(rmean, pex, logf5) ~ section, spread, max)
+spread <- aggregate(cbind(rmean, pex, logf5) ~ section + state + basket, data = mc, FUN = sd)
+spread <- aggregate(cbind(rmean, pex, logf5) ~ section, data = spread, FUN = max)
 names(spread) <- c("section", "sd_rmean", "sd_pex", "sd_logf5")
 write.csv(summ, file.path(out_dir, "twoway_validation_summary.csv"), row.names = FALSE)
 write.csv(spread, file.path(out_dir, "twoway_validation_mcspread.csv"), row.names = FALSE)

@@ -1,0 +1,26 @@
+A: heterogeneous 
+A: homogeneous null 
+A: unbalanced 
+A: empty basket 
+B: homogeneous null 
+B: one active basket 
+B: active row 
+B: active column 
+B: interaction (diagonal) 
+B: unbalanced, empty (3,2) 
+B: missing (3,3), empty (2,2) 
+B: strong heterogeneity 
+B: early (5 per basket) 
+C: homogeneous null 
+C: one active basket 
+C: active row 
+C: active column 
+C: interaction (diagonal) 
+C: unbalanced, empty (3,2) 
+C: missing (3,3), empty (2,2) 
+C: strong heterogeneity 
+C: early (5 per basket) 
+Error in get(as.character(FUN), mode = "function", envir = envir) : 
+  object 'FUN' of mode 'function' was not found
+Calls: aggregate ... aggregate.formula -> aggregate.data.frame -> match.fun -> get
+Execution halted
