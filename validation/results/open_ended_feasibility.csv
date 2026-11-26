@@ -1,0 +1,197 @@
+"prior","design","p","reject","futility","complete","open","EN","N_median","N_q90","last_n"
+"none","fixed n_max 30, blocks of 5",0.05,0.000152946473857106,0.999847053526143,0,0,29.9973570384111,30,30,30
+"none","fixed n_max 30, blocks of 5",0.1,0.0061634574085435,0.993836542591456,0,0,29.9210297743644,30,30,30
+"none","fixed n_max 30, blocks of 5",0.15,0.0492637774426313,0.950736222557368,0,0,29.4644836632156,30,30,30
+"none","fixed n_max 30, blocks of 5",0.2,0.176479410557594,0.823520589442406,0,0,28.1744943887764,30,30,30
+"none","fixed n_max 30, blocks of 5",0.25,0.388846713814629,0.611153286185371,0,0,25.8517701571273,30,30,30
+"none","fixed n_max 30, blocks of 5",0.3,0.62364554443001,0.37635445556999,0,0,22.7645986601243,25,30,30
+"none","fixed n_max 30, blocks of 5",0.4,0.9231198506627,0.076880149337301,0,0,16.4310137588757,15,30,30
+"none","open, no futility, blocks of 5",0.05,0.000156566151890195,0,0,0.999843433848104,2999.53240014352,NA,NA,3000
+"none","open, no futility, blocks of 5",0.1,0.0149596613980466,0,0,0.985040338601937,2959.04995856758,NA,NA,3000
+"none","open, no futility, blocks of 5",0.15,0.99999953946909,0,0,4.60530900979561e-07,407.579945926597,350,815,3000
+"none","open, no futility, blocks of 5",0.2,0.999999999999991,0,0,8.62166001489419e-15,107.318763108653,90,215,1550
+"none","open, no futility, blocks of 5",0.25,0.999999999999989,0,0,9.99156582976188e-15,51.8853875331947,40,105,755
+"none","open, no futility, blocks of 5",0.3,0.999999999999991,0,0,9.48882665648666e-15,31.9602188926055,25,65,460
+"none","open, no futility, blocks of 5",0.4,0.999999999999995,0,0,5.85665481265717e-15,17.3380069396748,15,30,230
+"none","open, e-value futility, blocks of 5",0.05,0.000155936463017863,0.999844063536982,0,0,14.3764708601448,10,25,115
+"none","open, e-value futility, blocks of 5",0.1,0.00871306545166544,0.991286934548334,0,0,23.6171794508005,15,45,115
+"none","open, e-value futility, blocks of 5",0.15,0.120513262789153,0.879486737210846,0,0,37.7517454151126,30,80,115
+"none","open, e-value futility, blocks of 5",0.2,0.472987171242897,0.527012828757103,0,0,44.9686764975194,40,85,115
+"none","open, e-value futility, blocks of 5",0.25,0.798730219802513,0.201269780197487,0,0,38.6529254407223,30,75,115
+"none","open, e-value futility, blocks of 5",0.3,0.933234471584874,0.0667655284151264,0,0,28.8610069453432,25,60,115
+"none","open, e-value futility, blocks of 5",0.4,0.990462270539916,0.0095377294600847,0,0,17.0779865654585,15,30,115
+"none","open, e-value futility, every patient",0.05,0.00312398278828328,0.996876017211716,0,0,9.33828402760964,6,21,115
+"none","open, e-value futility, every patient",0.1,0.0222315303346348,0.977768469665366,0,0,15.4869121311045,6,37,115
+"none","open, e-value futility, every patient",0.15,0.128233492037737,0.871766507962263,0,0,24.4785322474329,14,62,115
+"none","open, e-value futility, every patient",0.2,0.407144410230762,0.59285558976924,0,0,29.5323042579796,21,71,115
+"none","open, e-value futility, every patient",0.25,0.68743746550993,0.31256253449007,0,0,26.4745271922388,19,62,115
+"none","open, e-value futility, every patient",0.3,0.839791318759177,0.160208681240822,0,0,20.5147885040219,15,46,115
+"none","open, e-value futility, every patient",0.4,0.94907477081438,0.0509252291856197,0,0,12.0175691173562,10,25,115
+"one-way EXNEX, 8 null baskets (3/30)","fixed n_max 30, blocks of 5",0.05,0.00012434539010925,0.999875654609891,0,0,29.9975693706587,30,30,30
+"one-way EXNEX, 8 null baskets (3/30)","fixed n_max 30, blocks of 5",0.1,0.00380416078813026,0.996195839211869,0,0,29.9357471026779,30,30,30
+"one-way EXNEX, 8 null baskets (3/30)","fixed n_max 30, blocks of 5",0.15,0.0285707777106832,0.971429222289316,0,0,29.586931750545,30,30,30
+"one-way EXNEX, 8 null baskets (3/30)","fixed n_max 30, blocks of 5",0.2,0.109957133965343,0.890042866034657,0,0,28.5830759439583,30,30,30
+"one-way EXNEX, 8 null baskets (3/30)","fixed n_max 30, blocks of 5",0.25,0.272250745680967,0.727749254319032,0,0,26.6507204689594,30,30,30
+"one-way EXNEX, 8 null baskets (3/30)","fixed n_max 30, blocks of 5",0.3,0.490891579006888,0.509108420993112,0,0,23.8467059501004,30,30,30
+"one-way EXNEX, 8 null baskets (3/30)","fixed n_max 30, blocks of 5",0.4,0.858944491087525,0.141055508912475,0,0,17.3271800822475,15,30,30
+"one-way EXNEX, 8 null baskets (3/30)","open, no futility, blocks of 5",0.05,0.00012981097350469,0,0,0.99987018902649,2999.61208274613,NA,NA,3000
+"one-way EXNEX, 8 null baskets (3/30)","open, no futility, blocks of 5",0.1,0.0202015419598562,0,0,0.979798458040126,2950.44384266383,NA,NA,3000
+"one-way EXNEX, 8 null baskets (3/30)","open, no futility, blocks of 5",0.15,0.999999943860426,0,0,5.61395656970586e-08,361.170653967052,315,705,3000
+"one-way EXNEX, 8 null baskets (3/30)","open, no futility, blocks of 5",0.2,0.999999999999991,0,0,8.90194439320221e-15,107.064517578931,90,205,1445
+"one-way EXNEX, 8 null baskets (3/30)","open, no futility, blocks of 5",0.25,0.999999999999991,0,0,7.71914479338466e-15,54.405600933285,45,105,720
+"one-way EXNEX, 8 null baskets (3/30)","open, no futility, blocks of 5",0.3,0.999999999999992,0,0,8.42089069380933e-15,34.3349306686455,35,65,445
+"one-way EXNEX, 8 null baskets (3/30)","open, no futility, blocks of 5",0.4,0.999999999999993,0,0,7.47676198329594e-15,18.6225647870533,15,35,225
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, blocks of 5",0.05,0.000129330914507332,0.999870669085493,0,0,13.3314097589226,10,20,125
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, blocks of 5",0.1,0.00655707013519973,0.9934429298648,0,0,19.7447389321836,15,35,125
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, blocks of 5",0.15,0.0968580880919789,0.90314191190802,0,0,30.9301201162491,25,65,125
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, blocks of 5",0.2,0.405420570300926,0.594579429699074,0,0,39.349176474142,35,80,125
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, blocks of 5",0.25,0.733018467176916,0.266981532823083,0,0,37.1059568874734,35,70,125
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, blocks of 5",0.3,0.90136912024544,0.0986308797545598,0,0,29.8226344221682,30,55,125
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, blocks of 5",0.4,0.987668563221604,0.0123314367783969,0,0,18.2743293158078,15,35,125
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, every patient",0.05,0.000709457738047877,0.999290542261952,0,0,9.89099664215744,7,19,116
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, every patient",0.1,0.0117108622457101,0.988289137754291,0,0,15.4507443692634,13,30,116
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, every patient",0.15,0.103996067052928,0.896003932947071,0,0,24.4714290624977,14,57,116
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, every patient",0.2,0.37884573929246,0.621154260707542,0,0,30.7111104934663,24,70,116
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, every patient",0.25,0.674856818663131,0.325143181336869,0,0,28.827445423429,24,62,116
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, every patient",0.3,0.845310273878369,0.154689726121629,0,0,23.1572429765037,19,48,116
+"one-way EXNEX, 8 null baskets (3/30)","open, e-value futility, every patient",0.4,0.962686348871736,0.0373136511282638,0,0,13.9749376176239,11,28,116
+"one-way EXNEX, 8 active baskets (9/30)","fixed n_max 30, blocks of 5",0.05,0.000152946473857106,0.999847053526143,0,0,29.9973570384111,30,30,30
+"one-way EXNEX, 8 active baskets (9/30)","fixed n_max 30, blocks of 5",0.1,0.0061634574085435,0.993836542591456,0,0,29.9210297743644,30,30,30
+"one-way EXNEX, 8 active baskets (9/30)","fixed n_max 30, blocks of 5",0.15,0.0492637774426313,0.950736222557368,0,0,29.4644836632156,30,30,30
+"one-way EXNEX, 8 active baskets (9/30)","fixed n_max 30, blocks of 5",0.2,0.176479410557594,0.823520589442406,0,0,28.1744943887764,30,30,30
+"one-way EXNEX, 8 active baskets (9/30)","fixed n_max 30, blocks of 5",0.25,0.388846713814629,0.611153286185371,0,0,25.8517701571273,30,30,30
+"one-way EXNEX, 8 active baskets (9/30)","fixed n_max 30, blocks of 5",0.3,0.62364554443001,0.37635445556999,0,0,22.7645986601243,25,30,30
+"one-way EXNEX, 8 active baskets (9/30)","fixed n_max 30, blocks of 5",0.4,0.9231198506627,0.076880149337301,0,0,16.4310137588757,15,30,30
+"one-way EXNEX, 8 active baskets (9/30)","open, no futility, blocks of 5",0.05,0.000171188507689529,0,0,0.999828811492304,2999.48914810663,NA,NA,3000
+"one-way EXNEX, 8 active baskets (9/30)","open, no futility, blocks of 5",0.1,0.01587836217109,0,0,0.984121637828893,2954.51184234623,NA,NA,3000
+"one-way EXNEX, 8 active baskets (9/30)","open, no futility, blocks of 5",0.15,0.99999856464984,0,0,1.4353501503178e-06,447.19656199798,395,910,3000
+"one-way EXNEX, 8 active baskets (9/30)","open, no futility, blocks of 5",0.2,0.99999999999999,0,0,9.6438650889275e-15,104.765802260144,80,230,1610
+"one-way EXNEX, 8 active baskets (9/30)","open, no futility, blocks of 5",0.25,0.99999999999999,0,0,8.92701934036525e-15,48.23240931926,40,95,790
+"one-way EXNEX, 8 active baskets (9/30)","open, no futility, blocks of 5",0.3,0.999999999999993,0,0,6.68152898173898e-15,30.1958574508784,25,55,480
+"one-way EXNEX, 8 active baskets (9/30)","open, no futility, blocks of 5",0.4,0.999999999999992,0,0,8.57873115654677e-15,17.1886996505818,15,30,235
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, blocks of 5",0.05,0.000169687359622832,0.999830312640377,0,0,16.001227110353,10,30,110
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, blocks of 5",0.1,0.0119036343887231,0.988096365611277,0,0,25.6697415485228,25,50,110
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, blocks of 5",0.15,0.143747752068588,0.856252247931411,0,0,38.2270964160695,35,70,110
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, blocks of 5",0.2,0.501811411745259,0.498188588254741,0,0,43.0478696679735,40,80,110
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, blocks of 5",0.25,0.818163501053685,0.181836498946314,0,0,36.659665479058,35,70,110
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, blocks of 5",0.3,0.945998633049768,0.0540013669502316,0,0,27.8645988829971,25,50,110
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, blocks of 5",0.4,0.993239740673929,0.00676025932607144,0,0,17.0136118849419,15,30,110
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, every patient",0.05,0.00109698311587996,0.99890301688412,0,0,12.2690247694349,8,22,104
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, every patient",0.1,0.0228531498265195,0.977146850173481,0,0,19.5618232421302,16,38,104
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, every patient",0.15,0.162964148033045,0.837035851966954,0,0,28.3808424524042,22,62,104
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, every patient",0.2,0.479716264403655,0.520283735596348,0,0,31.4514846952678,27,66,104
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, every patient",0.25,0.765460604476846,0.234539395523154,0,0,26.9701415490585,22,57,104
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, every patient",0.3,0.904634609816371,0.0953653901836277,0,0,20.6304294205712,17,42,104
+"one-way EXNEX, 8 active baskets (9/30)","open, e-value futility, every patient",0.4,0.980691708340082,0.0193082916599178,0,0,12.3494109426669,11,23,104
+"one-way EXNEX, 4 null + 4 active","fixed n_max 30, blocks of 5",0.05,0.000152946473857106,0.999847053526143,0,0,29.9973570384111,30,30,30
+"one-way EXNEX, 4 null + 4 active","fixed n_max 30, blocks of 5",0.1,0.0061634574085435,0.993836542591456,0,0,29.9210297743644,30,30,30
+"one-way EXNEX, 4 null + 4 active","fixed n_max 30, blocks of 5",0.15,0.0492637774426313,0.950736222557368,0,0,29.4644836632156,30,30,30
+"one-way EXNEX, 4 null + 4 active","fixed n_max 30, blocks of 5",0.2,0.176479410557594,0.823520589442406,0,0,28.1744943887764,30,30,30
+"one-way EXNEX, 4 null + 4 active","fixed n_max 30, blocks of 5",0.25,0.388846713814629,0.611153286185371,0,0,25.8517701571273,30,30,30
+"one-way EXNEX, 4 null + 4 active","fixed n_max 30, blocks of 5",0.3,0.62364554443001,0.37635445556999,0,0,22.7645986601243,25,30,30
+"one-way EXNEX, 4 null + 4 active","fixed n_max 30, blocks of 5",0.4,0.9231198506627,0.076880149337301,0,0,16.4310137588757,15,30,30
+"one-way EXNEX, 4 null + 4 active","open, no futility, blocks of 5",0.05,0.000159754036888006,0,0,0.999840245963106,2999.52301062619,NA,NA,3000
+"one-way EXNEX, 4 null + 4 active","open, no futility, blocks of 5",0.1,0.0206607661495074,0,0,0.979339233850476,2943.53941969076,NA,NA,3000
+"one-way EXNEX, 4 null + 4 active","open, no futility, blocks of 5",0.15,0.999999710068281,0,0,2.89931711377461e-07,363.768546829255,300,755,3000
+"one-way EXNEX, 4 null + 4 active","open, no futility, blocks of 5",0.2,0.999999999999991,0,0,8.24205137024591e-15,96.5519790304167,75,195,1520
+"one-way EXNEX, 4 null + 4 active","open, no futility, blocks of 5",0.25,0.99999999999999,0,0,8.51026885488211e-15,48.4645541358756,40,95,740
+"one-way EXNEX, 4 null + 4 active","open, no futility, blocks of 5",0.3,0.999999999999992,0,0,8.3443246295562e-15,30.9291960603409,25,55,450
+"one-way EXNEX, 4 null + 4 active","open, no futility, blocks of 5",0.4,0.999999999999995,0,0,5.78633021493413e-15,17.2935004694753,15,30,225
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, blocks of 5",0.05,0.000158074470657582,0.999841925529342,0,0,13.4056134773566,10,20,95
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, blocks of 5",0.1,0.00958202605069466,0.990417973949305,0,0,19.8814613481802,15,35,95
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, blocks of 5",0.15,0.116502946808685,0.883497053191314,0,0,29.6477999422965,25,60,95
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, blocks of 5",0.2,0.423877020187387,0.576122979812612,0,0,35.7390861468503,35,70,95
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, blocks of 5",0.25,0.738371033009644,0.261628966990355,0,0,33.2912483775086,30,60,95
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, blocks of 5",0.3,0.903198149700678,0.0968018502993216,0,0,26.9582597532124,25,50,95
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, blocks of 5",0.4,0.987897071322915,0.0121029286770856,0,0,16.9776522210005,15,30,95
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, every patient",0.05,0.000945773577662134,0.999054226422337,0,0,10.2879378087585,7,20,93
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, every patient",0.1,0.0179511464233418,0.982048853576659,0,0,15.9933267954692,14,35,93
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, every patient",0.15,0.132252518670349,0.86774748132965,0,0,23.4755948243803,20,53,93
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, every patient",0.2,0.409495862300114,0.590504137699888,0,0,27.4430917782936,22,59,93
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, every patient",0.25,0.69248514044522,0.30751485955478,0,0,25.2742479456004,21,54,93
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, every patient",0.3,0.856688727434064,0.143311272565935,0,0,20.4360314693817,16,42,93
+"one-way EXNEX, 4 null + 4 active","open, e-value futility, every patient",0.4,0.965965365759615,0.0340346342403846,0,0,12.6701253762955,11,25,93
+"two-way EXNEX, own row active (9/30), rest null","fixed n_max 30, blocks of 5",0.05,0.000152946473857106,0.999847053526143,0,0,29.9973570384111,30,30,30
+"two-way EXNEX, own row active (9/30), rest null","fixed n_max 30, blocks of 5",0.1,0.0061634574085435,0.993836542591456,0,0,29.9210297743644,30,30,30
+"two-way EXNEX, own row active (9/30), rest null","fixed n_max 30, blocks of 5",0.15,0.0492637774426313,0.950736222557368,0,0,29.4644836632156,30,30,30
+"two-way EXNEX, own row active (9/30), rest null","fixed n_max 30, blocks of 5",0.2,0.176479410557594,0.823520589442406,0,0,28.1744943887764,30,30,30
+"two-way EXNEX, own row active (9/30), rest null","fixed n_max 30, blocks of 5",0.25,0.388846713814629,0.611153286185371,0,0,25.8517701571273,30,30,30
+"two-way EXNEX, own row active (9/30), rest null","fixed n_max 30, blocks of 5",0.3,0.62364554443001,0.37635445556999,0,0,22.7645986601243,25,30,30
+"two-way EXNEX, own row active (9/30), rest null","fixed n_max 30, blocks of 5",0.4,0.9231198506627,0.076880149337301,0,0,16.4310137588757,15,30,30
+"two-way EXNEX, own row active (9/30), rest null","open, no futility, blocks of 5",0.05,0.000159710937559242,0,0,0.999840289062434,2999.52313594167,NA,NA,3000
+"two-way EXNEX, own row active (9/30), rest null","open, no futility, blocks of 5",0.1,0.0210274767026503,0,0,0.978972523297332,2943.10568648814,NA,NA,3000
+"two-way EXNEX, own row active (9/30), rest null","open, no futility, blocks of 5",0.15,0.999999781396569,0,0,2.18603423184361e-07,361.035193839638,300,745,3000
+"two-way EXNEX, own row active (9/30), rest null","open, no futility, blocks of 5",0.2,0.99999999999999,0,0,9.37945076616726e-15,96.9972409706885,75,195,1505
+"two-way EXNEX, own row active (9/30), rest null","open, no futility, blocks of 5",0.25,0.999999999999991,0,0,8.37908535572678e-15,48.6161690271753,40,95,735
+"two-way EXNEX, own row active (9/30), rest null","open, no futility, blocks of 5",0.3,0.99999999999999,0,0,9.99106640325464e-15,30.9496749039539,25,55,445
+"two-way EXNEX, own row active (9/30), rest null","open, no futility, blocks of 5",0.4,0.999999999999995,0,0,5.81478186753245e-15,17.2935328164817,15,30,225
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, blocks of 5",0.05,0.000158059937853239,0.999841940062147,0,0,13.3600175672541,10,20,100
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, blocks of 5",0.1,0.00957488747638913,0.990425112523611,0,0,19.7686022689646,15,40,100
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, blocks of 5",0.15,0.116709962150071,0.883290037849929,0,0,29.590877878672,25,60,100
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, blocks of 5",0.2,0.424953728530538,0.575046271469462,0,0,35.7437188462744,30,70,100
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, blocks of 5",0.25,0.738839738298908,0.261160261701091,0,0,33.273415087217,30,60,100
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, blocks of 5",0.3,0.902835954540764,0.0971640454592365,0,0,26.9349874080065,25,50,100
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, blocks of 5",0.4,0.987780512493144,0.0122194875068562,0,0,16.9746607094788,15,30,100
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, every patient",0.05,0.000807965940713722,0.999192034059286,0,0,10.282881648817,7,20,94
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, every patient",0.1,0.0162079546494936,0.983792045350507,0,0,16.0547294054393,14,36,94
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, every patient",0.15,0.127798849367275,0.872201150632724,0,0,23.870060066653,20,55,94
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, every patient",0.2,0.406913888025644,0.593086111974357,0,0,28.161557636473,24,59,94
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, every patient",0.25,0.692418333642995,0.307581666357005,0,0,26.002615067432,21,54,94
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, every patient",0.3,0.856761299425764,0.143238700574235,0,0,21.0461946186653,18,43,94
+"two-way EXNEX, own row active (9/30), rest null","open, e-value futility, every patient",0.4,0.965920027149068,0.0340799728509316,0,0,13.0834987313021,11,25,94
+"two-way EXNEX, own row and column null, rest active","fixed n_max 30, blocks of 5",0.05,0.000152946473857106,0.999847053526143,0,0,29.9973570384111,30,30,30
+"two-way EXNEX, own row and column null, rest active","fixed n_max 30, blocks of 5",0.1,0.0061634574085435,0.993836542591456,0,0,29.9210297743644,30,30,30
+"two-way EXNEX, own row and column null, rest active","fixed n_max 30, blocks of 5",0.15,0.0492637774426313,0.950736222557368,0,0,29.4644836632156,30,30,30
+"two-way EXNEX, own row and column null, rest active","fixed n_max 30, blocks of 5",0.2,0.176479410557594,0.823520589442406,0,0,28.1744943887764,30,30,30
+"two-way EXNEX, own row and column null, rest active","fixed n_max 30, blocks of 5",0.25,0.388846713814629,0.611153286185371,0,0,25.8517701571273,30,30,30
+"two-way EXNEX, own row and column null, rest active","fixed n_max 30, blocks of 5",0.3,0.62364554443001,0.37635445556999,0,0,22.7645986601243,25,30,30
+"two-way EXNEX, own row and column null, rest active","fixed n_max 30, blocks of 5",0.4,0.9231198506627,0.076880149337301,0,0,16.4310137588757,15,30,30
+"two-way EXNEX, own row and column null, rest active","open, no futility, blocks of 5",0.05,0.000157850133713466,0,0,0.999842149866281,2999.52862385107,NA,NA,3000
+"two-way EXNEX, own row and column null, rest active","open, no futility, blocks of 5",0.1,0.0212148437132804,0,0,0.978785156286702,2943.66247291118,NA,NA,3000
+"two-way EXNEX, own row and column null, rest active","open, no futility, blocks of 5",0.15,0.999999845631885,0,0,1.54368107154723e-07,356.468086197382,300,730,3000
+"two-way EXNEX, own row and column null, rest active","open, no futility, blocks of 5",0.2,0.99999999999999,0,0,9.64097943229164e-15,98.7596796178662,80,200,1485
+"two-way EXNEX, own row and column null, rest active","open, no futility, blocks of 5",0.25,0.999999999999991,0,0,8.000023867129e-15,49.6250390785395,40,100,730
+"two-way EXNEX, own row and column null, rest active","open, no futility, blocks of 5",0.3,0.999999999999991,0,0,9.18378920981801e-15,31.3421415551016,25,60,445
+"two-way EXNEX, own row and column null, rest active","open, no futility, blocks of 5",0.4,0.999999999999995,0,0,5.90508245541446e-15,17.3166373443921,15,30,225
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, blocks of 5",0.05,0.00015667896643781,0.999843321033562,0,0,13.3799249968144,10,20,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, blocks of 5",0.1,0.00904263353768734,0.990957366462313,0,0,20.021006185524,15,45,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, blocks of 5",0.15,0.113329832728319,0.88667016727168,0,0,30.3782879576886,25,60,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, blocks of 5",0.2,0.424365543533002,0.575634456466998,0,0,36.9045013378315,30,70,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, blocks of 5",0.25,0.741935088372325,0.258064911627675,0,0,34.1090314844327,30,65,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, blocks of 5",0.3,0.904791004035501,0.0952089959644995,0,0,27.2896654733116,25,55,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, blocks of 5",0.4,0.987883470997651,0.0121165290023496,0,0,16.9950989239056,15,30,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, every patient",0.05,0.000751865272870512,0.999248134727129,0,0,10.2877245544565,7,20,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, every patient",0.1,0.0146613257153442,0.985338674284656,0,0,16.1750502945916,14,36,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, every patient",0.15,0.122316839797619,0.87768316020238,0,0,24.4727327399689,20,55,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, every patient",0.2,0.403694133362497,0.596305866637504,0,0,29.2455585131947,25,64,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, every patient",0.25,0.69302697689323,0.30697302310677,0,0,27.0329246269683,21,55,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, every patient",0.3,0.857506641835661,0.142493358164337,0,0,21.7790328448135,18,43,100
+"two-way EXNEX, own row and column null, rest active","open, e-value futility, every patient",0.4,0.965957260772456,0.034042739227544,0,0,13.4107532813661,11,25,100
+"two-way EXNEX, all other baskets null","fixed n_max 30, blocks of 5",0.05,0.000152946473857106,0.999847053526143,0,0,29.9973570384111,30,30,30
+"two-way EXNEX, all other baskets null","fixed n_max 30, blocks of 5",0.1,0.0061634574085435,0.993836542591456,0,0,29.9210297743644,30,30,30
+"two-way EXNEX, all other baskets null","fixed n_max 30, blocks of 5",0.15,0.0492637774426313,0.950736222557368,0,0,29.4644836632156,30,30,30
+"two-way EXNEX, all other baskets null","fixed n_max 30, blocks of 5",0.2,0.176479410557594,0.823520589442406,0,0,28.1744943887764,30,30,30
+"two-way EXNEX, all other baskets null","fixed n_max 30, blocks of 5",0.25,0.388846713814629,0.611153286185371,0,0,25.8517701571273,30,30,30
+"two-way EXNEX, all other baskets null","fixed n_max 30, blocks of 5",0.3,0.62364554443001,0.37635445556999,0,0,22.7645986601243,25,30,30
+"two-way EXNEX, all other baskets null","fixed n_max 30, blocks of 5",0.4,0.9231198506627,0.076880149337301,0,0,16.4310137588757,15,30,30
+"two-way EXNEX, all other baskets null","open, no futility, blocks of 5",0.05,0.000156624698757612,0,0,0.999843375301236,2999.53222989034,NA,NA,3000
+"two-way EXNEX, all other baskets null","open, no futility, blocks of 5",0.1,0.0219264215784968,0,0,0.978073578421486,2943.93503262892,NA,NA,3000
+"two-way EXNEX, all other baskets null","open, no futility, blocks of 5",0.15,0.999999920626891,0,0,7.93731017741523e-08,353.198426048988,300,705,3000
+"two-way EXNEX, all other baskets null","open, no futility, blocks of 5",0.2,0.99999999999999,0,0,9.26699580767191e-15,102.064252075356,85,200,1460
+"two-way EXNEX, all other baskets null","open, no futility, blocks of 5",0.25,0.999999999999991,0,0,7.88692755189375e-15,51.2219315153526,40,100,720
+"two-way EXNEX, all other baskets null","open, no futility, blocks of 5",0.3,0.999999999999995,0,0,5.29045460181488e-15,31.8839551855927,25,65,445
+"two-way EXNEX, all other baskets null","open, no futility, blocks of 5",0.4,0.999999999999994,0,0,6.13169074634582e-15,17.3377475015222,15,30,225
+"two-way EXNEX, all other baskets null","open, e-value futility, blocks of 5",0.05,0.000155820896105862,0.999844179103894,0,0,13.35622531112,10,20,115
+"two-way EXNEX, all other baskets null","open, e-value futility, blocks of 5",0.1,0.00848257396730761,0.991517426032692,0,0,20.1271778855635,15,35,115
+"two-way EXNEX, all other baskets null","open, e-value futility, blocks of 5",0.15,0.110069549361395,0.889930450638605,0,0,31.3737257127458,25,65,115
+"two-way EXNEX, all other baskets null","open, e-value futility, blocks of 5",0.2,0.427034206816071,0.572965793183929,0,0,38.5851547568273,30,75,115
+"two-way EXNEX, all other baskets null","open, e-value futility, blocks of 5",0.25,0.747195561729845,0.252804438270154,0,0,35.2379080199353,30,70,115
+"two-way EXNEX, all other baskets null","open, e-value futility, blocks of 5",0.3,0.906458489894083,0.093541510105917,0,0,27.6994486391642,25,55,115
+"two-way EXNEX, all other baskets null","open, e-value futility, blocks of 5",0.4,0.987833506486215,0.0121664935137858,0,0,17.0090680353194,15,30,115
+"two-way EXNEX, all other baskets null","open, e-value futility, every patient",0.05,0.00295147969813915,0.99704852030186,0,0,9.88019854286155,7,19,111
+"two-way EXNEX, all other baskets null","open, e-value futility, every patient",0.1,0.0201212202822058,0.979878779717795,0,0,15.3849104977602,13,30,111
+"two-way EXNEX, all other baskets null","open, e-value futility, every patient",0.15,0.12218684934781,0.877813150652189,0,0,23.9449915893803,13,56,111
+"two-way EXNEX, all other baskets null","open, e-value futility, every patient",0.2,0.398202053421645,0.601797946578357,0,0,29.389416441468,20,68,111
+"two-way EXNEX, all other baskets null","open, e-value futility, every patient",0.25,0.685723733301279,0.314276266698721,0,0,27.2285137052542,20,59,111
+"two-way EXNEX, all other baskets null","open, e-value futility, every patient",0.3,0.849755157761891,0.150244842238108,0,0,21.7222618458942,18,46,111
+"two-way EXNEX, all other baskets null","open, e-value futility, every patient",0.4,0.963118097202446,0.0368819027975544,0,0,12.9844793552849,11,25,111

@@ -132,3 +132,156 @@ and what is still open.
   manually dispatched full check suite. No R checks or full simulations were
   executed as part of this review because R is unavailable in the authoring
   environment.
+
+---
+
+## 2026-11-26 — Lean framework code, framework-only study and two-way EXNEX (branch `feature/lean-framework-twoway-exnex`)
+
+**Decisions** (confirmed by the researcher: D1–D4; documented defaults: D5–D9; see `docs/implementation-plan.md`):
+- **D1.** New, short framework code in `R/`. The earlier code base moved unchanged to `legacy/`: same output of
+  `legacy/checks/fw_engine.R` before and after the move.
+- **D2.** Two-way hyperpriors match the one-way benchmark: sigma_a, sigma_b, sigma_e ~ HN(1/sqrt 3), so the total EX
+  variance has the same expectation as tau² with tau ~ HN(1). Same mu prior, w = 0.5, same NEX.
+- **D3.** Binary EX/NEX per basket (framework.tex eq. 9). Row-only and column-only partial exchangeability later,
+  once the component weights are agreed.
+- **D4.** The e-process gets the restricted posterior itself on a theta grid aligned at logit(p0) (framework.tex
+  eq. 8 up to quadrature). The scaled Beta stays as a benchmark design.
+- **D5–D9.**
+  - Random effects without a sum-to-zero constraint.
+  - No external data D0.
+  - Two-way production computation by MCMC, validated against deterministic quadrature and JAGS.
+  - Only smoke runs until approval.
+
+**Code.**
+- `R/eprocess.R`: validity layer.
+- `R/borrow_oneway.R`: none and one-way EXNEX.
+- `R/borrow_twoway.R`: two-way EXNEX.
+- `R/reference_twoway.R`: references.
+- `R/simulate.R`, `R/summarise.R`, `R/plots.R`.
+- `run_framework_study.R`: single entry point; 3 x 3 grid, 10 scenarios, balanced and unbalanced recruitment, four
+  priors.
+- `tests/`: base-R runner.
+- `validation/twoway_validation.R`.
+
+**Verified** (executed on R 4.3.3):
+- One-way port = legacy `posterior_exnex()`: restricted mean, second moment and P(p > p0) to < 1e-15. New 0.05 grid
+  vs legacy: 3e-5.
+- Exact type I error of a null basket, with all 6^6 block paths and adversarial other baskets, at alpha = 0.05:
+
+  | Prior | Exact type I error |
+  |---|---|
+  | none | 0.0073 |
+  | one-way EXNEX | 0.0060 / 0.0067 |
+  | one-way EXNEX, scaled Beta | 0.0059 |
+  | two-way EXNEX | 0.0059 / 0.0067 |
+
+  All are ≤ alpha. The framework e-value remains conservative at n ≤ 30.
+- Predictability, checked directly: outcomes that differ only inside a block leave that block's prior unchanged.
+- Two-way posterior accuracy (`docs/two-way-validation.md`): the quadrature and the equivalent one-way model agree
+  to 2e-4.
+  - Production sampler vs references: typically 0.0004–0.0007 in the restricted mean and 1–2% in the 5/5 block
+    factor for baskets with n ≥ 15.
+  - Up to 0.009 and 12–15% for empty or 5-patient baskets (Monte Carlo error, no bias).
+- Smoke run of the study (`N_SIM=2`): all 80 cells run (9 min on 2 cores).
+
+**Findings.**
+- Borrowing from strongly responding baskets *lowers* the exact type I error of a null basket: the prior moves away
+  from p0. The hardest platform is one with response rates just above p0.
+- A quadrature window around the data underestimates the all-NEX configurations under the wide mu prior, and so
+  overstates P(EX). References must cover the whole prior range.
+
+**Open.**
+- Full study run (estimate: 3 CPU-hours upper bound, 25–35 min on 8 cores): **needs approval**.
+- Partial exchangeability; hyperprior sensitivity.
+- Entry-time events (proposal: `docs/entry-time-redesign.md`; the guard stays).
+- Drift, delays and allocation scenarios.
+- Moving the design-optimal comparators and flexible inclusion onto the new code.
+
+---
+
+## 2026-11-26 — Independent review of the simplified framework study
+
+The entries above are preserved as the historical record. This entry qualifies the current implementation and
+evidence after reviewing PR #6 at `a8a915f`.
+
+- Confirmed that the active study is limited to the framework e-process with no borrowing, one-way EX/NEX,
+  two-way EX/NEX and the scaled-Beta representation benchmark. Earlier executable code is unchanged in `legacy/`.
+- Found and corrected a first-prior batching defect in `R/simulate.R`: reshaping before row replication moved
+  weights between support points and could break normalization when multiple trials were simulated per worker.
+  The corrected code repeats prior rows directly and checks the assembled matrix.
+- Added three meaningful regressions: direct initial-factor agreement, correct initial prior means, and
+  fixed-outcome agreement between batched and separate one-trial execution.
+- Fixed one-trial/one-worker study chunking with `parallel::splitIndices()`.
+- The correction commit `d0b8d5bb4a085bd7e84dfa7b727029ca1a604af6` passed GitHub Actions
+  [run 45805989231](https://github.com/HenkvdPol/E-BBB-3/actions/runs/45805989231):
+  39 R files parsed; 69 PASS, 0 FAIL, 1 skipped slow-reference group. The original reviewed-head CI had
+  66 PASS, 0 FAIL, 1 SKIP. The previously reported 70/70 slow-suite was a separate author-run result.
+- Renamed the platform `abs_bias` output to `mean_abs_error` to describe its calculation accurately;
+  per-basket signed `post_bias` is unchanged.
+- Rewrote `setup.tex` and `setup.pdf` as a maximum-three-page description of the current study. Synchronized
+  the computational remark in `framework.tex`, README files and numerical/validation descriptions.
+- Clarified that finite grid-factor summation is direct, while posterior fitting is approximate; the two-way
+  hyperpriors match expected EX variance before discretization, not the full one-way prior law.
+- Removed unsupported claims of unbiased finite MCMC and of a guaranteed three-CPU-hour upper bound.
+- Independently recomputed the saved validation summaries from 1,216 rows/22 data states. The reported
+  comparison maxima and Monte Carlo spreads were reproduced to rounding. These fixed-state checks are
+  distinct from an end-to-end simulation study.
+- R was unavailable in the local review environment. Executed R evidence was read from actual CI logs;
+  the batching reproduction and saved-summary calculations used Python.
+- Before production, separate outcome/fitting RNG streams and check sparse-state numerical sensitivity.
+  Keep the study scope fixed; no new comparator families or event-time extensions are needed for that step.
+- No pilot or full operating-characteristic simulation was run. Approval for larger runs remains required
+  under the existing D9 agreement.
+
+Full review: `docs/review-2026-11-26.md`. The next scoped task is in `CLAUDE_NEXT_STEP.md`.
+
+---
+
+## 2026-11-26 (afternoon) — Open-ended baskets: no maximum sample size
+
+**Request.** Check whether a trial that potentially never stops (an infinite sample size) is still part of the
+design, and add it if not.
+
+**Finding.**
+* framework.tex already allows it: Proposition 1 bounds the probability of rejecting at *any* analysis over an
+  unbounded patient sequence.
+* The new code did not: the simulator stopped baskets at a finite `n_max`, and the engines' tables were built only
+  up to `n_max`.
+
+**Added** (the fixed 80-cell study is unchanged; ChatGPT's fixes `d0b8d5b` and `075b954` are kept):
+* `n_max = Inf` in the simulator, with a simulation horizon `n_cap` that only ends the computation. Baskets still
+  open there are reported as `open`.
+* Engine tables that grow on demand (`state_table()`).
+* Optional anytime-valid futility.
+  * E^f tests p >= p1 with the posterior restricted to [0, p1).
+  * Stop at E^f >= 1/beta; P(futility | p >= p1) <= beta (framework.tex, new Proposition 2).
+* The remarks 'No maximum sample size' and 'Open-ended design' in framework.tex. Proposition 1 and its proof are
+  unchanged.
+* `R/open_ended.R`: the exact dynamic programme, based on the telescoping of the factors for a fixed starting
+  prior.
+* `validation/open_ended_feasibility.R` and its results.
+* `OPEN_ENDED=1` option in `run_framework_study.R`.
+* `docs/open-ended-design.md`.
+* A paragraph in `setup.tex`, which stays at 3 pages.
+
+**Verified** (exact, p0 = 0.10, p1 = 0.30, alpha = 0.05, beta = 0.20, up to 3000 patients; 7 starting priors
+including one-way and two-way borrowing from completed baskets):
+* largest P(reject | p <= p0) = 0.023;
+* largest P(futility | p >= p1) = 0.160;
+* with e-value futility every basket stops, by n = 125 at the latest.
+
+**Compared with the fixed design (n_max = 30), open-ended with e-value futility:**
+
+| Measure | Fixed n_max = 30 | Open-ended, e-value futility |
+|---|---|---|
+| E[N] at p0 | 30 | 20–26 |
+| Power at p1 | 0.49–0.62 | 0.90–0.95 |
+| E[N] at p1 | about 23 | 27–30 |
+
+Without futility, null baskets never stop with probability about 0.98.
+
+**Tests.** `tests/run_tests.R --slow`: 94 PASS, 0 FAIL.
+
+**Open.** Open-ended operating characteristics with borrowing from still-recruiting baskets need a simulation
+pilot, which requires approval. ChatGPT's validation items from `CLAUDE_NEXT_STEP.md` also remain open (RNG
+streams, grid and MCMC sensitivity, pilot specification).

@@ -1,6 +1,14 @@
 # Implementation plan: lean framework study and two-way EXNEX
 
-Branch: `feature/lean-framework-twoway-exnex`. Status: **plan, awaiting confirmation of the decisions in section 7.**
+Branch: `feature/lean-framework-twoway-exnex`.
+
+**Status:** D1–D4 were confirmed by the user on 2026-11-26:
+* D1: new `R/` code, with the current code in `legacy/`;
+* D2: hyperpriors matched to the one-way benchmark;
+* D3: binary EX/NEX first;
+* D4: the exact restricted grid posterior.
+
+D5–D9 are the proposals below; they are implemented as defaults and remain open to revision.
 `framework.tex` (repository version, with the proof of Proposition 1) is the lead document.
 
 ## 0. Order of work
@@ -72,8 +80,8 @@ the previous analysis and stored, and the block factor uses only the new block's
 * NEX: θ_c ~ N(m, v);
 * a_j ~ N(0, σ_a²), b_l ~ N(0, σ_b²), ε_c ~ N(0, σ_ε²).
 
-**Proposed defaults, chosen to match the one-way benchmark so that differences come from the structure, not the
-priors** (decision D2):
+**Proposed defaults, matching the total expected EX variance of the one-way benchmark before numerical
+truncation and discretization (not its complete prior distribution)** (decision D2):
 
 | Component | Proposal | Justification |
 |---|---|---|
@@ -166,6 +174,32 @@ and computational limits.
 | D4 | Prior handed to the e-process | The exact restricted posterior on a grid of p values (framework.tex eq. 8 up to quadrature); the scaled Beta stays as benchmark |
 | D5 | Identifiability | Random effects without hard constraints; centred summaries |
 | D6 | Study defaults | Section 2 |
-| D7 | Production computation | Chosen after the R1/R2 comparison (P1 preferred if accurate: deterministic) |
+| D7 | Production computation | **Implemented: P2** (vectorised MCMC, Rao-Blackwellised grid prior). P1 (deterministic nested Laplace) was not pursued: the EX/NEX mixture makes the hyper-level posterior heavy-tailed and possibly multimodal, so a Laplace step would itself need validation. P2 is checked against R1 and R2 in `docs/two-way-validation.md` |
 | D8 | External data D0 | None |
 | D9 | Pilot runs (N_SIM ≤ 200) | Only after approval; until then smoke tests (N_SIM ≤ 2) and exact checks only |
+
+## 8. As implemented (2026-11-26)
+
+The independent review and corrections are recorded in `docs/review-2026-11-26.md`. The original first-prior
+replication across trials was incorrect; it is corrected in `d0b8d5b`, with three simulator regressions and passing
+CI. The three-page `setup.tex`/`setup.pdf` now describe this scoped study. Proposal text above is retained as the
+record of decisions; rates actually used are 0.5 and 1, the dedicated false-borrowing statistic is not implemented,
+and the posterior grid weights are numerical approximations. The finite e-factor sum uses these weights directly.
+
+
+* **theta grid.** Cells of width 0.05 (legacy: 0.02), aligned at logit(p0), so the restriction to (p0, 1] is exact
+  on cells.
+  * The one-way port on the legacy grid reproduces legacy to < 1e-15.
+  * On the new grid it agrees to 3e-5 in the restricted mean.
+* **Two-way production engine.** Vectorised Metropolis-within-Gibbs with exact moves along the non-identified
+  directions; theta and delta integrated exactly; Rao-Blackwellised grid prior. Defaults: 2 chains, 500 burn-in,
+  1000 kept.
+* **R1: deterministic quadrature.** Over the column levels c_l = mu + b_l (mu in closed form) and each row effect
+  in 1-D; layouts with up to 3 columns.
+  * Lesson learned: the grid for c must cover the whole prior range of mu. A window around the data alone cuts the
+    configurations in which a whole column is NEX, which biased P(EX) upwards by up to 0.045.
+* **R2: JAGS.** Continuous theta and sigmas.
+* **R3: one-way model equivalent to an L x 1 layout.** Agrees with R1 to 4 digits.
+* **Tests.** Base-R runner, `tests/run_tests.R`; testthat is not needed.
+* **Partial exchangeability (D3).** Not implemented; it needs the weights of the row-only and column-only
+  components.

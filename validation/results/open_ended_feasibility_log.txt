@@ -1,0 +1,259 @@
+computed in 19.1 s
+largest P(reject) for p <= p0 over all priors and designs: 0.0229 (alpha = 0.05)
+largest P(futility stop) for p >= p1, e-value futility: 0.1602 (beta = 0.20)
+largest P(still open at n = 3000), e-value futility: 0.00e+00
+                                               prior
+                                                none
+                                                none
+                                                none
+                                                none
+                                                none
+                                                none
+                                                none
+                                                none
+                                                none
+                                                none
+                                                none
+                                                none
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+                one-way EXNEX, 8 null baskets (3/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+              one-way EXNEX, 8 active baskets (9/30)
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+                    one-way EXNEX, 4 null + 4 active
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+     two-way EXNEX, own row active (9/30), rest null
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+ two-way EXNEX, own row and column null, rest active
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+               two-way EXNEX, all other baskets null
+                                design   p  reject futility     open     EN
+           fixed n_max 30, blocks of 5 0.1 0.00616   0.9938 0.00e+00   29.9
+           fixed n_max 30, blocks of 5 0.2 0.17648   0.8235 0.00e+00   28.2
+           fixed n_max 30, blocks of 5 0.3 0.62365   0.3764 0.00e+00   22.8
+        open, no futility, blocks of 5 0.1 0.01496   0.0000 9.85e-01 2959.0
+        open, no futility, blocks of 5 0.2 1.00000   0.0000 8.62e-15  107.3
+        open, no futility, blocks of 5 0.3 1.00000   0.0000 9.49e-15   32.0
+   open, e-value futility, blocks of 5 0.1 0.00871   0.9913 0.00e+00   23.6
+   open, e-value futility, blocks of 5 0.2 0.47299   0.5270 0.00e+00   45.0
+   open, e-value futility, blocks of 5 0.3 0.93323   0.0668 0.00e+00   28.9
+ open, e-value futility, every patient 0.1 0.02223   0.9778 0.00e+00   15.5
+ open, e-value futility, every patient 0.2 0.40714   0.5929 0.00e+00   29.5
+ open, e-value futility, every patient 0.3 0.83979   0.1602 0.00e+00   20.5
+           fixed n_max 30, blocks of 5 0.1 0.00380   0.9962 0.00e+00   29.9
+           fixed n_max 30, blocks of 5 0.2 0.10996   0.8900 0.00e+00   28.6
+           fixed n_max 30, blocks of 5 0.3 0.49089   0.5091 0.00e+00   23.8
+        open, no futility, blocks of 5 0.1 0.02020   0.0000 9.80e-01 2950.4
+        open, no futility, blocks of 5 0.2 1.00000   0.0000 8.90e-15  107.1
+        open, no futility, blocks of 5 0.3 1.00000   0.0000 8.42e-15   34.3
+   open, e-value futility, blocks of 5 0.1 0.00656   0.9934 0.00e+00   19.7
+   open, e-value futility, blocks of 5 0.2 0.40542   0.5946 0.00e+00   39.3
+   open, e-value futility, blocks of 5 0.3 0.90137   0.0986 0.00e+00   29.8
+ open, e-value futility, every patient 0.1 0.01171   0.9883 0.00e+00   15.5
+ open, e-value futility, every patient 0.2 0.37885   0.6212 0.00e+00   30.7
+ open, e-value futility, every patient 0.3 0.84531   0.1547 0.00e+00   23.2
+           fixed n_max 30, blocks of 5 0.1 0.00616   0.9938 0.00e+00   29.9
+           fixed n_max 30, blocks of 5 0.2 0.17648   0.8235 0.00e+00   28.2
+           fixed n_max 30, blocks of 5 0.3 0.62365   0.3764 0.00e+00   22.8
+        open, no futility, blocks of 5 0.1 0.01588   0.0000 9.84e-01 2954.5
+        open, no futility, blocks of 5 0.2 1.00000   0.0000 9.64e-15  104.8
+        open, no futility, blocks of 5 0.3 1.00000   0.0000 6.68e-15   30.2
+   open, e-value futility, blocks of 5 0.1 0.01190   0.9881 0.00e+00   25.7
+   open, e-value futility, blocks of 5 0.2 0.50181   0.4982 0.00e+00   43.0
+   open, e-value futility, blocks of 5 0.3 0.94600   0.0540 0.00e+00   27.9
+ open, e-value futility, every patient 0.1 0.02285   0.9771 0.00e+00   19.6
+ open, e-value futility, every patient 0.2 0.47972   0.5203 0.00e+00   31.5
+ open, e-value futility, every patient 0.3 0.90463   0.0954 0.00e+00   20.6
+           fixed n_max 30, blocks of 5 0.1 0.00616   0.9938 0.00e+00   29.9
+           fixed n_max 30, blocks of 5 0.2 0.17648   0.8235 0.00e+00   28.2
+           fixed n_max 30, blocks of 5 0.3 0.62365   0.3764 0.00e+00   22.8
+        open, no futility, blocks of 5 0.1 0.02066   0.0000 9.79e-01 2943.5
+        open, no futility, blocks of 5 0.2 1.00000   0.0000 8.24e-15   96.6
+        open, no futility, blocks of 5 0.3 1.00000   0.0000 8.34e-15   30.9
+   open, e-value futility, blocks of 5 0.1 0.00958   0.9904 0.00e+00   19.9
+   open, e-value futility, blocks of 5 0.2 0.42388   0.5761 0.00e+00   35.7
+   open, e-value futility, blocks of 5 0.3 0.90320   0.0968 0.00e+00   27.0
+ open, e-value futility, every patient 0.1 0.01795   0.9820 0.00e+00   16.0
+ open, e-value futility, every patient 0.2 0.40950   0.5905 0.00e+00   27.4
+ open, e-value futility, every patient 0.3 0.85669   0.1433 0.00e+00   20.4
+           fixed n_max 30, blocks of 5 0.1 0.00616   0.9938 0.00e+00   29.9
+           fixed n_max 30, blocks of 5 0.2 0.17648   0.8235 0.00e+00   28.2
+           fixed n_max 30, blocks of 5 0.3 0.62365   0.3764 0.00e+00   22.8
+        open, no futility, blocks of 5 0.1 0.02103   0.0000 9.79e-01 2943.1
+        open, no futility, blocks of 5 0.2 1.00000   0.0000 9.38e-15   97.0
+        open, no futility, blocks of 5 0.3 1.00000   0.0000 9.99e-15   30.9
+   open, e-value futility, blocks of 5 0.1 0.00957   0.9904 0.00e+00   19.8
+   open, e-value futility, blocks of 5 0.2 0.42495   0.5750 0.00e+00   35.7
+   open, e-value futility, blocks of 5 0.3 0.90284   0.0972 0.00e+00   26.9
+ open, e-value futility, every patient 0.1 0.01621   0.9838 0.00e+00   16.1
+ open, e-value futility, every patient 0.2 0.40691   0.5931 0.00e+00   28.2
+ open, e-value futility, every patient 0.3 0.85676   0.1432 0.00e+00   21.0
+           fixed n_max 30, blocks of 5 0.1 0.00616   0.9938 0.00e+00   29.9
+           fixed n_max 30, blocks of 5 0.2 0.17648   0.8235 0.00e+00   28.2
+           fixed n_max 30, blocks of 5 0.3 0.62365   0.3764 0.00e+00   22.8
+        open, no futility, blocks of 5 0.1 0.02121   0.0000 9.79e-01 2943.7
+        open, no futility, blocks of 5 0.2 1.00000   0.0000 9.64e-15   98.8
+        open, no futility, blocks of 5 0.3 1.00000   0.0000 9.18e-15   31.3
+   open, e-value futility, blocks of 5 0.1 0.00904   0.9910 0.00e+00   20.0
+   open, e-value futility, blocks of 5 0.2 0.42437   0.5756 0.00e+00   36.9
+   open, e-value futility, blocks of 5 0.3 0.90479   0.0952 0.00e+00   27.3
+ open, e-value futility, every patient 0.1 0.01466   0.9853 0.00e+00   16.2
+ open, e-value futility, every patient 0.2 0.40369   0.5963 0.00e+00   29.2
+ open, e-value futility, every patient 0.3 0.85751   0.1425 0.00e+00   21.8
+           fixed n_max 30, blocks of 5 0.1 0.00616   0.9938 0.00e+00   29.9
+           fixed n_max 30, blocks of 5 0.2 0.17648   0.8235 0.00e+00   28.2
+           fixed n_max 30, blocks of 5 0.3 0.62365   0.3764 0.00e+00   22.8
+        open, no futility, blocks of 5 0.1 0.02193   0.0000 9.78e-01 2943.9
+        open, no futility, blocks of 5 0.2 1.00000   0.0000 9.27e-15  102.1
+        open, no futility, blocks of 5 0.3 1.00000   0.0000 5.29e-15   31.9
+   open, e-value futility, blocks of 5 0.1 0.00848   0.9915 0.00e+00   20.1
+   open, e-value futility, blocks of 5 0.2 0.42703   0.5730 0.00e+00   38.6
+   open, e-value futility, blocks of 5 0.3 0.90646   0.0935 0.00e+00   27.7
+ open, e-value futility, every patient 0.1 0.02012   0.9799 0.00e+00   15.4
+ open, e-value futility, every patient 0.2 0.39820   0.6018 0.00e+00   29.4
+ open, e-value futility, every patient 0.3 0.84976   0.1502 0.00e+00   21.7
+ N_median N_q90
+       30    30
+       30    30
+       25    30
+       NA    NA
+       90   215
+       25    65
+       15    45
+       40    85
+       25    60
+        6    37
+       21    71
+       15    46
+       30    30
+       30    30
+       30    30
+       NA    NA
+       90   205
+       35    65
+       15    35
+       35    80
+       30    55
+       13    30
+       24    70
+       19    48
+       30    30
+       30    30
+       25    30
+       NA    NA
+       80   230
+       25    55
+       25    50
+       40    80
+       25    50
+       16    38
+       27    66
+       17    42
+       30    30
+       30    30
+       25    30
+       NA    NA
+       75   195
+       25    55
+       15    35
+       35    70
+       25    50
+       14    35
+       22    59
+       16    42
+       30    30
+       30    30
+       25    30
+       NA    NA
+       75   195
+       25    55
+       15    40
+       30    70
+       25    50
+       14    36
+       24    59
+       18    43
+       30    30
+       30    30
+       25    30
+       NA    NA
+       80   200
+       25    60
+       15    45
+       30    70
+       25    55
+       14    36
+       25    64
+       18    43
+       30    30
+       30    30
+       25    30
+       NA    NA
+       85   200
+       25    65
+       15    35
+       30    75
+       25    55
+       13    30
+       20    68
+       18    46

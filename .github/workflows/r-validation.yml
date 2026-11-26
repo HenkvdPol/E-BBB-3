@@ -26,8 +26,10 @@ jobs:
           r-version: "4.4.2"
       - name: Parse all R sources
         run: Rscript scripts/parse_all.R
-      - name: Focused framework engine checks
-        run: Rscript checks/fw_engine.R
+      - name: Unit, regression and validity tests of the framework code (R/)
+        run: Rscript tests/run_tests.R
+      - name: Legacy framework engine checks
+        run: Rscript legacy/checks/fw_engine.R
 
   full-checks:
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks == 'true'
@@ -41,7 +43,8 @@ jobs:
         run: Rscript scripts/parse_all.R
       - name: Full exact, validity, regression and unit checks
         run: |
-          Rscript checks/fw_validity.R
-          Rscript checks/exact_checks.R
-          Rscript checks/regression.R
-          Rscript checks/unit_flex.R
+          Rscript tests/run_tests.R --slow
+          Rscript legacy/checks/fw_validity.R
+          Rscript legacy/checks/exact_checks.R
+          Rscript legacy/checks/regression.R
+          Rscript legacy/checks/unit_flex.R
