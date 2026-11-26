@@ -125,6 +125,13 @@ for (m in st$Models) {
 check("setting.R: every scenario has 12 rates in (0, 1)", all(sapply(st$Scenario, function(s) length(s) == 12 && all(s > 0 & s < 1))))
 check("setting.R: eBBB scenarios present", all(c("global null", "biomarker 1 active", "interaction", "all active") %in% names(st$Scenario)))
 
+## The additive baseline is a null basket, including at floating-point precision.
+additive <- st$Scenario[["additive tumour + biomarker"]]
+check("setting.R: additive baseline equals p0 exactly", identical(additive[1], st$p0),
+      sprintf("p0 = %.17g; unanchored logit round trip = %.17g", st$p0, plogis(qlogis(st$p0))))
+check("setting.R: additive scenario has exactly one null basket in both recruitment designs",
+      all(vapply(st$Recruitment, function(rec) identical(which(additive[!is.na(rec$rate)] <= st$p0), 1L), logical(1))))
+
 ## Fixed design (efficacy or n_max): every basket ends rejected or at n_max
 d <- md(st$Recruitment$balanced, "no borrowing", "fixed"); e <- me("no borrowing", d$layout, rep(p1, 12))
 sim <- simulate_trials(rep(c(p0, p1), 6), d, e, n_sim = 4, seed = 3)

@@ -82,6 +82,9 @@ Scenario <- list(
   'mixed active and null'= c(p1, p1, p0,     p1, p0, p0,     p0, p0, p1,     p0, p1, p0),
   'strong heterogeneity' = c(0.05, p0, 0.45, p0, p1, p0,     0.60, p0, 0.05, p1, 0.05, p0))
 
+# Keep the intended null basket exactly at p0: plogis(qlogis(p0)) can round above it.
+Scenario[['additive tumour + biomarker']][1] <- p0
+
 # Two-way EX/NEX sampler per data state: burn-in, kept draws, chains, and the number of
 # data states sampled together (accuracy: Additional_files/docs/two-way-validation.md).
 mcmc <- list(burn = 500, keep = 1000, chains = 2, chunk = 150)
