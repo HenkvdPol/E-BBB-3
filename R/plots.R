@@ -11,7 +11,7 @@ plot_baskets <- function(b, recruitment, alpha) {
   b$type <- ifelse(b$null, "null basket (type I error)", "active basket (power)")
   ggplot(b, aes(basket, reject, colour = engine, shape = type)) +
     geom_hline(yintercept = alpha, linetype = "dashed", colour = "grey40") +
-    geom_linerange(aes(ymin = pmax(reject - 2 * reject_se, 0), ymax = reject + 2 * reject_se),
+    geom_linerange(aes(ymin = pmax(reject - 2 * reject_se, 0), ymax = pmin(reject + 2 * reject_se, 1)),
                    position = position_dodge(width = 0.6), linewidth = 0.4) +
     geom_point(position = position_dodge(width = 0.6), size = 2) +
     scale_shape_manual(values = c("null basket (type I error)" = 1, "active basket (power)" = 16)) +
