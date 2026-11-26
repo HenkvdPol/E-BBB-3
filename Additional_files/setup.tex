@@ -236,13 +236,14 @@ passes and two-trial smoke runs of all 154 cells. The top-level driver was
 parsed, not executed, in the reviewed CI job. The full study remains unrun.
 
 \section*{7. Next step within the agreed scope}
-Keep this framework study fixed. First check grid
-resolution and retained MCMC draws on selected sparse and heterogeneous
-states; document convergence and acceptable factor discrepancies. Then,
-\emph{after approval}, run a small timing/operating-characteristic pilot and
-choose the production replication count from the required precision.
-The earlier three-CPU-hour estimate predates the current 154-cell design;
-re-estimate production cost from a pilot of these settings.
+Keep this framework study fixed. A timing pilot (20 trials per cell,
+\texttt{Additional\_files/docs/timing-pilot.md}) predicts about 4.4 (fixed) and 5.8 (open)
+CPU hours at 1,000 trials per cell. Under one hour per horizon on 8 cores is
+provisional; twice the prediction is a planning allowance, not a bound.
+\emph{After approval}, choose the replication
+count (Monte Carlo SE 0.0069 at a rate of 0.05 for 1,000 trials) and run the
+study on the cluster. Grid resolution and retained MCMC draws on sparse and
+heterogeneous states remain to be checked.
 
 Hyperprior sensitivity remains pending. Partial exchangeability, new entry
 events, delays, drift, adaptive allocation and the older comparator families

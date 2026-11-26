@@ -58,7 +58,9 @@ horizon 'open' : no maximum sample size; a basket stops when it is rejected or w
 
 On the cluster: mkdir -p logs; sbatch Additional_files/slurm/sim.slurm
 (two array tasks: the fixed and the open-ended design, 1000 trials per cell, 8 cores).
-The full study has not been run yet: approve the compute first.
+The full study has not been run yet: approve the compute first. Timing pilot: about 4.4 (fixed)
+and 5.8 (open) CPU hours at R = 1000; under 1 h per horizon on 8 cores is provisional
+(Additional_files/docs/timing-pilot.md).
 
 Tests and validation:
 Rscript Additional_files/tests/run_tests.R          all tests (about 2 min)
@@ -66,6 +68,7 @@ Rscript Additional_files/tests/run_tests.R --slow   plus the slow reference comp
 Rscript Additional_files/validation/open_ended_feasibility.R   exact open-ended results (1 min)
 Rscript Additional_files/validation/twoway_validation.R        two-way engine vs references (30 min)
 Rscript Additional_files/validation/twoway_ebbb_hyper.R        two-way, eBBB hyperparameters, vs JAGS
+Rscript Additional_files/validation/timing_pilot.R             run time of the study (20 trials per cell)
 
 Packages: Matrix, foreach, doParallel, ggplot2; rjags (with JAGS) only for the JAGS reference.
 
