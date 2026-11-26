@@ -1,0 +1,20 @@
+# Generated simulation output
+Result/
+checks/output/
+*.RData
+*.Rhistory
+.Rproj.user/
+.Rhistory
+.RData
+
+# Reproducible design-bank cache (large generated RDS files)
+design_banks/
+**/design_banks/
+
+# LaTeX build products
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
