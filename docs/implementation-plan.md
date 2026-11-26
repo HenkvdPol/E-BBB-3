@@ -1,6 +1,14 @@
 # Implementation plan: lean framework study and two-way EXNEX
 
-Branch: `feature/lean-framework-twoway-exnex`. Status: **plan, awaiting confirmation of the decisions in section 7.**
+Branch: `feature/lean-framework-twoway-exnex`.
+
+**Status:** D1–D4 were confirmed by the user on 2026-11-26:
+* D1: new `R/` code, with the current code in `legacy/`;
+* D2: hyperpriors matched to the one-way benchmark;
+* D3: binary EX/NEX first;
+* D4: the exact restricted grid posterior.
+
+D5–D9 are the proposals below; they are implemented as defaults and remain open to revision.
 `framework.tex` (repository version, with the proof of Proposition 1) is the lead document.
 
 ## 0. Order of work

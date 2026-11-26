@@ -2,7 +2,8 @@
 Result/
 design_banks/
 **/design_banks/
-checks/output/
+**/checks/output/
+**/tests/output/
 *.RData
 *.Rhistory
 .Rproj.user/
