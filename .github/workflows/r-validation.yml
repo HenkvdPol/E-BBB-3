@@ -25,11 +25,11 @@ jobs:
         with:
           r-version: "4.4.2"
       - name: Parse all R sources
-        run: Rscript scripts/parse_all.R
-      - name: Unit, regression and validity tests of the framework code (R/)
-        run: Rscript tests/run_tests.R
+        run: Rscript Additional_files/tests/parse_all.R
+      - name: Unit, regression and validity tests of additional_functions.R
+        run: Rscript Additional_files/tests/run_tests.R
       - name: Legacy framework engine checks
-        run: Rscript legacy/checks/fw_engine.R
+        run: Rscript Additional_files/legacy/checks/fw_engine.R
 
   full-checks:
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks == 'true'
@@ -40,11 +40,11 @@ jobs:
         with:
           r-version: "4.4.2"
       - name: Parse all R sources
-        run: Rscript scripts/parse_all.R
+        run: Rscript Additional_files/tests/parse_all.R
       - name: Full exact, validity, regression and unit checks
         run: |
-          Rscript tests/run_tests.R --slow
-          Rscript legacy/checks/fw_validity.R
-          Rscript legacy/checks/exact_checks.R
-          Rscript legacy/checks/regression.R
-          Rscript legacy/checks/unit_flex.R
+          Rscript Additional_files/tests/run_tests.R --slow
+          Rscript Additional_files/legacy/checks/fw_validity.R
+          Rscript Additional_files/legacy/checks/exact_checks.R
+          Rscript Additional_files/legacy/checks/regression.R
+          Rscript Additional_files/legacy/checks/unit_flex.R

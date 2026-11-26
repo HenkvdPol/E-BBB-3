@@ -1,0 +1,279 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage[authoryear,round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage[dvipsnames]{xcolor}
+
+\setstretch{1.5}
+
+% ---------------------------------------------------------------
+% Theorem environments
+% ---------------------------------------------------------------
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% ---------------------------------------------------------------
+% Notation
+% ---------------------------------------------------------------
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\mathbb{P}}
+\DeclareMathOperator{\logit}{logit}
+\DeclareMathOperator{\Bin}{Bin}
+\DeclareMathOperator{\Bern}{Bernoulli}
+
+\title{Anytime-valid testing with Bayesian borrowing for platform trials}
+ % add co-authors and affiliations
+\date{\today}
+
+\begin{document}
+\maketitle
+
+We propose a test for platform and multidimensional basket trials that uses Bayesian borrowing and controls the frequentist type I error at any sample size.
+These trials evaluate targeted treatments in many patient subgroups under one master protocol.
+We call each subgroup a basket and test it against a prespecified clinically relevant response rate.
+Many baskets enrol few patients and some enrol many.
+Borrowing information across baskets can increase power and inform effect sizes.
+Bayesian hierarchical models borrow efficiently, but are not designed for frequentist hypothesis testing.
+Decisions are based posterior probabilities and do not have formal type I error guarantees (see eg REFERENCES).
+
+We construct an anytime valid test based on e-variables (REFERENCES).
+The test allows interim analyses at any time and the choice to stop or continue after each analysis (optional stopping and continuation), while the type I error guarantee holds at every finite sample size.
+The alternative in these likelihood ratios is a prior taken from a Bayesian borrowing model fitted to all baskets (see eg REFERENCES).
+The prior can be updated before any interim analysis.
+The type I error guarantee therefore holds whether or not the borrowing model is correct.
+
+Link the previous paragraph (methodological benefits of using e-variables) to general concept of platform trials (require this kind of flexibilty) via a concrete example (DRUP study).
+
+\section{Setup}\label{sec:setup}
+
+We consider baskets arranged in a two-way grid with row levels $j = 1,\dots,J$ and column levels $l = 1,\dots,L$.
+In our application, the rows are tumour types and the columns are biomarker groups \textcolor{orange}{True?}
+A basket is $c = (j,l) \in \C \subseteq [J]\times[L]$.
+We consider the sequence of patients $i = 1, 2, \dots$ ordered by the time at which their outcome is observed.
+The $i$-th patient belongs to basket $c_i \in \C$ and has outcome $Y_i \in \{0,1\}$, where $Y_i = 1$ denotes a response.
+
+Let $D_0$ denote external data (or clinical knowledge) fixed before the trial.
+The trial history at time $t$ is the history of the whole platform:
+\begin{equation}\label{eq:filtration}
+  \F_t = \sigma\big( D_0,\; \{(c_i, Y_i) : i \le t\} \big), \qquad t = 0, 1, 2, \dots
+\end{equation}
+The basket of patient $t$ is known before the outcome $Y_t$ is observed.
+We write
+\begin{equation}\label{eq:pre-outcome}
+  \G_t = \sigma(\F_{t-1}, c_t), \qquad \F_{t-1} \subseteq \G_t \subseteq \F_t,
+\end{equation}
+for the history just before $Y_t$ is observed.
+We do not use a filtration of basket $c$ alone.
+The borrowed prior depends on the other baskets and would not be measurable with respect to it.
+Interim information on pending outcomes, such as early scans, is deliberately not in $\F$.
+
+For each basket $c$, we state the null hypothesis conditionally on the platform history:
+\begin{equation}\label{eq:hypotheses}
+  H_{0,c}\colon\; \P\big(Y_i = 1 \mid \G_i\big) \le p_0 \quad \text{for all } i \text{ with } c_i = c .
+\end{equation}
+If patients are independent and basket $c$ has a constant response rate $p_c$, then $H_{0,c}$ reduces to $p_c \le p_0$.
+The conditional form also allows drift in basket $c$.
+It places no restriction on the other baskets.
+
+Each basket answers its own clinical question: is the treatment active in this subgroup?
+We dedicate a separate type I error budget $\alpha$ to every basket and apply no multiplicity correction across baskets.
+For basket $c$ we require
+\begin{equation}\label{eq:criterion}
+  \sup_{P \in H_{0,c}} P\big( \text{reject } H_{0,c} \text{ at some interim analysis} \big) \le \alpha ,
+\end{equation}
+however many analyses are performed and whatever happens in the other baskets.
+
+% ===============================================================
+\section{Construction}\label{sec:construction}
+% ===============================================================
+
+An e-value for $H_0$ is a non-negative statistic $E$ with $\E_P[E] \le 1$ for all $P \in H_0$.
+A non-negative supermartingale with initial value $1$ yields an e-value at every stopping time, and by Ville's inequality it exceeds $1/\alpha$ at some time with probability at most $\alpha$.
+
+Basket $c$ is analysed at times $0 = \tau_{c,0} < \tau_{c,1} < \tau_{c,2} < \dots$
+These analysis times are not specified in advance and may depend on the data observed so far.
+Formally, they are stopping times with respect to $(\F_t)$.
+Block $k$ of basket $c$ contains the outcomes of basket $c$ observed between two consecutive analyses.
+We write $n_{c,k}$ for its number of outcomes and $y_{c,k}$ for its number of responses:
+\begin{equation}\label{eq:blocks}
+  B_{c,k} = \{ i : c_i = c,\; \tau_{c,k-1} < i \le \tau_{c,k} \}, \qquad
+  n_{c,k} = \# B_{c,k}, \qquad
+  y_{c,k} = \sum_{i \in B_{c,k}} Y_i .
+\end{equation}
+
+At analysis $k-1$ we choose a prior $\pi_{c,k-1}$ for the response rate of basket $c$.
+It is a probability measure on $(p_0, 1]$ that is determined by the history $\F_{\tau_{c,k-1}}$.
+It may use all platform data up to that time, including basket $c$'s own earlier blocks.
+It is then frozen for block $k$.
+
+The block factor is the likelihood ratio of the new block only, mixed over the frozen prior:
+\begin{equation}\label{eq:factor}
+  e_{c,k} = \int_{(p_0,1]} \Big(\frac{p}{p_0}\Big)^{y_{c,k}} \Big(\frac{1-p}{1-p_0}\Big)^{n_{c,k}-y_{c,k}} \pi_{c,k-1}(\mathrm dp).
+\end{equation}
+At each analysis, the evidence of the previous analysis is multiplied by the factor of the new block:
+\begin{equation}\label{eq:update}
+  E_c(\tau_{c,k}) = E_c(\tau_{c,k-1}) \cdot e_{c,k}, \qquad E_c(0) = 1 .
+\end{equation}
+We reject $H_{0,c}$ at the first analysis with $E_c(\tau_{c,k}) \ge 1/\alpha$.
+The evidence depends on the data through the per-block counts and the priors frozen at each analysis.
+
+\begin{proposition}\label{prop:validity}
+Under $H_{0,c}$, for any choice of priors and analysis times that satisfies the conditions above,
+\begin{equation}\label{eq:ville}
+  P\big( \exists\, k : E_c(\tau_{c,k}) \ge 1/\alpha \big) \le \alpha .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Fix $p>p_0$ and define the one-patient likelihood-ratio increment
+\[
+L_i(p)=\left(\frac{p}{p_0}\right)^{Y_i}
+       \left(\frac{1-p}{1-p_0}\right)^{1-Y_i}
+\]
+when $c_i=c$, and set the increment equal to $1$ otherwise. Write
+$q_i=\P(Y_i=1\mid\G_i)$. Under $H_{0,c}$, whenever $c_i=c$,
+\[
+\E[L_i(p)\mid\G_i]
+=q_i\frac{p}{p_0}+(1-q_i)\frac{1-p}{1-p_0}\leq 1,
+\]
+because the expression is increasing in $q_i$ for $p>p_0$ and equals
+$1$ at $q_i=p_0$. For patients in other baskets the increment is $1$.
+Thus the product process for this fixed $p$ is a non-negative
+supermartingale.
+
+At time $\tau_{c,k-1}$, the prior $\pi_{c,k-1}$ is measurable with respect
+to the observed history and is held fixed over the next block. Integrating
+the fixed-$p$ supermartingales with respect to this probability measure
+therefore gives a non-negative supermartingale for the block. Optional
+sampling at the next analysis time and multiplication by the evidence
+accumulated in previous blocks preserve the supermartingale property.
+Ville's inequality gives the stated bound.
+\end{proof}
+
+\begin{remark}[Scope of the guarantee]
+The guarantee is for each basket separately. It is not family-wise error
+control for the event that at least one of many null baskets is rejected.
+A platform-wide claim requires a separately specified multiplicity strategy.
+Moreover, the conditional null in Equation~\ref{eq:hypotheses} is stronger
+than a marginal-average response-rate null. The allocation of each patient
+must be known before that patient's outcome is observed. The ordering and
+handling of simultaneous outcome reports, and any outcome-dependent delay
+in observation, must be specified so that the conditional null remains
+meaningful for the sequence actually analysed.
+\end{remark}
+
+\begin{remark}[No maximum sample size]\label{rem:open}
+Proposition~\ref{prop:validity} bounds the probability that $E_c$ reaches $1/\alpha$ at \emph{any} analysis of an unbounded sequence of patients.
+A basket therefore needs no maximum sample size: it may continue until $H_{0,c}$ is rejected, or forever.
+A planned maximum, a budget or a calendar end of the platform is optional stopping and does not affect the guarantee.
+Without borrowing, or when borrowing from baskets whose data no longer change, the product of the block factors telescopes to the mixture likelihood ratio
+$\int (p/p_0)^{y}\{(1-p)/(1-p_0)\}^{n-y}\,\pi_{c,0}(\mathrm dp)$ after $n$ patients with $y$ responses, where $\pi_{c,0}$ is the first restricted prior.
+If $p_c>p_0$ is constant and $\pi_{c,0}$ has positive density near $p_c$, its logarithm grows like $n\,\mathrm{KL}(p_c\,\|\,p_0)$, so $H_{0,c}$ is rejected after finitely many patients with probability one: a test of power one.
+Under $H_{0,c}$, however, the basket continues forever with probability at least $1-\alpha$.
+An open-ended design therefore needs a futility rule.
+\end{remark}
+
+\begin{proposition}[Anytime-valid futility]\label{prop:futility}
+Fix $p_1>p_0$ and consider the reversed hypothesis
+\begin{equation}\label{eq:h1}
+  H_{1,c}\colon\; \P\big(Y_i = 1 \mid \G_i\big) \ge p_1 \quad \text{for all } i \text{ with } c_i = c .
+\end{equation}
+Define $e^{f}_{c,k}$ and $E^{f}_c$ as in Equations~\eqref{eq:factor} and~\eqref{eq:update} with $p_0$ replaced by $p_1$, and with priors $\pi^{f}_{c,k-1}$ on $[0,p_1)$ that are determined by $\F_{\tau_{c,k-1}}$ and frozen for block $k$; for example, the borrowing posterior $\tilde\pi_{c,k-1}$ of Section~\ref{sec:model} restricted to $[0,p_1)$.
+Stop basket $c$ for futility at the first analysis with $E^{f}_c(\tau_{c,k}) \ge 1/\beta$.
+Under $H_{1,c}$, the probability that basket $c$ is ever stopped for futility is at most $\beta$.
+\end{proposition}
+
+\begin{proof}
+As for Proposition~\ref{prop:validity}, with the inequality reversed.
+For fixed $q<p_1$ and $c_i=c$,
+$\E[(q/p_1)^{Y_i}\{(1-q)/(1-p_1)\}^{1-Y_i}\mid\G_i] = q_i\, q/p_1 + (1-q_i)(1-q)/(1-p_1)$
+is decreasing in $q_i$ and equals $1$ at $q_i=p_1$, so it is at most $1$ under $H_{1,c}$.
+\end{proof}
+
+\begin{remark}[Open-ended design]\label{rem:open-design}
+Stop basket $c$ at the first analysis with $E_c \ge 1/\alpha$ (reject $H_{0,c}$) or $E^{f}_c \ge 1/\beta$ (futility), without a maximum sample size.
+Each rule is optional stopping for the other process, so $P(\text{reject } H_{0,c}) \le \alpha$ under $H_{0,c}$ and $P(\text{futility}) \le \beta$ under $H_{1,c}$ hold for the combined design, whether or not the borrowing model is correct.
+Since $p_0<p_1$, every response rate lies above $p_0$ or below $p_1$.
+If $p_c$ is constant and the priors concentrate around it, at least one of the two processes therefore grows, and the basket stops after finitely many patients with probability one.
+In that case $P(\text{reject } H_{0,c}) \ge 1-\beta$ whenever $p_c \ge p_1$: a power guarantee without a maximum sample size.
+Response rates between $p_0$ and $p_1$ may end in either decision.
+\end{remark}
+
+\begin{remark}[Computational approximation]
+Equation~\ref{eq:restricted} defines the target restricted posterior.
+The current implementation in \texttt{additional\_functions.R} represents it by normalized weights
+$w_g$ on grid points $p_g>p_0$. The block factor is evaluated directly as the
+finite sum of the likelihood ratios at those points. One-way posterior
+weights use numerical quadrature; two-way weights use numerical grids and
+Rao--Blackwellised MCMC. Thus the finite mixture is evaluated directly, but
+the continuous posterior is approximated.
+
+A finite Monte Carlo sample retained above $p_0$ is another admissible
+empirical prior, provided at least one draw is retained and the resulting
+weights are normalized. The earlier implementation in \texttt{Additional\_files/legacy/}
+uses a moment-matched scaled Beta distribution and an analytic factor.
+The new study retains a scaled-Beta benchmark represented on the same grid.
+Each approximation defines its own alternative prior: support, normalization
+and selection from past information preserve validity when the prior is
+frozen before the next block. Numerical approximation can still change
+power and borrowing. Any simulation randomness used to construct a prior
+must also be independent of future trial outcomes.
+\end{remark}
+
+% ===============================================================
+\section{Borrowing prior}\label{sec:model}
+% ===============================================================
+
+The proof uses only that the prior is frozen and lives on $(p_0,1]$.
+Any borrowing model can supply it, and the model plays no role in error control.
+One possible choice is a binomial logit EX/NEX model on the grid.
+With $\theta_c = \logit(p_c)$ and cumulative counts $y_c \mid p_c \sim \Bin(n_c, p_c)$ at the time of the analysis, each basket is either exchangeable with an additive row and column structure (EX) or stands alone (NEX):
+\begin{equation}\label{eq:exnex}
+\begin{aligned}
+  &\delta_c \sim \Bern(w_c), \qquad \theta_c \mid \delta_c = 0 \;\sim\; N(m_c, v_c), \\
+  &\theta_c \mid \delta_c = 1 \;=\; \mu + a_j + b_l + \varepsilon_c, \quad \varepsilon_c \sim N(0, \sigma_\varepsilon^2), \\
+  &\mu \sim N(m_\mu, s_\mu^2), \quad a_j \sim N(0, \sigma_a^2), \quad b_l \sim N(0, \sigma_b^2), \quad
+  \sigma_a, \sigma_b, \sigma_\varepsilon \sim \text{half-normal}.
+\end{aligned}
+\end{equation}
+Here $a_j$ is the row effect, $b_l$ the column effect and $\varepsilon_c$ the basket-specific interaction.
+NEX protects against strong interactions, such as a treatment that is active in one tumour type but not in another.
+
+Let $\tilde\pi_{c,k-1}$ be the posterior law of $p_c$ given the data in $\F_{\tau_{c,k-1}}$.
+The prior for block $k$ is this posterior restricted to $(p_0, 1]$:
+\begin{equation}\label{eq:restricted}
+  \pi_{c,k-1}(A) = \frac{\tilde\pi_{c,k-1}\big(A \cap (p_0, 1]\big)}{\tilde\pi_{c,k-1}\big((p_0, 1]\big)}, \qquad A \subseteq [0,1] \text{ Borel}.
+\end{equation}
+One possible computation uses posterior draws
+$p_c^{(1)}, \dots, p_c^{(H)}$. If $H'>0$ draws exceed $p_0$, the block
+likelihood ratio can be averaged over those retained draws:
+\begin{equation}\label{eq:mc}
+  e_{c,k} \approx \frac{1}{H'} \sum_{h:\, p_c^{(h)} > p_0} \Big(\frac{p_c^{(h)}}{p_0}\Big)^{y_{c,k}} \Big(\frac{1-p_c^{(h)}}{1-p_0}\Big)^{n_{c,k} - y_{c,k}} .
+\end{equation}
+
+The implemented grid calculation instead uses all normalized restricted
+grid weights, including the Rao--Blackwellised weights returned by the
+two-way engine, as described in the computational remark above.
+
+
+
+% \bibliographystyle{plainnat}
+% \bibliography{refs}
+
+\end{document}
