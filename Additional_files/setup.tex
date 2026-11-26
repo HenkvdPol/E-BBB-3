@@ -237,13 +237,13 @@ MCMC or exact continuous-posterior computation. The author's earlier
 the full operating-characteristic study remains unrun.
 
 \section*{7. Next step within the agreed scope}
-Keep this framework study fixed. First check grid
-resolution and retained MCMC draws on selected sparse and heterogeneous
-states; document convergence and acceptable factor discrepancies. Then,
-\emph{after approval}, run a small timing/operating-characteristic pilot and
-choose the production replication count from the required precision.
-The quoted three CPU-hours is a provisional throughput extrapolation,
-not an upper bound including setup and parallel overhead.
+Keep this framework study fixed. A timing pilot (20 trials per cell,
+\texttt{docs/timing-pilot.md}) predicts about 4.4 (fixed) and 5.8 (open)
+CPU hours at 1,000 trials per cell, under one hour per horizon on 8 cores;
+twice this is a safe bound. \emph{After approval}, choose the replication
+count (Monte Carlo SE 0.0069 at a rate of 0.05 for 1,000 trials) and run the
+study on the cluster. Grid resolution and retained MCMC draws on sparse and
+heterogeneous states remain to be checked.
 
 Hyperprior sensitivity remains pending. Partial exchangeability, new entry
 events, delays, drift, adaptive allocation and the older comparator families

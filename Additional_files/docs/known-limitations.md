@@ -87,9 +87,11 @@ Last update: 2026-11-26 (priors, stopping rule, hyperparameters and grid aligned
 4. **Run time of the two-way engine.**
    * About 0.035 s per data state (2 cores, reference BLAS), against 0.007 s for one-way EXNEX.
    * Each call also has a fixed cost of about 1 s.
-   * About 3 CPU-hours is a provisional throughput extrapolation assuming distinct states, not an upper bound:
-     it omits fixed fit, engine setup and parallel overhead. The 25–35 min on 8 cores remains an unverified
-     estimate to check in an approved timing pilot.
+   * Timing pilot (2026-11-26, `Additional_files/docs/timing-pilot.md`). On the 4 x 3 grid, with the eBBB
+     hyperparameters:
+     * a two-way fit costs about 0.042 s per data state plus 0.5–1.2 s per fit;
+     * the predicted study at R = 1000 takes about 4.4 (fixed) and 5.8 (open) CPU hours, which is 0.6–0.7 h on
+       8 cores; 2 x is a safe upper bound.
 5. **Quadrature reference limited to at most 3 columns.** Larger layouts can be checked against JAGS only (or after
    transposing).
 6. **Reproducibility.** Package versions are not pinned (no `renv.lock`). `simulate.R` (settings in `setting.R`) and

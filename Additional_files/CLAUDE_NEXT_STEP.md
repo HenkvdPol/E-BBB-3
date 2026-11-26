@@ -102,3 +102,10 @@ no maximum sample size, anytime-valid e-value futility, `docs/open-ended-design.
   * a timing pilot. The unbalanced design has a basket at rate 0.25, so trials last up to 120 time units and the
     two-way cells are the slowest;
   * hyperprior sensitivity.
+
+---
+
+**Timing pilot done 2026-11-26** (`docs/timing-pilot.md`).
+* Prediction for the full study at R = 1000: under 1 h wall time per horizon on 8 cores (4.4 and 5.8 CPU hours).
+* Next: the researcher chooses R (1000 or 2000) and approves the cluster run (`sbatch
+  Additional_files/slurm/sim.slurm`).
